@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DERMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>DERMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 7</h2>
+                <p>Ana, una adolescente de 16 años, visita al dermatólogo debido a un empeoramiento significativo del acné en su rostro. Ha probado varios productos de cuidado de la piel sin mejoría, y el acné afecta su autoestima y bienestar emocional.
+
+                   <p>Exámenes Complementarios:</p>
+                   <p>Evaluación visual de la gravedad del acné.</p>
+                   <p>Historial detallado de los productos y tratamientos previos utilizados por Ana.</p>
+
+
+            </div>
+            <div class="card question-card" data-index="506">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el término médico correcto para describir las lesiones inflamatorias profundas y nódulos que presenta Ana en su rostro?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(506, this, 'A')">A. Pápulas.</li>
+                    <li onclick="selectAnswer(506, this, 'B')">B. Pústulas.</li>
+                    <li onclick="selectAnswer(506, this, 'C')">C. Nódulos.</li>
+                    <li onclick="selectAnswer(506, this, 'D')">D. Comedones cerrados.</li>
+                </ul>
+                <div class="justification" id="justification-506">Los nódulos son lesiones inflamatorias profundas y dolorosas asociadas con el acné severo.</div>
+
+                <div class="card question-card" data-index="507">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes opciones podría ser un factor contribuyente al empeoramiento del acné en Ana?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(507, this, 'A')">A. Higiene excesiva y lavado frecuente del rostro.</li>
+                    <li onclick="selectAnswer(507, this, 'B')">B. Exposición regular al sol.</li>
+                    <li onclick="selectAnswer(507, this, 'C')">C. Consumo de alimentos ricos en vitamina A.</li>
+                    <li onclick="selectAnswer(507, this, 'D')">D. Uso regular de protector solar.</li>
+                </ul>
+
+            <div class="justification" id="justification-507">Un lavado excesivo puede irritar la piel y empeorar el acné al aumentar la producción de sebo.</div>
+
+            <div class="card question-card" data-index="508">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes opciones sería una opción de tratamiento tópico adecuada para el acné severo de Ana?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(508, this, 'A')">A. Protector solar.</li>
+                    <li onclick="selectAnswer(508, this, 'B')">B. Antibióticos orales.</li>
+                    <li onclick="selectAnswer(508, this, 'C')">C. Retinoides tópicos.</li>
+                    <li onclick="selectAnswer(508, this, 'D')">D. Analgésicos.</li>
+                </ul>
+                <div class="justification" id="justification-508">Los retinoides tópicos son eficaces para el tratamiento del acné al prevenir la formación de comedones y reducir la inflamación.</div>
+
+            </div>
+            <div class="card question-card" data-index="509">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál podría ser un enfoque adicional en el tratamiento del acné severo en Ana si los tratamientos tópicos no son suficientes?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(509, this, 'A')">A. Aumentar la exposición al sol.</li>
+                    <li onclick="selectAnswer(509, this, 'B')">B. Considerar la terapia hormonal.</li>
+                    <li onclick="selectAnswer(509, this, 'C')">C. Suspender todos los productos de cuidado de la piel.</li>
+                    <li onclick="selectAnswer(509, this, 'D')">D. Evitar completamente el maquillaje.</li>
+                </ul>
+                <div class="justification" id="justification-509">En algunos casos, la terapia hormonal puede ser beneficiosa en el tratamiento del acné severo, especialmente en mujeres.</div>
+            </div>
+
+            <div class="card question-card" data-index="510">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Por qué es importante abordar no solo los aspectos físicos, sino también los emocionales del acné en adolescentes como Ana?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(510, this, 'A')">A. El acné no tiene impacto en la salud mental.</li>
+                    <li onclick="selectAnswer(510, this, 'B')">B. La autoestima y el bienestar emocional son afectados.</li>
+                    <li onclick="selectAnswer(510, this, 'C')">C. Solo el tratamiento físico es suficiente para mejorar la condición.</li>
+                    <li onclick="selectAnswer(510, this, 'D')">D. Los adolescentes deben aprender a ignorar su apariencia.</li>
+                </ul>
+                <div class="justification" id="justification-510">El acné puede tener un impacto significativo en la salud mental y emocional de los adolescentes, afectando la autoestima y la calidad de vida.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            506: "B",
+            507: "D",
+            508: "C",
+            509: "C",
+            510: "B"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

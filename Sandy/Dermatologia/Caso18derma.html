@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DERMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>DERMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 7</h2>
+                <p>Paciente masculino de 45 años, empleado de oficina, consulta al dermatólogo debido a la presencia de manchas en su rostro que han aumentado en número con el tiempo. El paciente, que ha pasado largas horas al aire libre por motivos laborales, informa que estas manchas son más evidentes en las áreas de su piel que han estado expuestas al sol durante años. No experimenta dolor ni molestias asociadas con las lesiones.
+En la historia clínica, el paciente revela un historial significativo de exposición crónica al sol sin la aplicación regular de protector solar. Además, menciona que su padre desarrolló lesiones cutáneas similares con la edad. No tiene antecedentes médicos significativos ni historial familiar de condiciones dermatológicas más graves.
+En el examen físico, se observan múltiples manchas planas de color marrón en la cara, especialmente en las mejillas y la frente. Las lesiones tienen bordes bien definidos y varían en tamaño, desde pequeñas hasta más extensas. No hay signos de asimetría ni cambios en el color. Se decide realizar una evaluación más profunda para confirmar el diagnóstico y descartar otras posibles afecciones cutáneas.</p>
+
+
+            </div>
+            <div class="card question-card" data-index="541">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes opciones describe mejor la apariencia de las lesiones cutáneas en este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(541, this, 'A')">A. Lesiones elevadas y pruriginosas.</li>
+                    <li onclick="selectAnswer(541, this, 'B')">B. Manchas planas de color marrón con bordes bien definidos.</li>
+                    <li onclick="selectAnswer(541, this, 'C')">C. Úlceras dolorosas con exudado.</li>
+                    <li onclick="selectAnswer(541, this, 'D')">D. Pápulas rojas con descamación.</li>
+                </ul>
+                <div class="justification" id="justification-541">Las manchas planas de color marrón con bordes bien definidos sugieren la presencia de lentigos solares, que son lesiones cutáneas asociadas con la exposición crónica al sol.</div>
+
+                <div class="card question-card" data-index="542">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes factores de riesgo contribuye significativamente al desarrollo de lentigos solares en este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(542, this, 'A')">A. Uso regular de protector solar.</li>
+                    <li onclick="selectAnswer(542, this, 'B')">B. Exposición crónica al sol.</li>
+                    <li onclick="selectAnswer(542, this, 'C')">C. Historial familiar de afecciones dermatológicas.</li>
+                    <li onclick="selectAnswer(542, this, 'D')">D. Uso de ropa protectora en todo momento.</li>
+                </ul>
+
+            <div class="justification" id="justification-542">La exposición crónica al sol es un factor de riesgo significativo para el desarrollo de lentigos solares.</div>
+
+            <div class="card question-card" data-index="543">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cómo se diferencian los lentigos solares de los melanomas en términos de apariencia clínica?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(543, this, 'A')">A. Los lentigos solares son asimétricos, mientras que los melanomas tienen bordes definidos.</li>
+                    <li onclick="selectAnswer(543, this, 'B')">B. Los lentigos solares son elevados, mientras que los melanomas son planos.</li>
+                    <li onclick="selectAnswer(543, this, 'C')">C. Los lentigos solares tienen bordes bien definidos, mientras que los melanomas pueden tener bordes irregulares.</li>
+                    <li onclick="selectAnswer(543, this, 'D')">D. Los lentigos solares son siempre de color negro, mientras que los melanomas son de color marrón.</li>
+                </ul>
+                <div class="justification" id="justification-543">A diferencia de los lentigos solares, los melanomas pueden tener bordes irregulares.</div>
+
+            </div>
+            <div class="card question-card" data-index="544">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la característica histológica clave de los lentigos solares?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(544, this, 'A')">A. Presencia de células atípicas.</li>
+                    <li onclick="selectAnswer(544, this, 'B')">B. Aumento de la queratinización.</li>
+                    <li onclick="selectAnswer(544, this, 'C')">C. Hiperpigmentación epidérmica focal.</li>
+                    <li onclick="selectAnswer(544, this, 'D')">D. Ausencia de melanocitos.</li>
+                </ul>
+                <div class="justification" id="justification-544">Histológicamente, los lentigos solares muestran hiperpigmentación epidérmica focal.</div>
+            </div>
+
+            <div class="card question-card" data-index="545">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la medida preventiva más importante para reducir el riesgo de lentigos solares en individuos con exposición crónica al sol?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(545, this, 'A')">A. Evitar por completo la exposición al sol.</li>
+                    <li onclick="selectAnswer(545, this, 'B')">B. Aplicar protector solar regularmente.</li>
+                    <li onclick="selectAnswer(545, this, 'C')">C. Utilizar ropa protectora de manga larga.</li>
+                    <li onclick="selectAnswer(545, this, 'D')">D. No hay medidas preventivas efectivas.</li>
+                </ul>
+                <div class="justification" id="justification-345">El uso regular de protector solar es una medida preventiva clave para reducir el riesgo de lentigos solares en personas con exposición crónica al sol.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            541: "B",
+            542: "B",
+            543: "C",
+            544: "C",
+            545: "B"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

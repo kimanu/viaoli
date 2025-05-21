@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DERMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>DERMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 7</h2>
+                <p>Paciente femenina de 30 años, profesora de escuela primaria, acude al dermatólogo con la queja de manchas oscuras en su rostro. La paciente menciona que ha notado estas manchas, especialmente en las mejillas y la frente, durante los últimos 2 años. No presenta dolor ni picazón asociados con las lesiones. La paciente está preocupada por el impacto estético de estas manchas y busca una solución para aclarar su piel.
+                    En la historia clínica, la paciente revela que está embarazada de 14 semanas. Además, menciona que ha utilizado anticonceptivos orales en el pasado. No tiene antecedentes médicos significativos ni historial familiar de condiciones dermatológicas similares.
+                    En el examen físico, se observa la presencia de manchas marrones simétricas en áreas expuestas al sol, especialmente en las mejillas y la frente. No se encuentran lesiones elevadas ni cambios en la textura de la piel. Se decide realizar pruebas adicionales para confirmar el diagnóstico y evaluar la extensión de la pigmentación.</p>
+
+
+            </div>
+            <div class="card question-card" data-index="536">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes opciones describe mejor la presentación clínica de las manchas en la paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(536, this, 'A')">A. Manchas elevadas y pruriginosas.</li>
+                    <li onclick="selectAnswer(536, this, 'B')">B. Manchas marrones simétricas en áreas expuestas al sol.</li>
+                    <li onclick="selectAnswer(536, this, 'C')">C. Lesiones descamativas con bordes irregulares.</li>
+                    <li onclick="selectAnswer(536, this, 'D')">D. Pápulas rojas en la cara.</li>
+                </ul>
+                <div class="justification" id="justification-536">La presentación clínica de las manchas marrones, especialmente en áreas expuestas al sol como mejillas y frente, sugiere melasma.</div>
+
+                <div class="card question-card" data-index="537">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes factores de riesgo contribuye a la aparición del melasma en esta paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(537, this, 'A')">A. Uso de protector solar diario.</li>
+                    <li onclick="selectAnswer(537, this, 'B')">B. Embarazo.</li>
+                    <li onclick="selectAnswer(537, this, 'C')">C. Historial de anticonceptivos orales.</li>
+                    <li onclick="selectAnswer(537, this, 'D')">D. No hay factores de riesgo identificables.</li>
+                </ul>
+
+            <div class="justification" id="justification-537">El uso previo de anticonceptivos orales es un factor de riesgo conocido para el desarrollo de melasma.</div>
+
+            <div class="card question-card" data-index="538">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el nombre común del melasma debido a su apariencia en el rostro?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(538, this, 'A')">A. Manchas de sol.</li>
+                    <li onclick="selectAnswer(538, this, 'B')">B. Manchas hepáticas.</li>
+                    <li onclick="selectAnswer(538, this, 'C')">C. Máscara del embarazo.</li>
+                    <li onclick="selectAnswer(538, this, 'D')">D. Pecas faciales.</li>
+                </ul>
+                <div class="justification" id="justification-538">El melasma a menudo se conoce como la "máscara del embarazo" debido a su asociación con el aumento de pigmentación facial durante el embarazo.</div>
+
+            </div>
+            <div class="card question-card" data-index="539">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes opciones es un componente clave del manejo del melasma?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(539, this, 'A')">A. Exposición prolongada al sol sin protección.</li>
+                    <li onclick="selectAnswer(539, this, 'B')">B. Uso de agentes despigmentantes.</li>
+                    <li onclick="selectAnswer(539, this, 'C')">C. Consumo excesivo de alimentos ricos en vitamina D.</li>
+                    <li onclick="selectAnswer(539, this, 'D')">D. Uso de maquillaje oscuro para cubrir las manchas.</li>
+                </ul>
+                <div class="justification" id="justification-539">El manejo del melasma a menudo incluye el uso de agentes despigmentantes, como hidroquinona y ácido glicólico, bajo la supervisión de un dermatólogo.</div>
+            </div>
+
+            <div class="card question-card" data-index="340">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es una consideración importante en el tratamiento del melasma en una paciente embarazada?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(340, this, 'A')">A. Evitar completamente cualquier tratamiento.</li>
+                    <li onclick="selectAnswer(340, this, 'B')">B. Iniciar terapia hormonal de reemplazo.</li>
+                    <li onclick="selectAnswer(340, this, 'C')">C. Utilizar agentes despigmentantes con precaución.</li>
+                    <li onclick="selectAnswer(340, this, 'D')">D. Recetar antibióticos orales.</li>
+                </ul>
+                <div class="justification" id="justification-340">En mujeres embarazadas, se deben utilizar agentes despigmentantes con precaución, y es esencial discutir los riesgos y beneficios con el dermatólogo y el obstetra.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            536: "b",
+            537: "c",
+            538: "C",
+            539: "B",
+            540: "C"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

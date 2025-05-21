@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DERMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>DERMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 7</h2>
+                <p>Lupus Eritematoso Sistémico en una Mujer Joven
+                    Paciente femenina de 25 años, estudiante universitaria, acude al reumatólogo con quejas de fatiga persistente, dolor en las articulaciones y erupción cutánea en el rostro. La paciente refiere que la fatiga ha estado presente durante aproximadamente seis meses y que ha notado una erupción en forma de mariposa en sus mejillas, que empeora con la exposición al sol. Además, informa dolor y rigidez en las articulaciones, especialmente en las manos y las rodillas.
+                    En la historia clínica, se observa que la paciente ha experimentado pérdida de peso involuntaria y presenta una sensación de malestar general. Niega antecedentes médicos significativos en su familia. En el examen físico, se encuentran lesiones cutáneas características en forma de mariposa en la región malar y eritema en las falanges distales de los dedos.
+                    Las pruebas de laboratorio revelan niveles elevados de anticuerpos antinucleares (ANA) y anti-ADN de doble cadena, así como trombocitopenia leve. Se decide realizar una biopsia cutánea para confirmar el diagnóstico.</p>
+
+
+            </div>
+            <div class="card question-card" data-index="531">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes síntomas cutáneos es más característico del lupus eritematoso sistémico (LES)?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(531, this, 'A')">A. Pústulas en las palmas de las manos.</li>
+                    <li onclick="selectAnswer(531, this, 'B')">B. Ronchas pruriginosas que aparecen y desaparecen.</li>
+                    <li onclick="selectAnswer(531, this, 'C')">C. Erupción en forma de mariposa en las mejillas.</li>
+                    <li onclick="selectAnswer(531, this, 'D')">D. Manchas café con leche en el tronco.</li>
+                </ul>
+                <div class="justification" id="justification-531">La erupción en forma de mariposa en las mejillas, también conocida como eritema malar, es un síntoma clásico del LES.</div>
+
+                <div class="card question-card" data-index="532">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes anticuerpos es específico para el lupus eritematoso sistémico?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(532, this, 'A')">A. Anti-CCP (péptido citrulinado cíclico).</li>
+                    <li onclick="selectAnswer(532, this, 'B')">B. Anti-Ro (SSA) y Anti-La (SSB).</li>
+                    <li onclick="selectAnswer(532, this, 'C')">C. nti-transglutaminasa.</li>
+                    <li onclick="selectAnswer(532, this, 'D')">D. Anti-TPO (peroxidasa tiroidea).</li>
+                </ul>
+
+            <div class="justification" id="justification-532">Los anticuerpos anti-Ro (SSA) y anti-La (SSB) son específicos para el LES y pueden estar presentes en los pacientes con esta enfermedad autoinmune.</div>
+
+            <div class="card question-card" data-index="533">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes órganos puede estar afectado en el lupus eritematoso sistémico, causando síntomas como pérdida de peso y malestar general?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(533, this, 'A')">A. Hígado.</li>
+                    <li onclick="selectAnswer(533, this, 'B')">B. Pulmones.</li>
+                    <li onclick="selectAnswer(533, this, 'C')">C. Riñones.</li>
+                    <li onclick="selectAnswer(533, this, 'D')">D. Páncreas.</li>
+                </ul>
+                <div class="justification" id="justification-533">El lupus puede afectar los riñones, causando síntomas como pérdida de peso, malestar general y, en casos graves, insuficiencia renal.</div>
+
+            </div>
+            <div class="card question-card" data-index="534">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes opciones es un tratamiento comúnmente utilizado para el lupus eritematoso sistémico?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(534, this, 'A')">A. Analgésicos de venta libre.</li>
+                    <li onclick="selectAnswer(534, this, 'B')">B. Antibióticos de amplio espectro.</li>
+                    <li onclick="selectAnswer(534, this, 'C')">C. Corticosteroides y medicamentos inmunosupresores.</li>
+                    <li onclick="selectAnswer(534, this, 'D')">D. Antipiréticos.</li>
+                </ul>
+                <div class="justification" id="justification-534">El tratamiento del LES a menudo implica el uso de corticosteroides y medicamentos inmunosupresores para controlar la inflamación y la respuesta autoinmune.</div>
+            </div>
+
+            <div class="card question-card" data-index="535">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes síntomas podría indicar la necesidad de una biopsia cutánea en un paciente con sospecha de lupus eritematoso sistémico?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(535, this, 'A')">A. Dolor en las articulaciones.</li>
+                    <li onclick="selectAnswer(535, this, 'B')">B. Fatiga persistente.</li>
+                    <li onclick="selectAnswer(535, this, 'C')">C. Erupción cutánea que no mejora con tratamiento tópico.</li>
+                    <li onclick="selectAnswer(535, this, 'D')">D. Fiebre intermitente.</li>
+                </ul>
+                <div class="justification" id="justification-535">Una biopsia cutánea puede ser necesaria para confirmar el diagnóstico de LES en casos de erupción cutánea que no mejora con tratamiento tópico y se sospecha que está relacionada con la enfermedad autoinmune.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            531: "C",
+            532: "B",
+            533: "C",
+            534: "B",
+            535: "C"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

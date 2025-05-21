@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DERMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>DERMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 7</h2>
+                <p>Paciente femenina de 28 años, empleada de oficina, acude al dermatólogo con la preocupación de la aparición de manchas blancas en su piel. La paciente informa que notó por primera vez estas manchas hace aproximadamente 6 meses y desde entonces han ido aumentando en número. No experimenta dolor ni picazón en las lesiones, pero está angustiada por la apariencia estética de su piel.
+                En la historia clínica, la paciente niega antecedentes médicos relevantes y no tiene historial familiar de enfermedades dermatológicas. No ha experimentado ningún episodio de enfermedad autoinmune previa. Sin embargo, menciona que ha experimentado un aumento significativo de estrés en su vida laboral durante el último año.
+                En el examen físico, se observan múltiples áreas despigmentadas en la piel, especialmente alrededor de los ojos, la boca y las manos. Las manchas son simétricas y no muestran signos de inflamación. Se decide realizar pruebas para confirmar el diagnóstico y evaluar la extensión de la despigmentación.</p>
+
+
+            </div>
+            <div class="card question-card" data-index="546">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes opciones describe mejor la apariencia de las lesiones cutáneas en esta paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(546, this, 'A')">A. Manchas elevadas y pruriginosas.</li>
+                    <li onclick="selectAnswer(546, this, 'B')">B. Manchas marrones con bordes bien definidos.</li>
+                    <li onclick="selectAnswer(546, this, 'C')">C. Manchas blancas despigmentadas.</li>
+                    <li onclick="selectAnswer(546, this, 'D')">D. Pústulas en áreas expuestas al sol.</li>
+                </ul>
+                <div class="justification" id="justification-546">La despigmentación de la piel, caracterizada por manchas blancas, es indicativa de vitiligo.</div>
+
+                <div class="card question-card" data-index="547">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes factores puede estar asociado con el desarrollo de vitiligo en esta paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(547, this, 'A')">A. Exposición excesiva al sol.</li>
+                    <li onclick="selectAnswer(547, this, 'B')">B. Historial familiar de enfermedades dermatológicas.</li>
+                    <li onclick="selectAnswer(547, this, 'C')">C. Aumento significativo de estrés.</li>
+                    <li onclick="selectAnswer(547, this, 'D')">D. Consumo de alimentos ricos en vitamina D.</li>
+                </ul>
+
+            <div class="justification" id="justification-547">El estrés se ha asociado con el desarrollo o exacerbación de vitiligo en algunos casos.</div>
+
+            <div class="card question-card" data-index="548">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cómo se diferencian las lesiones de vitiligo de las manchas causadas por otros trastornos de pigmentación, como el líquen plano pigmentoso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(548, this, 'A')">A. Las lesiones de vitiligo son elevadas, mientras que el líquen plano pigmentoso son manchas planas.</li>
+                    <li onclick="selectAnswer(548, this, 'B')">B. Las lesiones de vitiligo son simétricas, mientras que el líquen plano pigmentoso son asimétricas.</li>
+                    <li onclick="selectAnswer(548, this, 'C')">C. Las lesiones de vitiligo son siempre pruriginosas, mientras que el líquen plano pigmentoso no causa picazón.</li>
+                    <li onclick="selectAnswer(548, this, 'D')">D. Las lesiones de vitiligo tienen bordes bien definidos, mientras que el líquen plano pigmentoso tiene bordes irregulares.</li>
+                </ul>
+                <div class="justification" id="justification-548">A diferencia de vitiligo, el líquen plano pigmentoso puede presentar lesiones asimétricas.</div>
+
+            </div>
+            <div class="card question-card" data-index="549">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes enfoques terapéuticos es comúnmente utilizado para el tratamiento del vitiligo?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(549, this, 'A')">A. Exposición prolongada al sol sin protección.</li>
+                    <li onclick="selectAnswer(549, this, 'B')">B. Antibióticos orales.</li>
+                    <li onclick="selectAnswer(549, this, 'C')">C. orticosteroides tópicos y fototerapia.</li>
+                    <li onclick="selectAnswer(549, this, 'D')">D. Uso de maquillaje para cubrir las manchas.</li>
+                </ul>
+                <div class="justification" id="justification-549">Los corticosteroides tópicos y la fototerapia son opciones de tratamiento comunes para el vitiligo, con el objetivo de repigmentar las áreas afectadas.</div>
+            </div>
+
+            <div class="card question-card" data-index="550">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es una consideración importante en el manejo del vitiligo en esta paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(550, this, 'A')">A. No hay opciones de tratamiento disponibles.</li>
+                    <li onclick="selectAnswer(550, this, 'B')">B. Controlar el estrés y considerar terapias de relajación.</li>
+                    <li onclick="selectAnswer(545505, this, 'C')">C. Utilizar ropa protectora de manga larga.</li>
+                    <li onclick="selectAnswer(550, this, 'D')">D. Consumir suplementos de vitamina D regularmente.</li>
+                </ul>
+                <div class="justification" id="justification-550">Dado que el estrés puede estar asociado con el desarrollo o exacerbación de vitiligo, controlar el estrés y considerar terapias de relajación son aspectos importantes del manejo.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            546: "C",
+            547: "C",
+            548: "B",
+            549: "C",
+            550: "B"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

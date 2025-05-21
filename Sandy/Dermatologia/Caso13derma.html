@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DERMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>DERMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 7</h2>
+                <p>Paciente masculino de 35 años de edad, ingeniero de profesión, sin antecedentes médicos significativos, llega a la consulta dermatológica con una queja principal de lesiones cutáneas persistentes. Refiere que hace aproximadamente 8 meses notó pequeñas manchas rojas en los codos y rodillas, las cuales han evolucionado a placas bien definidas, eritematosas y cubiertas por escamas plateadas. Además, observa descamación en su cuero cabelludo. El prurito asociado ha afectado su calidad de vida, especialmente por las noches.
+                    Al indagar más en su historia clínica, el paciente revela que su hermana también padece de una condición similar. Aunque no se han realizado pruebas genéticas, la historia familiar sugiere un componente genético en la presentación de estas lesiones. Además, comenta episodios de dolor articular, especialmente en las articulaciones de las manos y pies, lo que ha afectado su rendimiento laboral.
+                    En el examen físico, se encuentran lesiones típicas de psoriasis en placas en codos, rodillas y cuero cabelludo, con signos evidentes de descamación. También se observa la presencia de pequeñas pústulas en las palmas de las manos. Se decide realizar estudios para evaluar la posibilidad de artritis psoriásica dada la sintomatología articular.</p>
+
+
+            </div>
+            <div class="card question-card" data-index="516">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes hallazgos cutáneos es más específico para la psoriasis en placas?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(516, this, 'A')">A. Pápulas pruriginosas.</li>
+                    <li onclick="selectAnswer(516, this, 'B')">B. Vesículas agrupadas.</li>
+                    <li onclick="selectAnswer(516, this, 'C')">C. Placas eritematosas con escamas plateadas.</li>
+                    <li onclick="selectAnswer(516, this, 'D')">D. Pústulas foliculares.</li>
+                </ul>
+                <div class="justification" id="justification-516">Las placas eritematosas con escamas plateadas son características de la psoriasis en placas, y en este caso, se presentan en codos, rodillas y cuero cabelludo.</div>
+
+                <div class="card question-card" data-index="517">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes áreas es más frecuentemente afectada en la psoriasis en placas?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(517, this, 'A')">A. Palmas de las manos.</li>
+                    <li onclick="selectAnswer(517, this, 'B')">B. Espalda baja.</li>
+                    <li onclick="selectAnswer(517, this, 'C')">C. Superficie extensora de las rodillas.</li>
+                    <li onclick="selectAnswer(517, this, 'D')">D. Pliegues intertriginosos.</li>
+                </ul>
+
+            <div class="justification" id="justification-517">La psoriasis en placas tiende a afectar áreas de extensión, como las rodillas y los codos. En este caso, se observa claramente en la superficie extensora de las rodillas.</div>
+
+            <div class="card question-card" data-index="518">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes afirmaciones es correcta en relación con la psoriasis?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(518, this, 'A')">A. Es causada principalmente por una infección bacteriana.</li>
+                    <li onclick="selectAnswer(518, this, 'B')">B. No tiene componente genético.</li>
+                    <li onclick="selectAnswer(518, this, 'C')">C. El cuero cabelludo rara vez se ve afectado.</li>
+                    <li onclick="selectAnswer(518, this, 'D')">D. Puede asociarse con artritis psoriásica.</li>
+                </ul>
+                <div class="justification" id="justification-518">Dada la sintomatología articular reportada por el paciente, es importante considerar la posibilidad de artritis psoriásica, una asociación común con la psoriasis.</div>
+
+            </div>
+            <div class="card question-card" data-index="519">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tratamiento de primera línea recomendado para la psoriasis en placas leve a moderada?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(519, this, 'A')">A. Antibióticos tópicos.</li>
+                    <li onclick="selectAnswer(519, this, 'B')">B. Corticosteroides sistémicos.</li>
+                    <li onclick="selectAnswer(519, this, 'C')">C. Fototerapia.</li>
+                    <li onclick="selectAnswer(519, this, 'D')">D. Inhibidores de la calcineurina tópicos.</li>
+                </ul>
+                <div class="justification" id="justification-519">La fototerapia es una opción de tratamiento de primera línea para la psoriasis en placas leve a moderada, y se puede considerar en este caso.</div>
+            </div>
+
+            <div class="card question-card" data-index="520">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes factores puede desencadenar o exacerbar un brote de psoriasis?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(520, this, 'A')">A. Exposición al sol.</li>
+                    <li onclick="selectAnswer(520, this, 'B')">B. Consumo de ácidos grasos omega-3.</li>
+                    <li onclick="selectAnswer(520, this, 'C')">C. Uso de prendas de lana.</li>
+                    <li onclick="selectAnswer(520, this, 'D')">D. Reducción del estrés.</li>
+                </ul>
+                <div class="justification" id="justification-520">El paciente menciona descamación en el cuero cabelludo y presenta pequeñas pústulas en las palmas de las manos, lo que sugiere que el uso de prendas de lana puede estar exacerbando sus síntomas.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            516: "C",
+            517: "C",
+            518: "D",
+            519: "C",
+            520: "C"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DERMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>DERMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 2</h2>
+                <p>Javier, un hombre de 35 años, visita al dermatólogo con una erupción cutánea en el área de la barba. Refiere que las lesiones comenzaron como pequeñas protuberancias rojas que ahora han evolucionado a pústulas.</p>
+                
+                <p>Exámenes Complementarios:</p>
+                <p> Observación visual de las pústulas en el área de la barba de Javier.</p>
+                <p>Interrogatorio sobre antecedentes de afeitado y cuidado de la barba.</p>
+                
+            </div>
+            <div class="card question-card" data-index="466">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la lesión primaria predominante en el área de la barba de Javier?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(466, this, 'A')">A. Ronchas (habones).</li>
+                    <li onclick="selectAnswer(466, this, 'B')">B. Vesículas.</li>
+                    <li onclick="selectAnswer(466, this, 'C')">C. Pápulas.</li>
+                    <li onclick="selectAnswer(466, this, 'D')">D. Costras.</li>
+                </ul>
+                <div class="justification" id="justification-466">Las pústulas son lesiones cutáneas que contienen pus, y en este caso, son características de la erupción de Javier.</div>
+            				
+            <div class="card question-card" data-index="467">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes opciones podría ser la causa más probable de las pústulas en el área de la barba de Javier?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(467, this, 'A')">A. Reacción alérgica a un cosmético.</li>
+                    <li onclick="selectAnswer(467, this, 'B')">B. Infección bacteriana.</li>
+                    <li onclick="selectAnswer(467, this, 'C')">C. Exposición prolongada al sol.</li>
+                    <li onclick="selectAnswer(467, this, 'D')">D. Picadura de insecto.</li>
+                </ul>
+
+                <div class="justification" id="justification-467">La presencia de pústulas sugiere una infección bacteriana como causa probable en el área de la barba de Javier.</div>
+            			
+            <div class="card question-card" data-index="468">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál sería una medida inicial para el tratamiento de las pústulas en el área de la barba de Javier?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(468, this, 'A')">A. Aplicar una crema antiinflamatoria.</li>
+                    <li onclick="selectAnswer(468, this, 'B')">B. Utilizar un exfoliante facial.</li>
+                    <li onclick="selectAnswer(468, this, 'C')">C. Prescribir un antihistamínico oral.</li>
+                    <li onclick="selectAnswer(468, this, 'D')">D. Aplicar una pomada antibiótica.</li>
+                </ul>
+                <div class="justification" id="justification-468">Las infecciones bacterianas cutáneas suelen requerir tratamientos tópicos con pomadas antibióticas.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="469">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Por qué las pústulas son un signo de infección cutánea?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(469, this, 'A')">A. Indican una respuesta alérgica.</li>
+                    <li onclick="selectAnswer(469, this, 'B')">B. Reflejan irritación por exposición al sol.</li>
+                    <li onclick="selectAnswer(469, this, 'C')">C. Contienen pus, indicando la presencia de bacterias.</li>
+                    <li onclick="selectAnswer(469, this, 'D')">D. Son causadas por la picadura de artrópodos.</li>
+                </ul>
+                <div class="justification" id="justification-469">Las pústulas contienen pus, que es un signo de la respuesta del cuerpo a una infección bacteriana.</div>
+            </div>
+
+            <div class="card question-card" data-index="470">	
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál sería una medida preventiva a largo plazo para evitar futuras infecciones en el área de la barba de Javier?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(470, this, 'A')">A. No afeitarse o recortarse la barba.</li>
+                    <li onclick="selectAnswer(470, this, 'B')">B. Utilizar una loción aftershave perfumada.</li>
+                    <li onclick="selectAnswer(470, this, 'C')">C. No aplicar productos de cuidado facial.</li>
+                    <li onclick="selectAnswer(470, this, 'D')">D. Lavarse la barba regularmente con un jabón antibacteriano.</li>
+                </ul>
+                <div class="justification" id="justification-470">Lavarse la barba regularmente con un jabón antibacteriano.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            466: "C",
+            467: "B",
+            468: "D",
+            469: "C",
+            470: "D"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

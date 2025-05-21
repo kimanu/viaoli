@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DERMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>DERMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 7</h2>
+                <p>Paciente femenina, Laura, de 30 años, consulta al dermatólogo debido a la presencia de una lesión cutánea que ha notado en su pierna izquierda. Laura informa que la lesión ha experimentado cambios recientes en tamaño y color. Además, menciona que su madre fue diagnosticada con melanoma en la adolescencia. No presenta síntomas sistémicos, como fiebre o pérdida de peso.
+En el examen físico, se observa una lesión asimétrica con bordes irregulares en la pierna izquierda de Laura. La lesión muestra variación de color, con áreas marrones, negras y rojas. La paciente refiere picazón ocasional. Se decide realizar una biopsia de la lesión para confirmar el diagnóstico.</p>
+
+
+            </div>
+            <div class="card question-card" data-index="571">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes opciones describe mejor la apariencia de la lesión en la pierna izquierda de Laura?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(571, this, 'A')">A. Lesión elevada y pruriginosa.</li>
+                    <li onclick="selectAnswer(571, this, 'B')">B. Nódulo perlado con bordes elevados y vasos sanguíneos telangiectásicos.</li>
+                    <li onclick="selectAnswer(571, this, 'C')">C. Manchas blancas despigmentadas.</li>
+                    <li onclick="selectAnswer(571, this, 'D')">D. Lesión asimétrica con bordes irregulares y variación de color.</li>
+                </ul>
+                <div class="justification" id="justification-571">La descripción de una lesión asimétrica con bordes irregulares y variación de color es característica de las lesiones de melanoma.</div>
+
+                <div class="card question-card" data-index="572">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es uno de los factores de riesgo más importantes para el desarrollo de melanoma en pacientes como Laura?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(572, this, 'A')">A. Historial familiar de melanoma.</li>
+                    <li onclick="selectAnswer(572, this, 'B')">B. Uso frecuente de protector solar.</li>
+                    <li onclick="selectAnswer(572, this, 'C')">C. Exposición crónica al sol.</li>
+                    <li onclick="selectAnswer(572, this, 'D')">D. Edad avanzada.</li>
+                </ul>
+
+            <div class="justification" id="justification-572">El historial familiar de melanoma es un factor de riesgo significativo para el desarrollo de esta forma agresiva de cáncer de piel.</div>
+
+            <div class="card question-card" data-index="573">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Qué característica de la lesión de melanoma sugiere la necesidad de una evaluación y diagnóstico inmediatos?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(573, this, 'A')">A. Presencia de áreas marrones.</li>
+                    <li onclick="selectAnswer(573, this, 'B')">B. Simetría de la lesión.</li>
+                    <li onclick="selectAnswer(573, this, 'C')">C. Bordes regulares.</li>
+                    <li onclick="selectAnswer(573, this, 'D')">D. Cambios recientes en tamaño y color.</li>
+                </ul>
+                <div class="justification" id="justification-573">Los cambios recientes en tamaño y color de una lesión son señales de alerta que sugieren la necesidad de una evaluación y diagnóstico inmediatos.</div>
+
+            </div>
+            <div class="card question-card" data-index="574">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes capas de la piel es afectada principalmente en el melanoma?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(574, this, 'A')">A. Epidermis.</li>
+                    <li onclick="selectAnswer(574, this, 'B')">B. Dermis.</li>
+                    <li onclick="selectAnswer(574, this, 'C')">C. Hipodermis.</li>
+                    <li onclick="selectAnswer(574, this, 'D')">D. Glándulas sebáceas.</li>
+                </ul>
+                <div class="justification" id="justification-574">El melanoma se origina en las células pigmentadas de la epidermis, llamadas melanocitos.</div>
+            </div>
+
+            <div class="card question-card" data-index="575">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la importancia de la detección temprana y tratamiento del melanoma?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(575, this, 'A')">A. Mayor riesgo de infecciones cutáneas.</li>
+                    <li onclick="selectAnswer(575, this, 'B')">B. Propagación a órganos internos y pronóstico menos favorable.</li>
+                    <li onclick="selectAnswer(575, this, 'C')">C. Desarrollo de cicatrices queloides.</li>
+                    <li onclick="selectAnswer(575, this, 'D')">D. Aumento de la pigmentación cutánea.</li>
+570                </ul>
+                <div class="justification" id="justification-575">La detección temprana y el tratamiento adecuado del melanoma son cruciales para prevenir la propagación a órganos internos y mejorar el pronóstico.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            571: "D",
+            572: "A",
+            573: "D",
+            574: "A",
+            575: "B"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>
