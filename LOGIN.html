@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Viaoli Institute</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(135deg, #cfeffd, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 50px 40px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 20px 45px rgba(0, 75, 100, 0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .logo-upload {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 25px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: #e6f4f9;
+      border: 3px solid #0077b6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-upload img {
+      width: 90%;
+      height: 90%;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      color: #003554;
+    }
+
+    p.subtitle {
+      font-size: 15px;
+      color: #6b7a8f;
+      margin-bottom: 30px;
+    }
+
+    form input[type="text"],
+    form input[type="password"] {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 18px;
+      border: 1px solid #d0dfe8;
+      border-radius: 12px;
+      font-size: 15px;
+      transition: 0.2s ease;
+    }
+
+    form input:focus {
+      border-color: #00a6fb;
+      box-shadow: 0 0 0 3px rgba(0, 166, 251, 0.2);
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #0077b6, #0096c7);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #005f87, #0077b6);
+    }
+
+    .link {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #6b7a8f;
+    }
+
+    .link a {
+      color: #0077b6;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
+    }
+
+    .message {
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 14px;
+      font-size: 16px;
+      display: none;
+    }
+
+    .success {
+      background-color: #e0f7ec;
+      color: #026140;
+    }
+
+    .error {
+      background-color: #fdecea;
+      color: #b10000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-upload">
+      <img src="IMG_1702.png" alt="Logo Viaoli Institute">
+    </div>
+
+    <h1>Viaoli Institute</h1>
+    <p class="subtitle">Acceso exclusivo para médicos, maestros y postulantes</p>
+
+    <form id="loginForm">
+      <input type="text" id="usuario" placeholder="Usuario" required>
+      <input type="password" id="contrasena" placeholder="Contraseña" required>
+      <button type="submit">Iniciar sesión</button>
+    </form>
+
+    <div class="link">
+      ¿Olvidaste tu contraseña? <a href="#">Recupérala aquí</a>
+    </div>
+
+    <div id="mensaje" class="message"></div>
+  </div>
+
+  <script>
+    const usuarios = {
+      postulante1: { password: '1234', rol: 'Postulante' },
+      maestro1: { password: 'abcd', rol: 'Maestro' },
+      medico1: { password: 'med123', rol: 'Médico' }
+    };
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const usuario = document.getElementById('usuario').value.trim();
+      const contrasena = document.getElementById('contrasena').value.trim();
+      const mensaje = document.getElementById('mensaje');
+
+      if (usuarios[usuario] && usuarios[usuario].password === contrasena) {
+        const rol = usuarios[usuario].rol;
+        let texto = '';
+
+        if (rol === 'Postulante') {
+          texto = '✅ Bienvenido, postulante. Puedes iniciar tu examen.';
+        } else if (rol === 'Maestro') {
+          texto = '✅ Bienvenido, maestro. Puedes verificar los exámenes contestados.';
+        } else if (rol === 'Médico') {
+          texto = '✅ Bienvenido, doctor. Tienes acceso completo para evaluar.';
+        }
+
+        mensaje.className = 'message success';
+        mensaje.textContent = texto;
+        mensaje.style.display = 'block';
+      } else {
+        mensaje.className = 'message error';
+        mensaje.textContent = '⚠️ Usuario o contraseña incorrectos.';
+        mensaje.style.display = 'block';
+        alert('Error: Usuario o contraseña incorrectos.');
+        document.getElementById('loginForm').reset();
+        document.getElementById('usuario').focus();
+      }
+    });
+  </script>
+</body>
+</html>

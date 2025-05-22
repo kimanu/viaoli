@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Médico - Inicio y Registro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e6f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #e6f4f9;
+      color: #004d66;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #cde3eb;
+    }
+
+    nav {
+      text-align: center;
+      margin: 20px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #0077b6;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: #0077b6;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #0077b6;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #005f8e;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #d9edf5;
+      color: #004d66;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="text-align: center;">
+    <img src="IMG_1702.png" alt="Logo del Portal Médico" style="width: 200px; height: auto; margin-bottom: 40px;">
+  </div>
+  <h1>Portal Médico</h1>
+  <p>Conectando profesionales de la salud</p>
+</header>
+
+<nav>
+  <a href="#inicio">Inicio</a>
+  <a href="#registro">Registro</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
+<section class="container" id="inicio">
+  <h2>Iniciar Sesión</h2>
+  <form>
+    <label for="email-login">Correo electrónico</label>
+    <input type="email" id="email-login" name="email-login" required>
+
+    <label for="password-login">Contraseña</label>
+    <input type="password" id="password-login" name="password-login" required>
+
+    <button type="submit">Entrar</button>
+  </form>
+</section>
+
+<section class="container" id="registro">
+  <h2>Registro de Médicos</h2>
+  <form>
+    <label for="nombre">Nombre completo</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="especialidad">Especialidad</label>
+    <select id="especialidad" name="especialidad" required>
+      <option value="">Seleccione una especialidad</option>
+      <option value="cardiologia">Cardiología</option>
+      <option value="cirugia-general">Cirugía general</option>
+      <option value="dermatologia">Dermatología</option>
+      <option value="endocrinologia">Endocrinología</option>
+      <option value="ginecologia">Ginecología</option>
+      <option value="gastroenterologia">Gastroenterología</option>
+      <option value="obstetricia">Obstetricia</option>
+      <option value="hematologia">Hematología</option>
+      <option value="infectologia">Infectología</option>
+      <option value="nefrologia">Nefrología</option>
+      <option value="neumologia">Neumología</option>
+      <option value="neurologia">Neurología</option>
+      <option value="urologia">Urología</option>
+      <option value="traumatologia">Traumatología y ortopedia</option>
+      <option value="urgencias">Urgencias</option>
+      <option value="otorrinolaringologia">Otorrinolaringología</option>
+      <option value="psiquiatria">Psiquiatría</option>
+      <option value="reumatologia">Reumatología</option>
+      <option value="estomatologia">Estomatología</option>
+      <option value="oftalmologia">Oftalmología</option>
+    </select>
+
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="confirm-password">Confirmar contraseña</label>
+    <input type="password" id="confirm-password" name="confirm-password" required>
+
+    <button type="submit">Registrarse</button>
+  </form>
+</section>
+
+<footer id="contacto">
+  <p>© 2025 Portal Médico. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>
