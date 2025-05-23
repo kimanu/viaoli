@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 37</h2>
+                <p>Carlos, un hombre de 58 años con antecedentes de válvula aórtica bicúspide, acude al hospital con fiebre, fatiga y pérdida de peso inexplicada. Durante el examen físico, se escuchan nuevos soplos cardíacos y se observa una lesión nodular en la palma de una de sus manos. Carlos niega antecedentes recientes de procedimientos dentales</p>
+                
+                <p>Exámenes Complementarios:</p>
+                <p>Hemocultivos: Positivos para Streptococcus viridans.</p>
+                <p>Ecocardiograma: Muestra vegetaciones en la válvula aórtica.</p>
+                
+            </div>
+            <div class="card question-card" data-index="181">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el factor de riesgo más relevante en el caso de Carlos para desarrollar endocarditis infecciosa?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(181, this, 'A')">A. Diabetes mellitus.</li>
+                    <li onclick="selectAnswer(181, this, 'B')">B. Válvula cardíaca protésica.</li>
+                    <li onclick="selectAnswer(181, this, 'C')">C. Válvula aórtica bicúspide.</li>
+                    <li onclick="selectAnswer(181, this, 'D')">D. Antecedentes de enfermedad pulmonar crónica.</li>
+                </ul>
+                <div class="justification" id="justification-181">La presencia de una válvula aórtica bicúspide es un factor de riesgo para el desarrollo de endocarditis infecciosa.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="182">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la principal vía de entrada de los microorganismos que causan endocarditis infecciosa en pacientes como Carlos?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(182, this, 'A')">A. Procedimientos dentales.</li>
+                    <li onclick="selectAnswer(182, this, 'B')">B. Infecciones del tracto respiratorio.</li>
+                    <li onclick="selectAnswer(182, this, 'C')">C. Infecciones del tracto gastrointestinal.</li>
+                    <li onclick="selectAnswer(182, this, 'D')">D. Lesiones en la piel.</li>
+                </ul>
+                <div class="justification" id="justification-182">Los procedimientos dentales son una vía común de entrada para los microorganismos que causan endocarditis infecciosa, especialmente en pacientes con válvulas cardíacas anómalas.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="183">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el diagnóstico de endocarditis infecciosa en Carlos, ¿cuál sería el tratamiento antibiótico más adecuado según los resultados de los hemocultivos?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(183, this, 'A')">A. Ceftriaxona.</li>
+                    <li onclick="selectAnswer(183, this, 'B')">B. Vancomicina y gentamicina.</li>
+                    <li onclick="selectAnswer(183, this, 'C')">C. Penicilina G.</li>
+                    <li onclick="selectAnswer(183, this, 'D')">D. Azitromicina.</li>
+                </ul>
+                <div class="justification" id="justification-183">La elección del tratamiento antibiótico se basa en los resultados de los hemocultivos, y en este caso, se debe utilizar una combinación de vancomicina y gentamicina.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="184">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado que Carlos presenta hemocultivos positivos para Streptococcus viridans, ¿cuál sería una complicación importante que debe ser evaluada en el manejo de este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(184, this, 'A')">A. Insuficiencia cardíaca congestiva.</li>
+                    <li onclick="selectAnswer(184, this, 'B')">B. Embolia pulmonar.</li>
+                    <li onclick="selectAnswer(184, this, 'C')">C. Absceso cerebral.</li>
+                    <li onclick="selectAnswer(184, this, 'D')">D. Hemorragia gastrointestinal.</li>
+                </ul>
+                <div class="justification" id="justification-184">Los pacientes con endocarditis infecciosa por Streptococcus viridans tienen un riesgo aumentado de embolia pulmonar debido a la formación de émbolos sépticos.</div>
+            </div>
+            <div class="card question-card" data-index="185">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>Además del tratamiento antibiótico, ¿cuál sería un aspecto importante en el manejo a largo plazo de la endocarditis infecciosa en Carlos?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(185, this, 'A')">A. Realizar ecocardiogramas seriados.</li>
+                    <li onclick="selectAnswer(185, this, 'B')">B. Prescribir anticoagulantes orales.</li>
+                    <li onclick="selectAnswer(185, this, 'C')">C. Programar intervención quirúrgica de seguimiento.</li>
+                    <li onclick="selectAnswer(185, this, 'D')">D. Iniciar tratamiento con antihipertensivos.</li>
+                </ul>
+                <div class="justification" id="justification-185">Los ecocardiogramas seriados son esenciales para evaluar la resolución de las vegetaciones y la función valvular en pacientes con endocarditis infecciosa.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            181: "C", 
+            182: "A", 
+            183: "B", 
+            184: "B", 
+            185: "A" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 14</h2>
+                <p>Ana, una mujer de 65 años, acude a la consulta médica con quejas de dolor en el pecho que se intensifica con la actividad y se alivia con el reposo. Además, informa fatiga y dificultad para respirar durante las actividades cotidianas. Ana tiene antecedentes de diabetes tipo 2 y dislipidemia, y fuma ocasionalmente. Durante la evaluación, se observa depresión del segmento ST en el electrocardiograma (ECG) y cambios en las ondas T.</p>
+                <p>Electrocardiograma (ECG):</p>
+                <p>Depresión del segmento ST en las derivaciones II, III, aVF y V1-V6.</p>
+                <p>Ondas T aplanadas en las mismas derivaciones afectadas.</p>
+                <p>Ritmo sinusal a 80 lpm.</p>
+            </div>
+            <div class="card question-card" data-index="66">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la interpretación más probable del ECG de Ana?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(66, this, 'A')">A.Infarto agudo de miocardio con elevación del segmento ST (IAMCEST) de extensión lateral.</li>
+                    <li onclick="selectAnswer(66, this, 'B')">B. Angina de pecho estable.</li>
+                    <li onclick="selectAnswer(66, this, 'C')">C. Infarto agudo de miocardio sin elevación del segmento ST (IAMSEST) de extensión inferior.</li>
+                    <li onclick="selectAnswer(66, this, 'D')">D. Miocarditis aguda.</li>
+                </ul>
+                <div class="justification" id="justification-66">La presencia de dolor en el pecho relacionado con la actividad y los cambios en el ECG sugiere angina de pecho estable.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="67">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes factores de riesgo es más probable que haya contribuido al desarrollo de la angina de pecho en Ana?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(67, this, 'A')">A. Diabetes tipo 2.</li>
+                    <li onclick="selectAnswer(67, this, 'B')">B. Consumo ocasional de tabaco.</li>
+                    <li onclick="selectAnswer(67, this, 'C')">C. Edad joven.</li>
+                    <li onclick="selectAnswer(67, this, 'D')">D. Ausencia de antecedentes familiares de enfermedad cardíaca.</li>
+                </ul>
+                <div class="justification" id="justification-67">La diabetes tipo 2 es un factor de riesgo importante para el desarrollo de enfermedad cardiovascular, incluida la angina de pecho.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="68">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el diagnóstico de angina de pecho en Ana, ¿cuál sería la intervención inicial más apropiada para aliviar sus síntomas?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(68, this, 'A')">A. Iniciar tratamiento con estatinas.</li>
+                    <li onclick="selectAnswer(68, this, 'B')">B. Administrar nitroglicerina sublingual.</li>
+                    <li onclick="selectAnswer(68, this, 'C')">C. Realizar angioplastia coronaria percutánea.</li>
+                    <li onclick="selectAnswer(68, this, 'D')">D. Iniciar terapia con antiagregantes plaquetarios.</li>
+                </ul>
+                <div class="justification" id="justification-68">consumir productos lácteos con comidas principales puede ayudar a reducir los síntomas al distribuir la carga de lactosa a lo largo del día.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="69">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cómo podría la diabetes tipo 2 contribuir al desarrollo de la angina de pecho en Ana?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(69, this, 'A')">A. Mejora la función endotelial.</li>
+                    <li onclick="selectAnswer(69, this, 'B')">B. Aumenta la sensibilidad a la insulina.</li>
+                    <li onclick="selectAnswer(69, this, 'C')">C. Induce ateroesclerosis y disfunción vascular.</li>
+                    <li onclick="selectAnswer(69, this, 'D')">D. Reduce el riesgo de hipertensión arterial.</li>
+                </ul>
+                <div class="justification" id="justification-69">La diabetes tipo 2 puede contribuir al desarrollo de la angina de pecho al inducir ateroesclerosis y disfunción vascular.</div>
+            </div>
+            <div class="card question-card" data-index="70">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>Además de las intervenciones médicas, ¿cuál podría ser una estrategia importante para el manejo a largo plazo de la angina de pecho en Ana?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(70, this, 'A')">A. Evitar completamente la actividad física.</li>
+                    <li onclick="selectAnswer(70, this, 'B')">B. Mantener niveles elevados de estrés.</li>
+                    <li onclick="selectAnswer(70, this, 'C')">C. Participar en un programa de rehabilitación cardíaca.</li>
+                    <li onclick="selectAnswer(70, this, 'D')">D. Ignorar la monitorización de la glucosa.</li>
+                </ul>
+                <div class="justification" id="justification-70">La participación en un programa de rehabilitación cardíaca es esencial para el manejo a largo plazo de la angina de pecho y mejora la salud cardiovascular.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            66: "B", 
+            67: "A", 
+            68: "B", 
+            69: "C", 
+            70: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

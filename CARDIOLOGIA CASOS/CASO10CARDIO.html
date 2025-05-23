@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 10</h2>
+                <p> Laura, una mujer de 40 años, visita al médico para un chequeo de salud. Durante la consulta, se registra una presión arterial de 130/85 mmHg. Laura no tiene antecedentes familiares de hipertensión y describe su dieta como equilibrada, aunque reconoce que no realiza actividad física regular.
+
+                </p>
+            </div>
+            <div class="card question-card" data-index="46">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cómo se clasificaría la presión arterial de Laura de acuerdo con las guías actuales?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(46, this, 'A')">A. Normotensión.</li>
+                    <li onclick="selectAnswer(46, this, 'B')">B. Hipertensión leve.</li>
+                    <li onclick="selectAnswer(46, this, 'C')">C. Hipertensión moderada.</li>
+                    <li onclick="selectAnswer(46, this, 'D')">D. Hipertensión grave.</li>
+                </ul>
+                <div class="justification" id="justification-46"> La presión arterial de 130/85 mmHg se clasifica como normotensión.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="47">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es un factor de riesgo que podría predisponer a Laura a desarrollar hipertensión en el futuro?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(47, this, 'A')">A. Edad avanzada.</li>
+                    <li onclick="selectAnswer(47, this, 'B')">B. Ausencia de antecedentes familiares.</li>
+                    <li onclick="selectAnswer(47, this, 'C')">C. Dieta equilibrada.</li>
+                    <li onclick="selectAnswer(47, this, 'D')">D. Falta de actividad física.</li>
+                </ul>
+                <div class="justification" id="justification-47">La falta de actividad física es un factor de riesgo que puede predisponer al desarrollo de hipertensión.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="48">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál sería la recomendación más adecuada para Laura con respecto a la actividad física?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(48, this, 'A')">A. Iniciar un programa intenso de entrenamiento.</li>
+                    <li onclick="selectAnswer(48, this, 'B')">B. Realizar al menos 150 minutos de actividad moderada por semana.</li>
+                    <li onclick="selectAnswer(48, this, 'C')">C. Evitar completamente la actividad física.</li>
+                    <li onclick="selectAnswer(48, this, 'D')">D. Hacer ejercicio solo cuando tiene tiempo libre.</li>
+                </ul>
+                <div class="justification" id="justification-48">La actividad física regular, como al menos 150 minutos de actividad moderada por semana, es recomendada para la salud cardiovascular.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="49">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cómo podría la falta de actividad física contribuir al aumento de la presión arterial en Laura?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(49, this, 'A')">A. Aumenta la relajación vascular.</li>
+                    <li onclick="selectAnswer(49, this, 'B')">B. Reduce la resistencia vascular periférica.</li>
+                    <li onclick="selectAnswer(49, this, 'C')">C. Favorece la pérdida de sodio.</li>
+                    <li onclick="selectAnswer(49, this, 'D')">D. Conduce al aumento de peso y la rigidez arterial.</li>
+                </ul>
+                <div class="justification" id="justification-49">La falta de actividad física puede contribuir al aumento de peso y la rigidez arterial, elevando la presión arterial.</div>
+            </div>
+            <div class="card question-card" data-index="50">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuáles podrían ser estrategias adicionales que Laura podría implementar para mantener su presión arterial en niveles saludables, además de la actividad física?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(50, this, 'A')">A. Aumentar la ingesta de sodio.</li>
+                    <li onclick="selectAnswer(50, this, 'B')">B. Reducir el consumo de frutas y verduras.</li>
+                    <li onclick="selectAnswer(50, this, 'C')">C. Limitar el consumo de alcohol.</li>
+                    <li onclick="selectAnswer(50, this, 'D')">D. Ignorar la gestión del estrés.</li>
+                </ul>
+                <div class="justification" id="justification-50">Limitar el consumo de alcohol es una estrategia adicional para mantener la presión arterial en niveles saludables.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            46: "A", 
+            47: "D", 
+            48: "B", 
+            49: "D", 
+            50: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

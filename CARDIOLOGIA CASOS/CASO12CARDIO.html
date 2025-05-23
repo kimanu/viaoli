@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 12</h2>
+                <p>. María, una mujer de 62 años, acude a la sala de emergencias quejándose de dolor opresivo en el pecho, que ha estado presente durante aproximadamente 45 minutos. Además del dolor en el pecho, experimenta sudoración profusa y dificultad para respirar. María tiene antecedentes de diabetes tipo 2 y dislipidemia. En la evaluación, se observa elevación del segmento ST en varias derivaciones en el electrocardiograma (ECG). </p>
+                <p>Electrocardiograma (ECG):</p>
+                <p>Elevación del segmento ST en las derivaciones I, aVL y V1-V6.</p>
+                <p>Depresión del segmento ST en las derivaciones II, III y aVF.</p>
+                <p>Ondas T negativas en las derivaciones afectadas. </p>
+                <p>Ritmo sinusal a 100 lpm.</p>
+            </div>
+            <div class="card question-card" data-index="56">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la interpretación más probable del ECG de María?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(56, this, 'A')">A. Infarto agudo de miocardio con elevación del segmento ST (IAMCEST) en la cara lateral.</li>
+                    <li onclick="selectAnswer(56, this, 'B')">B. Infarto agudo de miocardio sin elevación del segmento ST (IAMSEST) en la cara inferior.</li>
+                    <li onclick="selectAnswer(56, this, 'C')">C. Angina de pecho inestable.</li>
+                    <li onclick="selectAnswer(56, this, 'D')">D. Miocarditis aguda. </li>
+                </ul>
+                <div class="justification" id="justification-56">La elevación del segmento ST en las derivaciones I, aVL y V1-V6 sugiere un IAMCEST en la cara lateral.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="57">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes factores de riesgo es más probable que haya contribuido al desarrollo del infarto agudo de miocardio en María?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(57, this, 'A')">A. Historial de diabetes tipo 2.</li>
+                    <li onclick="selectAnswer(57, this, 'B')">B. Edad avanzada.</li>
+                    <li onclick="selectAnswer(57, this, 'C')">C. Edad avanzada </li>
+                    <li onclick="selectAnswer(57, this, 'D')">D. Consumo ocasional de alcohol.</li>
+                </ul>
+                <div class="justification" id="justification-57">El historial de diabetes tipo 2 es un factor de riesgo importante para el desarrollo de enfermedad cardiovascular, incluido el infarto agudo de miocardio.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="58">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el diagnóstico de IAMCEST en María, ¿cuál sería la intervención inicial más apropiada y urgente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(58, this, 'A')">A. Iniciar tratamiento con estatinas.</li>
+                    <li onclick="selectAnswer(58, this, 'B')">B. Administrar trombolíticos.</li>
+                    <li onclick="selectAnswer(58, this, 'C')">C. Realizar angioplastia coronaria percutánea.</li>
+                    <li onclick="selectAnswer(58, this, 'D')">D. Iniciar terapia con antiagregantes plaquetarios.</li>
+                </ul>
+                <div class="justification" id="justification-58">La angioplastia coronaria percutánea es la intervención inicial más apropiada y urgente en el IAMCEST.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="59">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál podría ser el impacto de la diabetes tipo 2 en el pronóstico a largo plazo de María después del infarto agudo de miocardio?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(59, this, 'A')">A. Reducción del riesgo de eventos cardíacos recurrentes.</li>
+                    <li onclick="selectAnswer(59, this, 'B')">B. Mayor riesgo de insuficiencia cardíaca congestiva.</li>
+                    <li onclick="selectAnswer(59, this, 'C')">C. Menor necesidad de medicamentos antiplaquetarios.</li>
+                    <li onclick="selectAnswer(59, this, 'D')">D. Ausencia de efecto en el pronóstico.</li>
+                </ul>
+                <div class="justification" id="justification-59"> La diabetes tipo 2 está asociada con un mayor riesgo de insuficiencia cardíaca congestiva después de un infarto agudo de miocardio.</div>
+            </div>
+            <div class="card question-card" data-index="60">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>Además de la terapia farmacológica estándar, ¿cuáles podrían ser las medidas de manejo a largo plazo para mejorar el pronóstico cardiovascular de María?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(60, this, 'A')">A.Mantener un estilo de vida sedentario.</li>
+                    <li onclick="selectAnswer(60, this, 'B')">B. Evitar el control glucémico riguroso.</li>
+                    <li onclick="selectAnswer(60, this, 'C')">C. Participar en un programa estructurado de rehabilitación cardíaca.</li>
+                    <li onclick="selectAnswer(60, this, 'D')">D. Reducir la ingesta de grasas saludables.</li>
+                </ul>
+                <div class="justification" id="justification-60">La participación en un programa de rehabilitación cardíaca es esencial para mejorar el pronóstico cardiovascular y la calidad de vida después de un infarto agudo de miocardio..</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            56: "A", 
+            57: "A", 
+            58: "C", 
+            59: "B", 
+            60: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

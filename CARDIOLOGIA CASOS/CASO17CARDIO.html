@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 17</h2>
+                <p>Juan, un hombre de 55 años, acude al consultorio médico quejándose de fatiga extrema, dificultad para respirar al realizar actividades mínimas y aumento de peso inexplicado. Juan tiene antecedentes de hipertensión arterial y ha sido diagnosticado recientemente con diabetes tipo 2. Durante la evaluación, se observa que tiene edema en los tobillos y yugulares distendidas. Su presión arterial está elevada, y la auscultación revela crepitantes en las bases pulmonares.</p>
+                <p>Exámenes Complementarios:</p>
+                <p>Radiografía de tórax: Incremento del tamaño del corazón y signos de congestión pulmonar.</p>
+                <p>Ecocardiograma: Fracción de eyección reducida (< 35%) y dilatación de la aurícula izquierda.</p>
+                <p>Péptido natriurético tipo B (BNP): Niveles elevados.</p>
+            </div>
+            <div class="card question-card" data-index="81">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la interpretación más probable de los hallazgos en la radiografía de tórax de Juan?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(81, this, 'A')">A. Neumonía aguda.</li>
+                    <li onclick="selectAnswer(81, this, 'B')">B. Insuficiencia cardíaca congestiva.</li>
+                    <li onclick="selectAnswer(81, this, 'C')">C. Derrame pleural.</li>
+                    <li onclick="selectAnswer(81, this, 'D')">D. Tuberculosis pulmonar.</li>
+                </ul>
+                <div class="justification" id="justification-81">El aumento del tamaño del corazón y los signos de congestión pulmonar en la radiografía sugieren insuficiencia cardíaca congestiva.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="82">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes factores de riesgo en la historia médica de Juan es más probable que haya contribuido al desarrollo de la insuficiencia cardíaca?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(82, this, 'A')">A. Reciente diagnóstico de diabetes tipo 2.</li>
+                    <li onclick="selectAnswer(82, this, 'B')">B. Historial de hipertensión arterial.</li>
+                    <li onclick="selectAnswer(82, this, 'C')">C. Edad avanzada.</li>
+                    <li onclick="selectAnswer(82, this, 'D')">D. Ausencia de actividad física regular.</li>
+                </ul>
+                <div class="justification" id="justification-82">El historial de hipertensión arterial es un factor de riesgo importante para el desarrollo de la insuficiencia cardíaca.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="83">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el diagnóstico de insuficiencia cardíaca en Juan, ¿cuál sería la clase funcional de la New York Heart Association (NYHA) más apropiada para describir su condición?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(83, this, 'A')">A. Clase I.</li>
+                    <li onclick="selectAnswer(83, this, 'B')">B. Clase II.</li>
+                    <li onclick="selectAnswer(83, this, 'C')">C. Clase III.</li>
+                    <li onclick="selectAnswer(83, this, 'D')">D. Clase IV.</li>
+                </ul>
+                <div class="justification" id="justification-83">La fatiga extrema y la dificultad para respirar con actividades mínimas sugieren una clase funcional III según la NYHA.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="84">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cómo podría la diabetes tipo 2 contribuir al desarrollo de la insuficiencia cardíaca en Juan?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(84, this, 'A')">A. Mejora la función cardíaca.</li>
+                    <li onclick="selectAnswer(84, this, 'B')">B. Reducción de la inflamación vascular.</li>
+                    <li onclick="selectAnswer(84, this, 'C')">C. Inducción de ateroesclerosis y disfunción endotelial.</li>
+                    <li onclick="selectAnswer(84, this, 'D')">D. Aumento de la fracción de eyección.</li>
+                </ul>
+                <div class="justification" id="justification-84">La diabetes tipo 2 puede contribuir al desarrollo de la insuficiencia cardíaca al inducir ateroesclerosis y disfunción endotelial.</div>
+            </div>
+            <div class="card question-card" data-index="85">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>Además de la terapia farmacológica estándar, ¿cuál podría ser una estrategia importante para el manejo a largo plazo de la insuficiencia cardíaca en Juan?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(85, this, 'A')">A. Ignorar la restricción de sodio en la dieta.</li>
+                    <li onclick="selectAnswer(85, this, 'B')">B. Mantener un alto consumo de alcohol.</li>
+                    <li onclick="selectAnswer(85, this, 'C')">C. Participar en un programa de rehabilitación cardíaca.</li>
+                    <li onclick="selectAnswer(85, this, 'D')">D. Evitar la monitorización regular de la glucosa.</li>
+                </ul>
+                <div class="justification" id="justification-85">La participación en un programa de rehabilitación cardíaca es esencial para mejorar la capacidad funcional y la calidad de vida en la insuficiencia cardíaca.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            81: "B", 
+            82: "B", 
+            83: "C", 
+            84: "C", 
+            85: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

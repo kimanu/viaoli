@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 5</h2>
+                <p>Carlos, un hombre de 35 años, acude a la consulta médica con quejas de palpitaciones y sensación de falta de aire. No tiene antecedentes médicos conocidos. Durante la evaluación, se realiza un electrocardiograma (ECG) que muestra ciertos hallazgos. </p>
+                <p>Electrocardiograma (ECG): </p>
+                <p>Ritmo irregular a 140 lpm. </p>
+                <p>Ausencia de ondas P precediendo a los complejos QRS. </p>
+                <p>Complejos QRS estrechos. </p>
+                <p>Intervalo PR no es apreciable. </p>
+                <p>Ondas F visibles en las derivaciones II, III y aVF.</p>
+            </div>
+            <div class="card question-card" data-index="21">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la interpretación más probable del ritmo cardíaco en este ECG?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(21, this, 'A')">A. Fibrilación auricular.</li>
+                    <li onclick="selectAnswer(21, this, 'B')">B. Ritmo sinusal.</li>
+                    <li onclick="selectAnswer(21, this, 'C')">C. Taquicardia supraventricular paroxística.</li>
+                    <li onclick="selectAnswer(21, this, 'D')">D. Taquicardia ventricular. </li>
+                </ul>
+                <div class="justification" id="justification-21">La ausencia de ondas P precediendo a los complejos QRS y el ritmo irregular sugieren fibrilación auricular.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="22">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la explicación más plausible para la ausencia de ondas P visibles en este ECG?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(22, this, 'A')">A. Bloqueo de rama izquierda.</li>
+                    <li onclick="selectAnswer(22, this, 'B')">B. Actividad eléctrica del nodo AV.</li>
+                    <li onclick="selectAnswer(22, this, 'C')">C. Despolarización caótica de las aurículas.</li>
+                    <li onclick="selectAnswer(22, this, 'D')">D. Hiperpotasemia.</li>
+                </ul>
+                <div class="justification" id="justification-22">En la fibrilación auricular, las aurículas se despolarizan de manera caótica, y las ondas P no son discernibles.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="23">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el ritmo y los hallazgos en el ECG, ¿cuál es la complicación más inmediata y potencialmente grave que se debe considerar?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(23, this, 'A')">A. Bloqueo AV completo.</li>
+                    <li onclick="selectAnswer(23, this, 'B')">B. Insuficiencia cardíaca congestiva.</li>
+                    <li onclick="selectAnswer(23, this, 'C')">C. Formación de trombos en la aurícula izquierda.</li>
+                    <li onclick="selectAnswer(23, this, 'D')">D. Taquicardia ventricular.</li>
+                </ul>
+                <div class="justification" id="justification-23">La fibrilación auricular puede llevar a la formación de trombos en la aurícula izquierda, aumentando el riesgo de embolia.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="24">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál podría ser el tratamiento farmacológico inicial para controlar la frecuencia cardíaca en este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(24, this, 'A')">A. Amiodarona.</li>
+                    <li onclick="selectAnswer(24, this, 'B')">B. Digoxina.</li>
+                    <li onclick="selectAnswer(24, this, 'C')">C. Bloqueador beta.</li>
+                    <li onclick="selectAnswer(24, this, 'D')">D. Adenosina.</li>
+                </ul>
+                <div class="justification" id="justification-24">Los bloqueadores beta son comúnmente utilizados para controlar la frecuencia cardíaca en la fibrilación auricular.</div>
+            </div>
+            			Bloqueo AV de primer grado.
+            <div class="card question-card" data-index="25">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>¿Por qué la fibrilación auricular aumenta el riesgo de formación de trombos en la aurícula izquierda?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(25, this, 'A')">A. Se produce estasis sanguínea en las aurículas.</li>
+                    <li onclick="selectAnswer(25, this, 'B')">B. La contracción coordinada de las aurículas facilita la circulación sanguínea.</li>
+                    <li onclick="selectAnswer(25, this, 'C')">C. La fibrilación auricular no afecta la formación de trombos.</li>
+                    <li onclick="selectAnswer(25, this, 'D')">D. La válvula mitral es más efectiva en la fibrilación auricular.</li>
+                </ul>
+                <div class="justification" id="justification-25">La actividad caótica de las aurículas en la fibrilación auricular puede resultar en estasis sanguínea, favoreciendo la formación de trombos.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            21: "A", 
+            22: "C", 
+            23: "C", 
+            24: "C", 
+            25: "A" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

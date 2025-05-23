@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 21</h2>
+                <p>Juan, un hombre de 45 años, acude al servicio de urgencias con quejas de palpitaciones frecuentes y sensación de mareo. Juan no tiene antecedentes médicos significativos y no toma medicamentos de manera regular. Durante la evaluación, se observa que tiene un pulso irregular y su presión arterial es normal. Juan describe episodios ocasionales de pérdida de conocimiento breve, sin previo aviso.</p>
+                
+                <p>Exámenes Complementarios:</p>
+                <p>Electrocardiograma (ECG): Muestra ritmo cardíaco irregular con ondas P ausentes y complejos QRS irregulares.</p>
+                <p> Holter de 24 horas: Confirma la presencia de fibrilación auricular intermitente.</p>
+                <p>Pruebas de laboratorio: Enzimas cardíacas normales, función tiroidea normal.</p>
+                
+            </div>
+            <div class="card question-card" data-index="101">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la interpretación más probable del electrocardiograma de Juan?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(101, this, 'A')">A. Ritmo sinusal normal.</li>
+                    <li onclick="selectAnswer(101, this, 'B')">B. Taquicardia supraventricular.</li>
+                    <li onclick="selectAnswer(101, this, 'C')">C. Fibrilación auricular.</li>
+                    <li onclick="selectAnswer(101, this, 'D')">D. Bloqueo cardíaco.</li>
+                </ul>
+                <div class="justification" id="justification-101">La ausencia de ondas P, la irregularidad del ritmo y la presencia de complejos QRS irregulares son indicativos de fibrilación auricular.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="102">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes factores de riesgo en la historia médica de Juan es más probable que haya contribuido a la fibrilación auricular?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(102, this, 'A')">A. Edad avanzada.</li>
+                    <li onclick="selectAnswer(102, this, 'B')">B. Falta de ejercicio regular.</li>
+                    <li onclick="selectAnswer(102, this, 'C')">C. Consumo moderado de alcohol.</li>
+                    <li onclick="selectAnswer(102, this, 'D')">D. Historial de tabaquismo.</li>
+                </ul>
+                <div class="justification" id="justification-102">La edad avanzada es un factor de riesgo común para el desarrollo de fibrilación auricular.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="103">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el diagnóstico de fibrilación auricular en Juan, ¿cuál sería la clasificación de CHA2DS2-VASc más apropiada para evaluar el riesgo de accidente cerebrovascular?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(103, this, 'A')">A. Bajo riesgo.</li>
+                    <li onclick="selectAnswer(103, this, 'B')">B. Riesgo moderado.</li>
+                    <li onclick="selectAnswer(103, this, 'C')">C. Alto riesgo.</li>
+                    <li onclick="selectAnswer(103, this, 'D')">D. Riesgo mínimo.</li>
+                </ul>
+                <div class="justification" id="justification-103">La fibrilación auricular y la edad avanzada colocan a Juan en un alto riesgo de accidente cerebrovascular según la clasificación CHA2DS2-VASc.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="104">
+                <h3>❓ Pregunta:</h3>
+                <p>+¿Cómo podría la fibrilación auricular contribuir a la pérdida de conocimiento ocasional en Juan?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(104, this, 'A')">A. Mejora la perfusión cerebral.</li>
+                    <li onclick="selectAnswer(104, this, 'B')">B. Disminuye el riesgo de trombos.</li>
+                    <li onclick="selectAnswer(104, this, 'C')">C. Puede causar irregularidades en el suministro de sangre al cerebro, provocando episodios de pérdida de conocimiento.</li>
+                    <li onclick="selectAnswer(104, this, 'D')">D. Incrementa la estabilidad eléctrica del corazón.</li>
+                </ul>
+                <div class="justification" id="justification-104">La fibrilación auricular puede llevar a la formación de trombos que se pueden embolizar al cerebro, causando episodios de pérdida de conocimiento.</div>
+            </div>
+            <div class="card question-card" data-index="105">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>Además de la terapia farmacológica estándar, ¿cuál podría ser una estrategia importante para el manejo a largo plazo de la insuficiencia cardíaca en Ana?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(105, this, 'A')">A. Ignorar la restricción de sodio en la dieta.</li>
+                    <li onclick="selectAnswer(105, this, 'B')">B. Evitar el monitoreo regular de la presión arterial.</li>
+                    <li onclick="selectAnswer(105, this, 'C')">C. Iniciar anticoagulación para reducir el riesgo de accidente cerebrovascular.</li>
+                    <li onclick="selectAnswer(105, this, 'D')">D. Mantener un alto consumo de cafeína.</li>
+                </ul>
+                <div class="justification" id="justification-105">La anticoagulación es crucial en pacientes con fibrilación auricular para reducir el riesgo de formación de trombos y accidente cerebrovascular.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            101: "C", 
+            102: "A", 
+            103: "C", 
+            104: "C", 
+            105: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

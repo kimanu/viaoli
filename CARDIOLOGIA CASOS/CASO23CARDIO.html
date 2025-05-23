@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 23</h2>
+                <p>Pedro, un hombre de 35 años, acude al cardiólogo preocupado por episodios esporádicos de latidos cardíacos rápidos y fuertes. Pedro no tiene antecedentes médicos significativos, pero menciona que estos episodios a veces están asociados con mareos leves y sensación de opresión en el pecho. Los síntomas han ocurrido tanto en reposo como después de realizar ejercicio. Durante la evaluación, se observa un pulso rápido y regular.</p>
+                
+                <p>Exámenes Complementarios:</p>
+                <p>Electrocardiograma (ECG): Muestra ritmo cardíaco regular con complejos QRS anchos y con morfología de aspecto anormal.</p>
+                <p>Ecocardiograma: Función ventricular izquierda normal, sin evidencia de enfermedad estructural.</p>
+                <p>Holter de 24 horas: Confirma la presencia de taquicardia ventricular sostenida en varios episodios.</p>
+                
+            </div>
+            <div class="card question-card" data-index="111">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la interpretación más probable del electrocardiograma de Pedro?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(111, this, 'A')">A. Ritmo sinusal normal.</li>
+                    <li onclick="selectAnswer(111, this, 'B')">B. Taquicardia supraventricular.</li>
+                    <li onclick="selectAnswer(111, this, 'C')">C. Fibrilación auricular.</li>
+                    <li onclick="selectAnswer(111, this, 'D')">D. Taquicardia ventricular.</li>
+                </ul>
+                <div class="justification" id="justification-111">La presencia de complejos QRS anchos y con morfología de aspecto anormal indica taquicardia ventricular.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="112">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes factores de riesgo en la historia médica de Pedro es más probable que haya contribuido a la taquicardia ventricular?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(112, this, 'A')">A. Edad avanzada.</li>
+                    <li onclick="selectAnswer(112, this, 'B')">B. Consumo excesivo de cafeína.</li>
+                    <li onclick="selectAnswer(112, this, 'C')">C. Historial de tabaquismo.</li>
+                    <li onclick="selectAnswer(112, this, 'D')">D. Antecedentes familiares de arritmias.</li>
+                </ul>
+                <div class="justification" id="justification-112">Los antecedentes familiares de arritmias pueden aumentar el riesgo de padecer taquicardia ventricular.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="113">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el diagnóstico de taquicardia ventricular en Pedro, ¿cuál sería la primera línea de tratamiento para estabilizarlo durante episodios agudos?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(113, this, 'A')">A. Bloqueadores beta.</li>
+                    <li onclick="selectAnswer(113, this, 'B')">B. Cardioversión eléctrica.</li>
+                    <li onclick="selectAnswer(113, this, 'C')">C. Ablación por catéter.</li>
+                    <li onclick="selectAnswer(113, this, 'D')">D. Desfibrilador automático implantable (DAI).</li>
+                </ul>
+                <div class="justification" id="justification-113">La cardioversión eléctrica puede ser necesaria para restablecer el ritmo cardíaco normal durante episodios agudos de taquicardia ventricular.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="114">
+                <h3>❓ Pregunta:</h3>
+                <p>Cuál de las siguientes complicaciones podría surgir si la taquicardia ventricular de Pedro no se controla adecuadamente a largo plazo?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(114, this, 'A')">A. Insuficiencia renal.</li>
+                    <li onclick="selectAnswer(114, this, 'B')">B. Arritmias supraventriculares.</li>
+                    <li onclick="selectAnswer(114, this, 'C')">C. Insuficiencia cardíaca y muerte súbita.</li>
+                    <li onclick="selectAnswer(114, this, 'D')">D. Hipertensión arterial.</li>
+                </ul>
+                <div class="justification" id="justification-114">La taquicardia ventricular no controlada puede llevar a insuficiencia cardíaca y aumentar el riesgo de muerte súbita.</div>
+            </div>
+            <div class="card question-card" data-index="115">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>Además de la gestión aguda de los episodios, ¿cuál sería una estrategia importante en el manejo a largo plazo de la taquicardia ventricular en Pedro?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(115, this, 'A')">A. Mantener una ingesta alta de sodio.</li>
+                    <li onclick="selectAnswer(115, this, 'B')">B. Evitar la restricción de cafeína.</li>
+                    <li onclick="selectAnswer(115, this, 'C')">C. Evaluar la necesidad de un desfibrilador automático implantable (DAI).</li>
+                    <li onclick="selectAnswer(115, this, 'D')">D. Realizar ejercicio extenuante diario.</li>
+                </ul>
+                <div class="justification" id="justification-115">El DAI puede ser necesario en pacientes con taquicardia ventricular recurrente para prevenir la muerte súbita.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            111: "D", 
+            112: "D", 
+            113: "B", 
+            114: "C", 
+            115: "C",
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

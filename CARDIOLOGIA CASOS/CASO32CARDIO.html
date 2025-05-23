@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 32</h2>
+                <p>uan, un hombre de 45 años, acude a la consulta con quejas de malestar en el pecho y fiebre. Refiere haber tenido un cuadro de infección respiratoria alta unas semanas antes. Durante el examen físico, se auscultan frotamientos pericárdicos y se observa que el dolor aumenta al inclinarse hacia adelante. Además, presenta fiebre y signos de inflamación.</p>
+                
+                <p>Exámenes Complementarios:</p>
+                <p>Hemograma: Muestra leucocitosis con desviación a la izquierda.</p>
+                <p>Ecocardiograma: Evidencia derrame pericárdico con signos de inflamación del pericardio.</p>
+                <p>Pruebas serológicas: Positivas para un agente infeccioso común.</p>
+                
+            </div>
+            <div class="card question-card" data-index="156">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la causa más probable del derrame pericárdico en Juan según los hallazgos clínicos?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(156, this, 'A')">A. Infarto agudo de miocardio.</li>
+                    <li onclick="selectAnswer(156, this, 'B')">B. Pericarditis aguda.</li>
+                    <li onclick="selectAnswer(156, this, 'C')">C. Insuficiencia cardíaca congestiva.</li>
+                    <li onclick="selectAnswer(156, this, 'D')">D. Tromboembolismo pulmonar.</li>
+                </ul>
+                <div class="justification" id="justification-156">La pericarditis aguda, a menudo de origen infeccioso, puede causar inflamación del pericardio y derrame pericárdico.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="157">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cómo afecta la inflamación del pericardio en la pericarditis aguda al dolor torácico en Juan?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(157, this, 'A')">A. El dolor es constante e irradiado al brazo izquierdo.</li>
+                    <li onclick="selectAnswer(157, this, 'B')">B. El dolor se alivia al realizar inspiraciones profundas.</li>
+                    <li onclick="selectAnswer(157, this, 'C')">C. El dolor aumenta al inclinarse hacia adelante.</li>
+                    <li onclick="selectAnswer(157, this, 'D')">D. El dolor se presenta como una sensación de opresión en el pecho.</li>
+                </ul>
+                <div class="justification" id="justification-157">La posición de inclinarse hacia adelante puede aliviar el dolor en la pericarditis aguda al reducir la fricción entre las capas del pericardio.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="158">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el diagnóstico de pericarditis aguda en Juan, ¿cuál sería el tratamiento inicial más apropiado?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(158, this, 'A')">A. Iniciar terapia antihipertensiva.</li>
+                    <li onclick="selectAnswer(158, this, 'B')">B. Administrar antibióticos.</li>
+                    <li onclick="selectAnswer(158, this, 'C')">C. Aspiración del derrame pericárdico.</li>
+                    <li onclick="selectAnswer(158, this, 'D')">D. Prescribir antiinflamatorios no esteroides (AINE).</li>
+                </ul>
+                <div class="justification" id="justification-158">Los AINE son la base del tratamiento para la pericarditis aguda al reducir la inflamación y aliviar el dolor.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="159">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado que Juan presenta fiebre y signos de inflamación, ¿cuál de los siguientes enfoques sería más relevante para determinar la causa subyacente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(159, this, 'A')">A. Realizar angiografía coronaria.</li>
+                    <li onclick="selectAnswer(159, this, 'B')">B. Tomografía computarizada de tórax.</li>
+                    <li onclick="selectAnswer(159, this, 'C')">C. Ecografía abdominal.</li>
+                    <li onclick="selectAnswer(159, this, 'D')">D. Pruebas serológicas y cultivo de sangre.</li>
+                </ul>
+                <div class="justification" id="justification-159">Las pruebas serológicas y los cultivos pueden ayudar a identificar la causa infecciosa subyacente en casos de pericarditis aguda.</div>
+            </div>
+            <div class="card question-card" data-index="160">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>Además de la prescripción de AINE, ¿cuál sería un componente importante en el manejo a largo plazo de la pericarditis aguda en Juan?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(160, this, 'A')">A. Evaluar la necesidad de cirugía cardíaca.</li>
+                    <li onclick="selectAnswer(160, this, 'B')">B. Recomendar ejercicio extenuante diario.</li>
+                    <li onclick="selectAnswer(160, this, 'C')">C. Prescribir esteroides de manera crónica.</li>
+                    <li onclick="selectAnswer(160, this, 'D')">D. Controlar la presión arterial de manera estricta.</li>
+                </ul>
+                <div class="justification" id="justification-160">En casos de pericarditis aguda recurrente o persistente, el tratamiento a largo plazo puede incluir esteroides para prevenir recurrencias.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            156: "B", 
+            157: "C", 
+            158: "D", 
+            159: "C", 
+            160: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

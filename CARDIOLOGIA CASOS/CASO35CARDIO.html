@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 25</h2>
+                <p>Javier, un hombre de 60 años con antecedentes de artritis reumatoide, presenta fatiga, debilidad y disnea progresiva. Refiere dolor torácico que empeora al acostarse y al realizar esfuerzos físicos. Durante el examen físico, se auscultan frotamientos pericárdicos y se observa un aumento en la presión venosa yugular. Además, presenta hepatomegalia y edema en miembros inferiores.</p>
+                
+                <p>Exámenes Complementarios:</p>
+                <p>Ecocardiograma: Muestra una gran acumulación de líquido pericárdico, engrosamiento del pericardio y signos de constricción cardíaca.</p>
+                <p>Radiografía de tórax: Indica cardiomegalia y derrame pleural.</p>
+                <p>Pruebas serológicas: Positivas para anticuerpos antinucleares (ANA) y factor reumatoide.</p>
+                
+            </div>
+            <div class="card question-card" data-index="171">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la condición más probable que está afectando a Javier según los hallazgos del ecocardiograma?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(171, this, 'A')">A. Pericarditis aguda.</li>
+                    <li onclick="selectAnswer(171, this, 'B')">B. Derrame pericárdico.</li>
+                    <li onclick="selectAnswer(171, this, 'C')">C. Taponamiento cardíaco.</li>
+                    <li onclick="selectAnswer(171, this, 'D')">D. Constricción pericárdica.</li>
+                </ul>
+                <div class="justification" id="justification-171">La constricción pericárdica se caracteriza por el engrosamiento del pericardio y la pérdida de la elasticidad, lo que afecta la función cardíaca.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="172">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cómo se diferencia la constricción pericárdica de otras formas de enfermedad pericárdica en Javier?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(172 this, 'A')">A. Presenta frotamientos pericárdicos.</li>
+                    <li onclick="selectAnswer(172, this, 'B')">B. Muestra un aumento en la presión venosa yugular.</li>
+                    <li onclick="selectAnswer(172, this, 'C')">C. Tiene una gran acumulación de líquido pericárdico.</li>
+                    <li onclick="selectAnswer(172, this, 'D')">D. Experimenta dolor torácico que se alivia al inclinarse hacia adelante.</li>
+                </ul>
+                <div class="justification" id="justification-172">El aumento en la presión venosa yugular es característico de la constricción pericárdica debido a la restricción del llenado cardíaco.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="173">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el diagnóstico de constricción pericárdica en Javier, ¿cuál sería el tratamiento definitivo?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(173, this, 'A')">A. Aspiración del derrame pericárdico.</li>
+                    <li onclick="selectAnswer(173, this, 'B')">B. Administrar antiinflamatorios no esteroides (AINE).</li>
+                    <li onclick="selectAnswer(173, this, 'C')">C. Realizar pericardiectomía.</li>
+                    <li onclick="selectAnswer(173, this, 'D')">D. Prescribir esteroides de manera crónica.</li>
+                </ul>
+                <div class="justification" id="justification-173">La pericardiectomía es el tratamiento definitivo para la constricción pericárdica, ya que elimina el pericardio engrosado y restaura la función cardíaca.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="174">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado que Javier presenta signos de constricción pericárdica, ¿cuál de los siguientes hallazgos se espera en la ecocardiografía?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(174, this, 'A')">A. Derrame pericárdico.</li>
+                    <li onclick="selectAnswer(174, this, 'B')">B. Colapso diastólico de las aurículas.</li>
+                    <li onclick="selectAnswer(174, this, 'C')">C. Engrosamiento de las válvulas cardíacas.</li>
+                    <li onclick="selectAnswer(174, this, 'D')">D. Ausencia de cambios en el tamaño del ventrículo izquierdo.</li>
+                </ul>
+                <div class="justification" id="justification-174">En la constricción pericárdica, el pericardio engrosado puede afectar las válvulas cardíacas, causando insuficiencia valvular.</div>
+            </div>
+            <div class="card question-card" data-index="175">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>Además de la pericardiectomía, ¿cuál sería un enfoque importante en el manejo a largo plazo de la constricción pericárdica en Javier?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(175, this, 'A')">A. Prescribir esteroides de manera crónica.</li>
+                    <li onclick="selectAnswer(175, this, 'B')">B. Realizar seguimiento ecocardiográfico regular.</li>
+                    <li onclick="selectAnswer(175, this, 'C')">C. Administrar diuréticos para controlar la retención de líquidos.</li>
+                    <li onclick="selectAnswer(175, this, 'D')">D. Evaluar la necesidad de terapia inmunosupresora.</li>
+                </ul>
+                <div class="justification" id="justification-175">El seguimiento ecocardiográfico regular es crucial para evaluar la función cardíaca y detectar posibles complicaciones en pacientes con constricción pericárdica.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            171: "D", 
+            172: "B", 
+            173: "C", 
+            174: "C", 
+            175: "B" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

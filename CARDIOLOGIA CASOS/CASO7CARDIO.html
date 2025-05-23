@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 7</h2>
+                <p> Javier, un hombre de 45 años, acude a la consulta médica debido a mareos ocasionales y fatiga. Durante la evaluación, se le toma la presión arterial, que resulta en 150/95 mmHg. Javier no tiene antecedentes médicos significativos, pero su estilo de vida incluye una dieta rica en sodio y escasa actividad física. </p>
+               
+            <div class="card question-card" data-index="31">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cómo se clasificaría la presión arterial de Javier de acuerdo con las guías actuales?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(31, this, 'A')">A. Normotensión.</li>
+                    <li onclick="selectAnswer(31, this, 'B')">B. Hipertensión leve.</li>
+                    <li onclick="selectAnswer(31, this, 'C')">C. Hipertensión moderada.</li>
+                    <li onclick="selectAnswer(31, this, 'D')">D. Hipertensión grave. </li>
+                </ul>
+                <div class="justification" id="justification-31"> La presión arterial de 150/95 mmHg se clasifica como hipertensión leve.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="32">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es un factor de riesgo modificable que podría contribuir significativamente a la hipertensión de Javier?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(32, this, 'A')">A. Edad avanzada.</li>
+                    <li onclick="selectAnswer(32, this, 'B')">B. Antecedentes familiares.</li>
+                    <li onclick="selectAnswer(32, this, 'C')">C. Dieta rica en sodio.</li>
+                    <li onclick="selectAnswer(32, this, 'D')">D. Género masculino.</li>
+                </ul>
+                <div class="justification" id="justification-32">La dieta rica en sodio es un factor de riesgo modificable para la hipertensión.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="33">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el diagnóstico de hipertensión leve en Javier, ¿cuál sería la primera intervención farmacológica recomendada?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(33, this, 'A')">A. Inhibidores de la enzima convertidora de angiotensina (IECA).</li>
+                    <li onclick="selectAnswer(33, this, 'B')">B. Diuréticos tiazídicos.</li>
+                    <li onclick="selectAnswer(33, this, 'C')">C. Bloqueadores beta.</li>
+                    <li onclick="selectAnswer(33, this, 'D')">D. Bloqueadores de los canales de calcio.</li>
+                </ul>
+                <div class="justification" id="justification-33">Los diuréticos tiazídicos son comúnmente utilizados como primera línea en el tratamiento de la hipertensión leve.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="34">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Por qué los diuréticos tiazídicos son una opción adecuada en el tratamiento de la hipertensión de Javier?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(34, this, 'A')">A. Reducen la frecuencia cardíaca.</li>
+                    <li onclick="selectAnswer(34, this, 'B')">B. Disminuyen la resistencia vascular periférica.</li>
+                    <li onclick="selectAnswer(34, this, 'C')">C. Aumentan la retención de sodio.</li>
+                    <li onclick="selectAnswer(34, this, 'D')">D. Mejoran la función renal.</li>
+                </ul>
+                <div class="justification" id="justification-34">Los diuréticos tiazídicos reducen la resistencia vascular periférica, disminuyendo la presión arterial.</div>
+            </div>
+            	
+            <div class="card question-card" data-index="35">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál sería el consejo más importante para Javier en términos de modificaciones en el estilo de vida?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(35, this, 'A')">A. Aumentar la ingesta de sodio.</li>
+                    <li onclick="selectAnswer(35, this, 'B')">B. Reducir la actividad física.</li>
+                    <li onclick="selectAnswer(35, this, 'C')">C. Mantener un peso saludable.</li>
+                    <li onclick="selectAnswer(35, this, 'D')">D. Consumir alcohol en exceso.</li>
+                </ul>
+                <div class="justification" id="justification-35">Mantener un peso saludable es esencial en el manejo de la hipertensión y puede contribuir significativamente a reducir la presión arterial.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            31: "B", 
+            32: "C", 
+            33: "B", 
+            34: "B", 
+            35: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

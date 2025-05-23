@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 15</h2>
+                <p>. Luis, un hombre de 60 años, llega a la sala de emergencias con dolor intenso en el pecho que se irradia hacia la espalda y el cuello. El dolor ha estado presente durante más de 30 minutos y se describe como una sensación de opresión. Luis tiene antecedentes familiares de enfermedad cardíaca y es fumador desde hace 30 años. Durante la evaluación, se observa en el electrocardiograma (ECG) elevación del segmento ST en las derivaciones I, aVL, V1-V6 y depresión del segmento ST en las derivaciones inferiores.
+</p>
+                <p>Electrocardiograma (ECG):</p>
+                <p>Elevación del segmento ST en las derivaciones I, aVL, V1-V6.</p>
+                <p>Depresión del segmento ST en las derivaciones II, III, aVF.</p>
+                <p>Ondas T invertidas en las derivaciones afectadas.</p>
+<p>Ritmo sinusal a 110 lpm.</p>
+            </div>
+            <div class="card question-card" data-index="71">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la interpretación más probable del ECG de Luis?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(71, this, 'A')">A. Infarto agudo de miocardio con elevación del segmento ST (IAMCEST) de extensión lateral.</li>
+                    <li onclick="selectAnswer(71, this, 'B')">B. Infarto agudo de miocardio sin elevación del segmento ST (IAMSEST) de extensión inferior.</li>
+                    <li onclick="selectAnswer(71, this, 'C')">C. Angina de pecho inestable.</li>
+                    <li onclick="selectAnswer(71, this, 'D')">D. Miocarditis aguda.</li>
+                </ul>
+                <div class="justification" id="justification-71">La elevación del segmento ST en las derivaciones I, aVL, V1-V6 sugiere un IAMCEST de extensión lateral.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="72">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes factores de riesgo es más probable que haya contribuido al desarrollo del infarto agudo de miocardio en Luis?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(72, this, 'A')">A. Antecedentes familiares de enfermedad cardíaca.</li>
+                    <li onclick="selectAnswer(72, this, 'B')">B. Edad avanzada.</li>
+                    <li onclick="selectAnswer(72, this, 'C')">C. No realizar actividad física regular.</li>
+                    <li onclick="selectAnswer(72, this, 'D')">D. Consumo moderado de alcohol.</li>
+                </ul>
+                <div class="justification" id="justification-72">Los antecedentes familiares de enfermedad cardíaca son un factor de riesgo importante para el desarrollo de la cardiopatía isquémica.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="73">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el diagnóstico de IAMCEST en Luis, ¿cuál sería la intervención inicial más apropiada y urgente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(73, this, 'A')">A. Iniciar tratamiento con estatinas.</li>
+                    <li onclick="selectAnswer(73, this, 'B')">B. Administrar trombolíticos.</li>
+                    <li onclick="selectAnswer(73, this, 'C')">C. Realizar angioplastia coronaria percutánea.</li>
+                    <li onclick="selectAnswer(73, this, 'D')">D. Iniciar terapia con antiagregantes plaquetarios.</li>
+                </ul>
+                <div class="justification" id="justification-73">La angioplastia coronaria percutánea es la intervención inicial más apropiada y urgente en el IAMCEST para restablecer el flujo sanguíneo.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="744">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cómo podría el hábito de fumar de Luis influir en el desarrollo del infarto agudo de miocardio?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(74, this, 'A')">A. Mejora la función endotelial.</li>
+                    <li onclick="selectAnswer(74, this, 'B')">B. Aumenta el colesterol HDL.</li>
+                    <li onclick="selectAnswer(74, this, 'C')">C. Promueve la relajación vascular.</li>
+                    <li onclick="selectAnswer(74, this, 'D')">D. Induce inflamación y formación de placa aterosclerótica.</li>
+                </ul>
+                <div class="justification" id="justification-74">El hábito de fumar está asociado con inflamación y formación de placa aterosclerótica, contribuyendo al desarrollo de la cardiopatía isquémica.</div>
+            </div>
+            <div class="card question-card" data-index="75">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>Además de las intervenciones médicas inmediatas, ¿cuál podría ser una estrategia esencial para el manejo a largo plazo de Luis después del infarto agudo de miocardio?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(75, this, 'A')">A. Continuar con el hábito de fumar moderadamente.</li>
+                    <li onclick="selectAnswer(75, this, 'B')">B. Evitar la monitorización regular de la presión arterial.</li>
+                    <li onclick="selectAnswer(75, this, 'C')">C. Participar en un programa de rehabilitación cardíaca.</li>
+                    <li onclick="selectAnswer(75, this, 'D')">D. Ignorar el control de los niveles de colesterol.</li>
+                </ul>
+                <div class="justification" id="justification-75">La participación en un programa de rehabilitación cardíaca es esencial para mejorar la salud cardiovascular y prevenir eventos futuros.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            71: "A", 
+            72: "A", 
+            73: "C", 
+            74: "D", 
+            75: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

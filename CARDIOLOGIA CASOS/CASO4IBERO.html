@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 4</h2>
+                <p>Luisa, una mujer de 50 años, acude a la consulta con síntomas de dolor torácico intermitente y episodios de mareo. No tiene antecedentes médicos conocidos. Se realiza un electrocardiograma (ECG) como parte de la evaluación, y se observan ciertos hallazgos. Electrocardiograma (ECG): </p>
+                <p>Ritmo regular a 75 lpm. </p>
+                <p>QRS estrecho con duración de 80 ms. </p>
+                <p>Ausencia de ondas P precediendo a los complejos QRS. </p>
+                <p>Ondas T altas y puntiagudas en las derivaciones I y aVL. </p>
+                <p>Intervalo PR normal. </p>
+            </div>
+            <!-- Preguntas -->
+            <div class="card question-card" data-index="15">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la interpretación más probable del ritmo cardíaco en este ECG?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(15, this, 'A')">Fibrilación auricular.</li>
+                    <li onclick="selectAnswer(15, this, 'B')">B. Ritmo sinusal.</li>
+                    <li onclick="selectAnswer(15, this, 'C')">C. Taquicardia supraventricular paroxística.</li>
+                    <li onclick="selectAnswer(15, this, 'D')">D. Taquicardia ventricular.</li>
+                </ul>
+                <div class="justification" id="justification-15">Se observa una onda P antes de cada complejo QRS, con intervalos RR regulares, indicando un ritmo sinusal.</div>
+            </div>
+            
+            <div class="card question-card" data-index="16">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la explicación más plausible para las ondas T altas y puntiagudas en las derivaciones I y aVL?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(16, this, 'A')">A. Hiperpotasemia.</li>
+                    <li onclick="selectAnswer(16, this, 'B')">B. Hipopotasemia.</li>
+                    <li onclick="selectAnswer(16, this, 'C')">C. Hipercalcemia.</li>
+                    <li onclick="selectAnswer(16, this, 'D')">D. Hipocalcemia.</li>
+                </ul>
+                <div class="justification" id="justification-16">Las ondas T altas y puntiagudas son características de la hiperpotasemia.</div>
+            </div>
+
+            <div class="card question-card" data-index="17">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el ritmo y los hallazgos en el ECG, ¿cuál es la complicación potencial más grave que podría surgir?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(17, this, 'A')">A. Bloqueo cardíaco completo.</li>
+                    <li onclick="selectAnswer(17, this, 'B')">B. Fibrilación ventricular.</li>
+                    <li onclick="selectAnswer(17, this, 'C')">C. Insuficiencia cardíaca congestiva.</li>
+                    <li onclick="selectAnswer(17, this, 'D')">D. Tromboembolia pulmonar.</li>
+                </ul>
+                <div class="justification" id="justification-17">La presencia de ondas T altas y puntiagudas podría predisponer a la fibrilación ventricular, una arritmia potencialmente letal.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="18">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Qué tratamiento inicial podría ser beneficioso para contrarrestar los efectos de la hiperpotasemia en este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(18, this, 'A')">A. Administración de insulina y glucosa.</li>
+                    <li onclick="selectAnswer(18, this, 'B')">B. Administración de calcio intravenoso.</li>
+                    <li onclick="selectAnswer(18, this, 'C')">C. Diuréticos ahorradores de potasio.</li>
+                    <li onclick="selectAnswer(18, this, 'D')">D. Administración de bicarbonato de sodio.</li>
+                </ul>
+                <div class="justification" id="justification-18">El calcio intravenoso ayuda a estabilizar la membrana celular en casos de hiperpotasemia.</div>
+            </div>
+            			Bloqueo AV de primer grado.
+            <div class="card question-card" data-index="19">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cómo podría afectar la hiperpotasemia al sistema de conducción cardíaca y generar un ritmo sinusal con QRS estrecho?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(19, this, 'A')">A. Inhibición del nodo sinusal.</li>
+                    <li onclick="selectAnswer(19, this, 'B')">B. Estimulación del nodo AV.</li>
+                    <li onclick="selectAnswer(19, this, 'C')">C. Bloqueo de rama izquierda.</li>
+                    <li onclick="selectAnswer(19, this, 'D')">D. Bloqueo AV de primer grado.</li>
+                </ul>
+                <div class="justification" id="justification-19">El bloqueo de rama izquierda puede afectar la conducción a través del sistema de conducción, incluyendo la generación de ondas P.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            15: "B", 
+            16: "A", 
+            17: "B", 
+            18: "B", 
+            19: "A" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

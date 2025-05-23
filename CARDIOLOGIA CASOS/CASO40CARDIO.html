@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 40</h2>
+                <p>Isabel, una mujer de 65 años con antecedentes de válvula cardíaca protésica, se presenta con fiebre, fatiga y pérdida de peso. Durante el examen físico, se auscultan nuevos soplos cardíacos y se observa un pequeño nódulo doloroso en la yema de su dedo índice. Niega antecedentes recientes de procedimientos dentales.
+</p>
+                
+                <p>Exámenes Complementarios:</p>
+                <p>Hemocultivos: Positivos para Streptococcus viridans.</p>
+                <p>Ecocardiograma: Revela vegetaciones en la válvula mitral protésica.</p>
+                
+            </div>
+            <div class="card question-card" data-index="196">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el factor de riesgo más relevante en el caso de Isabel para desarrollar endocarditis infecciosa?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(196, this, 'A')">A. Diabetes mellitus.</li>
+                    <li onclick="selectAnswer(196, this, 'B')">B. Cirugía cardíaca previa con válvula protésica.</li>
+                    <li onclick="selectAnswer(196, this, 'C')">C. Uso intravenoso de drogas.</li>
+                    <li onclick="selectAnswer(196, this, 'D')">D. Antecedentes de enfermedad pulmonar crónica.</li>
+                </ul>
+                <div class="justification" id="justification-196">La presencia de una válvula cardíaca protésica es un importante factor de riesgo para la endocarditis infecciosa.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="197">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el diagnóstico de endocarditis infecciosa en Isabel, ¿cuál es la complicación más probable que explica la presencia del nódulo doloroso en su dedo índice?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(197, this, 'A')">A. Trombosis venosa profunda.</li>
+                    <li onclick="selectAnswer(197, this, 'B')">B. Embolia pulmonar.</li>
+                    <li onclick="selectAnswer(197, this, 'C')">C. Hemorragia subcutánea.</li>
+                    <li onclick="selectAnswer(197, this, 'D')">D. Microembolización séptica.</li>
+                </ul>
+                <div class="justification" id="justification-197">La presencia de un nódulo doloroso en un paciente con endocarditis sugiere microembolización séptica.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="198">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado que Isabel tiene hemocultivos positivos para Streptococcus viridans, ¿cuál sería la vía más probable de entrada de los microorganismos?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(198, this, 'A')">A. Procedimientos dentales.</li>
+                    <li onclick="selectAnswer(198, this, 'B')">B. Infecciones del tracto respiratorio.</li>
+                    <li onclick="selectAnswer(198, this, 'C')">C. Infecciones del tracto gastrointestinal.</li>
+                    <li onclick="selectAnswer(198, this, 'D')">D. Uso intravenoso de drogas.</li>
+                </ul>
+                <div class="justification" id="justification-198">Streptococcus viridans está asociado comúnmente con procedimientos dentales como vía de entrada.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="199">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado que Isabel presenta vegetaciones en la válvula mitral protésica, ¿cuál sería una complicación específica que debe ser evaluada en su manejo?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(199, this, 'A')">A. Insuficiencia cardíaca congestiva.</li>
+                    <li onclick="selectAnswer(199, this, 'B')">B. Embolia pulmonar.</li>
+                    <li onclick="selectAnswer(199, this, 'C')">C. Absceso cerebral.</li>
+                    <li onclick="selectAnswer(199, this, 'D')">D. Insuficiencia renal aguda.</li>
+                </ul>
+                <div class="justification" id="justification-199">Las vegetaciones en la válvula mitral protésica pueden desprenderse y causar embolia pulmonar.</div>
+            </div>
+            <div class="card question-card" data-index="200">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>Además del tratamiento antibiótico, ¿cuál sería un aspecto clave en el manejo a largo plazo de la endocarditis infecciosa en Isabel?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(200, this, 'A')">A. Realizar ecocardiogramas de seguimiento.</li>
+                    <li onclick="selectAnswer(200, this, 'B')">B. Prescribir anticoagulantes de por vida.</li>
+                    <li onclick="selectAnswer(200, this, 'C')">C. Programar intervención quirúrgica de seguimiento.</li>
+                    <li onclick="selectAnswer(200, this, 'D')">D. Iniciar tratamiento con antihipertensivos.</li>
+                </ul>
+                <div class="justification" id="justification-200">Los ecocardiogramas de seguimiento son esenciales para evaluar la resolución de las vegetaciones y la función valvular en pacientes con endocarditis infecciosa.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            196: "B", 
+            197: "D", 
+            198: "A", 
+            199: "B", 
+            200: "A" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

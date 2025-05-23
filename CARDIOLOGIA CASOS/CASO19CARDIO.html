@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 19</h2>
+                <p>Carlos, un hombre de 68 años, presenta dificultad para respirar, fatiga y aumento de peso inexplicado. Carlos tiene antecedentes de hipertensión arterial y ha experimentado dos episodios previos de infarto agudo de miocardio. Durante la evaluación, se observa que tiene crepitantes bilaterales en los campos pulmonares y edema significativo en las piernas. Su presión arterial está elevada, y el electrocardiograma muestra cambios compatibles con hipertrofia ventricular izquierda.</p>
+                <p>Exámenes Complementarios:</p>
+                <p>Radiografía de tórax: Incremento del tamaño del corazón y signos de congestión pulmonar.</p>
+                <p>Ecocardiograma: Hipertrofia ventricular izquierda y fracción de eyección reducida (< 35%).</p>
+                <p>Péptido natriurético tipo B (BNP): Niveles elevados.</p>
+            </div>
+            <div class="card question-card" data-index="91">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la interpretación más probable de los hallazgos en la radiografía de tórax de Carlos?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(91, this, 'A')">A. Neumonía aguda.</li>
+                    <li onclick="selectAnswer(91, this, 'B')">B. Insuficiencia cardíaca congestiva.</li>
+                    <li onclick="selectAnswer(90, this, 'C')">C. Derrame pleural.</li>
+                    <li onclick="selectAnswer(90, this, 'D')">D. Tuberculosis pulmonar.</li>
+                </ul>
+                <div class="justification" id="justification-91"> El aumento del tamaño del corazón y los signos de congestión pulmonar en la radiografía sugieren insuficiencia cardíaca congestiva.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="92">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes factores de riesgo en la historia médica de Carlos es más probable que haya contribuido al desarrollo de la insuficiencia cardíaca?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(92, this, 'A')">A. Edad avanzada.</li>
+                    <li onclick="selectAnswer(92, this, 'B')">B. Hipertrofia ventricular izquierda.</li>
+                    <li onclick="selectAnswer(92, this, 'C')">C. Infarto agudo de miocardio previo.</li>
+                    <li onclick="selectAnswer(92, this, 'D')">D. Historial de tabaquismo.</li>
+                </ul>
+                <div class="justification" id="justification-92">Los antecedentes de infarto agudo de miocardio previo son un factor de riesgo para el desarrollo de la insuficiencia cardíaca.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="93">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el diagnóstico de insuficiencia cardíaca en Carlos, ¿cuál sería la clase funcional de la New York Heart Association (NYHA) más apropiada para describir su condición?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(93, this, 'A')">A. Clase I.</li>
+                    <li onclick="selectAnswer(93, this, 'B')">B. Clase II.</li>
+                    <li onclick="selectAnswer(93, this, 'C')">C. Clase III.</li>
+                    <li onclick="selectAnswer(93, this, 'D')">D. Clase IV.</li>
+                </ul>
+                <div class="justification" id="justification-93">La dificultad para respirar y la fatiga con actividad moderada sugieren una clase funcional III según la NYHA.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="94">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cómo podría la hipertrofia ventricular izquierda contribuir al desarrollo de la insuficiencia cardíaca en Carlos?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(94, this, 'A')">A. Mejora la contractilidad del corazón.</li>
+                    <li onclick="selectAnswer(94, this, 'B')">B. Reduce el riesgo de arritmias cardíacas..</li>
+                    <li onclick="selectAnswer(94, this, 'C')">C. Aumenta la eficiencia del bombeo sanguíneo.</li>
+                    <li onclick="selectAnswer(94, this, 'D')">D. Puede conducir a disfunción diastólica y, eventualmente, a la insuficiencia cardíaca.</li>
+                </ul>
+                <div class="justification" id="justification-94">La hipertrofia ventricular izquierda puede conducir a disfunción diastólica, comprometiendo la capacidad del corazón para llenarse adecuadamente.</div>
+            </div>
+            <div class="card question-card" data-index="95">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>Además de la terapia farmacológica estándar, ¿cuál podría ser una estrategia importante para el manejo a largo plazo de la insuficiencia cardíaca en Carlos?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(95, this, 'A')">A. Ignorar la restricción de sodio en la dieta.</li>
+                    <li onclick="selectAnswer(95, this, 'B')">B. Mantener un alto consumo de alcohol.</li>
+                    <li onclick="selectAnswer(95, this, 'C')">C. Participar en un programa de rehabilitación cardíaca.</li>
+                    <li onclick="selectAnswer(95, this, 'D')">D. Evitar la monitorización regular de la glucosa.</li>
+                </ul>
+                <div class="justification" id="justification-95">La participación en un programa de rehabilitación cardíaca es esencial para mejorar la capacidad funcional y la calidad de vida en la insuficiencia cardíaca.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            91: "B", 
+            92: "C", 
+            93: "C", 
+            94: "D", 
+            95: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

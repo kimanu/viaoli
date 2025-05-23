@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 9</h2>
+                <p>Juan, un hombre de 50 años, visita al médico para un chequeo de rutina. Durante la consulta, se registra una presión arterial de 140/90 mmHg. Juan tiene antecedentes familiares de hipertensión y se describe como una persona activa físicamente, pero con una dieta rica en sodio.
+
+
+                </p>
+               
+            </div>
+            <div class="card question-card" data-index="41">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la clasificación de la presión arterial de Juan de acuerdo con las guías actuales?
+                </p>
+                <ul class="options">
+                    <li onclick="selectAnswer(41, this, 'A')">A. Normotensión.</li>
+                    <li onclick="selectAnswer(41, this, 'B')">B. Hipertensión leve.</li>
+                    <li onclick="selectAnswer(41, this, 'C')">C. Hipertensión moderada.</li>
+                    <li onclick="selectAnswer(41, this, 'D')">D. Hipertensión grave. </li>
+                </ul>
+                <div class="justification" id="justification-41">La presión arterial de 140/90 mmHg se clasifica como hipertensión leve. 
+                </div>
+            </div>
+            				
+            <div class="card question-card" data-index="42">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el principal factor de riesgo modificable que contribuye a la hipertensión de Juan?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(42, this, 'A')">A. Edad avanzada.</li>
+                    <li onclick="selectAnswer(42, this, 'B')">B. Antecedentes familiares.</li>
+                    <li onclick="selectAnswer(42, this, 'C')">C. Dieta rica en sodio.</li>
+                    <li onclick="selectAnswer(42, this, 'D')">D. Género masculino.</li>
+                </ul>
+                <div class="justification" id="justification-42">: La dieta rica en sodio es un factor de riesgo modificable para la hipertensión. </div>
+            			
+            <div class="card question-card" data-index="43">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál sería la primera recomendación no farmacológica más efectiva para Juan en el manejo de la hipertensión? </p>
+                <ul class="options">
+                    <li onclick="selectAnswer(43, this, 'A')">A. Iniciar terapia con bloqueadores beta.</li>
+                    <li onclick="selectAnswer(43, this, 'B')">B. Dieta baja en grasas.</li>
+                    <li onclick="selectAnswer(43, this, 'C')">C. Reducción del consumo de sodio.</li>
+                    <li onclick="selectAnswer(43, this, 'D')">D. Terapia con inhibidores de la enzima convertidora de angiotensina (IECA).</li>
+                </ul>
+                <div class="justification" id="justification-43">:La reducción del consumo de sodio es una medida efectiva en el manejo no farmacológico de la hipertensión.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="44">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Por qué la actividad física regular de Juan, a pesar de ser activo, puede no ser suficiente para controlar su presión arterial?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(44, this, 'A')">A. La actividad física aumenta la retención de sodio. </li>
+                    <li onclick="selectAnswer(44, this, 'B')">B. Juan no realiza suficiente ejercicio.</li>
+                    <li onclick="selectAnswer(44, this, 'C')">C. La dieta rica en sodio contrarresta los beneficios del ejercicio.</li>
+                    <li onclick="selectAnswer(44, this, 'D')">D. La actividad física no tiene efecto sobre la presión arterial.</li>
+                </ul>
+                <div class="justification" id="justification-44">Aunque la actividad física es beneficiosa, una dieta rica en sodio puede contrarrestar sus efectos positivos sobre la presión arterial.
+                </div>
+            </div>
+            			
+            <div class="card question-card" data-index="45">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál sería la estrategia más completa para Juan que aborde tanto la actividad física como la dieta en el manejo de la hipertensión?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(45, this, 'A')">A. Aumentar la duración del ejercicio diario.</li>
+                    <li onclick="selectAnswer(45, this, 'B')">B. Consultar a un nutricionista para modificar la dieta.</li>
+                    <li onclick="selectAnswer(45, this, 'C')">C. Tomar suplementos de potasio.</li>
+                    <li onclick="selectAnswer(45, this, 'D')">D. Iniciar terapia farmacológica con IECA.</li>
+                </ul>
+                <div class="justification" id="justification-45">Abordar la dieta con la ayuda de un nutricionista puede ser una estrategia más completa y específica para el manejo de la hipertensión en Juan</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = { 
+        41: "B", 
+        42: "C", 
+        43: "C", 
+        44: "C", 
+        45: "B" 
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').innerHTML = resultText;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

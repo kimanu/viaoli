@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 26</h2>
+                <p>Ana, una mujer de 60 años, acude a la consulta del cardiólogo con síntomas de fatiga, falta de aliento y episodios ocasionales de dolor en el pecho. Ana tiene antecedentes de fiebre reumática en su infancia. Durante la evaluación, se auscultan soplos cardíacos en la región de la válvula mitral y aórtica.</p>
+                <p>Exámenes Complementarios:</p>
+                <p>Ecocardiograma: Muestra engrosamiento de las válvulas mitral y aórtica, así como regurgitación significativa en ambas.</p>
+                <p>Radiografía de tórax: Engrosamiento de la cavidad auricular izquierda.</p>
+                <p>Pruebas de laboratorio: Marcadores inflamatorios elevados.</p>
+            </div>
+            <div class="card question-card" data-index="126">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál podría ser la causa más probable de la enfermedad valvular en Ana?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(126, this, 'A')">A. Enfermedad degenerativa por envejecimiento.</li>
+                    <li onclick="selectAnswer(126, this, 'B')">B. Fiebre reumática previa.</li>
+                    <li onclick="selectAnswer(126, this, 'C')">C. Hipertensión arterial no controlada.</li>
+                    <li onclick="selectAnswer(126, this, 'D')">D. Historial de tabaquismo.</li>
+                </ul>
+                <div class="justification" id="justification-126">La fiebre reumática en la infancia es una causa común de enfermedad valvular adquirida.</div>
+            </div>
+
+            <div class="card question-card" data-index="127">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cómo afecta la regurgitación valvular en la enfermedad de Ana a la función del corazón?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(127, this, 'A')">A. Reduce la carga de volumen en el ventrículo izquierdo.</li>
+                    <li onclick="selectAnswer(127, this, 'B')">B. Aumenta la poscarga en el ventrículo izquierdo.</li>
+                    <li onclick="selectAnswer(127, this, 'C')">C. Mejora la capacidad de bombeo del corazón.</li>
+                    <li onclick="selectAnswer(127, this, 'D')">D. Disminuye la presión en la arteria pulmonar.</li>
+                </ul>
+                <div class="justification" id="justification-127">La regurgitación valvular aumenta la poscarga al permitir el retroceso del flujo sanguíneo, lo que exige un mayor esfuerzo al ventrículo izquierdo.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="128">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado que Ana presenta síntomas como fatiga y falta de aliento, ¿qué categoría de la clasificación funcional de la insuficiencia cardíaca podría describir mejor su condición?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(128, this, 'A')">A. Clase I: Sin limitación de actividad física.</li>
+                    <li onclick="selectAnswer(128, this, 'B')">B. Clase II: Limitación leve de actividad física.</li>
+                    <li onclick="selectAnswer(128, this, 'C')">C. Clase III: Limitación marcada de actividad física.</li>
+                    <li onclick="selectAnswer(128, this, 'D')">D. Clase IV: Incapacidad para realizar actividad física sin síntomas.</li>
+                </ul>
+                <div class="justification" id="justification-128">La fatiga y la falta de aliento sugieren una limitación marcada en la actividad física, correspondiente a la Clase III de la insuficiencia cardíaca.</div>
+            </div>
+
+            <div class="card question-card" data-index="129">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes válvulas cardíacas se ve más afectada en la enfermedad de Ana, según los hallazgos del ecocardiograma?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(129, this, 'A')">A. Válvula tricúspide.</li>
+                    <li onclick="selectAnswer(129, this, 'B')">B. Válvula pulmonar.</li>
+                    <li onclick="selectAnswer(129, this, 'C')">C. Válvula mitral.</li>
+                    <li onclick="selectAnswer(129, this, 'D')">D. Válvula aórtica.</li>
+                </ul>
+                <div class="justification" id="justification-129">El soplo en la región de la válvula mitral indica afectación significativa en esta válvula.</div>
+            </div>
+            <div class="card question-card" data-index="130">
+                <h3>❓ Pregunta:</h3>
+                <p>Además de la gestión sintomática, ¿cuál sería una estrategia importante en el manejo a largo plazo de la enfermedad valvular en Ana?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(130, this, 'A')">A. Iniciar tratamiento para la hipertensión arterial.</li>
+                    <li onclick="selectAnswer(130, this, 'B')">B. Evaluar la necesidad de reparación o reemplazo valvular.</li>
+                    <li onclick="selectAnswer(130, this, 'C')">C. Recetar medicamentos para reducir el colesterol.</li>
+                    <li onclick="selectAnswer(130, this, 'D')">D. Recomendar ejercicio extenuante diario.</li>
+                </ul>
+                <div class="justification" id="justification-130">La evaluación de la necesidad de reparación o reemplazo valvular es crucial en el manejo a largo plazo de la enfermedad valvular.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            126: "B", 
+            127: "B", 
+            128: "C", 
+            129: "C", 
+            130: "B" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

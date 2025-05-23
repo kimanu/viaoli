@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cardiología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 39</h2>
+                <p>Antonio, un hombre de 50 años con antecedentes de uso intravenoso de drogas, se presenta con fiebre persistente, dolor en las articulaciones y esplenomegalia. Durante el examen físico, se auscultan nuevos soplos cardíacos y se observa un pequeño nódulo doloroso en la almohadilla plantar de su pie derecho</p>
+                
+                <p>Exámenes Complementarios:</p>
+                <p>Hemocultivos: Positivos para Staphylococcus aureus.</p>
+                <p>Ecocardiograma: Muestra vegetaciones en la válvula tricúspide.</p>
+                
+            </div>
+            <div class="card question-card" data-index="191">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el factor de riesgo más relevante en el caso de Antonio para desarrollar endocarditis infecciosa?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(191, this, 'A')">A. Diabetes mellitus.</li>
+                    <li onclick="selectAnswer(191, this, 'B')">B. Uso intravenoso de drogas.</li>
+                    <li onclick="selectAnswer(191, this, 'C')">C. Antecedentes de cirugía cardíaca.</li>
+                    <li onclick="selectAnswer(191, this, 'D')">D. Hipertensión arterial.</li>
+                </ul>
+                <div class="justification" id="justification-191">El uso intravenoso de drogas es un importante factor de riesgo para la endocarditis infecciosa, especialmente en la válvula tricúspide.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="192">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la principal vía de entrada de los microorganismos que causan endocarditis infecciosa en pacientes como Antonio?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(192, this, 'A')">A. Procedimientos dentales.</li>
+                    <li onclick="selectAnswer(192, this, 'B')">B. Infecciones del tracto respiratorio.</li>
+                    <li onclick="selectAnswer(192, this, 'C')">C. Infecciones del tracto gastrointestinal.</li>
+                    <li onclick="selectAnswer(192, this, 'D')">D. Uso intravenoso de drogas.</li>
+                </ul>
+                <div class="justification" id="justification-192">El uso intravenoso de drogas proporciona una vía directa para la entrada de microorganismos a la circulación sanguínea.</div>
+            </div>
+            			
+            <div class="card question-card" data-index="193">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado el diagnóstico de endocarditis infecciosa en Antonio, ¿cuál sería el tratamiento inicial más adecuado?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(193, this, 'A')">A. Administrar antibióticos orales.</li>
+                    <li onclick="selectAnswer(193, this, 'B')">B. Iniciar terapia anticoagulante.</li>
+                    <li onclick="selectAnswer(193, this, 'C')">C. Prescribir analgésicos para el dolor articular.</li>
+                    <li onclick="selectAnswer(193, this, 'D')">D. Administrar antibióticos intravenosos.</li>
+                </ul>
+                <div class="justification" id="justification-193">El tratamiento inicial de la endocarditis infecciosa implica el uso de antibióticos intravenosos para abordar la infección de manera efectiva.</div>
+            </div>
+            				
+            <div class="card question-card" data-index="194">
+                <h3>❓ Pregunta:</h3>
+                <p>Dado que Antonio tiene hemocultivos positivos para Staphylococcus aureus, ¿cuál sería una complicación potencial que debe ser evaluada en el manejo de este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(194, this, 'A')">A. Insuficiencia cardíaca congestiva.</li>
+                    <li onclick="selectAnswer(194, this, 'B')">B. Embolia pulmonar.</li>
+                    <li onclick="selectAnswer(194, this, 'C')">C. Absceso cerebral.</li>
+                    <li onclick="selectAnswer(194, this, 'D')">D. Hipertensión arterial.</li>
+                </ul>
+                <div class="justification" id="justification-194">La endocarditis infecciosa por Staphylococcus aureus puede llevar a complicaciones sépticas, incluyendo la formación de abscesos cerebrales.</div>
+            </div>
+            <div class="card question-card" data-index="195">
+                				
+                <h3>❓ Pregunta:</h3>
+                <p>Además del tratamiento antibiótico, ¿cuál sería un aspecto importante en el manejo a largo plazo de la endocarditis infecciosa en Antonio?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(195, this, 'A')">A. Realizar ecocardiogramas seriados.</li>
+                    <li onclick="selectAnswer(195, this, 'B')">B. Prescribir anticoagulantes de por vida.</li>
+                    <li onclick="selectAnswer(195, this, 'C')">C. Programar intervención quirúrgica de seguimiento.</li>
+                    <li onclick="selectAnswer(195, this, 'D')">D. Iniciar tratamiento con antihipertensivos.</li>
+                </ul>
+                <div class="justification" id="justification-195">Los ecocardiogramas seriados son esenciales para evaluar la resolución de las vegetaciones y la función valvular en pacientes con endocarditis infecciosa.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            191: "B", 
+            192: "D", 
+            193: "D", 
+            194: "C", 
+            195: "D", 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>
