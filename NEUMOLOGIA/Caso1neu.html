@@ -148,24 +148,24 @@
                 <h3>❓ Pregunta:</h3>
                 <p>¿Cuál es la causa más común de derrame pleural transudativo?</p>
                 <ul class="options">
-                    <li onclick="selectAnswer(2234, this, 'A')">A. Indican infección bacteriana.</li>
-                    <li onclick="selectAnswer(2234, this, 'B')">B. Resultan de la exposición al sol.</li>
-                    <li onclick="selectAnswer(2234, this, 'C')">C. Reflejan una respuesta alérgica.</li>
-                    <li onclick="selectAnswer(2234, this, 'D')">D. No están relacionadas con la dermatitis.</li>
+                    <li onclick="selectAnswer(2234, this, 'A')">A. Neumonía.</li>
+                    <li onclick="selectAnswer(2234, this, 'B')">B. Insuficiencia cardíaca congestiva.</li>
+                    <li onclick="selectAnswer(2234, this, 'C')">C. Neoplasia pulmonar.</li>
+                    <li onclick="selectAnswer(2234, this, 'D')">D. Tuberculosis.</li>
                 </ul>
-                <div class="justification" id="justification-2234">Las vesículas en la dermatitis por contacto suelen ser una respuesta alérgica o irritante de la piel.</div>
+                <div class="justification" id="justification-2234">La insuficiencia cardíaca congestiva es la causa más común de derrame pleural transudativo, debido a la acumulación de líquido en los espacios intersticiales y pleurales debido a la congestión venosa pulmonar.</div>
             </div>
 
             <div class="card question-card" data-index="2235">
                 <h3>❓ Pregunta:</h3>
-                <p>¿Cuál sería la estrategia preventiva a largo plazo para evitar recurrencias de dermatitis por contacto en Isabel?</p>
+                <p>¿Cuál de las siguientes medidas terapéuticas es el tratamiento de primera línea para un derrame pleural sintomático?</p>
                 <ul class="options">
-                    <li onclick="selectAnswer(2235, this, 'A')">A. No aplicar ningún producto en las manos.</li>
-                    <li onclick="selectAnswer(2235, this, 'B')">B. Usar guantes protectores al lavar platos.</li>
-                    <li onclick="selectAnswer(2235, this, 'C')">C. Exponer las manos al sol durante períodos prolongados.</li>
-                    <li onclick="selectAnswer(2235, this, 'D')">D. Utilizar diferentes detergentes de manera aleatoria.</li>
+                    <li onclick="selectAnswer(2235, this, 'A')">A. Antibióticos.</li>
+                    <li onclick="selectAnswer(2235, this, 'B')">B. Diuréticos.</li>
+                    <li onclick="selectAnswer(2235, this, 'C')">C. Toracocentesis.</li>
+                    <li onclick="selectAnswer(2235, this, 'D')">D. Corticosteroides.</li>
                 </ul>
-                <div class="justification" id="justification-2235">El uso de guantes protectores puede prevenir la exposición directa a sustancias irritantes o alérgenos, reduciendo las recurrencias.</div>
+                <div class="justification" id="justification-2235">La toracocentesis es el tratamiento de primera línea para un derrame pleural sintomático, ya que permite el drenaje del líquido pleural acumulado para aliviar los síntomas respiratorios y facilitar el diagnóstico etiológico mediante el análisis del líquido pleural.</div>
             </div>
             <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
             <div id="results"></div>
@@ -178,9 +178,9 @@
         const correctAnswers = {
             461: "B",
             462: "C",
-            463: "B",
-            464: "C",
-            465: "B"
+            463: "A",
+            464: "B",
+            465: "C"
         };
 
         function selectAnswer(questionIndex, element, option) {
