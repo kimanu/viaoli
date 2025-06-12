@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTOMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none; /* Ocultar justificaciones inicialmente */
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>ESTOMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 10</h2>
+                <p>Paciente femenina de 30 años se presenta a la consulta odontológica quejándose de encías inflamadas y sangrado durante el cepillado dental. Refiere haber notado estos síntomas durante los últimos 2 meses y está preocupada por la salud de sus encías. La paciente menciona que ha tenido una rutina de higiene oral regular, pero ha notado un aumento en el sangrado de las encías y la sensibilidad dental en las últimas semanas. En la exploración clínica, se observa inflamación difusa de las encías, presencia de placa bacteriana y cálculo supragingival. No se evidencia movilidad dentaria ni bolsas periodontales.</p>
+            
+            </div>
+
+            <div class="card question-card" data-index="2701">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el diagnóstico más probable en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2701, this)">A. Gingivitis crónica</li>
+                    <li onclick="selectAnswer(2701, this)">B. Gingivitis aguda</li>
+                    <li onclick="selectAnswer(2701, this)">C. Gingivitis asociada con enfermedad sistémica</li>
+                    <li onclick="selectAnswer(2701, this)">D. Gingivitis asociada con el uso de medicamentos</li>
+                </ul>
+                <div class="justification" id="justification-2701">El diagnóstico más probable en este caso es la gingivitis crónica. La presencia de encías inflamadas, sangrado durante el cepillado dental y placa bacteriana son características consistentes con la gingivitis, y la duración de los síntomas durante al menos 2 meses sugiere una forma crónica de la enfermedad.</div>
+            </div>
+
+            <div class="card question-card" data-index="2702">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el factor etiológico principal de la gingivitis crónica en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2702, this)">A. Placa bacteriana</li>
+                    <li onclick="selectAnswer(2702, this)">B. Consumo de tabaco</li>
+                    <li onclick="selectAnswer(2702, this)">C. Cambios hormonales</li>
+                    <li onclick="selectAnswer(2702, this)">D. Uso de medicamentos</li>
+                </ul>
+            <div class="justification" id="justification-2702">El factor etiológico principal de la gingivitis crónica en este caso es la placa bacteriana. La placa bacteriana es una película pegajosa compuesta principalmente de bacterias que se forma en la superficie de los dientes y las encías si no se elimina adecuadamente mediante la higiene oral regular. La acumulación de placa bacteriana en los tejidos gingivales puede desencadenar una respuesta inflamatoria, lo que lleva a la gingivitis.</div>
+            </div>
+            
+        
+        <div class="container">
+            <div class="card question-card" data-index="2703">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tratamiento inicial recomendado para la gingivitis crónica en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2703, this)">A. Procedimiento de raspado y alisado radicular</li>
+                    <li onclick="selectAnswer(2703, this)">B. Uso de enjuagues bucales con clorhexidina</li>
+                    <li onclick="selectAnswer(2703, this)">C. Mejora de la higiene oral y eliminación de placa bacteriana</li>
+                    <li onclick="selectAnswer(2703, this)">D. Administración de antibióticos sistémicos</li>
+                </ul>
+                <div class="justification" id="justification-2703">El tratamiento inicial recomendado para la gingivitis crónica es la mejora de la higiene oral y eliminación de placa bacteriana. Esto implica educar al paciente sobre la importancia de una adecuada técnica de cepillado dental, el uso de hilo dental y posiblemente la incorporación de otros dispositivos de higiene oral, como cepillos interdentales o irrigadores bucales. El procedimiento de raspado y alisado radicular se reserva para casos más avanzados de enfermedad periodontal, y la administración de antibióticos sistémicos no es parte del tratamiento inicial de rutina para la gingivitis.</div>
+            </div>
+
+            <div class="card question-card" data-index="2704">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la importancia de la evaluación de los hábitos de higiene oral del paciente en el tratamiento de la gingivitis crónica?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2704, this)">A. Identificar factores de riesgo para enfermedades sistémicas</li>
+                    <li onclick="selectAnswer(2704, this)">B. Prevenir la recurrencia de la enfermedad periodontal</li>
+                    <li onclick="selectAnswer(2704, this)">C. Evaluar la necesidad de tratamientos de conducto</li>
+                    <li onclick="selectAnswer(2704, this)">D. Reducir el riesgo de sensibilidad dental</li>
+                </ul>
+                <div class="justification" id="justification-2704">La importancia de la evaluación de los hábitos de higiene oral del paciente en el tratamiento de la gingivitis crónica es prevenir la recurrencia de la enfermedad periodontal. Una adecuada higiene oral es crucial para prevenir la acumulación de placa bacteriana y evitar la inflamación gingival asociada con la gingivitis. Identificar y corregir deficiencias en los hábitos de higiene oral del paciente es fundamental para mantener la salud periodontal a largo plazo y prevenir la recurrencia de la enfermedad.</div>
+            </div>
+
+            <div class="card question-card" data-index="2705">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el pronóstico de la gingivitis crónica con un tratamiento adecuado y la mejora de los hábitos de higiene oral?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2705, this)">A. Resolución completa sin secuelas</li>
+                    <li onclick="selectAnswer(2705, this)">B. Pérdida de dientes irreversible</li>
+                    <li onclick="selectAnswer(2705, this)">C. Desarrollo de periodontitis crónica</li>
+                    <li onclick="selectAnswer(2705, this)">D. Necesidad de injertos de tejido conectivo</li>
+                </ul>
+                <div class="justification" id="justification-2705">El pronóstico de la gingivitis crónica con un tratamiento adecuado y la mejora de los hábitos de higiene oral es la resolución completa sin secuelas en la mayoría de los casos. Con una adecuada educación sobre la higiene oral y la eliminación de placa bacteriana, junto con un seguimiento adecuado, es posible detener la progresión de la gingivitis y restaurar la salud de los tejidos gingivales sin dejar secuelas a largo plazo.</div>
+            </div>
+
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+   <script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = { 
+        2701: "A. Gingivitis crónica",
+        2702: "A. Placa bacteriana",
+        2703: "C. Mejora de la higiene oral y eliminación de placa bacteriana", 
+        2704: "B. Prevenir la recurrencia de la enfermedad periodontal", 
+        2705: "A. Resolución completa sin secuelas",
+    };
+
+    function selectAnswer(questionIndex, element) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        // Remover selección anterior
+        document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => {
+            li.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = element.innerText;
+
+        // Marcar como correcta o incorrecta
+        if (element.innerText === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+
+        // Mostrar justificación inmediata
+        document.getElementById(`justification-${questionIndex}`).style.display = 'block';
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let key in correctAnswers) {
+            if (selectedAnswers[key] === correctAnswers[key]) {
+                correct++;
+            }
+        }
+
+        let score = (correct / total) * 100;
+        let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+
+        document.getElementById('results').innerHTML = resultText;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+
+</body>
+</html>

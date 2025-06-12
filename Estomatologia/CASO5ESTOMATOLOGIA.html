@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTOMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none; /* Ocultar justificaciones inicialmente */
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>ESTOMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 5</h2>
+                <p>Paciente femenina de 30 años acude a consulta odontológica quejándose de encías inflamadas y sensibilidad dental al comer alimentos fríos o dulces. Refiere haber notado esta sintomatología durante los últimos 4 meses, especialmente después de haber dado a luz a su primer hijo hace 6 meses. La paciente menciona que ha mantenido una buena higiene oral, pero ha notado que las molestias en las encías y la sensibilidad dental no mejoran. En la exploración clínica, se observa inflamación difusa de las encías, especialmente en los dientes anteriores, con presencia de placa bacteriana y cálculo supragingival. No se evidencia movilidad dentaria ni bolsas periodontales.</p>
+            
+            </div>
+
+            <div class="card question-card" data-index="2676">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la causa más probable de la sensibilidad dental en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2676, this)">A. Enfermedad periodontal avanzada</li>
+                    <li onclick="selectAnswer(2676, this)">B. Defectos en el esmalte dental</li>
+                    <li onclick="selectAnswer(2676, this)">C. Consumo excesivo de alimentos ácidos</li>
+                    <li onclick="selectAnswer(2676, this)">D. Factores hormonales asociados al embarazo y el postparto</li>
+                </ul>
+                <div class="justification" id="justification-2676">La causa más probable de la sensibilidad dental en este caso son los factores hormonales asociados al embarazo y el postparto. Durante el embarazo y el postparto, los cambios hormonales pueden afectar los tejidos periodontales y aumentar la sensibilidad dental debido a la exposición de la dentina, especialmente en los dientes anteriores. Si bien los otros factores (enfermedad periodontal avanzada, defectos en el esmalte dental, consumo excesivo de alimentos ácidos) pueden contribuir a la sensibilidad dental, los cambios hormonales son una causa común en mujeres durante el embarazo y el postparto.</div>
+            </div>
+
+            <div class="card question-card" data-index="2677">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tratamiento principal recomendado para la sensibilidad dental en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2677, this)">A. Uso de enjuagues bucales con flúor</li>
+                    <li onclick="selectAnswer(2677, this)">B. Aplicación tópica de geles desensibilizantes</li>
+                    <li onclick="selectAnswer(2677, this)">C. Modificación de la dieta para reducir el consumo de alimentos ácidos</li>
+                    <li onclick="selectAnswer(2677, this)">D. Mejora de la técnica de cepillado dental</li>
+                </ul>
+            <div class="justification" id="justification-2677">El tratamiento principal recomendado para la sensibilidad dental en este caso es la aplicación tópica de geles desensibilizantes, que ayudan a bloquear los túbulos dentinarios expuestos y reducir la sensibilidad. Los enjuagues bucales con flúor también pueden ser útiles para fortalecer el esmalte dental y reducir la sensibilidad. Si bien la modificación de la dieta para reducir el consumo de alimentos ácidos y la mejora de la técnica de cepillado dental pueden ser recomendadas como medidas complementarias, la aplicación tópica de geles desensibilizantes es el tratamiento principal para la sensibilidad dental.</div>
+            </div>
+            
+        
+        <div class="container">
+            <div class="card question-card" data-index="2678">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Qué papel juegan los cambios hormonales asociados al embarazo en la salud periodontal de la paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2678, this)">A. Reducir el riesgo de enfermedad periodontal</li>
+                    <li onclick="selectAnswer(2678, this)">B. Aumentar el riesgo de gingivitis y periodontitis</li>
+                    <li onclick="selectAnswer(2678, this)">C. No tienen ningún efecto en la salud periodontal</li>
+                    <li onclick="selectAnswer(2678, this)">D. Fortalecer los tejidos periodontales</li>
+                </ul>
+                <div class="justification" id="justification-2678">Los cambios hormonales asociados al embarazo pueden aumentar el riesgo de gingivitis y periodontitis debido a la mayor susceptibilidad de los tejidos periodontales a la inflamación y la respuesta gingival exagerada a la placa bacteriana. Estos cambios hormonales pueden provocar una mayor acumulación de placa bacteriana y cálculo supragingival, lo que aumenta el riesgo de enfermedad periodontal en mujeres embarazadas y en el postparto. Por lo tanto, es importante que las mujeres embarazadas mantengan una buena higiene oral y realicen controles dentales regulares durante este período.
+</div>
+            </div>
+
+            <div class="card question-card" data-index="2679">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la importancia de la educación y el asesoramiento durante el embarazo en relación con la salud oral?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2679, this)">A. Reducir el riesgo de caries dental en el bebé</li>
+                    <li onclick="selectAnswer(2679, this)">B. Prevenir la pérdida de dientes en la madre</li>
+                    <li onclick="selectAnswer(2679, this)">C. Controlar la inflamación de las encías en la madre</li>
+                    <li onclick="selectAnswer(2679, this)">D.  Minimizar el riesgo de sensibilidad dental en la madre</li>
+                </ul>
+                <div class="justification" id="justification-2679">La importancia de la educación y el asesoramiento durante el embarazo en relación con la salud oral es reducir el riesgo de caries dental en el bebé. Durante el embarazo, las mujeres pueden transmitir bacterias cariogénicas a sus bebés, lo que aumenta el riesgo de caries dental en la infancia. La educación sobre la importancia de la higiene oral, la dieta saludable y las visitas dentales regulares durante el embarazo puede ayudar a reducir este riesgo y promover la salud oral tanto de la madre como del bebé. </div>
+            </div>
+
+            <div class="card question-card" data-index="2680">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el impacto de la lactancia materna en la salud oral del bebé?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2680, this)">A. Aumenta el riesgo de caries dental</li>
+                    <li onclick="selectAnswer(2680, this)">B. Reduce el riesgo de caries dental</li>
+                    <li onclick="selectAnswer(2680, this)">C. No tiene efecto en la salud oral del bebé</li>
+                    <li onclick="selectAnswer(2680, this)">D. Puede causar sensibilidad dental en el bebé</li>
+                </ul>
+                <div class="justification" id="justification-2680">La lactancia materna reduce el riesgo de caries dental en el bebé debido a las propiedades antimicrobianas y protectivas del calostro y la leche materna. La leche materna contiene anticuerpos y nutrientes que ayudan a fortalecer el sistema inmunológico y proteger contra la caries dental. Además, la succión durante la lactancia materna promueve el desarrollo adecuado de la mandíbula y la alineación de los dientes, lo que también puede contribuir a la salud oral del bebé. Por lo tanto, la lactancia materna se considera beneficiosa para la salud oral del bebé.</div>
+            </div>
+
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+   <script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = { 
+        2676: "D. Factores hormonales asociados al embarazo y el postparto",
+        2677: "B. Aplicación tópica de geles desensibilizantes",
+        2678: "B. Aumentar el riesgo de gingivitis y periodontitis", 
+        2679: "A. Reducir el riesgo de caries dental en el bebé", 
+        2680: "B. Reduce el riesgo de caries dental",
+    };
+
+    function selectAnswer(questionIndex, element) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        // Remover selección anterior
+        document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => {
+            li.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = element.innerText;
+
+        // Marcar como correcta o incorrecta
+        if (element.innerText === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+
+        // Mostrar justificación inmediata
+        document.getElementById(`justification-${questionIndex}`).style.display = 'block';
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let key in correctAnswers) {
+            if (selectedAnswers[key] === correctAnswers[key]) {
+                correct++;
+            }
+        }
+
+        let score = (correct / total) * 100;
+        let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+
+        document.getElementById('results').innerHTML = resultText;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+
+</body>
+</html>

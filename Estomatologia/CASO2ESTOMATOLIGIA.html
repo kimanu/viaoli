@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTOMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none; /* Ocultar justificaciones inicialmente */
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>ESTOMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 2</h2>
+                <p>Paciente masculino de 35 años acude a consulta odontológica quejándose de inflamación y sangrado en las encías al cepillarse los dientes. Refiere haber notado este problema durante los últimos 6 meses. Además, menciona haber experimentado mal aliento ocasionalmente. En la exploración clínica, se observa una inflamación difusa de las encías, con presencia de placa bacteriana y cálculo supragingival en varias áreas. No se evidencian bolsas periodontales ni movilidad dentaria.</p>
+            
+            </div>
+
+            <div class="card question-card" data-index="2661">
+                <h3>❓ Pregunta:</h3>
+                <p> ¿Cuál es el factor de riesgo más relevante para el desarrollo de gingivitis en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2661, this)">A. Edad avanzada</li>
+                    <li onclick="selectAnswer(2661, this)">B. Consumo excesivo de bebidas alcohólicas</li>
+                    <li onclick="selectAnswer(2661, this)">C. Antecedentes de enfermedad cardiovascular</li>
+                    <li onclick="selectAnswer(2661, this)">D. Presencia de placa bacteriana y cálculo supragingival</li>
+                </ul>
+                <div class="justification" id="justification-2661">En este caso, el factor de riesgo más relevante para el desarrollo de gingivitis es la presencia de placa bacteriana y cálculo supragingival. Estos depósitos contribuyen a la inflamación de las encías y al sangrado gingival característico de la gingivitis.</div>
+            </div>
+
+            <div class="card question-card" data-index="2662">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Qué tipo de higiene oral se recomienda principalmente para prevenir la gingivitis?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2662, this)">A. Cepillado dental después de cada comida</li>
+                    <li onclick="selectAnswer(2662, this)">B. Uso de hilo dental una vez al día</li>
+                    <li onclick="selectAnswer(2662, this)">C. Enjuague bucal con alcohol diario</li>
+                    <li onclick="selectAnswer(2662, this)">D. Visitar al odontólogo cada 6 meses</li>
+                </ul>
+                <div class="justification" id="justification-2662">El cepillado dental después de cada comida es la medida de higiene oral más recomendada para prevenir la gingivitis. Ayuda a eliminar la placa bacteriana de la superficie de los dientes y las encías, reduciendo así el riesgo de inflamación y sangrado gingival. El uso de hilo dental una vez al día también es importante para limpiar entre los dientes donde el cepillo no puede alcanzar. Los enjuagues bucales con alcohol no son recomendados ya que pueden contribuir a la sequedad bucal y empeorar la gingivitis. </div>
+            </div>
+            
+        
+        <div class="container">
+            <div class="card question-card" data-index="2663">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tratamiento inicial recomendado para la gingivitis en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2663, this)">A. Procedimiento de raspado y alisado radicular</li>
+                    <li onclick="selectAnswer(2663, this)">B. Uso de antibióticos sistémicos</li>
+                    <li onclick="selectAnswer(2663, this)">C. Aplicación tópica de corticosteroides</li>
+                    <li onclick="selectAnswer(2663, this)">D. Mejora de la higiene oral y eliminación de placa bacteriana</li>
+                </ul>
+                <div class="justification" id="justification-2663">El tratamiento inicial recomendado para la gingivitis en este caso es la mejora de la higiene oral y la eliminación de placa bacteriana, que incluye educación sobre técnica de cepillado, uso de hilo dental y posiblemente la remoción de cálculo supragingival en el consultorio dental. Los procedimientos de raspado y alisado radicular se reservan para casos más avanzados de enfermedad periodontal.</div>
+            </div>
+
+            <div class="card question-card" data-index="2664">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Qué factores pueden agravar la gingivitis?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2664, this)">A. Reduce el riesgo de desarrollar gingivitis</li>
+                    <li onclick="selectAnswer(2664, this)">B. No tiene efecto en la salud gingival</li>
+                    <li onclick="selectAnswer(2664, this)">C. Aumenta el riesgo de desarrollar gingivitis</li>
+                    <li onclick="selectAnswer(2664, this)">D. Solo afecta la salud gingival en niños y adolescentes</li>
+                </ul>
+                <div class="justification" id="justification-2664">El estrés puede aumentar el riesgo de desarrollar gingivitis debido a sus efectos sobre el sistema inmunológico y la capacidad del cuerpo para combatir la inflamación. El estrés crónico puede debilitar el sistema inmunológico y hacer que el cuerpo sea más susceptible a la inflamación, lo que puede contribuir al desarrollo y progresión de la gingivitis. </div>
+            </div>
+
+            <div class="card question-card" data-index="2665">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la importancia del control periódico de la gingivitis?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2665, this)">A. Evitar la necesidad de tratamiento dental</li>
+                    <li onclick="selectAnswer(2665, this)">B. Prevenir la pérdida de dientes</li>
+                    <li onclick="selectAnswer(2665, this)">C. Mantener la estética dental</li>
+                    <li onclick="selectAnswer(2665, this)">D. Detectar y tratar a tiempo posibles complicaciones</li>
+                </ul>
+                <div class="justification" id="justification-2665">El control periódico de la gingivitis es importante para detectar y tratar a tiempo posibles complicaciones, como la progresión a enfermedad periodontal más grave (periodontitis), que puede conducir a la pérdida de dientes y afectar la salud oral y general del paciente. Además, estos controles permiten evaluar la eficacia del tratamiento y realizar ajustes si es necesario para mantener la salud gingival a largo plazo.</div>
+            </div>
+
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+   <script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = { 
+        2661: "D. Presencia de placa bacteriana y cálculo supragingival",
+        2662: "A. Cepillado dental después de cada comida",
+        2663: "D. Mejora de la higiene oral y eliminación de placa bacteriana", 
+        2664: "C. Aumenta el riesgo de desarrollar gingivitis", 
+        2665: "D. Detectar y tratar a tiempo posibles complicaciones",
+    };
+
+    function selectAnswer(questionIndex, element) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        // Remover selección anterior
+        document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => {
+            li.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = element.innerText;
+
+        // Marcar como correcta o incorrecta
+        if (element.innerText === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+
+        // Mostrar justificación inmediata
+        document.getElementById(`justification-${questionIndex}`).style.display = 'block';
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let key in correctAnswers) {
+            if (selectedAnswers[key] === correctAnswers[key]) {
+                correct++;
+            }
+        }
+
+        let score = (correct / total) * 100;
+        let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+
+        document.getElementById('results').innerHTML = resultText;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+
+</body>
+</html>

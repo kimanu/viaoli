@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTOMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none; /* Ocultar justificaciones inicialmente */
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>ESTOMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 4</h2>
+                <p>Paciente masculino de 55 años acude a consulta odontológica con quejas de sangrado y mal aliento persistente. Refiere haber notado estos síntomas durante los últimos 6 meses, pero no les había dado importancia hasta ahora. El paciente menciona haber tenido una rutina de higiene oral regular, pero ha notado que el sangrado gingival ha aumentado en frecuencia y que el mal aliento se ha vuelto más notable. En la exploración clínica, se observa una inflamación generalizada de las encías, con presencia de placa bacteriana, cálculo supragingival y bolsas periodontales profundas en varios dientes. Se evidencia movilidad dentaria en algunos dientes posteriores.</p>
+            
+            </div>
+
+            <div class="card question-card" data-index="2671">
+                <h3>❓ Pregunta:</h3>
+                <p> Cuál es el signo clínico más preocupante en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2671, this)">A. Presencia de placa bacteriana</li>
+                    <li onclick="selectAnswer(2671, this)">B. Sangrado gingival frecuente</li>
+                    <li onclick="selectAnswer(2671, this)">C. Mal aliento persistente</li>
+                    <li onclick="selectAnswer(2671, this)">D. Movilidad dentaria</li>
+                </ul>
+                <div class="justification" id="justification-2671">La movilidad dentaria es el signo clínico más preocupante en este caso, ya que indica una pérdida considerable de soporte óseo y tejidos periodontales alrededor de los dientes afectados. La movilidad dentaria es un signo de enfermedad periodontal avanzada, como la periodontitis, y puede ser un indicador de pronóstico menos favorable para esos dientes. Aunque el sangrado gingival frecuente y el mal aliento persistente son síntomas preocupantes, la movilidad dentaria sugiere una etapa más avanzada de la enfermedad periodontal.</div>
+            </div>
+
+            <div class="card question-card" data-index="2672">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tratamiento principal recomendado para la movilidad dentaria en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2672, this)">A. Aplicación tópica de antimicrobianos</li>
+                    <li onclick="selectAnswer(2672, this)">B. Extracción de los dientes afectados</li>
+                    <li onclick="selectAnswer(2672, this)">C. Injertos óseos para regeneración periodontal</li>
+                    <li onclick="selectAnswer(2672, this)">D. Colocación de prótesis dentales fijas</li>
+                </ul>
+                <div class="justification" id="justification-2672">El tratamiento principal recomendado para la movilidad dentaria en este caso es la regeneración periodontal mediante injertos óseos. Este procedimiento tiene como objetivo reconstruir el hueso perdido alrededor de los dientes afectados para mejorar la estabilidad y funcionalidad dentaria. La aplicación tópica de antimicrobianos puede ser parte del tratamiento para controlar la infección, pero no aborda directamente la movilidad dentaria. La extracción de los dientes afectados y la colocación de prótesis dentales fijas pueden ser consideradas como último recurso si los tratamientos conservadores no son efectivos.</div>
+            </div>
+            
+        
+        <div class="container">
+            <div class="card question-card" data-index="2673">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el objetivo principal del tratamiento de la periodontitis en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2673, this)">A. Eliminar el mal aliento</li>
+                    <li onclick="selectAnswer(2673, this)">B. Reducir la movilidad dentaria</li>
+                    <li onclick="selectAnswer(2673, this)">C. Controlar la inflamación de las encías</li>
+                    <li onclick="selectAnswer(2673, this)">D. Detener la progresión de la enfermedad periodontal</li>
+                </ul>
+                <div class="justification" id="justification-2673">El objetivo principal del tratamiento de la periodontitis en este caso es detener la progresión de la enfermedad periodontal, que incluye la reducción de la movilidad dentaria y la preservación de los tejidos de soporte del diente. Si bien controlar la inflamación de las encías y eliminar el mal aliento son objetivos importantes del tratamiento, detener la progresión de la enfermedad periodontal es esencial para preservar la salud dental a largo plazo.</div>
+            </div>
+
+            <div class="card question-card" data-index="2674">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el papel de la cirugía periodontal en el tratamiento de la periodontitis avanzada?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2674, this)">A. Eliminar la placa bacteriana y el cálculo supragingival</li>
+                    <li onclick="selectAnswer(2674, this)">B. Reducir la inflamación de las encías</li>
+                    <li onclick="selectAnswer(2674, this)">C. Estabilizar los dientes afectados</li>
+                    <li onclick="selectAnswer(2674, this)">D. Regenerar el tejido periodontal perdido</li>
+                </ul>
+                <div class="justification" id="justification-2674">La cirugía periodontal en el tratamiento de la periodontitis avanzada tiene como objetivo regenerar el tejido periodontal perdido, incluyendo el hueso y los tejidos blandos, para mejorar la estabilidad y funcionalidad dentaria. Si bien la eliminación de la placa bacteriana y el cálculo supragingival, la reducción de la inflamación de las encías y la estabilización de los dientes afectados son parte del tratamiento periodontal, la regeneración del tejido periodontal perdido es un objetivo específico de la cirugía periodontal en casos avanzados de periodontitis.</div>
+            </div>
+
+            <div class="card question-card" data-index="2675">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la importancia de la educación y el seguimiento del paciente después del tratamiento de la periodontitis?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2675, this)">A. Prevenir la aparición de caries dental</li>
+                    <li onclick="selectAnswer(2675, this)">B. Controlar la inflamación de las encías</li>
+                    <li onclick="selectAnswer(2675, this)">C. Mantener la salud de los tejidos periodontales</li>
+                    <li onclick="selectAnswer(2675, this)">D. Evaluar la necesidad de tratamiento de conducto</li>
+                </ul>
+                <div class="justification" id="justification-2675">La importancia de la educación y el seguimiento del paciente después del tratamiento de la periodontitis es mantener la salud de los tejidos periodontales a largo plazo. Esto incluye instruir al paciente sobre una adecuada higiene oral, realizar visitas de seguimiento periódicas para evaluar la salud periodontal y proporcionar instrucciones sobre medidas de prevención y mantenimiento. Si bien controlar la inflamación de las encías y prevenir la aparición de caries dental son aspectos importantes del seguimiento del paciente, el enfoque principal es mantener la salud de los tejidos periodontales y prevenir la recurrencia de la enfermedad periodontal.</div>
+            </div>
+
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+   <script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = { 
+        2671: "D. Movilidad dentaria",
+        2672: "C. Injertos óseos para regeneración periodontal",
+        2673: "D. Detener la progresión de la enfermedad periodontal", 
+        2674: "D. Regenerar el tejido periodontal perdido", 
+        2675: "D. Detectar y tratar a tiempo posibles complicaciones",
+    };
+
+    function selectAnswer(questionIndex, element) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        // Remover selección anterior
+        document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => {
+            li.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = element.innerText;
+
+        // Marcar como correcta o incorrecta
+        if (element.innerText === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+
+        // Mostrar justificación inmediata
+        document.getElementById(`justification-${questionIndex}`).style.display = 'block';
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let key in correctAnswers) {
+            if (selectedAnswers[key] === correctAnswers[key]) {
+                correct++;
+            }
+        }
+
+        let score = (correct / total) * 100;
+        let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+
+        document.getElementById('results').innerHTML = resultText;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+
+</body>
+</html>

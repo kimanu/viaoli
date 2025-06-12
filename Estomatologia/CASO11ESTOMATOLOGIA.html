@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTOMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none; /* Ocultar justificaciones inicialmente */
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>ESTOMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 11</h2>
+                <p>Un paciente masculino de 40 años es llevado a urgencias después de un accidente automovilístico de alta velocidad. El paciente estaba conduciendo cuando otro vehículo lo impactó frontalmente. Al llegar al hospital, se queja de dolor facial intenso y dificultad para respirar por la nariz. Durante el examen físico, se observa deformidad facial, equimosis alrededor de los ojos y la nariz, y epistaxis persistente. El paciente presenta dificultad para cerrar la mandíbula y al morder alimentos.</p>
+            
+            </div>
+
+            <div class="card question-card" data-index="2706">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tipo más común de fractura facial asociada con impactos de alta energía como el descrito en el caso clínico?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2706, this)">A. Fractura de mandíbula</li>
+                    <li onclick="selectAnswer(2706, this)">B. Fractura nasal</li>
+                    <li onclick="selectAnswer(2706, this)">C. Fractura de Lefort</li>
+                    <li onclick="selectAnswer(2706, this)">D. Fractura de órbita</li>
+                </ul>
+                <div class="justification" id="justification-2706">La fractura de Lefort es comúnmente asociada con traumas faciales de alta energía, como accidentes automovilísticos. Este tipo de fractura puede resultar de un impacto directo en la región maxilofacial y puede causar deformidades faciales significativas, junto con epistaxis, dolor facial intenso y dificultad para cerrar la mandíbula.</div>
+            </div>
+
+            <div class="card question-card" data-index="2707">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la clasificación de las fracturas de Lefort basada en la ubicación de la fractura con respecto a la pirámide nasal?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2707, this)">A. Tipo I, Tipo II, Tipo III</li>
+                    <li onclick="selectAnswer(2707, this)">B. Tipo A, Tipo B, Tipo C</li>
+                    <li onclick="selectAnswer(2707, this)">C. Clase I, Clase II, Clase III</li>
+                    <li onclick="selectAnswer(2707, this)">D. Grado I, Grado II, Grado III</li>
+                </ul>
+            <div class="justification" id="justification-2707">Las fracturas de Lefort se clasifican en tres tipos (A, B, C) según la ubicación de la fractura con respecto a la pirámide nasal y el maxilar. La clasificación Tipo A involucra la parte superior del maxilar y la pared lateral de la pirámide nasal. La clasificación Tipo B involucra la fosa pterigomaxilar y la pared lateral del seno maxilar. La clasificación Tipo C involucra el paladar maxilar y la línea pterigomaxilar.</div>
+            </div>
+            
+        
+        <div class="container">
+            <div class="card question-card" data-index="2708">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el hallazgo clínico característico de una fractura de Lefort Tipo II?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2708, this)">A. Dolor al masticar</li>
+                    <li onclick="selectAnswer(2708, this)">B. Disminución de la movilidad de la mandíbula</li>
+                    <li onclick="selectAnswer(2708, this)">C. Crepitación durante la palpación de la zona afectada</li>
+                    <li onclick="selectAnswer(2708, this)">D. Equimosis periorbitaria bilateral (ojos de mapache)</li>
+                </ul>
+                <div class="justification" id="justification-2708">La equimosis periorbitaria bilateral, conocida como "ojos de mapache", es un hallazgo clínico característico de una fractura de Lefort Tipo II. Esto se debe a la extravasación de sangre en los tejidos blandos alrededor de los ojos como resultado del trauma facial.</div>
+            </div>
+
+            <div class="card question-card" data-index="2709">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes estructuras es comúnmente afectada en una fractura de Lefort Tipo III?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2709, this)">A. Mandíbula</li>
+                    <li onclick="selectAnswer(2709, this)">B. Seno frontal</li>
+                    <li onclick="selectAnswer(2709, this)">C. Paladar duro</li>
+                    <li onclick="selectAnswer(2709, this)">D. Seno maxilar</li>
+                </ul>
+                <div class="justification" id="justification-2709"> En una fractura de Lefort Tipo III, el paladar duro es comúnmente afectado. Esta clasificación involucra la fractura de la pirámide nasal, el maxilar y el paladar duro, lo que puede resultar en una separación de la cara desde la base del cráneo y causar deformidades faciales significativas.</div>
+            </div>
+
+            <div class="card question-card" data-index="2710">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el manejo inicial recomendado para una fractura de Lefort en el departamento de emergencias?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2710, this)">A. Reducción cerrada de la fractura</li>
+                    <li onclick="selectAnswer(2710, this)">B. Colocación de un collarín cervical</li>
+                    <li onclick="selectAnswer(2710, this)">C. Administración de antibióticos intravenosos</li>
+                    <li onclick="selectAnswer(2710, this)">D. Estabilización de la vía aérea y control del sangrado</li>
+                </ul>
+                <div class="justification" id="justification-2710">El manejo inicial recomendado para una fractura de Lefort en el departamento de emergencias es la estabilización de la vía aérea y el control del sangrado. Es crucial asegurar una vía aérea permeable y controlar cualquier hemorragia para prevenir la obstrucción de las vías respiratorias y la pérdida excesiva de sangre antes de considerar cualquier tratamiento específico para la fractura.
+</div>
+            </div>
+
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+   <script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = { 
+        2706: "C. Fractura de Lefort",
+        2707: "B. Tipo A, Tipo B, Tipo C",
+        2708: "D. Equimosis periorbitaria bilateral (ojos de mapache)", 
+        2709: "C. Paladar duro", 
+        2710: "D. Estabilización de la vía aérea y control del sangrado",
+    };
+
+    function selectAnswer(questionIndex, element) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        // Remover selección anterior
+        document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => {
+            li.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = element.innerText;
+
+        // Marcar como correcta o incorrecta
+        if (element.innerText === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+
+        // Mostrar justificación inmediata
+        document.getElementById(`justification-${questionIndex}`).style.display = 'block';
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let key in correctAnswers) {
+            if (selectedAnswers[key] === correctAnswers[key]) {
+                correct++;
+            }
+        }
+
+        let score = (correct / total) * 100;
+        let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+
+        document.getElementById('results').innerHTML = resultText;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+
+</body>
+</html>

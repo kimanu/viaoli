@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTOMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none; /* Ocultar justificaciones inicialmente */
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>ESTOMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 8</h2>
+                <p>Paciente femenina de 25 años acude a la consulta odontológica con quejas de encías inflamadas y sangrado durante el cepillado dental. Refiere haber notado estos síntomas durante los últimos 3 meses, especialmente durante el embarazo, del cual está en su segundo trimestre. La paciente menciona que ha mantenido una buena higiene oral, pero ha notado que el sangrado de las encías ha aumentado en frecuencia y que siente que sus encías están más sensibles. En la exploración clínica, se observa inflamación generalizada de las encías, con presencia de placa bacteriana y cálculo supragingival. No se evidencia movilidad dentaria ni bolsas periodontales.</p>
+            
+            </div>
+
+            <div class="card question-card" data-index="2691">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el diagnóstico más probable en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2691, this)">A. Gingivitis del embarazo</li>
+                    <li onclick="selectAnswer(2691, this)">B. Periodontitis del embarazo</li>
+                    <li onclick="selectAnswer(2691, this)">C. Gingivitis crónica</li>
+                    <li onclick="selectAnswer(2691, this)">D. Estomatitis gingival ulcerativa necrosante</li>
+                </ul>
+                <div class="justification" id="justification-2691">El diagnóstico más probable en este caso es la gingivitis del embarazo. La presencia de encías inflamadas, sangrado durante el cepillado dental y placa bacteriana son características consistentes con la gingivitis, y el contexto de embarazo y el aumento de los síntomas durante este período sugieren la gingivitis del embarazo. Este tipo de gingivitis está asociado con cambios hormonales durante el embarazo que pueden aumentar la susceptibilidad de los tejidos gingivales a la inflamación.</div>
+            </div>
+
+            <div class="card question-card" data-index="2692">
+                <h3>❓ Pregunta:</h3>
+                <p> ¿Cuál es el factor etiológico principal de la gingivitis del embarazo?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2692, this)">A. Placa bacteriana</li>
+                    <li onclick="selectAnswer(2692, this)">B. Consumo de tabaco</li>
+                    <li onclick="selectAnswer(2692, this)">C. Cambios hormonales</li>
+                    <li onclick="selectAnswer(2692, this)">D. Trauma oclusal</li>
+                </ul>
+                <div class="justification" id="justification-2692">El factor etiológico principal de la gingivitis del embarazo son los cambios hormonales asociados con la gestación. Durante el embarazo, hay un aumento en los niveles de hormonas como el estrógeno y la progesterona, lo que puede provocar una mayor susceptibilidad de los tejidos gingivales a la inflamación en respuesta a la placa bacteriana. Este aumento en la inflamación gingival es lo que caracteriza a la gingivitis del embarazo. </div>
+            </div>
+            
+        
+        <div class="container">
+            <div class="card question-card" data-index="2693">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tratamiento recomendado para la gingivitis del embarazo durante el segundo trimestre?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2693, this)">A. Procedimiento de raspado y alisado radicular</li>
+                    <li onclick="selectAnswer(2693, this)">B. Uso de enjuagues bucales con clorhexidina</li>
+                    <li onclick="selectAnswer(2693, this)">C. Mejora de la higiene oral y eliminación de placa bacteriana</li>
+                    <li onclick="selectAnswer(2693, this)">D. Administración de antibióticos sistémicos</li>
+                </ul>
+                <div class="justification" id="justification-2693">El tratamiento recomendado para la gingivitis del embarazo durante el segundo trimestre es la mejora de la higiene oral y la eliminación de placa bacteriana. Se debe enfatizar la importancia de una adecuada técnica de cepillado dental, el uso de hilo dental y posiblemente la incorporación de otros dispositivos de higiene oral, como cepillos interdentales o irrigadores bucales. El procedimiento de raspado y alisado radicular se reserva para casos más avanzados de enfermedad periodontal, y la administración de antibióticos sistémicos no es parte del tratamiento rutinario para la gingivitis del embarazo.</div>
+            </div>
+
+            <div class="card question-card" data-index="2694">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la importancia de la atención dental durante el embarazo en relación con la salud oral de la madre y el bebé?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2694, this)">A. Prevenir la aparición de caries dental</li>
+                    <li onclick="selectAnswer(2694, this)">B. Reducir el riesgo de gingivitis del embarazo</li>
+                    <li onclick="selectAnswer(2694, this)">C. Mantener la salud periodontal de la madre</li>
+                    <li onclick="selectAnswer(2694, this)">D. Evitar complicaciones durante el parto</li>
+                </ul>
+                <div class="justification" id="justification-2694">La importancia de la atención dental durante el embarazo en relación con la salud oral de la madre es mantener la salud periodontal. Durante el embarazo, los cambios hormonales pueden aumentar la susceptibilidad de los tejidos gingivales a la inflamación, lo que puede llevar a la gingivitis del embarazo. Mantener una buena salud periodontal durante el embarazo es importante no solo para la madre, sino también para la salud oral y general del bebé, ya que la salud oral materna está relacionada con el bienestar del bebé.</div>
+            </div>
+
+            <div class="card question-card" data-index="2695">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el pronóstico de la gingivitis del embarazo después del parto?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2695, this)">A. Resolución completa sin secuelas</li>
+                    <li onclick="selectAnswer(2695, this)">B. Desarrollo de periodontitis del embarazo</li>
+                    <li onclick="selectAnswer(2695, this)">C. Pérdida de dientes irreversible</li>
+                    <li onclick="selectAnswer(2695, this)">D. Necesidad de extracciones dentales</li>
+                </ul>
+                <div class="justification" id="justification-2695">El pronóstico de la gingivitis del embarazo después del parto es la resolución completa sin secuelas en la mayoría de los casos. La gingivitis del embarazo está relacionada con los cambios hormonales durante la gestación, y después del parto, los niveles hormonales tienden a volver a la normalidad. Con un tratamiento adecuado y una buena higiene oral, la inflamación gingival y el sangrado pueden resolverse por completo sin dejar secuelas a largo plazo.</div>
+            </div>
+
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+   <script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = { 
+        2691: "A. Gingivitis del embarazo",
+        2692: "C. Cambios hormonales",
+        2693: "C. Mejora de la higiene oral y eliminación de placa bacteriana", 
+        2694: "C. Mantener la salud periodontal de la madre", 
+        2695: "A. Resolución completa sin secuelas",
+    };
+
+    function selectAnswer(questionIndex, element) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        // Remover selección anterior
+        document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => {
+            li.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = element.innerText;
+
+        // Marcar como correcta o incorrecta
+        if (element.innerText === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+
+        // Mostrar justificación inmediata
+        document.getElementById(`justification-${questionIndex}`).style.display = 'block';
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let key in correctAnswers) {
+            if (selectedAnswers[key] === correctAnswers[key]) {
+                correct++;
+            }
+        }
+
+        let score = (correct / total) * 100;
+        let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+
+        document.getElementById('results').innerHTML = resultText;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+
+</body>
+</html>

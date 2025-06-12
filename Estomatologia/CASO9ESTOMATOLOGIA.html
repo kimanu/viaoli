@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTOMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none; /* Ocultar justificaciones inicialmente */
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>ESTOMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 9</h2>
+                <p>Paciente masculino de 35 años acude a la consulta odontológica quejándose de encías inflamadas y sensibilidad dental al morder alimentos duros. Refiere haber notado estos síntomas durante los últimos 6 meses, especialmente después de haber dejado de fumar hace 1 año. El paciente menciona que ha tenido una rutina de higiene oral regular, pero ha notado un aumento en la sensibilidad dental y la inflamación en las últimas semanas. En la exploración clínica, se observa inflamación difusa de las encías, recesión gingival en varios dientes y presencia de placa bacteriana. Se detecta movilidad dentaria y bolsas periodontales moderadas en algunos dientes.</p>
+            
+            </div>
+
+            <div class="card question-card" data-index="2696">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el diagnóstico más probable en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2696, this)">A. Gingivitis crónica</li>
+                    <li onclick="selectAnswer(2696, this)">B. Periodontitis crónica</li>
+                    <li onclick="selectAnswer(2696, this)">C. Periodontitis agresiva</li>
+                    <li onclick="selectAnswer(2696, this)">D. Hipersensibilidad dentinaria</li>
+                </ul>
+                <div class="justification" id="justification-2696">El diagnóstico más probable en este caso es la periodontitis crónica. La presencia de encías inflamadas, sensibilidad dental al morder alimentos duros, recesión gingival, movilidad dentaria y bolsas periodontales moderadas son características consistentes con la periodontitis crónica, que es una enfermedad inflamatoria de los tejidos de soporte del diente que progresa lentamente con el tiempo.</div>
+            </div>
+
+            <div class="card question-card" data-index="2697">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el factor etiológico principal de la periodontitis crónica en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2697, this)">A. Placa bacteriana</li>
+                    <li onclick="selectAnswer(2697, this)">B. Consumo de tabaco</li>
+                    <li onclick="selectAnswer(2697, this)">C. Cambios hormonales</li>
+                    <li onclick="selectAnswer(2697, this)">D. Trauma oclusal</li>
+                </ul>
+            <div class="justification" id="justification-2697">El factor etiológico principal de la periodontitis crónica en este caso es la placa bacteriana. La placa bacteriana es una película pegajosa compuesta principalmente de bacterias que se forma en la superficie de los dientes y las encías si no se elimina adecuadamente mediante la higiene oral regular. La acumulación de placa bacteriana en los tejidos gingivales puede desencadenar una respuesta inflamatoria y conducir a la destrucción progresiva de los tejidos de soporte del diente característica de la periodontitis.</div>
+            </div>
+            
+        
+        <div class="container">
+            <div class="card question-card" data-index="2698">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tratamiento recomendado para la periodontitis crónica en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2698, this)">A. Uso de enjuagues bucales con clorhexidina</li>
+                    <li onclick="selectAnswer(2698, this)">B. Procedimiento de raspado y alisado radicular</li>
+                    <li onclick="selectAnswer(2698, this)">C. dministración de antibióticos sistémicos</li>
+                    <li onclick="selectAnswer(2698, this)">D. Colocación de restauraciones dentales</li>
+                </ul>
+                <div class="justification" id="justification-2698">El tratamiento recomendado para la periodontitis crónica en este caso es el procedimiento de raspado y alisado radicular, que implica la eliminación de la placa bacteriana y el cálculo supragingival y subgingival de las superficies radiculares de los dientes afectados. Este procedimiento es fundamental para eliminar los factores etiológicos de la enfermedad periodontal y promover la resolución de la inflamación gingival y la estabilización de los tejidos de soporte del diente.</div>
+            </div>
+
+            <div class="card question-card" data-index="2699">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la importancia del abandono del hábito de fumar en el tratamiento de la periodontitis crónica?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2699, this)">A. Prevenir la recurrencia de la enfermedad periodontal</li>
+                    <li onclick="selectAnswer(2699, this)">B. Reducir el riesgo de sensibilidad dental</li>
+                    <li onclick="selectAnswer(2699, this)">C. Acelerar la cicatrización de las encías</li>
+                    <li onclick="selectAnswer(2699, this)">D. Mejorar la estética dental</li>
+                </ul>
+                <div class="justification" id="justification-2699">La importancia del abandono del hábito de fumar en el tratamiento de la periodontitis crónica es prevenir la recurrencia de la enfermedad periodontal. Fumar es un factor de riesgo conocido para la enfermedad periodontal y puede afectar negativamente la respuesta del cuerpo al tratamiento periodontal, incluida la cicatrización de las encías y la estabilización de los tejidos periodontales. Por lo tanto, dejar de fumar es crucial para mejorar los resultados a largo plazo del tratamiento periodontal.</div>
+            </div>
+
+            <div class="card question-card" data-index="2700">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el pronóstico de la gingivitis crónica con un tratamiento adecuado y una buena higiene oral?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2700, this)">A. Recurrencia de la enfermedad periodontal</li>
+                    <li onclick="selectAnswer(2700, this)">B. Pérdida de dientes irreversible</li>
+                    <li onclick="selectAnswer(2700, this)">C. Resolución completa sin secuelas</li>
+                    <li onclick="selectAnswer(2700, this)">D. Necesidad de injertos de tejido conectivo</li>
+                </ul>
+                <div class="justification" id="justification-2700">El pronóstico de la periodontitis crónica con un tratamiento adecuado y el control de los factores de riesgo es la resolución completa sin secuelas en la mayoría de los casos. Con un tratamiento periodontal adecuado, que puede incluir el procedimiento de raspado y alisado radicular, junto con una buena higiene oral y el control de los factores de riesgo como el tabaquismo, es posible detener la progresión de la enfermedad y lograr la estabilización de los tejidos de soporte del diente.</div>
+            </div>
+
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+   <script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = { 
+        2696: "B. Periodontitis crónica",
+        2697: "A. Placa bacteriana",
+        2698: "B. Procedimiento de raspado y alisado radicular", 
+        2699: "A. Prevenir la recurrencia de la enfermedad periodontal", 
+        2700: "C. Resolución completa sin secuelas",
+    };
+
+    function selectAnswer(questionIndex, element) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        // Remover selección anterior
+        document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => {
+            li.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = element.innerText;
+
+        // Marcar como correcta o incorrecta
+        if (element.innerText === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+
+        // Mostrar justificación inmediata
+        document.getElementById(`justification-${questionIndex}`).style.display = 'block';
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let key in correctAnswers) {
+            if (selectedAnswers[key] === correctAnswers[key]) {
+                correct++;
+            }
+        }
+
+        let score = (correct / total) * 100;
+        let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+
+        document.getElementById('results').innerHTML = resultText;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+
+</body>
+</html>

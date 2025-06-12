@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTOMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none; /* Ocultar justificaciones inicialmente */
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>ESTOMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 14</h2>
+                <p>Una mujer de 45 años acude a la consulta de urgencias con dolor facial después de sufrir una caída en su hogar. La paciente informa que resbaló en el baño y golpeó su rostro contra el lavabo. Durante el examen físico, se observa inflamación facial significativa, hematoma periorbitario izquierdo, dolor a la palpación en la región maxilofacial y sangrado gingival. La paciente tiene dificultad para abrir la boca y refiere dolor intenso al intentarlo.</p>
+            
+            </div>
+
+            <div class="card question-card" data-index="2721">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tipo más común de fractura facial asociada con traumas como el descrito en el caso clínico?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2721, this)">A. Fractura de mandíbula</li>
+                    <li onclick="selectAnswer(2721, this)">B. Fractura nasal</li>
+                    <li onclick="selectAnswer(2721, this)">C. Fractura de Lefort</li>
+                    <li onclick="selectAnswer(2721, this)">D. Fractura de órbita</li>
+                </ul>
+                <div class="justification" id="justification-2721">Las fracturas nasales son comunes en traumas faciales debido a caídas, accidentes deportivos o golpes directos en la nariz. La nariz es una de las estructuras faciales más prominentes y vulnerables a lesiones traumáticas.</div>
+            </div>
+
+            <div class="card question-card" data-index="2722">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la clasificación de las fracturas de Lefort basada en la ubicación de la fractura con respecto a la pirámide nasal?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2722, this)">A. Tipo I, Tipo II, Tipo III</li>
+                    <li onclick="selectAnswer(2722, this)">B. Tipo A, Tipo B, Tipo C</li>
+                    <li onclick="selectAnswer(2722, this)">C. Clase I, Clase II, Clase III</li>
+                    <li onclick="selectAnswer(2722, this)">D. Grado I, Grado II, Grado III</li>
+                </ul>
+            <div class="justification" id="justification-2722">Las fracturas de Lefort se clasifican en tres tipos (A, B, C) según la ubicación de la fractura con respecto a la pirámide nasal y el maxilar. Esta clasificación ayuda a determinar el manejo y la gravedad de la fractura.</div>
+            </div>
+            
+        
+        <div class="container">
+            <div class="card question-card" data-index="2723">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el hallazgo clínico característico de una fractura de Lefort Tipo I?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2723, this)">A. Hematoma periorbitario bilateral</li>
+                    <li onclick="selectAnswer(2723, this)">B. Crepitación en la región maxilofacial</li>
+                    <li onclick="selectAnswer(2723, this)">C. Hemorragia nasal unilateral</li>
+                    <li onclick="selectAnswer(2732, this)">D. Dificultad para abrir la boca</li>
+                </ul>
+                <div class="justification" id="justification-2723">La presencia de hematoma periorbitario bilateral es un hallazgo clínico característico de una fractura de Lefort Tipo I. Este tipo de fractura implica la pared maxilar lateral y la parte superior del maxilar, lo que puede resultar en hematomas alrededor de los ojos.</div>
+            </div>
+
+            <div class="card question-card" data-index="2724">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes estructuras es comúnmente afectada en una fractura de Lefort Tipo II?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2724, this)">A. Mandíbula</li>
+                    <li onclick="selectAnswer(2724, this)">B. Seno frontal</li>
+                    <li onclick="selectAnswer(2724, this)">C. Paladar duro</li>
+                    <li onclick="selectAnswer(2724, this)">D. Seno maxilar</li>
+                </ul>
+                <div class="justification" id="justification-2724"> En una fractura de Lefort Tipo II, el seno maxilar es comúnmente afectado. Este tipo de fractura involucra la fosa pterigomaxilar y la pared lateral del seno maxilar, lo que puede resultar en sangrado nasal y obstrucción del seno maxilar.</div>
+            </div>
+
+            <div class="card question-card" data-index="2725">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el manejo inicial recomendado para una fractura de Lefort en el departamento de emergencias?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2725, this)">A. Reducción cerrada de la fractura</li>
+                    <li onclick="selectAnswer(2725, this)">B. Colocación de un collarín cervical</li>
+                    <li onclick="selectAnswer(2725, this)">C. Administración de antibióticos intravenosos</li>
+                    <li onclick="selectAnswer(2725, this)">D. Estabilización de la vía aérea y control del sangrado</li>
+                </ul>
+                <div class="justification" id="justification-2725">El manejo inicial recomendado para una fractura de Lefort en el departamento de emergencias es la estabilización de la vía aérea y el control del sangrado. Es esencial asegurar una vía aérea permeable y controlar cualquier hemorragia para prevenir la obstrucción de las vías respiratorias y la pérdida excesiva de sangre antes de considerar cualquier tratamiento específico para la fractura.</div>
+            </div>
+
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+   <script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = { 
+        2721: "B. Fractura nasal",
+        2722: "B. Tipo A, Tipo B, Tipo C",
+        2723: "A. Hematoma periorbitario bilateral", 
+        2724: "D. Seno maxilar", 
+        2725: "D. Estabilización de la vía aérea y control del sangrado",
+    };
+
+    function selectAnswer(questionIndex, element) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        // Remover selección anterior
+        document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => {
+            li.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = element.innerText;
+
+        // Marcar como correcta o incorrecta
+        if (element.innerText === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+
+        // Mostrar justificación inmediata
+        document.getElementById(`justification-${questionIndex}`).style.display = 'block';
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let key in correctAnswers) {
+            if (selectedAnswers[key] === correctAnswers[key]) {
+                correct++;
+            }
+        }
+
+        let score = (correct / total) * 100;
+        let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+
+        document.getElementById('results').innerHTML = resultText;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+
+</body>
+</html>

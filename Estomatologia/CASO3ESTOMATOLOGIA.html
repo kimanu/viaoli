@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTOMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none; /* Ocultar justificaciones inicialmente */
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>ESTOMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 3</h2>
+                <p>Paciente femenina de 42 años presenta dolor e inflamación en las encías al cepillarse los dientes, acompañado de sangrado gingival espontáneo. La paciente refiere que ha notado esta sintomatología durante los últimos 3 meses, y además ha experimentado mal aliento de forma persistente. En la exploración clínica, se observa inflamación generalizada de las encías, con presencia de placa bacteriana, cálculo supragingival y bolsas periodontales moderadas en varios dientes posteriores. No se evidencia movilidad dentaria.</p>
+            
+            </div>
+
+            <div class="card question-card" data-index="2666">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la característica clínica más relevante que diferencia este caso de gingivitis de los casos anteriores?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2666, this)">A. Presencia de bolsas periodontales</li>
+                    <li onclick="selectAnswer(2666, this)">B. Edad avanzada de la paciente</li>
+                    <li onclick="selectAnswer(2666, this)">C. Sensibilidad gingival al consumo de alimentos y bebidas frías</li>
+                    <li onclick="selectAnswer(2666, this)">D. Mal aliento persistente</li>
+                </ul>
+                <div class="justification" id="justification-2666">La presencia de bolsas periodontales es la característica clínica más relevante que diferencia este caso de gingivitis de los casos anteriores. Las bolsas periodontales son espacios patológicos que se forman entre las encías y los dientes debido a la destrucción del tejido periodontal, lo cual es indicativo de enfermedad periodontal más avanzada, como la periodontitis. Las otras opciones (b, c, d) pueden estar presentes en casos de gingivitis, pero la presencia de bolsas periodontales sugiere una enfermedad periodontal más avanzada.</div>
+            </div>
+
+            <div class="card question-card" data-index="2667">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el principal objetivo del tratamiento periodontal en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2667, this)">A. Eliminar el sangrado gingival</li>
+                    <li onclick="selectAnswer(2667, this)">B. Reducir la inflamación de las encías</li>
+                    <li onclick="selectAnswer(2667, this)">C. Restaurar la pérdida de inserción periodontal</li>
+                    <li onclick="selectAnswer(2667, this)">D. Prevenir la pérdida ósea y la movilidad dentaria</li>
+                </ul>
+            <div class="justification" id="justification-2667">El principal objetivo del tratamiento periodontal en este caso es prevenir la pérdida ósea y la movilidad dentaria, lo cual implica detener la progresión de la enfermedad periodontal y preservar la salud de los tejidos de soporte del diente. Si bien eliminar el sangrado gingival y reducir la inflamación de las encías son objetivos importantes del tratamiento, el enfoque principal es prevenir la pérdida ósea y la movilidad dentaria.</div>
+            </div>
+            
+        
+        <div class="container">
+            <div class="card question-card" data-index="2668">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la técnica de higiene oral más recomendada para la paciente en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2668, this)">A. Cepillado dental suave</li>
+                    <li onclick="selectAnswer(2668, this)">B. Uso de cepillo interdental</li>
+                    <li onclick="selectAnswer(2668, this)">C. Aplicación tópica de enjuagues bucales con clorhexidina</li>
+                    <li onclick="selectAnswer(2668, this)">D. Uso de hilo dental en las áreas afectadas</li>
+                </ul>
+                <div class="justification" id="justification-2668">En casos de enfermedad periodontal con bolsas periodontaleso de cepillos interdentales es recomendado para limpiar eficazmente entre los dientes y en las áreas alrededor de las bolsas periodontales donde el cepillado convencional puede ser insuficiente. El cepillado dental suave, la aplicación tópica de enjuagues bucales con clorhexidina y el uso de hilo dental son importantes, pero el cepillo interdental es especialmente útil en este caso para una limpieza más profunda.</div>
+            </div>
+
+            <div class="card question-card" data-index="2669">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Qué procedimiento odontológico se recomienda para tratar las bolsas periodontales moderadas en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2669, this)">A. Raspado y alisado radicular</li>
+                    <li onclick="selectAnswer(2669, this)">B. Cirugía periodontal regenerativa</li>
+                    <li onclick="selectAnswer(2669, this)">C. Colocación de coronas dentales</li>
+                    <li onclick="selectAnswer(2669, this)">D. Extracción de los dientes afectados</li>
+                </ul>
+                <div class="justification" id="justification-2669">El procedimiento odontológico recomendado para tratar las bolsas periodontales moderadas en este caso es el raspado y alisado radicular, también conocido como curetaje y alisado radicular. Este procedimiento consiste en la eliminación de la placa bacteriana y el cálculo supragingival, así como la superficie rugosa de la raíz del diente, para promover la cicatrización y reducir la profundidad de las bolsas periodontales. </div>
+            </div>
+
+            <div class="card question-card" data-index="26770">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la importancia de la evaluación periódica de la paciente después del tratamiento periodontal?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2670, this)">A. Controlar la inflamación de las encías</li>
+                    <li onclick="selectAnswer(2670, this)">B. Mantener la estabilidad de los tejidos periodontales</li>
+                    <li onclick="selectAnswer(2670, this)">C. Prevenir la aparición de caries dental</li>
+                    <li onclick="selectAnswer(2670, this)">D. Evaluar la necesidad de tratamiento de conducto</li>
+                </ul>
+                <div class="justification" id="justification-2670">La importancia de la evaluación periódica de la paciente después del tratamiento periodontal es mantener la estabilidad de los tejidos periodontales y verificar la eficacia del tratamiento realizado. Durante estas visitas de seguimiento, se evalúa la salud gingival, se monitorea la profundidad de las bolsas periodontales y se realiza la limpieza profesional para mantener la salud de los tejidos periodontales.</div>
+            </div>
+
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+   <script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = { 
+        2666: "A. Presencia de bolsas periodontales",
+        2667: "D. Prevenir la pérdida ósea y la movilidad dentaria",
+        2668: "B. Uso de cepillo interdental", 
+        2669: "A. Raspado y alisado radicular", 
+        2670: "B. Mantener la estabilidad de los tejidos periodontales
+",
+    };
+
+    function selectAnswer(questionIndex, element) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        // Remover selección anterior
+        document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => {
+            li.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = element.innerText;
+
+        // Marcar como correcta o incorrecta
+        if (element.innerText === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+
+        // Mostrar justificación inmediata
+        document.getElementById(`justification-${questionIndex}`).style.display = 'block';
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let key in correctAnswers) {
+            if (selectedAnswers[key] === correctAnswers[key]) {
+                correct++;
+            }
+        }
+
+        let score = (correct / total) * 100;
+        let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+
+        document.getElementById('results').innerHTML = resultText;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+
+</body>
+</html>

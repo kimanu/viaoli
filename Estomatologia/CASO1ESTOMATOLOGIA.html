@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTOMATOLOGIA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none; /* Ocultar justificaciones inicialmente */
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>ESTOMATOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 1</h2>
+                <p>Paciente femenina de 28 años acude a consulta odontológica refiriendo sangrado gingival al cepillarse los dientes desde hace aproximadamente 2 semanas. Además, presenta halitosis ocasional y sensibilidad gingival al consumo de alimentos y bebidas frías. En la exploración clínica, se observa inflamación difusa de la encía marginal, con presencia de placa bacteriana y cálculo supragingival en algunas áreas. No se evidencian bolsas periodontales ni movilidad dentaria.</p>
+            
+            </div>
+
+            <div class="card question-card" data-index="2656">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el signo clínico más característico de la gingivitis?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2656, this)">A. Movilidad dentaria</li>
+                    <li onclick="selectAnswer(1256, this)">B. Sangrado gingival</li>
+                    <li onclick="selectAnswer(1256, this)">C. Pérdida de inserción periodontal</li>
+                    <li onclick="selectAnswer(1256, this)">D. Presencia de bolsas periodontales</li>
+                </ul>
+                <div class="justification" id="justification-2656">El signo clínico más característico de la gingivitis es el sangrado gingival, especialmente al cepillarse los dientes o al utilizar hilo dental. Este sangrado es debido a la inflamación de las encías y la respuesta inflamatoria a la placa bacteriana. No se observa movilidad dentaria, pérdida de inserción periodontal ni presencia de bolsas periodontales en la gingivitis, ya que estos son signos de enfermedad periodontal más avanzada.</div>
+            </div>
+
+            <div class="card question-card" data-index="2657">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tratamiento inicial recomendado para la gingivitis?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2657, this)">A. Procedimiento de raspado y alisado radicular</li>
+                    <li onclick="selectAnswer(2657, this)">B. Uso de enjuagues bucales con antibióticos</li>
+                    <li onclick="selectAnswer(2657, this)">C. Aplicación tópica de clorhexidina</li>
+                    <li onclick="selectAnswer(2657, this)">D. Mejora de la higiene oral y eliminación de placa bacteriana</li>
+                </ul>
+                <div class="justification" id="justification-2657">El tratamiento inicial recomendado para la gingivitis es la mejora de la higiene oral y la eliminación de placa bacteriana mediante la adecuada técnica de cepillado dental y el uso de hilo dental. Los procedimientos de raspado y alisado radicular, el uso de enjuagues bucales con antibióticos y la aplicación tópica de clorhexidina están indicados en casos de enfermedad periodontal más avanzada.</div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card question-card" data-index="2658">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la principal causa de la gingivitis?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2658, this)">A. Deficiencia de vitamina C</li>
+                    <li onclick="selectAnswer(2658, this)">B. Placa bacteriana</li>
+                    <li onclick="selectAnswer(2658, this)">C. Consumo excesivo de azúcares</li>
+                    <li onclick="selectAnswer(2658, this)">D. Factores genéticos</li>
+                </ul>
+                <div class="justification" id="justification-2658">La principal causa de la gingivitis es la placa bacteriana, que se forma en la superficie de los dientes y las encías debido a la acumulación de restos de alimentos y bacterias. La deficiencia de vitamina C, el consumo excesivo de azúcares y los factores genéticos pueden predisponer a la gingivitis, pero la placa bacteriana es el factor desencadenante.</div>
+            </div>
+
+            <div class="card question-card" data-index="2659">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Qué factores pueden agravar la gingivitis?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2659, this)">A. Consumo de alimentos ricos en fibra</li>
+                    <li onclick="selectAnswer(2659, this)">B. Uso de enjuagues bucales sin alcohol</li>
+                    <li onclick="selectAnswer(2659, this)">C. Tabaquismo</li>
+                    <li onclick="selectAnswer(2659, this)">D. Mantener una buena higiene oral</li>
+                </ul>
+                <div class="justification" id="justification-2659">El tabaquismo es un factor que puede agravar la gingivitis y contribuir al desarrollo de enfermedad periodontal. El humo del tabaco irrita las encías, reduce el flujo sanguíneo gingival y dificulta la cicatrización de los tejidos periodontales inflamados. El consumo de alimentos ricos en fibra y el uso de enjuagues bucales sin alcohol pueden ayudar a mejorar la salud gingival, mientras que mantener una buena higiene oral es fundamental para prevenir y tratar la gingivitis.</div>
+            </div>
+
+            <div class="card question-card" data-index="2660">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el objetivo principal del tratamiento de la gingivitis?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2660, this)">A. Eliminar la movilidad dentaria</li>
+                    <li onclick="selectAnswer(2660, this)">B. Reducir la sensibilidad gingival</li>
+                    <li onclick="selectAnswer(2660, this)">C. Prevenir la progresión a enfermedad periodontal</li>
+                    <li onclick="selectAnswer(2660, this)">D. Restaurar la pérdida de inserción periodontal</li>
+                </ul>
+                <div class="justification" id="justification-2660">El objetivo principal del tratamiento de la gingivitis es prevenir la progresión a enfermedad periodontal más grave, como la periodontitis, mediante la eliminación de la placa bacteriana y la inflamación gingival.</div>
+            </div>
+
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+   <script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = { 
+        2656: "B. Sangrado gingival",
+        2657: "D. Mejora de la higiene oral y eliminación de placa bacteriana",
+        2658: "B. Placa bacteriana", 
+        2659: "C. Tabaquismo", 
+        2660: "C. Prevenir la progresión a enfermedad periodontal",
+    };
+
+    function selectAnswer(questionIndex, element) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        // Remover selección anterior
+        document.querySelectorAll(`[data-index='${questionIndex}'] .options li`).forEach(li => {
+            li.classList.remove('selected', 'correct', 'incorrect');
+        });
+
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = element.innerText;
+
+        // Marcar como correcta o incorrecta
+        if (element.innerText === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+
+        // Mostrar justificación inmediata
+        document.getElementById(`justification-${questionIndex}`).style.display = 'block';
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let key in correctAnswers) {
+            if (selectedAnswers[key] === correctAnswers[key]) {
+                correct++;
+            }
+        }
+
+        let score = (correct / total) * 100;
+        let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+
+        document.getElementById('results').innerHTML = resultText;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+
+</body>
+</html>
