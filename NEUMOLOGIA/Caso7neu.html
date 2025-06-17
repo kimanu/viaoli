@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEUMOLOGÍA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>NEUMOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 1</h2>
+                <p>Una mujer de 32 años acude a la consulta médica quejándose de episodios recurrentes de sibilancias, opresión en el pecho y tos que empeoran por la noche y durante la actividad física. Ha experimentado estos síntomas desde la adolescencia y ha notado que se desencadenan por alérgenos ambientales como el polen y el polvo. Durante el examen físico, se observan sibilancias audibles en la auscultación pulmonar y una función pulmonar disminuida en la espirometría.</p>
+
+            </div>
+            <div class="card question-card" data-index="2261">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el diagnóstico más probable en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2261, this, 'A')">A. Enfermedad pulmonar obstructiva crónica (EPOC).</li>
+                    <li onclick="selectAnswer(2261, this, 'B')">B. Bronquitis crónica.</li>
+                    <li onclick="selectAnswer(2261, this, 'C')">C. Asma.</li>
+                    <li onclick="selectAnswer(2261, this, 'D')">D. Neumonía.</li>
+                </ul>
+                <div class="justification" id="justification-2261">Los síntomas recurrentes de sibilancias, opresión en el pecho y tos, que empeoran por la noche y durante la actividad física, junto con los desencadenantes alérgicos y los hallazgos en la espirometría, son consistentes con el diagnóstico de asma.</div>
+            </div>
+
+            <div class="card question-card" data-index="2262">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tratamiento de elección para el control a largo plazo del asma en este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2262, this, 'A')">A. Corticosteroides orales.</li>
+                    <li onclick="selectAnswer(2262, this, 'B')">B. Antagonistas de los receptores de leucotrienos.</li>
+                    <li onclick="selectAnswer(2262, this, 'C')">C. Broncodilatadores de acción corta.</li>
+                    <li onclick="selectAnswer(2262, this, 'D')">D. Corticosteroides inhalados.</li>
+                </ul>
+
+                <div class="justification" id="justification-2262">Los corticosteroides inhalados son el tratamiento de elección para el control a largo plazo del asma, ya que reducen la inflamación de las vías respiratorias y previenen los síntomas.</div>
+            </div>
+
+            <div class="card question-card" data-index="2263">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Qué tipo de medicamento se puede usar para aliviar los síntomas agudos de asma durante un ataque?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2263, this, 'A')">A. Antagonistas de los receptores de leucotrienos.</li>
+                    <li onclick="selectAnswer(2263, this, 'B')">B. Corticosteroides orales.</li>
+                    <li onclick="selectAnswer(2263, this, 'C')">C. Broncodilatadores de acción corta.</li>
+                    <li onclick="selectAnswer(2263, this, 'D')">D. Cromoglicato de sodio inhalado.</li>
+                </ul>
+                <div class="justification" id="justification-2263">Los broncodilatadores de acción corta, como el salbutamol inhalado, se utilizan para aliviar los síntomas agudos de asma durante un ataque al relajar los músculos de las vías respiratorias y mejorar la respiración.</div>
+            </div>
+
+            <div class="card question-card" data-index="2264">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de las siguientes medidas es importante para el manejo del asma en este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2264, this, 'A')">A. Evitar el ejercicio físico.</li>
+                    <li onclick="selectAnswer(2264, this, 'B')">B. Evitar los alérgenos desencadenantes.</li>
+                    <li onclick="selectAnswer(2264, this, 'C')">C. Fumar cigarrillos regularmente.</li>
+                    <li onclick="selectAnswer(2264, this, 'D')">D. Aumentar la exposición al polen y al polvo.</li>
+                </ul>
+                <div class="justification" id="justification-2264">Evitar los alérgenos desencadenantes, como el polen y el polvo, es una medida importante en el manejo del asma para reducir la frecuencia y gravedad de los síntomas.</div>
+            </div>
+
+            <div class="card question-card" data-index="2265">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál de los siguientes hallazgos en la espirometría es consistente con el diagnóstico de asma?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2265, this, 'A')">A. VEF1/FVC < 0.70.</li>
+                    <li onclick="selectAnswer(2265, this, 'B')">B. VEF1 > 80% del valor previsto.</li>
+                    <li onclick="selectAnswer(2265, this, 'C')">C. VEF1/FVC > 0.70.</li>
+                    <li onclick="selectAnswer(2265, this, 'D')">D. VEF1 < 80% del valor previsto.</li>
+                </ul>
+                <div class="justification" id="justification-2265">En el asma, se observa una disminución del volumen espiratorio forzado en 1 segundo (VEF1) a menos del 80% del valor previsto debido a la obstrucción de las vías respiratorias.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            2261: "C",
+            2262: "B",
+            2263: "B",
+            2264: "B",
+            22655: "C"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

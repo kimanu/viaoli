@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEUMOLOGÍA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>NEUMOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 1</h2>
+                <p>Una mujer de 65 años, con antecedentes de hipertensión arterial y diabetes mellitus tipo 2, presenta tos persistente y disnea progresiva de varios meses de evolución. En el examen físico, se auscultan crepitantes bilaterales en los campos pulmonares inferiores y se observa edema en miembros inferiores. Los análisis de laboratorio muestran una elevación de la urea y creatinina séricas. La radiografía de tórax revela derrame pleural bilateral y un patrón reticular en los campos pulmonares.</p>
+
+            </div>
+            <div class="card question-card" data-index="2241">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la causa más probable de los síntomas y hallazgos clínicos en esta paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2241, this, 'A')">A. Neumonía atípica.</li>
+                    <li onclick="selectAnswer(2241, this, 'B')">B. Insuficiencia cardíaca congestiva.</li>
+                    <li onclick="selectAnswer(2241, this, 'C')">C. Neumonitis intersticial.</li>
+                    <li onclick="selectAnswer(2241, this, 'D')">D. Enfermedad pulmonar obstructiva crónica (EPOC).</li>
+                </ul>
+                <div class="justification" id="justification-2241">La combinación de tos persistente, disnea progresiva, crepitantes bilaterales en los campos pulmonares inferiores, edema en miembros inferiores, elevación de la urea y creatinina séricas, y hallazgos radiológicos sugiere insuficiencia cardíaca congestiva.</div>
+            </div>
+
+            <div class="card question-card" data-index="2242">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tratamiento inicial más adecuado para esta paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2242, this, 'A')">A. Antibióticos de amplio espectro.</li>
+                    <li onclick="selectAnswer(2242, this, 'B')">B. Diuréticos y fármacos antiinflamatorios.</li>
+                    <li onclick="selectAnswer(2242, this, 'C')">C. Corticosteroides sistémicos.</li>
+                    <li onclick="selectAnswer(2242, this, 'D')">D. Oxigenoterapia y vasodilatadores.</li>
+                </ul>
+
+                <div class="justification" id="justification-2242">El tratamiento inicial para la insuficiencia cardíaca congestiva incluye diuréticos para reducir la congestión pulmonar y fármacos antiinflamatorios para mejorar la función cardiaca.</div>
+            </div>
+
+            <div class="card question-card" data-index="2243">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el mecanismo patofisiológico subyacente que conduce al derrame pleural en la insuficiencia cardíaca congestiva?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2243, this, 'A')">A. Aumento de la permeabilidad capilar pulmonar.</li>
+                    <li onclick="selectAnswer(2243, this, 'B')">B. Disminución de la presión oncótica del plasma.</li>
+                    <li onclick="selectAnswer(2243, this, 'C')">C. Obstrucción de los vasos linfáticos pulmonares.</li>
+                    <li onclick="selectAnswer(2243, this, 'D')">D. Aumento de la presión hidrostática capilar pulmonar.</li>
+                </ul>
+                <div class="justification" id="justification-2243">El derrame pleural en la insuficiencia cardíaca congestiva se produce debido al aumento de la presión hidrostática capilar pulmonar, lo que lleva a la transudación de líquido desde los capilares pulmonares hacia el espacio pleural.</div>
+            </div>
+
+            <div class="card question-card" data-index="2244">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Qué hallazgos en el examen físico pueden ayudar a diferenciar la insuficiencia cardíaca congestiva de otras causas de disnea?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2244, this, 'A')">A. Murmullo vesicular disminuido.</li>
+                    <li onclick="selectAnswer(2244, this, 'B')">B. Sibilancias inspiratorias.</li>
+                    <li onclick="selectAnswer(2244, this, 'C')">C. Crepitantes pulmonares bibasales.</li>
+                    <li onclick="selectAnswer(2244, this, 'D')">D. Dolor pleurítico al palpar el tórax.</li>
+                </ul>
+                <div class="justification" id="justification-2244">Los crepitantes pulmonares bibasales son característicos de la insuficiencia cardíaca congestiva y pueden ayudar a diferenciarla de otras causas de disnea.</div>
+            </div>
+
+            <div class="card question-card" data-index="2245">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el parámetro de laboratorio más útil para evaluar la función renal en pacientes con insuficiencia cardíaca congestiva?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2245, this, 'A')">A. Creatinina sérica.</li>
+                    <li onclick="selectAnswer(2245, this, 'B')">B. Urea sérica.</li>
+                    <li onclick="selectAnswer(2245, this, 'C')">C. Depuración de creatinina.</li>
+                    <li onclick="selectAnswer(2245, this, 'D')">D. Nitrógeno ureico en sangre (BUN).</li>
+                </ul>
+                <div class="justification" id="justification-2245">La creatinina sérica es el parámetro de laboratorio más útil para evaluar la función renal en pacientes con insuficiencia cardíaca congestiva, ya que refleja la filtración glomerular renal.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            2241: "B",
+            2242: "B",
+            2243: "D",
+            2244: "C",
+            2245: "A"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>
