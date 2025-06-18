@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 18</h2>
+                <p>"(Continuación del caso anterior)
+A pesar del drenaje quirúrgico, Juan muestra signos de deterioro. Se queja de un dolor abdominal intenso y difuso, y su abdomen está distendido. La fiebre persiste, y ahora también presenta signos de irritación peritoneal.
+Exámenes Complementarios:
+Examen físico: Abdomen distendido, signos de irritación peritoneal difusa.
+Hemograma: Leucocitosis con desviación a la izquierda persistente."</p>
+
+                <div class="card question-card" data-index="285">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dada la presencia de dolor abdominal intenso y signos de irritación peritoneal, ¿cuál es la complicación más probable en este punto?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(285, this, 'A')">A. Obstrucción intestinal.</li>
+                        <li onclick="selectAnswer(285, this, 'B')">B. Ileo paralítico.</li>
+                        <li onclick="selectAnswer(285, this, 'C')">C. Apendicitis recurrente.</li>
+                        <li onclick="selectAnswer(285, this, 'D')">D. Peritonitis.</li>
+                    </ul>
+                    <div class="justification" id="justification-285">Los signos de irritación peritoneal y el dolor abdominal difuso sugieren la presencia de peritonitis.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="286">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería el hallazgo clave en una radiografía de abdomen en posición supina en un paciente con peritonitis?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(286, this, 'A')">A. Imágenes de líquido libre.</li>
+                        <li onclick="selectAnswer(286, this, 'B')">B. Aumento de gas en el colon.</li>
+                        <li onclick="selectAnswer(286, this, 'C')">C. Ausencia de gas en el estómago.</li>
+                        <li onclick="selectAnswer(286, this, 'D')">D. Imágenes de apéndice inflamado.</li>
+                    </ul>
+                    <div class="justification" id="justification-286">La presencia de líquido libre en la cavidad peritoneal es un hallazgo clave en la peritonitis.</div>
+                </div>
+                
+                <div class="card question-card" data-index="287">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería la intervención inicial crucial en el manejo de Juan una vez confirmada la peritonitis?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(287, this, 'A')">A. Administración de analgésicos.</li>
+                        <li onclick="selectAnswer(287, this, 'B')">B. Realización de una nueva apendicectomía.</li>
+                        <li onclick="selectAnswer(287, this, 'C')">C. Inicio de terapia antibiótica intravenosa.</li>
+                        <li onclick="selectAnswer(287, this, 'D')">D. Colocación de una sonda nasogástrica.</li>
+                    </ul>
+                    <div class="justification" id="justification-287">La terapia antibiótica es esencial en el manejo de la peritonitis para abordar la infección.</div>
+                </div>
+                
+                <div class="card question-card" data-index="288">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Si Juan no responde adecuadamente al tratamiento inicial y desarrolla septicemia, ¿cuál sería una intervención adicional necesaria?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(288, this, 'A')">A. Administración de anticoagulantes.</li>
+                        <li onclick="selectAnswer(288, this, 'B')">B. Colocación de un catéter venoso central.</li>
+                        <li onclick="selectAnswer(288, this, 'C')">C. Ingreso a la unidad de cuidados intensivos (UCI).</li>
+                        <li onclick="selectAnswer(288, this, 'D')">D. Realización de una laparotomía de control.</li>
+                    </ul>
+                    <div class="justification" id="justification-288">La septicemia es una emergencia médica que a menudo requiere cuidados intensivos para el monitoreo y manejo adecuado.</div>
+                </div>
+                
+                <div class="card question-card" data-index="289">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Además de la peritonitis, ¿cuál sería otra complicación abdominal potencial que podría surgir en este escenario?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(289, this, 'A')">A. Absceso intraabdominal.</li>
+                        <li onclick="selectAnswer(289, this, 'B')">B. Trombosis venosa profunda.</li>
+                        <li onclick="selectAnswer(289, this, 'C')">C. Enfermedad de Crohn.</li>
+                        <li onclick="selectAnswer(289, this, 'D')">D. Síndrome compartimental abdominal.</li>
+                    </ul>
+                    <div class="justification" id="justification-289">El síndrome compartimental abdominal es una complicación potencial que puede surgir debido a la inflamación y el edema en la cavidad abdominal.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            285: "D", 
+            286: "A", 
+            287: "C", 
+            288: "C", 
+            289: "D" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 6</h2>
+                <p>"Juan, un hombre de 45 años, acude al médico con quejas de dolor abdominal en el cuadrante inferior derecho. El dolor es constante y se ha intensificado en las últimas 24 horas. Además, presenta náuseas y fiebre moderada. Al realizar el examen físico, se observa sensibilidad en el cuadrante inferior derecho y signos de irritación peritoneal.
+Exámenes Complementarios:
+Hemograma: Aumento en los niveles de leucocitos.
+Imágenes de diagnóstico por imágenes (tomografía abdominal): Muestra apendicitis aguda."</p>
+
+                <div class="card question-card" data-index="225">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el diagnóstico más probable en el caso de Juan?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(225, this, 'A')">A. Diverticulitis.</li>
+                        <li onclick="selectAnswer(225, this, 'B')">B. Enfermedad inflamatoria intestinal.</li>
+                        <li onclick="selectAnswer(225, this, 'C')">C. Apendicitis aguda.</li>
+                        <li onclick="selectAnswer(225, this, 'D')">D. Úlcera péptica.</li>
+                    </ul>
+                    <div class="justification" id="justification-225">Los síntomas de dolor abdominal en el cuadrante inferior derecho, náuseas, fiebre y signos de irritación peritoneal son consistentes con apendicitis aguda. </div>
+                </div>
+                 
+                <div class="card question-card" data-index="226">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado el diagnóstico de apendicitis aguda en Juan, ¿cuál sería el tratamiento de elección?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(226, this, 'A')">A. Antibióticos.</li>
+                        <li onclick="selectAnswer(226, this, 'B')">B. Dieta baja en fibra.</li>
+                        <li onclick="selectAnswer(226, this, 'C')">C. Terapia inmunosupresora.</li>
+                        <li onclick="selectAnswer(226, this, 'D')">D. Cirugía de apendicectomía.</li>
+                    </ul>
+                    <div class="justification" id="justification-226">La apendicectomía es el tratamiento de elección para la apendicitis aguda.</div>
+                </div>
+                
+                <div class="card question-card" data-index="227">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería una complicación potencial asociada con la apendicitis aguda que debe ser monitoreada en la evaluación de Juan?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(227, this, 'A')">A. Hemorragia gastrointestinal.</li>
+                        <li onclick="selectAnswer(227, this, 'B')">B. Peritonitis.</li>
+                        <li onclick="selectAnswer(227, this, 'C')">C. Obstrucción intestinal.</li>
+                        <li onclick="selectAnswer(227, this, 'D')">D. Reflujo gastroesofágico.</li>
+                    </ul>
+                    <div class="justification" id="justification-227">La apendicitis aguda puede llevar a la perforación del apéndice y la consecuente peritonitis.</div>
+                </div>
+                
+                <div class="card question-card" data-index="228">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado que Juan presenta aumento en los niveles de leucocitos en el hemograma, ¿cuál sería el significado clínico de este hallazgo en el contexto de la apendicitis aguda?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(228, this, 'A')">A. Indica una respuesta alérgica.</li>
+                        <li onclick="selectAnswer(228, this, 'B')">B. Sugiere una infección bacteriana.</li>
+                        <li onclick="selectAnswer(228, this, 'C')">C. Es un signo de enfermedad autoinmune.</li>
+                        <li onclick="selectAnswer(228, this, 'D')">D. Refleja una reacción a una hemorragia interna.</li>
+                    </ul>
+                    <div class="justification" id="justification-228">El aumento en los niveles de leucocitos, especialmente de neutrófilos, es indicativo de una respuesta inflamatoria, típicamente asociada con infecciones bacterianas.</div>
+                </div>
+                
+                <div class="card question-card" data-index="229">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Además de la cirugía, ¿cuál sería un aspecto clave en el manejo postoperatorio de Juan?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(229, this, 'A')">A. Iniciar terapia con corticosteroides.</li>
+                        <li onclick="selectAnswer(229, this, 'B')">B. Administrar antibióticos de amplio espectro.</li>
+                        <li onclick="selectAnswer(229, this, 'C')">C. Realizar estudios de imagen de seguimiento.</li>
+                        <li onclick="selectAnswer(229, this, 'D')">D. Prescribir antiinflamatorios no esteroides (AINE).</li>
+                    </ul>
+                    <div class="justification" id="justification-229">La administración de antibióticos de amplio espectro es parte del manejo postoperatorio para prevenir infecciones secundarias.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            225: "C", 
+            226: "D", 
+            227: "B", 
+            228: "B", 
+            229: "B" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

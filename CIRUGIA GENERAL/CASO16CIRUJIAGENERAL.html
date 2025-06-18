@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 16</h2>
+                <p>"Juan, un joven de 22 años, llega al servicio de urgencias quejándose de dolor abdominal en el cuadrante inferior derecho. Relata que el dolor comenzó como molestia alrededor del ombligo y ha migrado hacia la parte baja del abdomen. Además, ha experimentado pérdida de apetito, náuseas y ha sentido fiebre leve.
+Exámenes Complementarios:
+Examen físico: Sensibilidad en el punto de McBurney, rebote positivo.
+Hemograma: Leucocitosis con desviación a la izquierda."</p>
+
+                <div class="card question-card" data-index="275">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dada la presentación de Juan con dolor que migró hacia el cuadrante inferior derecho, ¿cuál es la condición más probable que está causando sus síntomas?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(275, this, 'A')">A. Gastroenteritis.</li>
+                        <li onclick="selectAnswer(275, this, 'B')">B. Apendicitis.</li>
+                        <li onclick="selectAnswer(275, this, 'C')">C. Colecistitis.</li>
+                        <li onclick="selectAnswer(275, this, 'D')">D. Diverticulitis.</li>
+                    </ul>
+                    <div class="justification" id="justification-275">La migración del dolor hacia el cuadrante inferior derecho, junto con la sensibilidad en el punto de McBurney y la leucocitosis, sugiere apendicitis.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="276">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Si el apéndice de Juan perfora debido a la apendicitis no tratada, ¿cuál sería una complicación grave que podría desarrollarse?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(276, this, 'A')">A. Absceso intraabdominal.</li>
+                        <li onclick="selectAnswer(276, this, 'B')">B. Úlcera péptica.</li>
+                        <li onclick="selectAnswer(276, this, 'C')">C. Trombosis venosa profunda.</li>
+                        <li onclick="selectAnswer(276, this, 'D')">D. Neumonía.</li>
+                    </ul>
+                    <div class="justification" id="justification-276">La perforación del apéndice puede llevar a la formación de un absceso intraabdominal, una complicación seria que puede requerir drenaje.</div>
+                </div>
+                
+                <div class="card question-card" data-index="277">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado el diagnóstico de apendicitis, ¿cuál sería el tratamiento inicial recomendado para Juan?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(277, this, 'A')">A. Antibióticos.</li>
+                        <li onclick="selectAnswer(277, this, 'B')">B. Cirugía de apendicectomía.</li>
+                        <li onclick="selectAnswer(277, this, 'C')">C. Reposo en cama.</li>
+                        <li onclick="selectAnswer(277, this, 'D')">D. Analgésicos.</li>
+                    </ul>
+                    <div class="justification" id="justification-277">La apendicectomía es el tratamiento estándar para la apendicitis y generalmente se realiza de manera urgente.</div>
+                </div>
+                
+                <div class="card question-card" data-index="278">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Si Juan presenta síntomas de peritonitis debido a la perforación del apéndice, ¿cuál sería una intervención adicional requerida?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(278, this, 'A')">A. Administración de laxantes.</li>
+                        <li onclick="selectAnswer(278, this, 'B')">B. Colocación de una sonda nasogástrica.</li>
+                        <li onclick="selectAnswer(278, this, 'C')">C. Terapia antibiótica.</li>
+                        <li onclick="selectAnswer(278, this, 'D')">D. Realización de una endoscopia.</li>
+                    </ul>
+                    <div class="justification" id="justification-278">La terapia antibiótica es crucial en el manejo de la peritonitis asociada con la perforación del apéndice.</div>
+                </div>
+                
+                <div class="card question-card" data-index="279">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Además de la apendicitis, ¿cuál sería otra condición que podría presentar síntomas similares y requerir una evaluación diferencial?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(279, this, 'A')">A. Enfermedad inflamatoria intestinal.`</li>
+                        <li onclick="selectAnswer(279, this, 'B')">B. Pancreatitis aguda.</li>
+                        <li onclick="selectAnswer(279, this, 'C')">C. Cálculos biliares.</li>
+                        <li onclick="selectAnswer(279, this, 'D')">D. Úlcera gástrica.</li>
+                    </ul>
+                    <div class="justification" id="justification-279">La enfermedad inflamatoria intestinal, como la enfermedad de Crohn, puede presentar síntomas similares a la apendicitis y debe ser considerada en la evaluación diferencial.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            275: "B", 
+            276: "A", 
+            277: "B", 
+            278: "C", 
+            279: "A" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

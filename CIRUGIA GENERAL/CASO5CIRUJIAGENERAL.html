@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 5</h2>
+                <p>"Elena, una mujer de 50 años, presenta dolor retroesternal y disfagia ocasional para sólidos. Además, refiere regurgitación de alimentos no ácidos. No ha experimentado pérdida de peso significativa ni cambios en la voz.
+Exámenes Complementarios:
+Endoscopia: Muestra una banda fibrosa estrecha en el esófago proximal.
+Manometría esofágica: Revela presión aumentada en el esfínter esofágico superior."</p>
+
+                <div class="card question-card" data-index="220">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el diagnóstico más probable en el caso de Elena?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(220, this, 'A')">A. Esofagitis eosinofílica.</li>
+                        <li onclick="selectAnswer(220, this, 'B')">B. Reflujo gastroesofágico.</li>
+                        <li onclick="selectAnswer(220, this, 'C')">C. Acalasia.</li>
+                        <li onclick="selectAnswer(220, this, 'D')">D. Anillo esofágico superior.</li>
+                    </ul>
+                    <div class="justification" id="justification-220">La presencia de una banda fibrosa estrecha en el esófago proximal sugiere un anillo esofágico superior. </div>
+                </div>
+                 
+                <div class="card question-card" data-index="221">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado el diagnóstico de anillo esofágico superior en Elena, ¿cuál sería el patrón manométrico característico observado en la manometría esofágica?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(221, this, 'A')">A. Contracciones espásticas y simultáneas del esófago.</li>
+                        <li onclick="selectAnswer(221, this, 'B')">B. Aperistalsis del esófago.</li>
+                        <li onclick="selectAnswer(221, this, 'C')">C. Relajación inapropiada del esfínter esofágico inferior.</li>
+                        <li onclick="selectAnswer(221, this, 'D')">D. Presión aumentada en el esfínter esofágico superior.</li>
+                    </ul>
+                    <div class="justification" id="justification-221">El anillo esofágico superior se asocia con presión aumentada en el esfínter esofágico superior.</div>
+                </div>
+                
+                <div class="card question-card" data-index="222">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado que Elena presenta regurgitación de alimentos no ácidos, ¿cuál sería una complicación asociada que debe ser evaluada?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(222, this, 'A')">A. Estenosis esofágica.</li>
+                        <li onclick="selectAnswer(222, this, 'B')">B. Hemorragia digestiva alta.</li>
+                        <li onclick="selectAnswer(222, this, 'C')">C. Aspiración pulmonar.</li>
+                        <li onclick="selectAnswer(222, this, 'D')">D. Perforación esofágica.</li>
+                    </ul>
+                    <div class="justification" id="justification-222">La regurgitación crónica puede llevar a la aspiración pulmonar, especialmente cuando los alimentos no ácidos son regurgitados.</div>
+                </div>
+                
+                <div class="card question-card" data-index="223">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado que Elena no presenta pérdida de peso significativa, ¿cuál sería una característica diferenciadora clave entre el anillo esofágico superior y otras condiciones esofágicas?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(223, this, 'A')">A. Edad del paciente.</li>
+                        <li onclick="selectAnswer(223, this, 'B')">B. Presencia de síntomas nocturnos.</li>
+                        <li onclick="selectAnswer(223, this, 'C')">C. Grado de disfagia.</li>
+                        <li onclick="selectAnswer(223, this, 'D')">D. Pérdida de peso.</li>
+                    </ul>
+                    <div class="justification" id="justification-223">Aunque el anillo esofágico superior puede causar disfagia, la pérdida de peso significativa es menos común en comparación con otras afecciones esofágicas.</div>
+                </div>
+                
+                <div class="card question-card" data-index="224">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Además del manejo sintomático, ¿cuál sería un enfoque terapéutico específico para el anillo esofágico superior en Elena?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(224, this, 'A')">A. Terapia de dilatación esofágica.</li>
+                        <li onclick="selectAnswer(224, this, 'B')">B. Cirugía de funduplicatura.</li>
+                        <li onclick="selectAnswer(224, this, 'C')">C. Tratamiento con corticosteroides.</li>
+                        <li onclick="selectAnswer(224, this, 'D')">D. Inhibidores de la bomba de protones.</li>
+                    </ul>
+                    <div class="justification" id="justification-220">La terapia de dilatación esofágica es el enfoque terapéutico principal para aliviar la obstrucción en pacientes con anillo esofágico superior.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            220: "D", 
+            221: "D", 
+            222: "C", 
+            223: "C", 
+            224: "A" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 12</h2>
+                <p>"María, una mujer de 30 años, llega a urgencias con dolor abdominal intenso en el cuadrante superior izquierdo. El dolor es constante y se irradia hacia la espalda. Maria refiere haber consumido una comida abundante y rica en grasas antes de que comenzaran los síntomas. Además del dolor, presenta náuseas y vómitos biliosos.
+Exámenes Complementarios:
+Examen físico: Sensibilidad y defensa en el cuadrante superior izquierdo.
+Hemograma: Elevación de las enzimas pancreáticas (amílasa y lipasa)."</p>
+
+                <div class="card question-card" data-index="255">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la causa más probable del dolor abdominal en María?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(255, this, 'A')">A. Apendicitis aguda.</li>
+                        <li onclick="selectAnswer(255, this, 'B')">B. Úlcera gástrica perforada.</li>
+                        <li onclick="selectAnswer(255, this, 'C')">C. Pancreatitis aguda.</li>
+                        <li onclick="selectAnswer(255, this, 'D')">D. Colecistitis aguda.</li>
+                    </ul>
+                    <div class="justification" id="justification-255">El dolor abdominal en el cuadrante superior izquierdo, irradiación hacia la espalda, y la elevación de las enzimas pancreáticas son indicativos de pancreatitis aguda.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="256">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado el diagnóstico probable de pancreatitis aguda en María, ¿cuál sería una complicación aguda que debe ser evaluada de manera urgente?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(256, this, 'A')">A. Perforación gástrica.</li>
+                        <li onclick="selectAnswer(256, this, 'B')">B. Absceso hepático.</li>
+                        <li onclick="selectAnswer(256, this, 'C')">C. Necrosis pancreática.</li>
+                        <li onclick="selectAnswer(256, this, 'D')">D. Obstrucción intestinal.</li>
+                    </ul>
+                    <div class="justification" id="justification-256">La necrosis pancreática es una complicación grave de la pancreatitis aguda que puede requerir intervención inmediata.</div>
+                </div>
+                
+                <div class="card question-card" data-index="257">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado que María presenta pancreatitis aguda, ¿cuál sería una medida inicial en su manejo para controlar los síntomas y prevenir complicaciones?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(257, this, 'A')">A. Cirugía de colecistectomía.</li>
+                        <li onclick="selectAnswer(257, this, 'B')">B. Administración de analgésicos intravenosos.</li>
+                        <li onclick="selectAnswer(257, this, 'C')">C. Inserción de una sonda nasogástrica.</li>
+                        <li onclick="selectAnswer(257, this, 'D')">D. Ayuno y reposo gástrico.</li>
+                    </ul>
+                    <div class="justification" id="justification-257">El ayuno y reposo gástrico son medidas iniciales para reducir la estimulación pancreática y permitir la recuperación del páncreas.</div>
+                </div>
+                
+                <div class="card question-card" data-index="258">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado que María tiene pancreatitis aguda, ¿cuál sería un factor de riesgo asociado que podría haber contribuido al desarrollo de la enfermedad?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(258, this, 'A')">A. Consumo de alcohol.</li>
+                        <li onclick="selectAnswer(258, this, 'B')">B. Obesidad.</li>
+                        <li onclick="selectAnswer(258, this, 'C')">C. Uso de antibióticos.</li>
+                        <li onclick="selectAnswer(258, this, 'D')">D. Actividad física intensa.</li>
+                    </ul>
+                    <div class="justification" id="justification-258">El consumo de alcohol es un factor de riesgo conocido para el desarrollo de la pancreatitis aguda.</div>
+                </div>
+                
+                <div class="card question-card" data-index="259">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Además del control inicial de los síntomas, ¿cuál sería una intervención adicional en el manejo de la pancreatitis aguda en María?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(259, this, 'A')">A. Administración de antibióticos.</li>
+                        <li onclick="selectAnswer(259, this, 'B')">B. Realización de una colecistectomía.</li>
+                        <li onclick="selectAnswer(259, this, 'C')">C. Evaluación con ecografía abdominal.</li>
+                        <li onclick="selectAnswer(259, this, 'D')">D. Monitoreo de la función renal.</li>
+                    </ul>
+                    <div class="justification" id="justification-254">En casos de necrosis pancreática o infección asociada, la administración de antibióticos puede ser necesaria como parte del manejo de la pancreatitis aguda.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            255: "C", 
+            256: "C", 
+            257: "D", 
+            258: "A", 
+            259: "A" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

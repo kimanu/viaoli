@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 8</h2>
+                <p>"Roberto, un hombre de 55 años, acude al médico con quejas de malestar abdominal, distensión y cambios en los hábitos intestinales. Ha experimentado episodios de diarrea y estreñimiento alternados en los últimos meses. No hay pérdida de peso significativa ni sangre en las heces. Los síntomas se alivian parcialmente después de la defecación.
+Exámenes Complementarios:
+Colonoscopia: Muestra áreas de inflamación y ulceración que afectan de manera difusa la mucosa del colon.
+Biopsia de colon: Revela cambios inflamatorios crónicos con presencia de criptas distorsionadas y abscesos."</p>
+
+                <div class="card question-card" data-index="235">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el diagnóstico más probable en el caso de Roberto?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(235, this, 'A')">A. Enfermedad diverticular.</li>
+                        <li onclick="selectAnswer(235, this, 'B')">B. Colitis isquémica.</li>
+                        <li onclick="selectAnswer(235, this, 'C')">C. Colitis microscópica.</li>
+                        <li onclick="selectAnswer(235, this, 'D')">D. Síndrome del intestino irritable (SII).</li>
+                    </ul>
+                    <div class="justification" id="justification-235">Los síntomas de malestar abdominal, cambios en los hábitos intestinales y la presencia de inflamación y ulceración en la mucosa del colon son consistentes con colitis microscópica. </div>
+                </div>
+                 
+                <div class="card question-card" data-index="236">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado el diagnóstico de colitis microscópica en Roberto, ¿cuál sería un hallazgo típico en la colonoscopia que diferencia a la colitis microscópica de otras formas de colitis?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(236, this, 'A')">A. Úlceras en parches.</li>
+                        <li onclick="selectAnswer(236, this, 'B')">B. Pólipos adenomatosos.</li>
+                        <li onclick="selectAnswer(236, this, 'C')">C. Engrosamiento de la mucosa.</li>
+                        <li onclick="selectAnswer(236, this, 'D')">D. Mucosa superficial normal.</li>
+                    </ul>
+                    <div class="justification" id="justification-236">En la colitis microscópica, la mucosa superficial del colon puede parecer normal en la colonoscopia, mientras que los cambios inflamatorios se observan a nivel microscópico en las biopsias.</div>
+                </div>
+                
+                <div class="card question-card" data-index="237">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado que Roberto presenta inflamación y ulceración en la mucosa del colon, ¿cuál sería una complicación potencial asociada que debe ser evaluada en la gestión de su caso?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(237, this, 'A')">A. Obstrucción intestinal.</li>
+                        <li onclick="selectAnswer(237, this, 'B')">B. Perforación del colon.</li>
+                        <li onclick="selectAnswer(237, this, 'C')">C. Hemorragia digestiva baja.</li>
+                        <li onclick="selectAnswer(237, this, 'D')">D. Pancreatitis aguda.</li>
+                    </ul>
+                    <div class="justification" id="justification-237">La presencia de inflamación y ulceración en la mucosa del colon aumenta el riesgo de hemorragia digestiva baja en la colitis microscópica.</div>
+                </div>
+                
+                <div class="card question-card" data-index="238">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado que Roberto experimenta episodios alternados de diarrea y estreñimiento, ¿cuál sería un criterio adicional para distinguir la colitis microscópica del síndrome del intestino irritable (SII)?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(238, this, 'A')">A. Presencia de fiebre.</li>
+                        <li onclick="selectAnswer(238, this, 'B')">B. Pérdida de peso significativa.</li>
+                        <li onclick="selectAnswer(238, this, 'C')">C. Cambios en la frecuencia de las deposiciones.</li>
+                        <li onclick="selectAnswer(238, this, 'D')">D. Presencia de sangre en las heces.</li>
+                    </ul>
+                    <div class="justification" id="justification-238">Aunque ambos pueden presentar síntomas alternados, la presencia de sangre en las heces es más sugestiva de colitis microscópica que del SII.</div>
+                </div>
+                
+                <div class="card question-card" data-index="239">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Además de los tratamientos farmacológicos, ¿cuál sería un aspecto clave en el manejo integral de Roberto?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(239, this, 'A')">A. Cirugía de resección intestinal.</li>
+                        <li onclick="selectAnswer(239, this, 'B')">B. Terapia psicológica.</li>
+                        <li onclick="selectAnswer(239, this, 'C')">C. Dieta baja en fibra.</li>
+                        <li onclick="selectAnswer(239, this, 'D')">D. Suplementos de hierro.</li>
+                    </ul>
+                    <div class="justification" id="justification-239">Dado que la colitis microscópica puede tener un componente de estrés, la terapia psicológica puede ser beneficiosa en el manejo integral de los síntomas.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            235: "C", 
+            236: "D", 
+            237: "C", 
+            238: "B", 
+            239: "D" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

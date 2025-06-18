@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 11</h2>
+                <p>"Carlos, un hombre de 45 años, llega a urgencias con dolor abdominal intenso en el cuadrante inferior derecho. El dolor inició de manera gradual y se ha vuelto más agudo en las últimas horas. También refiere náuseas y pérdida de apetito. No tiene antecedentes médicos significativos.
+Exámenes Complementarios:
+Examen físico: Sensibilidad y dolor a la palpación en el cuadrante inferior derecho.
+Hemograma: Leucocitosis."</p>
+
+                <div class="card question-card" data-index="250">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la causa más probable del dolor abdominal en Carlos?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(250, this, 'A')">A. Apendicitis aguda.</li>
+                        <li onclick="selectAnswer(250, this, 'B')">B. Úlcera péptica.</li>
+                        <li onclick="selectAnswer(250, this, 'C')">C. Colecistitis aguda.</li>
+                        <li onclick="selectAnswer(250, this, 'D')">D. Pancreatitis aguda.</li>
+                    </ul>
+                    <div class="justification" id="justification-250">El dolor abdominal en el cuadrante inferior derecho, la sensibilidad y leucocitosis son hallazgos sugestivos de apendicitis aguda.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="251">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado el diagnóstico probable de apendicitis aguda en Carlos, ¿cuál sería un signo clínico adicional que podría confirmar la presencia de irritación peritoneal?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(251, this, 'A')">A. Rigidez abdominal difusa.</li>
+                        <li onclick="selectAnswer(251, this, 'B')">B. Fiebre elevada.</li>
+                        <li onclick="selectAnswer(251, this, 'C')">C. Dolor a la palpación del hipocondrio derecho.</li>
+                        <li onclick="selectAnswer(251, this, 'D')">D. Distensión abdominal generalizada.</li>
+                    </ul>
+                    <div class="justification" id="justification-251">La obesidad es un factor de riesgo conocido para el desarrollo de la ERGE, ya que contribuye al aumento de la presión intraabdominal.</div>
+                </div>
+                
+                <div class="card question-card" data-index="252">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado que Carlos presenta apendicitis aguda, ¿cuál sería una complicación potencial que debe ser evaluada en el manejo de su caso?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(252, this, 'A')">A. Colangitis.</li>
+                        <li onclick="selectAnswer(252, this, 'B')">B. Absceso hepático.</li>
+                        <li onclick="selectAnswer(252, this, 'C')">C. Perforación apendicular.</li>
+                        <li onclick="selectAnswer(252, this, 'D')">D. Pancreatitis crónica.</li>
+                    </ul>
+                    <div class="justification" id="justification-252">La perforación apendicular es una complicación grave de la apendicitis aguda y puede llevar a la formación de abscesos intraabdominales.</div>
+                </div>
+                
+                <div class="card question-card" data-index="253">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado que Carlos tiene leucocitosis y sospecha de apendicitis aguda, ¿cuál sería la intervención inicial más apropiada en su manejo?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(253, this, 'A')">A. Administración de antibióticos intravenosos.</li>
+                        <li onclick="selectAnswer(253, this, 'B')">B. Realización de una ecografía abdominal.</li>
+                        <li onclick="selectAnswer(253, this, 'C')">C. Inserción de una sonda nasogástrica.</li>
+                        <li onclick="selectAnswer(253, this, 'D')">D. Evaluación con tomografía computarizada (TC) abdominal.</li>
+                    </ul>
+                    <div class="justification" id="justification-253">La administración de antibióticos intravenosos es una intervención inicial importante en el manejo de la apendicitis aguda para prevenir complicaciones.</div>
+                </div>
+                
+                <div class="card question-card" data-index="254">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Además del manejo médico, ¿cuál sería una medida terapéutica definitiva para tratar la apendicitis aguda en Carlos?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(254, this, 'A')">A. Terapia antiemética.</li>
+                        <li onclick="selectAnswer(254, this, 'B')">B. Analgesia intravenosa.</li>
+                        <li onclick="selectAnswer(254, this, 'C')">C. Cirugía de apendicectomía.</li>
+                        <li onclick="selectAnswer(254, this, 'D')">D. Terapia con inhibidores de la bomba de protones.</li>
+                    </ul>
+                    <div class="justification" id="justification-254">La cirugía de apendicectomía es el tratamiento definitivo para la apendicitis aguda y se realiza para evitar complicaciones como la perforación.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            250: "A", 
+            251: "A", 
+            252: "C", 
+            253: "A", 
+            254: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 17</h2>
+                <p>"(Continuación del caso anterior)
+Después de la apendicectomía, Juan experimenta una mejoría inicial. Sin embargo, al segundo día postoperatorio, comienza a quejarse de un dolor abdominal más intenso, especialmente en la región de la incisión quirúrgica. Además, presenta fiebre y su estado general se ha deteriorado.
+Exámenes Complementarios:
+Examen físico: Sensibilidad a la palpación en la incisión, signos de infección localizada.
+Hemograma: Leucocitosis persistente con desviación a la izquierda."</p>
+
+                <div class="card question-card" data-index="280">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado el nuevo desarrollo de fiebre, dolor en la incisión y signos de infección, ¿cuál es la complicación más probable después de la apendicectomía?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(280, this, 'A')">A. Trombosis venosa profunda.</li>
+                        <li onclick="selectAnswer(280, this, 'B')">B. Infección del sitio quirúrgico.</li>
+                        <li onclick="selectAnswer(280, this, 'C')">C. Obstrucción intestinal.</li>
+                        <li onclick="selectAnswer(280, this, 'D')">D. Hemorragia postoperatoria.</li>
+                    </ul>
+                    <div class="justification" id="justification-280">La presencia de fiebre, dolor en la incisión y signos de infección sugiere una complicación en el sitio quirúrgico.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="281">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Para confirmar el diagnóstico de infección del sitio quirúrgico, ¿cuál sería la prueba de imagen más indicada?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(281, this, 'A')">A. Radiografía simple de abdomen.</li>
+                        <li onclick="selectAnswer(281, this, 'B')">B. Ecografía abdominal.</li>
+                        <li onclick="selectAnswer(281, this, 'C')">C. Tomografía computarizada (TC) de la región incisional.</li>
+                        <li onclick="selectAnswer(281, this, 'D')">D. Resonancia magnética (RM) abdominal.</li>
+                    </ul>
+                    <div class="justification" id="justification-281">La TC proporciona imágenes detalladas de la región incisional y puede ayudar a confirmar la presencia de infección.</div>
+                </div>
+                
+                <div class="card question-card" data-index="282">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado el diagnóstico de infección del sitio quirúrgico, ¿cuál sería el enfoque inicial en el manejo de Juan?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(282, this, 'A')">A. Cambio de antibióticos.</li>
+                        <li onclick="selectAnswer(282, this, 'B')">B. Administración de analgésicos.</li>
+                        <li onclick="selectAnswer(282, this, 'C')">C. Drenaje quirúrgico de absceso.</li>
+                        <li onclick="selectAnswer(282, this, 'D')">D. Realización de una nueva apendicectomía.</li>
+                    </ul>
+                    <div class="justification" id="justification-277">El drenaje quirúrgico es a menudo necesario para evacuar el pus acumulado en el sitio quirúrgico y controlar la infección.</div>
+                </div>
+                
+                <div class="card question-card" data-index="283">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Si Juan no responde adecuadamente al drenaje quirúrgico y desarrolla sepsis, ¿cuál sería una intervención vital en su manejo?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(283, this, 'A')">A. Transfusión de glóbulos rojos.</li>
+                        <li onclick="selectAnswer(283, this, 'B')">B. Inicio de nutrición parenteral.</li>
+                        <li onclick="selectAnswer(283, this, 'C')">C. Ingreso a la unidad de cuidados intensivos (UCI).</li>
+                        <li onclick="selectAnswer(283, this, 'D')">D. Administración de corticosteroides.</li>
+                    </ul>
+                    <div class="justification" id="justification-283">La sepsis es una emergencia médica que a menudo requiere cuidados intensivos para el monitoreo y manejo adecuado.</div>
+                </div>
+                
+                <div class="card question-card" data-index="284">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Además de la infección del sitio quirúrgico, ¿cuál sería otra complicación abdominal potencial que podría surgir después de la apendicectomía?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(284, this, 'A')">A. Hernia incisional.</li>
+                        <li onclick="selectAnswer(284, this, 'B')">B. Ileo paralítico.</li>
+                        <li onclick="selectAnswer(284, this, 'C')">C. Obstrucción del intestino delgado.</li>
+                        <li onclick="selectAnswer(284, this, 'D')">D. Perforación gástrica.</li>
+                    </ul>
+                    <div class="justification" id="justification-284">Una hernia incisional es una complicación potencial que puede ocurrir después de la cirugía abdominal y debe ser considerada en la evaluación.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            280: "B", 
+            281: "C", 
+            282: "C", 
+            283: "C", 
+            284: "A" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

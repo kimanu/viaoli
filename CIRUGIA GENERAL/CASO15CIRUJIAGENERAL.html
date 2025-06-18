@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 15</h2>
+                <p>"(Continuación del caso anterior)
+Después de la apendicectomía, Carolina experimenta una mejoría inicial, pero al segundo día postoperatorio, desarrolla fiebre y distensión abdominal. Se queja de dolor intenso en el abdomen y muestra signos de inestabilidad hemodinámica. Exámenes Complementarios:
+Examen físico: Distensión abdominal, sensibilidad difusa y signos de irritación peritoneal.
+Hemograma: Leucocitosis marcada."</p>
+
+                <div class="card question-card" data-index="270">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dada la nueva presentación de fiebre, distensión abdominal y signos de irritación peritoneal en Carolina, ¿cuál es la complicación más probable después de la apendicectomía?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(270, this, 'A')">A. Peritonitis.</li>
+                        <li onclick="selectAnswer(270, this, 'B')">B. Hemorragia postoperatoria.</li>
+                        <li onclick="selectAnswer(270, this, 'C')">C. Obstrucción intestinal.</li>
+                        <li onclick="selectAnswer(270, this, 'D')">D. Neumonía posquirúrgica.</li>
+                    </ul>
+                    <div class="justification" id="justification-270">Los síntomas de fiebre, distensión abdominal y signos de irritación peritoneal sugieren peritonitis, una complicación grave después de la cirugía abdominal.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="271">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Para confirmar el diagnóstico de peritonitis, ¿cuál sería el estudio de imagen más adecuado en este contexto?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(271, this, 'A')">A. Radiografía simple de abdomen.</li>
+                        <li onclick="selectAnswer(271, this, 'B')">B. Tomografía computarizada (TC) abdominal.</li>
+                        <li onclick="selectAnswer(271, this, 'C')">C. Ecografía abdominal.</li>
+                        <li onclick="selectAnswer(271, this, 'D')">D. Resonancia magnética (RM) abdominal.</li>
+                    </ul>
+                    <div class="justification" id="justification-271">La TC abdominal es útil para evaluar la extensión de la inflamación y confirmar el diagnóstico de peritonitis.</div>
+                </div>
+                
+                <div class="card question-card" data-index="272">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado el diagnóstico de peritonitis, ¿cuál sería el siguiente paso en el manejo de Carolina?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(272, this, 'A')">A. Administración de analgésicos.</li>
+                        <li onclick="selectAnswer(272, this, 'B')">B. Inicio de terapia antibiótica.	</li>
+                        <li onclick="selectAnswer(272, this, 'C')">C. Repetición de la apendicectomía.</li>
+                        <li onclick="selectAnswer(272, this, 'D')">D. Colocación de una sonda nasogástrica.</li>
+                    </ul>
+                    <div class="justification" id="justification-272">La terapia antibiótica es esencial para tratar la infección asociada con la peritonitis.</div>
+                </div>
+                
+                <div class="card question-card" data-index="273">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Si Carolina no responde adecuadamente a la terapia antibiótica y desarrolla abscesos intraabdominales, ¿cuál sería una intervención adicional requerida?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(273, this, 'A')">A. Drenaje percutáneo guiado por imagen.</li>
+                        <li onclick="selectAnswer(273, this, 'B')">B. Realización de una colectomía.</li>
+                        <li onclick="selectAnswer(273, this, 'C')">C. Administración de corticosteroides.</li>
+                        <li onclick="selectAnswer(273, this, 'D')">D. Colocación de una sonda de alimentación.</li>
+                    </ul>
+                    <div class="justification" id="justification-273">El drenaje percutáneo es una opción efectiva para manejar abscesos intraabdominales y reducir la carga bacteriana.</div>
+                </div>
+                
+                <div class="card question-card" data-index="274">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Además de la peritonitis, ¿cuál sería una complicación vascular potencial después de la apendicectomía?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(274, this, 'A')">A. Trombosis venosa profunda.</li>
+                        <li onclick="selectAnswer(274, this, 'B')">B. Infarto esplénico.</li>
+                        <li onclick="selectAnswer(274, this, 'C')">C. Isquemia mesentérica.</li>
+                        <li onclick="selectAnswer(274, this, 'D')">D. Aneurisma de la arteria renal.</li>
+                    </ul>
+                    <div class="justification" id="justification-269">La isquemia mesentérica puede ocurrir como complicación vascular y requerir una evaluación y manejo cuidadosos.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            270: "A", 
+            271: "B", 
+            272: "B", 
+            273: "A", 
+            274: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>
