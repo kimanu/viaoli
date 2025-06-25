@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 10</h2>
+                <p>"Pablo, un hombre de 40 años, presenta episodios recurrentes de pirosis (ardor retroesternal), regurgitación ácida y tos crónica. Sus síntomas se agravan después de las comidas y al acostarse. No ha experimentado pérdida de peso significativa ni dificultades para tragar.
+Exámenes Complementarios:
+Endoscopia esofágica: Revela erosiones en el esófago distal y signos de esofagitis por reflujo.
+pHmetría esofágica: Confirma la presencia de acidificación prolongada del esófago."</p>
+
+                <div class="card question-card" data-index="245">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el diagnóstico más probable en el caso de Pablo?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(245, this, 'A')">A. Hernia hiatal.</li>
+                        <li onclick="selectAnswer(245, this, 'B')">B. Cáncer de esófago.</li>
+                        <li onclick="selectAnswer(245, this, 'C')">C. Úlcera péptica.</li>
+                        <li onclick="selectAnswer(245, this, 'D')">D. Enfermedad por reflujo gastroesofágico (ERGE).</li>
+                    </ul>
+                    <div class="justification" id="justification-245">Los síntomas de pirosis, regurgitación ácida y los hallazgos endoscópicos de erosiones en el esófago distal son característicos de la ERGE.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="246">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado el diagnóstico de ERGE en Pablo, ¿cuál sería un factor de riesgo importante que podría contribuir a la aparición de la enfermedad?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(246, this, 'A')">A. Consumo de fibra dietética.</li>
+                        <li onclick="selectAnswer(246, this, 'B')">B. Obesidad.</li>
+                        <li onclick="selectAnswer(246, this, 'C')">C. Uso de antibióticos.</li>
+                        <li onclick="selectAnswer(246, this, 'D')">D. Actividad física intensa.</li>
+                    </ul>
+                    <div class="justification" id="justification-246">La obesidad es un factor de riesgo conocido para el desarrollo de la ERGE, ya que contribuye al aumento de la presión intraabdominal.</div>
+                </div>
+                
+                <div class="card question-card" data-index="247">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado que Pablo presenta erosiones en el esófago distal, ¿cuál sería una complicación potencial asociada con la ERGE que debe ser evaluada en su manejo?/p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(247, this, 'A')">A. Obstrucción intestinal.</li>
+                        <li onclick="selectAnswer(247, this, 'B')">B. Hemorragia gastrointestinal.</li>
+                        <li onclick="selectAnswer(247, this, 'C')">C. Perforación esofágica.</li>
+                        <li onclick="selectAnswer(247, this, 'D')">D. Formación de divertículos esofágicos.</li>
+                    </ul>
+                    <div class="justification" id="justification-247">Las erosiones en el esófago pueden aumentar el riesgo de hemorragia gastrointestinal en pacientes con ERGE.</div>
+                </div>
+                
+                <div class="card question-card" data-index="248">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado que Pablo experimenta síntomas después de las comidas y al acostarse, ¿cuál sería una recomendación no farmacológica clave para el manejo de la ERGE en su caso?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(248, this, 'A')">A. Realizar ejercicio intenso antes de acostarse.</li>
+                        <li onclick="selectAnswer(248, this, 'B')">B. Evitar acostarse inmediatamente después de comer.</li>
+                        <li onclick="selectAnswer(248, this, 'C')">C. Consumir comidas abundantes y ricas en grasa.</li>
+                        <li onclick="selectAnswer(248, this, 'D')">D. Tomar bebidas alcohólicas con las comidas.</li>
+                    </ul>
+                    <div class="justification" id="justification-248">Evitar acostarse inmediatamente después de comer puede ayudar a prevenir el reflujo ácido.</div>
+                </div>
+                
+                <div class="card question-card" data-index="249">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Además del manejo farmacológico, ¿cuál sería un enfoque terapéutico adicional para el control de los síntomas de la ERGE en Pablo?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(249, this, 'A')">A. Cirugía de resección esofágica.</li>
+                        <li onclick="selectAnswer(249, this, 'B')">B. Modificación de la dieta y estilo de vida.</li>
+                        <li onclick="selectAnswer(249, this, 'C')">C. Radioterapia focal en el esófago.</li>
+                        <li onclick="selectAnswer(249, this, 'D')">D. Terapia con corticosteroides.</li>
+                    </ul>
+                    <div class="justification" id="justification-249>La modificación de la dieta y el estilo de vida, como evitar alimentos desencadenantes y perder peso si es necesario, son componentes clave del manejo de la ERGE.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            245: "D", 
+            246: "B", 
+            247: "B", 
+            248: "B", 
+            249: "B" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

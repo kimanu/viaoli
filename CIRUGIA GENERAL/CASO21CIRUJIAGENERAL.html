@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 21</h2>
+                <p>"Ana, una mujer de 60 años, presenta dolor intenso en la región inguinal izquierda y una masa que no puede reducir. Ha notado cambios en sus hábitos intestinales y presenta náuseas.
+Exámenes Complementarios:
+Examen físico: Masa dolorosa y no reducible en la región inguinal izquierda.
+Tomografía computarizada (TC) abdominal: Confirma hernia inguinal izquierda incarcerada."</p>
+
+                <div class="card question-card" data-index="295">
+                    <h3>❓ Pregunta:</h3>
+                    <p>En el caso de Ana, la masa en la región inguinal izquierda es dolorosa y no puede ser reducida. ¿Cómo se clasificaría esta hernia inguinal?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(295, this, 'A')">A. Hernia inguinal reducible.</li>
+                        <li onclick="selectAnswer(295, this, 'B')">B. Hernia inguinal estrangulada.</li>
+                        <li onclick="selectAnswer(295, this, 'C')">C. Hernia inguinal no complicada.</li>
+                        <li onclick="selectAnswer(295, this, 'D')">D. Hernia inguinal irreducible.</li>
+                    </ul>
+                    <div class="justification" id="justification-295">Una hernia inguinal que no puede ser reducida y causa dolor intenso puede estar estrangulada, lo que implica una emergencia quirúrgica.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="296">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Qué hallazgo en la tomografía computarizada (TC) abdominal confirmaría la incarceración de la hernia inguinal?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(296, this, 'A')">A. Engrosamiento de la pared intestinal.</li>
+                        <li onclick="selectAnswer(296, this, 'B')">B. Dilatación de la vesícula biliar.</li>
+                        <li onclick="selectAnswer(296, this, 'C')">C. Presencia de líquido libre en la cavidad abdominal.</li>
+                        <li onclick="selectAnswer(296, this, 'D')">D. Obstrucción del segmento intestinal herniado.</li>
+                    </ul>
+                    <div class="justification" id="justification-296">La TC puede mostrar obstrucción intestinal y confirmar la incarceración de la hernia.</div>
+                </div>
+                
+                <div class="card question-card" data-index="297">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Ante la incarceración de la hernia en Ana, ¿cuál sería la intervención más apropiada?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(297, this, 'A')">A. Observación y manejo conservador.</li>
+                        <li onclick="selectAnswer(297, this, 'B')">B. Realización de una colonoscopia.</li>
+                        <li onclick="selectAnswer(297, this, 'C')">C. Reducción manual en el consultorio.</li>
+                        <li onclick="selectAnswer(297, this, 'D')">D. Cirugía de emergencia.</li>
+                    </ul>
+                    <div class="justification" id="justification-297">La incarceración de la hernia requiere una intervención quirúrgica de emergencia para liberar el segmento intestinal y evitar la estrangulación.</div>
+                </div>
+                
+                <div class="card question-card" data-index="293">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Si Juan experimentara dolor intenso y repentina imposibilidad para reducir la hernia, ¿cuál podría ser la complicación más probable?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(298, this, 'A')">A. Estrangulación herniaria.</li>
+                        <li onclick="selectAnswer(298, this, 'B')">B. Hernia incarcerada.</li>
+                        <li onclick="selectAnswer(298, this, 'C')">C. Aneurisma aórtico.</li>
+                        <li onclick="selectAnswer(298, this, 'D')">D. Diverticulitis aguda.</li>
+                    </ul>
+                    <div class="justification" id="justification-298">La estrangulación herniaria ocurre cuando el suministro sanguíneo a la hernia se ve comprometido, causando dolor intenso y urgencia quirúrgica.</div>
+                </div>
+                
+                <div class="card question-card" data-index="294">
+                    <h3>❓ Pregunta:</h3>
+                    <p>En pacientes con hernias inguinales incarceradas, ¿cuál es el principal objetivo de la intervención quirúrgica?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(299, this, 'A')">A. Prevenir la recurrencia herniaria.</li>
+                        <li onclick="selectAnswer(299, this, 'B')">B. Aliviar el dolor crónico.</li>
+                        <li onclick="selectAnswer(299, this, 'C')">C. Restaurar el flujo sanguíneo y reducir la hernia.</li>
+                        <li onclick="selectAnswer(299, this, 'D')">D. Eliminar la necesidad de manejo conservador.</li>
+                    </ul>
+                    <div class="justification" id="justification-299">La intervención quirúrgica tiene como objetivo principal liberar el segmento intestinal y restablecer el flujo sanguíneo, evitando la estrangulación.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            295: "B", 
+            296: "D", 
+            297: "D", 
+            298: "C", 
+            299: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>
