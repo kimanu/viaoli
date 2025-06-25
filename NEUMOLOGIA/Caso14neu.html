@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEUMOLOGÍA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>NEUMOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 14</h2>
+                <p>Un hombre de 55 años, exfumador desde hace 10 años, se presenta con tos crónica y producción de esputo. Refiere episodios de exacerbaciones con mayor frecuencia en invierno. Durante el examen físico, se auscultan sibilancias y roncus en la auscultación pulmonar. Se solicita una espirometría, que muestra una relación FEV1/FVC post-broncodilatador del 65%.</p>
+
+            </div>
+            <div class="card question-card" data-index="2296">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el diagnóstico más probable en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2296, this, 'A')">A. Asma.</li>
+                    <li onclick="selectAnswer(2296, this, 'B')">B. EPOC.</li>
+                    <li onclick="selectAnswer(2296, this, 'C')">C. Neumonía.</li>
+                    <li onclick="selectAnswer(2296, this, 'D')">D. Fibrosis pulmonar.</li>
+                </ul>
+                <div class="justification" id="justification-2296">A pesar de que el paciente es exfumador, la persistencia de la obstrucción del flujo de aire y la relación FEV1/FVC < 70% son consistentes con EPOC.</div>
+            </div>
+
+            <div class="card question-card" data-index="2297">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el principal factor de riesgo para el desarrollo de EPOC en este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2297, this, 'A')">A. Exposición crónica al humo del tabaco.</li>
+                    <li onclick="selectAnswer(2297, this, 'B')">B. Antecedentes de asma.</li>
+                    <li onclick="selectAnswer(2297, this, 'C')">C. Exposición a humo de leña.</li>
+                    <li onclick="selectAnswer(2297, this, 'D')">D. Infecciones respiratorias virales.</li>
+                </ul>
+
+                <div class="justification" id="justification-2297">Aunque el paciente sea exfumador, la exposición crónica al humo del tabaco es el principal factor de riesgo para el desarrollo de la EPOC.</div>
+            </div>
+
+            <div class="card question-card" data-index="2298">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tratamiento de elección para las exacerbaciones agudas de EPOC?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2298, this, 'A')">A. Corticosteroides inhalados.</li>
+                    <li onclick="selectAnswer(2298, this, 'B')">B. Antibióticos.</li>
+                    <li onclick="selectAnswer(2298, this, 'C')">C. Oxígeno suplementario.</li>
+                    <li onclick="selectAnswer(2298, this, 'D')">D. Anticolinérgicos de acción prolongada.</li>
+                </ul>
+                <div class="justification" id="justification-2298">Los pacientes con exacerbaciones agudas de EPOC pueden beneficiarse del tratamiento con antibióticos para manejar las exacerbaciones bacterianas.</div>
+            </div>
+
+            <div class="card question-card" data-index="2299">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el principal objetivo del tratamiento de mantenimiento en pacientes con EPOC?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2299, this, 'A')">A. Mejora de la función pulmonar.</li>
+                    <li onclick="selectAnswer(2299, this, 'B')">B. Reducción de la inflamación bronquial.</li>
+                    <li onclick="selectAnswer(2299, this, 'C')">C. Prevención de las exacerbaciones.</li>
+                    <li onclick="selectAnswer(2299, this, 'D')">D. Aumento de la capacidad respiratoria.</li>
+                </ul>
+                <div class="justification" id="justification-2299">El objetivo principal del tratamiento de mantenimiento en pacientes con EPOC es prevenir las exacerbaciones y mejorar la calidad de vida.</div>
+            </div>
+
+            <div class="card question-card" data-index="2300">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la prueba diagnóstica confirmatoria para la EPOC?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2300, this, 'A')">A. Radiografía de tórax.</li>
+                    <li onclick="selectAnswer(2300, this, 'B')">B. Gasometría arterial.</li>
+                    <li onclick="selectAnswer(2300, this, 'C')">C. Espirometría.</li>
+                    <li onclick="selectAnswer(2300, this, 'D')">D. Tomografía computarizada de tórax.</li>
+                </ul>
+                <div class="justification" id="justification-2300">La espirometría es la prueba diagnóstica confirmatoria para la EPOC y muestra una relación FEV1/FVC < 70%.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            2296: "B",
+            2297: "A",
+            2298: "B",
+            2299: "C",
+            2300: "C"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEUMOLOGÍA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>NEUMOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 13</h2>
+                <p>13. Una mujer de 68 años con antecedentes de tabaquismo presenta tos crónica, disnea de esfuerzo y expectoración mucopurulenta. Durante el examen físico, se observa cianosis peribucal y signos de tiraje intercostal. En la auscultación pulmonar, se escuchan sibilancias y roncus. Se solicita una espirometría, que muestra una relación volumen espiratorio forzado en el primer segundo (FEV1) a capacidad vital forzada (FVC) post-broncodilatador menor al 70%.</p>
+
+            </div>
+            <div class="card question-card" data-index="2281">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el diagnóstico más probable en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2281, this, 'A')">A. Asma.</li>
+                    <li onclick="selectAnswer(2281, this, 'B')">B. Neumonía.</li>
+                    <li onclick="selectAnswer(2281, this, 'C')">C. EPOC.</li>
+                    <li onclick="selectAnswer(2281, this, 'D')">D. Fibrosis pulmonar.</li>
+                </ul>
+                <div class="justification" id="justification-2281">El paciente presenta antecedentes de tabaquismo, síntomas crónicos respiratorios, como tos y disnea, así como hallazgos característicos en la radiografía de tórax, sugestivos de EPOC.</div>
+            </div>
+
+            <div class="card question-card" data-index="2282">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el hallazgo radiográfico típico en pacientes con EPOC avanzada?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2282, this, 'A')">A. Atelectasia.</li>
+                    <li onclick="selectAnswer(2282, this, 'B')">B. Engrosamiento pleural.</li>
+                    <li onclick="selectAnswer(2282, this, 'C')">C. Aumento de la densidad pulmonar.</li>
+                    <li onclick="selectAnswer(2282, this, 'D')">D. Hiperinsuflación y aplanamiento de los diafragmas.</li>
+                </ul>
+
+                <div class="justification" id="justification-2282">La hiperinsuflación y el aplanamiento de los diafragmas son hallazgos típicos en radiografías de tórax de pacientes con EPOC avanzada.</div>
+            </div>
+
+            <div class="card question-card" data-index="2283">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la principal causa de la EPOC?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2283, this, 'A')">A. Infecciones virales recurrentes.</li>
+                    <li onclick="selectAnswer(2283, this, 'B')">B. Exposición crónica al humo del tabaco.</li>
+                    <li onclick="selectAnswer(2283, this, 'C')">C. Exposición ocupacional al asbesto.</li>
+                    <li onclick="selectAnswer(2283, this, 'D')">D. Factores genéticos.</li>
+                </ul>
+                <div class="justification" id="justification-2283">La exposición crónica al humo del tabaco es la principal causa de la EPOC en todo el mundo.</div>
+            </div>
+
+            <div class="card question-card" data-index="2284">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tratamiento farmacológico de mantenimiento recomendado para pacientes con EPOC moderada a grave?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2284, this, 'A')">A. Corticosteroides inhalados.</li>
+                    <li onclick="selectAnswer(2284, this, 'B')">B. Broncodilatadores de acción corta.</li>
+                    <li onclick="selectAnswer(2284, this, 'C')">C. Corticosteroides orales.</li>
+                    <li onclick="selectAnswer(2284, this, 'D')">D. Broncodilatadores de acción prolongada.</li>
+                </ul>
+                <div class="justification" id="justification-2284">Los broncodilatadores de acción prolongada, como los agonistas beta de larga duración y los anticolinérgicos de larga duración, son el tratamiento de mantenimiento recomendado para pacientes con EPOC moderada a grave.</div>
+            </div>
+
+            <div class="card question-card" data-index="2285">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el objetivo principal del tratamiento de la EPOC?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2285, this, 'A')">A. Curación de la enfermedad.</li>
+                    <li onclick="selectAnswer(2285, this, 'B')">B. Reducción de la frecuencia de exacerbaciones.</li>
+                    <li onclick="selectAnswer(2285, this, 'C')">C. Mejora de la función pulmonar.</li>
+                    <li onclick="selectAnswer(2285, this, 'D')">D. Prevención de la fibrosis pulmonar.</li>
+                </ul>
+                <div class="justification" id="justification-2285">El objetivo principal del tratamiento de la EPOC es reducir la frecuencia y la gravedad de las exacerbaciones, mejorar la calidad de vida y prevenir el deterioro progresivo de la función pulmonar.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            2281: "C",
+            2282: "D",
+            2283: "B",
+            2284: "D",
+            2285: "B"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

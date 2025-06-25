@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEUMOLOGÍA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>NEUMOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 15</h2>
+                <p>Una mujer de 65 años, exfumadora desde hace 20 años, presenta disnea progresiva de varios meses de duración. Durante el examen físico, se observa cianosis peribucal y clubbing digital. La auscultación pulmonar revela crepitantes bilaterales en la base pulmonar. La gasometría arterial muestra hipoxemia y hipercapnia.</p>
+
+            </div>
+            <div class="card question-card" data-index="2301">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el diagnóstico más probable en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2301, this, 'A')">A. Asma.</li>
+                    <li onclick="selectAnswer(2301, this, 'B')">B. EPOC.</li>
+                    <li onclick="selectAnswer(2301, this, 'C')">C. Fibrosis pulmonar idiopática.</li>
+                    <li onclick="selectAnswer(2301, this, 'D')">D. Neumonía.</li>
+                </ul>
+                <div class="justification" id="justification-2301">La disnea progresiva, cianosis, clubbing digital y crepitantes bilaterales sugieren una enfermedad intersticial pulmonar como la fibrosis pulmonar idiopática.</div>
+            </div>
+
+            <div class="card question-card" data-index="2302">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el principal factor de riesgo para la fibrosis pulmonar idiopática?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2302, this, 'A')">A. Exposición crónica al humo del tabaco.</li>
+                    <li onclick="selectAnswer(2302, this, 'B')">B. Exposición a agentes ambientales.</li>
+                    <li onclick="selectAnswer(2302, this, 'C')">C. Antecedentes de asma.</li>
+                    <li onclick="selectAnswer(2302, this, 'D')">D. Historia de neumonía recurrente.</li>
+                </ul>
+
+                <div class="justification" id="justification-2302">La exposición a agentes ambientales como el polvo, vapores químicos y contaminantes del aire se considera un factor de riesgo importante para la fibrosis pulmonar idiopática.</div>
+            </div>
+
+            <div class="card question-card" data-index="2303">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el hallazgo característico en la gasometría arterial de pacientes con fibrosis pulmonar idiopática?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2303, this, 'A')">A. Acidosis respiratoria.</li>
+                    <li onclick="selectAnswer(2303, this, 'B')">B. Alcalosis respiratoria.</li>
+                    <li onclick="selectAnswer(2303, this, 'C')">C. Hipoxemia e hipercapnia.</li>
+                    <li onclick="selectAnswer(2303, this, 'D')">D. Hipoxemia e hipocapnia.</li>
+                </ul>
+                <div class="justification" id="justification-2303">La fibrosis pulmonar idiopática puede conducir a una disminución en el intercambio gaseoso, resultando en hipoxemia e hipercapnia.</div>
+            </div>
+
+            <div class="card question-card" data-index="2304">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el tratamiento de elección para la fibrosis pulmonar idiopática?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2304, this, 'A')">A. Corticosteroides inhalados.</li>
+                    <li onclick="selectAnswer(2304, this, 'B')">B. Antibióticos.</li>
+                    <li onclick="selectAnswer(2304, this, 'C')">C. Oxígeno suplementario.</li>
+                    <li onclick="selectAnswer(2304, this, 'D')">D. Trasplante pulmonar.</li>
+                </ul>
+                <div class="justification" id="justification-2304">El trasplante pulmonar es el tratamiento de elección en casos seleccionados de fibrosis pulmonar idiopática que progresan rápidamente y no responden a otras terapias.</div>
+            </div>
+
+            <div class="card question-card" data-index="2305">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el signo radiológico característico en la radiografía de tórax de pacientes con fibrosis pulmonar idiopática?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2305, this, 'A')">A. Nódulos pulmonares.</li>
+                    <li onclick="selectAnswer(2305, this, 'B')">B. Cavitaciones.</li>
+                    <li onclick="selectAnswer(2305, this, 'C')">C. Opacidades en vidrio esmerilado.</li>
+                    <li onclick="selectAnswer(2305, this, 'D')">D. Consolidaciones.</li>
+                </ul>
+                <div class="justification" id="justification-2305">Las opacidades en vidrio esmerilado son un hallazgo característico en la radiografía de tórax de pacientes con fibrosis pulmonar idiopática.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            2301: "C",
+            2302: "B",
+            2303: "C",
+            2304: "D",
+            2305: "C"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {Los pacientes con exacerbaciones agudas de EPOC pued
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

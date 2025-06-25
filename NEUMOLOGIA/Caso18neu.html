@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEUMOLOGÍA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>NEUMOLOGIA</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 17</h2>
+                <p>Un hombre de 45 años, exfumador desde hace 10 años, presenta tos crónica y expectoración purulenta. Durante el examen físico, se auscultan sibilancias y crepitantes en la auscultación pulmonar. Las radiografías de tórax revelan áreas de consolidación y dilatación bronquial en ambos pulmones, junto con signos de hiperinflación.</p>
+
+            </div>
+            <div class="card question-card" data-index="2311">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el diagnóstico más probable en este caso?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2311, this, 'A')">A. Neumonía.</li>
+                    <li onclick="selectAnswer(2311, this, 'B')">B. Asma.</li>
+                    <li onclick="selectAnswer(2311, this, 'C')">C. EPOC.</li>
+                    <li onclick="selectAnswer(2311, this, 'D')">D. Bronquiectasias..</li>
+                </ul>
+                <div class="justification" id="justification-2311">Los hallazgos clínicos y radiológicos son consistentes con el diagnóstico de bronquiectasias, especialmente en el contexto de la historia de tabaquismo y los antecedentes de EPOC y asma mal controlada.</div>
+            </div>
+
+            <div class="card question-card" data-index="2312">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la causa más común de bronquiectasias en este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2312, this, 'A')">A. Tabaco..</li>
+                    <li onclick="selectAnswer(2312, this, 'B')">B. Exposición a humo de biomasa.</li>
+                    <li onclick="selectAnswer(2312, this, 'C')">C. Infecciones respiratorias recurrentes.</li>
+                    <li onclick="selectAnswer(2312, this, 'D')">D. Enfermedades autoinmunes.</li>
+                </ul>
+
+                <div class="justification" id="justification-2312">El tabaquismo es un importante factor de riesgo para el desarrollo de bronquiectasias.</div>
+            </div>
+
+            <div class="card question-card" data-index="2313">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el objetivo principal del tratamiento en este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2313, this, 'A')">A. Mejorar la función pulmonar.</li>
+                    <li onclick="selectAnswer(2313, this, 'B')">B. Reducir la tos.</li>
+                    <li onclick="selectAnswer(2313, this, 'C')">C. Prevenir las exacerbaciones.</li>
+                    <li onclick="selectAnswer(2313, this, 'D')">D. Controlar la disnea.</li>
+                </ul>
+                <div class="justification" id="justification-2313">Dado que el paciente presenta bronquiectasias, el objetivo principal del tratamiento es prevenir las exacerbaciones mediante el control de las infecciones y la eliminación de las secreciones bronquiales.</div>
+            </div>
+
+            <div class="card question-card" data-index="2314">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el enfoque terapéutico más adecuado para este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2314, this, 'A')">A. Corticosteroides inhalados.</li>
+                    <li onclick="selectAnswer(2314, this, 'B')">B. Broncodilatadores.</li>
+                    <li onclick="selectAnswer(2314, this, 'C')">C. Antibióticos.</li>
+                    <li onclick="selectAnswer(2314, this, 'D')">D. Oxigenoterapia.</li>
+                </ul>
+                <div class="justification" id="justification-2314">Los antibióticos son el tratamiento principal para las exacerbaciones agudas de las bronquiectasias, ya que ayudan a controlar las infecciones bacterianas asociadas.</div>
+            </div>
+
+            <div class="card question-card" data-index="2315">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el signo radiológico característico de las bronquiectasias en este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2315, this, 'A')">A. Opacidades en vidrio esmerilado.</li>
+                    <li onclick="selectAnswer(2315, this, 'B')">B. Dilatación bronquial.</li>
+                    <li onclick="selectAnswer(2315, this, 'C')">C. Atelectasia.</li>
+                    <li onclick="selectAnswer(2315, this, 'D')">D. Atelectasia.</li>
+                </ul>
+                <div class="justification" id="justification-2315">La dilatación bronquial es un hallazgo característico en las radiografías de tórax de pacientes con bronquiectasias.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            2311: "D",
+            2312: "A",
+            2313: "C",
+            2314: "C",
+            2315: "B"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {Los pacientes con exacerbaciones agudas de EPOC pued
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>
