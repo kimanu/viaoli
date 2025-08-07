@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEUMOLOGÍA</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Traumatologia y Ortopedia</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 1</h2>
+                <p>Un paciente de 35 años de edad llega a urgencias después de haber sufrido una caída mientras jugaba fútbol. Se queja de dolor e incapacidad para mover su hombro derecho. Al examen físico, se observa deformidad evidente en el hombro, limitación de la movilidad y dolor a la palpación. No hay signos de neurovascularidad comprometida.</p>
+
+            </div>
+            <div class="card question-card" data-index="2231">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el diagnóstico más probable en este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2231, this, 'A')">A. Fractura de clavícula.</li>
+                    <li onclick="selectAnswer(2231, this, 'B')">B. Luxación glenohumeral anterior.</li>
+                    <li onclick="selectAnswer(2231, this, 'C')">C. Luxación acromioclavicular.</li>
+                    <li onclick="selectAnswer(2231, this, 'D')">D. Luxación esternoclavicular.</li>
+                </ul>
+                <div class="justification" id="justification-2231">La luxación glenohumeral anterior es la lesión más común del hombro después de un traumatismo, especialmente en adultos jóvenes. Se presenta con deformidad evidente, limitación de la movilidad y dolor, como se describe en el caso clínico.</div>
+            </div>
+
+            <div class="card question-card" data-index="2232">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el método preferido para reducir esta luxación en el servicio de urgencias?</p>
+                <ul class="options">\\aqui
+                    <li onclick="selectAnswer(2232, this, 'A')">A. Tracción axial.</li>
+                    <li onclick="selectAnswer(2232, this, 'B')">B. Método de Kocher.</li>
+                    <li onclick="selectAnswer(2232, this, 'C')">C. Método de tracción con contratracción.</li>
+                    <li onclick="selectAnswer(2232, this, 'D')">D. Reducción cerrada bajo anestesia general</li>
+                </ul>
+
+                <div class="justification" id="justification-2232">El método de tracción con contratracción es el preferido para reducir la luxación glenohumeral anterior en el servicio de urgencias. Es menos invasivo que la reducción cerrada bajo anestesia general y se ha demostrado que es efectivo y seguro en esta situación.</div>
+            </div>
+
+            <div class="card question-card" data-index="2233">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es la complicación aguda más común asociada con esta luxación?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2233, this, 'A')">A. Lesión del plexo braquial.</li>
+                    <li onclick="selectAnswer(2233, this, 'B')">B. Fractura de húmero proximal.</li>
+                    <li onclick="selectAnswer(2233, this, 'C')">C. Lesión del nervio axilar.</li>
+                    <li onclick="selectAnswer(2233, this, 'D')">D. Lesión de la arteria axilar.</li>
+                </ul>
+                <div class="justification" id="justification-2233">La lesión del plexo braquial es la complicación aguda más común asociada con la luxación glenohumeral anterior. Puede ocurrir debido a la tracción excesiva durante el evento traumático que causa la luxación.</div>
+            </div>
+
+            <div class="card question-card" data-index="2234">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el manejo inicial recomendado después de la reducción de la luxación?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2234, this, 'A')">A. Inmovilización con cabestrillo por 1 semana.</li>
+                    <li onclick="selectAnswer(2234, this, 'B')">B. Inmovilización con cabestrillo por 3 semanas.</li>
+                    <li onclick="selectAnswer(2234, this, 'C')">C. Inicio inmediato de fisioterapia.</li>
+                    <li onclick="selectAnswer(2234, this, 'D')">D. Control ortopédico en 24 horas.</li>
+                </ul>
+                <div class="justification" id="justification-2234">Después de la reducción de la luxación glenohumeral anterior, se recomienda inmovilizar el hombro con un cabestrillo por al menos 3 semanas para permitir la cicatrización de los tejidos blandos.</div>
+            </div>
+
+            <div class="card question-card" data-index="2235">
+                <h3>❓ Pregunta:</h3>
+                <p>¿Cuál es el factor de riesgo más importante para la recurrencia de luxaciones en este paciente?</p>
+                <ul class="options">
+                    <li onclick="selectAnswer(2235, this, 'A')">A. Edad del paciente.</li>
+                    <li onclick="selectAnswer(2235, this, 'B')">B. Sexo del paciente.</li>
+                    <li onclick="selectAnswer(2235, this, 'C')">C. Mecanismo de la lesión.</li>
+                    <li onclick="selectAnswer(2235, this, 'D')">D. Mecanismo de la lesión.</li>
+                </ul>
+                <div class="justification" id="justification-2235">: La historia previa de luxación glenohumeral es el factor de riesgo más importante para la recurrencia de este tipo de lesiones. Los pacientes con antecedentes de luxaciones tienen un riesgo significativamente mayor de sufrir nuevas luxaciones en el futuro.</div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            461: "B",
+            462: "C",
+            463: "A",
+            464: "B",
+            465: "D"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>
