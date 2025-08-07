@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 36</h2>
+                <p>"Carlos, un hombre de 25 años, llega a urgencias con dolor intenso en la región anal, fiebre y dificultad para sentarse. Relata que el dolor comenzó como una protuberancia pequeña que ahora se ha vuelto más grande y dolorosa.
+Exámenes Complementarios:
+Examen físico: Identificación de una masa dolorosa en la región perianal.
+Examen de laboratorio: Elevación de los niveles de leucocitos."</p>
+
+                <div class="card question-card" data-index="370">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la presentación clínica principal que sugiere un absceso perianal en Carlos?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(370, this, 'A')">A. Sangrado rectal.</li>
+                        <li onclick="selectAnswer(370, this, 'B')">B. Dolor durante la defecación.</li>
+                        <li onclick="selectAnswer(370, this, 'C')">C. Masa dolorosa en la región perianal.</li>
+                        <li onclick="selectAnswer(370, this, 'D')">D. Diarrea persistente.</li>
+                    </ul>
+                    <div class="justification" id="justification-370">La presencia de una masa dolorosa en la región perianal es indicativa de un absceso perianal.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="371">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la causa más común de los abscesos perianales agudos?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(371, this, 'A')">A. Infección bacteriana.</li>
+                        <li onclick="selectAnswer(371, this, 'B')">B. Trauma anal.</li>
+                        <li onclick="selectAnswer(371, this, 'C')">C. Estreñimiento crónico.</li>
+                        <li onclick="selectAnswer(371, this, 'D')">D. Consumo excesivo de alimentos picantes.</li>
+                    </ul>u
+                    <div class="justification" id="justification-371">Los abscesos perianales agudos generalmente resultan de infecciones bacterianas.</div>
+                </div>
+                
+                <div class="card question-card" data-index="372">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál de las siguientes opciones sería una intervención inicial para el absceso perianal de Carlos?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(372, this, 'A')">A. Antibióticos.</li>
+                        <li onclick="selectAnswer(372, this, 'B')">B. Cirugía de hemorroides.</li>
+                        <li onclick="selectAnswer(372, this, 'C')">C. Cambios en la dieta.</li>
+                        <li onclick="selectAnswer(372, this, 'D')">D. Radioterapia.</li>
+                    </ul>
+                    <div class="justification" id="justification-372">La administración de antibióticos es una intervención inicial para controlar la infección en los abscesos perianales.</div>
+                </div>
+                
+                <div class="card question-card" data-index="373">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál de las siguientes opciones sería una intervención inicial para el absceso perianal de Carlos?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(373, this, 'A')">A. Antibióticos.</li>
+                        <li onclick="selectAnswer(373, this, 'B')">B. Cirugía de hemorroides.</li>
+                        <li onclick="selectAnswer(373, this, 'C')">C. Cambios en la dieta.</li>
+                        <li onclick="selectAnswer(373, this, 'D')">D. Radioterapia.</li>
+                    </ul>
+                    <div class="justification" id="justification-373">La administración de antibióticos es una intervención inicial para controlar la infección en los abscesos perianales.</div>
+                </div>
+                
+                <div class="card question-card" data-index="374">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el objetivo principal del tratamiento de los abscesos perianales?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(374, this, 'A')">A. Prevenir el estreñimiento.</li>
+                        <li onclick="selectAnswer(374, this, 'B')">B. Reducir la fiebre.</li>
+                        <li onclick="selectAnswer(374, this, 'C')">C. Aliviar el dolor y prevenir complicaciones.</li>
+                        <li onclick="selectAnswer(374, this, 'D')">D. Eliminar las masas perianales.</li>
+                    </ul>
+                    <div class="justification" id="justification-374">El tratamiento busca aliviar el dolor y prevenir complicaciones como la formación de fistulas</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            370: "C", 
+            371: "A", 
+            372: "A", 
+            373: "A", 
+            374: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otorrinolaringología - Rinosinusitis Crónica</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f4f9ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1b4f72;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .card {
+            background: #fff;
+            border-left: 6px solid;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .case-container {
+            border-color: #af7ac5;
+        }
+
+        .question-card {
+            border-color: #2471a3;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            background: #f7f9fc;
+            padding: 12px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2471a3;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: #fff;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: #fff;
+        }
+
+        #submit-button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2em;
+            background: #2471a3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #154360;
+        }
+
+        #submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            background: #d4efdf;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2471a3;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Otorrinolaringología - Rinosinusitis Crónica</h1>
+        </div>
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>
+                Un hombre de 45 años acude a la consulta con quejas de obstrucción nasal bilateral, secreción nasal purulenta y dolor facial durante las últimas tres semanas. El paciente informa que los síntomas empeoran por la noche y se alivian temporalmente con el uso de descongestionantes nasales tópicos. Niega antecedentes de alergias nasales o sinusitis previa. Al examen físico, se observa inflamación de la mucosa nasal, secreción purulenta en ambos meatos nasales y sensibilidad a la palpación sobre los senos paranasales maxilares y frontales.
+            </p>
+        </div>
+
+        <div class="card question-card" data-index="706">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el diagnóstico más probable en este paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(706, this, 'A')">A. Rinitis alérgica perenne</li>
+                <li onclick="selectAnswer(706, this, 'B')">B. Rinosinusitis aguda</li>
+                <li onclick="selectAnswer(706, this, 'C')">C. Rinosinusitis crónica</li>
+                <li onclick="selectAnswer(706, this, 'D')">D. Poliposis nasal</li>
+            </ul>
+            <div class="justification" id="justification-706">
+                Los síntomas persistentes por más de 12 semanas y secreción purulenta indican rinosinusitis crónica.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="707">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál síntoma es más característico de la rinosinusitis crónica?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(707, this, 'A')">A. Dolor facial</li>
+                <li onclick="selectAnswer(707, this, 'B')">B. Secreción nasal purulenta</li>
+                <li onclick="selectAnswer(707, this, 'C')">C. Fiebre</li>
+                <li onclick="selectAnswer(707, this, 'D')">D. Obstrucción nasal</li>
+            </ul>
+            <div class="justification" id="justification-707">
+                La obstrucción nasal persistente es más característica de la forma crónica.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="708">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál prueba de imagen es más útil para confirmar el diagnóstico?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(708, this, 'A')">A. Radiografía de senos paranasales</li>
+                <li onclick="selectAnswer(708, this, 'B')">B. Tomografía computarizada</li>
+                <li onclick="selectAnswer(708, this, 'C')">C. Resonancia magnética</li>
+                <li onclick="selectAnswer(708, this, 'D')">D. Ecografía nasal</li>
+            </ul>
+            <div class="justification" id="justification-708">
+                La tomografía computarizada es la prueba más adecuada para evaluar rinosinusitis crónica.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="709">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el tratamiento inicial más apropiado?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(709, this, 'A')">A. Antibióticos orales</li>
+                <li onclick="selectAnswer(709, this, 'B')">B. Corticosteroides intranasales</li>
+                <li onclick="selectAnswer(709, this, 'C')">C. Descongestionantes tópicos</li>
+                <li onclick="selectAnswer(709, this, 'D')">D. Lavados nasales con solución salina</li>
+            </ul>
+            <div class="justification" id="justification-709">
+                Los lavados nasales con solución salina son el primer paso del manejo conservador.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="710">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es una perla clave en el manejo de la rinosinusitis crónica?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(710, this, 'A')">A. Los antibióticos son el tratamiento principal.</li>
+                <li onclick="selectAnswer(710, this, 'B')">B. Corticosteroides intranasales son efectivos.</li>
+                <li onclick="selectAnswer(710, this, 'C')">C. Cirugía endoscópica siempre es necesaria.</li>
+                <li onclick="selectAnswer(710, this, 'D')">D. El tratamiento debe ser individualizado según la gravedad.</li>
+            </ul>
+            <div class="justification" id="justification-710">
+                El manejo debe ser personalizado según la severidad y la respuesta al tratamiento conservador.
+            </div>
+        </div>
+
+        <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            706: "C",
+            707: "D",
+            708: "B",
+            709: "D",
+            710: "D"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

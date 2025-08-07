@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cirugía General</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e74c3c;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cirugía General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>"Laura, una joven de 25 años, es llevada a la sala de emergencias con una quemadura eléctrica en la mano derecha. Intentó realizar reparaciones eléctricas en su hogar sin apagar la corriente eléctrica y sufrió una descarga eléctrica.<br><br>
+                Exámenes Complementarios:<br>
+                Evaluación visual de la quemadura eléctrica en la mano derecha de Laura.<br>
+                Historial de eventos y detalles sobre la manipulación incorrecta."</p>
+
+                <div class="card question-card" data-index="450">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la principal causa de una quemadura eléctrica en situaciones domésticas?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(450, this, 'A')">A. Exposición prolongada al sol.</li>
+                        <li onclick="selectAnswer(450, this, 'B')">B. Manipulación incorrecta de dispositivos eléctricos.</li>
+                        <li onclick="selectAnswer(450, this, 'C')">C. Uso de productos químicos corrosivos.</li>
+                        <li onclick="selectAnswer(450, this, 'D')">D. Infecciones bacterianas.</li>
+                    </ul>
+                    <div class="justification" id="justification-450">La manipulación incorrecta de dispositivos eléctricos es una causa común de quemaduras eléctricas en entornos domésticos.</div>
+                </div>
+
+                <div class="card question-card" data-index="451">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué es fundamental apagar la corriente eléctrica antes de realizar reparaciones eléctricas?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(451, this, 'A')">A. Para reducir el consumo de energía.</li>
+                        <li onclick="selectAnswer(451, this, 'B')">B. Para evitar daños en los dispositivos eléctricos.</li>
+                        <li onclick="selectAnswer(451, this, 'C')">C. Para prevenir descargas eléctricas y quemaduras.</li>
+                        <li onclick="selectAnswer(451, this, 'D')">D. Para prolongar la vida útil de los electrodomésticos.</li>
+                    </ul>
+                    <div class="justification" id="justification-451">Apagar la corriente eléctrica antes de realizar reparaciones evita descargas eléctricas y quemaduras.</div>
+                </div>
+
+                <div class="card question-card" data-index="452">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la medida inmediata que se debe tomar en caso de una quemadura eléctrica?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(452, this, 'A')">A. Aplicar compresas frías.</li>
+                        <li onclick="selectAnswer(452, this, 'B')">B. Frotar la quemadura para mejorar la circulación.</li>
+                        <li onclick="selectAnswer(452, this, 'C')">C. Enjuagar con abundante agua.</li>
+                        <li onclick="selectAnswer(452, this, 'D')">D. Cubrir la quemadura con una venda apretada.</li>
+                    </ul>
+                    <div class="justification" id="justification-452">Enjuagar con abundante agua es crucial para eliminar residuos y aliviar la quemadura eléctrica.</div>
+                </div>
+
+                <div class="card question-card" data-index="453">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué las quemaduras eléctricas a menudo afectan áreas específicas, como las manos?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(453, this, 'A')">A. La electricidad siempre fluye hacia las manos.</li>
+                        <li onclick="selectAnswer(453, this, 'B')">B. Las manos son más sensibles a la electricidad.</li>
+                        <li onclick="selectAnswer(453, this, 'C')">C. Las manos suelen estar en contacto directo con los cables.</li>
+                        <li onclick="selectAnswer(453, this, 'D')">D. Las quemaduras eléctricas no tienen patrón específico.</li>
+                    </ul>
+                    <div class="justification" id="justification-453">Las manos a menudo están en contacto directo con cables u objetos conductores, aumentando la probabilidad de quemaduras eléctricas en estas áreas.</div>
+                </div>
+
+                <div class="card question-card" data-index="454">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuáles son las precauciones clave que deben seguirse al realizar trabajos eléctricos en el hogar?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(454, this, 'A')">A. Realizar trabajos eléctricos solo durante el día.</li>
+                        <li onclick="selectAnswer(454, this, 'B')">B. Utilizar herramientas adecuadas y apagar la corriente eléctrica.</li>
+                        <li onclick="selectAnswer(454, this, 'C')">C. Hacer reparaciones eléctricas sin usar equipo de protección.</li>
+                        <li onclick="selectAnswer(454, this, 'D')">D. Realizar trabajos eléctricos en áreas húmedas.</li>
+                    </ul>
+                    <div class="justification" id="justification-454">Utilizar herramientas adecuadas y apagar la corriente eléctrica son precauciones clave para evitar quemaduras eléctricas en el hogar.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            450: "B",
+            451: "C",
+            452: "C",
+            453: "C",
+            454: "B"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

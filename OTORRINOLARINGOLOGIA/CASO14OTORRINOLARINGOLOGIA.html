@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Otorrinolaringología - Edema de Reinke</title>
+    <style>
+        /* (CSS original sin cambios) */
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f4f9ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1b4f72;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .card {
+            background: #fff;
+            border-left: 6px solid;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .case-container {
+            border-color: #af7ac5;
+        }
+
+        .question-card {
+            border-color: #2471a3;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            background: #f7f9fc;
+            padding: 12px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2471a3;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: #fff;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: #fff;
+        }
+
+        #submit-button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2em;
+            background: #2471a3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #154360;
+        }
+
+        #submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            background: #d4efdf;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2471a3;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Otorrinolaringología - Edema de Reinke</h1>
+        </div>
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>
+                Un paciente consulta por una ronquera persistente que ha empeorado progresivamente durante los últimos meses. Niega dolor, disfagia o antecedentes recientes de infecciones respiratorias. Al examen laringoscópico se observa un engrosamiento bilateral de las cuerdas vocales, con movilidad preservada. El paciente es fumador crónico.
+            </p>
+        </div>
+
+        <div class="card question-card" data-index="702">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el diagnóstico más probable en este paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(702, this, 'A')">A. Nódulos vocales</li>
+                <li onclick="selectAnswer(702, this, 'B')">B. Pólipo vocal</li>
+                <li onclick="selectAnswer(702, this, 'C')">C. Edema de Reinke</li>
+                <li onclick="selectAnswer(702, this, 'D')">D. Carcinoma laríngeo</li>
+            </ul>
+            <div class="justification" id="justification-702">
+                La voz ronca persistente con engrosamiento de las cuerdas vocales es más sugestiva de edema de Reinke, una condición que afecta las cuerdas vocales y causa cambios en la calidad vocal.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="703">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de los siguientes factores de riesgo se asocia más estrechamente con el desarrollo de edema de Reinke?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(703, this, 'A')">A. Tabaquismo</li>
+                <li onclick="selectAnswer(703, this, 'B')">B. Exposición a humo de cigarrillo pasivo</li>
+                <li onclick="selectAnswer(703, this, 'C')">C. Uso excesivo de la voz</li>
+                <li onclick="selectAnswer(703, this, 'D')">D. Consumo de alcohol</li>
+            </ul>
+            <div class="justification" id="justification-703">
+                El tabaquismo es un factor de riesgo conocido para el desarrollo de edema de Reinke, ya que el humo del cigarrillo puede irritar las cuerdas vocales y contribuir a la formación del edema.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="704">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de los siguientes síntomas es más característico del edema de Reinke?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(704, this, 'A')">A. Disfagia</li>
+                <li onclick="selectAnswer(704, this, 'B')">B. Sibilancias</li>
+                <li onclick="selectAnswer(704, this, 'C')">C. Ronquera</li>
+                <li onclick="selectAnswer(704, this, 'D')">D. Hemoptisis</li>
+            </ul>
+            <div class="justification" id="justification-704">
+                La ronquera es el síntoma más característico del edema de Reinke debido al engrosamiento de las cuerdas vocales y los cambios en la calidad vocal.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="705">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de las siguientes pruebas de imagen es más útil para evaluar el edema de Reinke?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(705, this, 'A')">A. Radiografía de cuello en perfil</li>
+                <li onclick="selectAnswer(705, this, 'B')">B. Tomografía computarizada de cuello</li>
+                <li onclick="selectAnswer(705, this, 'C')">C. Ecografía laríngea</li>
+                <li onclick="selectAnswer(705, this, 'D')">D. Laringoscopia directa</li>
+            </ul>
+            <div class="justification" id="justification-705">
+                La laringoscopia directa es la prueba de elección para evaluar el edema de Reinke, permitiendo una visualización directa de las cuerdas vocales y cualquier anormalidad en la laringe.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="706">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el tratamiento principal para el edema de Reinke?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(706, this, 'A')">A. Corticosteroides orales</li>
+                <li onclick="selectAnswer(706, this, 'B')">B. Terapia vocal</li>
+                <li onclick="selectAnswer(706, this, 'C')">C. Cirugía de resección de las cuerdas vocales</li>
+                <li onclick="selectAnswer(706, this, 'D')">D. Evitar los factores desencadenantes identificados</li>
+            </ul>
+            <div class="justification" id="justification-706">
+                La cirugía de resección de las cuerdas vocales es el tratamiento principal para el edema de Reinke en casos seleccionados, especialmente cuando el edema es severo y afecta significativamente la calidad vocal.
+            </div>
+        </div>
+
+        <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            702: "C",
+            703: "A",
+            704: "C",
+            705: "D",
+            706: "C"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

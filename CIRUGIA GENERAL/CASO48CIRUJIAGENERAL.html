@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cirugía General</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+ 
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+     <div class="container">
+        <div class="card case-container">
+            <h1>Cirugía General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>"Lucas, un niño de 8 años, es llevado a la consulta médica por sus padres. Durante un día de paseo en la playa, Lucas pasó muchas horas bajo el sol sin protección. Ahora presenta enrojecimiento, sensibilidad y dolor en su espalda y hombros.<br><br>
+                Exámenes Complementarios:<br>
+                Evaluación visual de las áreas afectadas en la espalda y hombros de Lucas.<br>
+                Registro de la duración de la exposición solar y medidas de protección utilizadas."</p>
+
+                <div class="card question-card" data-index="440">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Qué tipo de quemadura es más probable que experimente Lucas después de pasar mucho tiempo bajo el sol sin protección?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(440, this, 'A')">A. Quemadura de primer grado.</li>
+                        <li onclick="selectAnswer(440, this, 'B')">B. Quemadura térmica.</li>
+                        <li onclick="selectAnswer(440, this, 'C')">C. Quemadura solar.</li>
+                        <li onclick="selectAnswer(440, this, 'D')">D. Quemadura química.</li>
+                    </ul>
+                    <div class="justification" id="justification-440">La exposición prolongada al sol sin protección puede causar quemaduras solares en la piel.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="441">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la medida inmediata más importante para aliviar el malestar en quemaduras solares como las de Lucas?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(441, this, 'A')">A. Aplicar ungüentos a base de aceite.</li>
+                        <li onclick="selectAnswer(441, this, 'B')">B. Tomar analgésicos orales.</li>
+                        <li onclick="selectAnswer(441, this, 'C')">C. Tomar una ducha caliente.</li>
+                        <li onclick="selectAnswer(441, this, 'D')">D. Aplicar compresas frías.</li>
+                    </ul>
+                    <div class="justification" id="justification-441">Aplicar compresas frías puede ayudar a aliviar el malestar en quemaduras solares.</div>
+                </div>
+                
+                <div class="card question-card" data-index="442">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Qué producto esencial debería haber usado Lucas para prevenir quemaduras solares durante su día en la playa?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(442, this, 'A')">A. Protector solar.</li>
+                        <li onclick="selectAnswer(442, this, 'B')">B. Protector térmico.</li>
+                        <li onclick="selectAnswer(442, this, 'C')">C. Aceite de coco.</li>
+                        <li onclick="selectAnswer(442, this, 'D')">D. Loción hidratante.</li>
+                    </ul>
+                    <div class="justification" id="justification-442">El protector solar es esencial para prevenir quemaduras solares al proporcionar protección contra los rayos ultravioleta.</div>
+                </div>
+                
+                <div class="card question-card" data-index="443">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué es importante evitar la exposición solar prolongada, especialmente en niños?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(443, this, 'A')">A. Para prevenir alergias cutáneas.</li>
+                        <li onclick="selectAnswer(443, this, 'B')">B. Para evitar la pérdida de pigmentación en la piel.</li>
+                        <li onclick="selectAnswer(443, this, 'C')">C. Para reducir el riesgo de quemaduras solares y el daño solar a largo plazo.</li>
+                        <li onclick="selectAnswer(443, this, 'D')">D. Para promover la síntesis de vitamina D.</li>
+                    </ul>
+                    <div class="justification" id="justification-443">La exposición solar prolongada aumenta el riesgo de quemaduras solares y el daño solar a largo plazo, como el envejecimiento prematuro de la piel y el riesgo de cáncer de piel.</div>
+                </div>
+                
+                <div class="card question-card" data-index="444">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuáles son las medidas preventivas clave que los padres deben tomar para proteger a sus hijos del sol durante actividades al aire libre?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(444, this, 'A')">A. Aplicar protector solar, vestir ropa protectora y limitar la exposición solar directa.</li>
+                        <li onclick="selectAnswer(444, this, 'B')">B. Utilizar solo sombreros grandes para proteger la cara.</li>
+                        <li onclick="selectAnswer(444, this, 'C')">C. Fomentar la exposición solar prolongada para mejorar la salud de la piel.</li>
+                        <li onclick="selectAnswer(444, this, 'D')">D. Aplicar aceite de bronceado antes de la exposición solar.</li>
+                    </ul>
+                    <div class="justification" id="justification-444">Las medidas preventivas incluyen la aplicación de protector solar, el uso de ropa protectora y la limitación de la exposición solar directa.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            440: "C", 
+            441: "D", 
+            442: "A", 
+            443: "C", 
+            444: "A" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

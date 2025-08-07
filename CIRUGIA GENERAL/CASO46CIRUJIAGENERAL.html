@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cirugía General</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+ 
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+     <div class="container">
+        <div class="card case-container">
+            <h1>Cirugía General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>"Roberto, un adulto de 40 años, llega al servicio de emergencias con una quemadura química en su mano derecha. Mientras realizaba tareas domésticas, accidentalmente derramó un producto químico corrosivo sobre su mano.<br><br>
+                Exámenes Complementarios:<br>
+                Evaluación visual de la quemadura química en la mano derecha de Roberto.<br>
+                Información detallada sobre el tipo de producto químico involucrado y la duración del contacto."</p>
+
+                <div class="card question-card" data-index="430">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la causa más común de las quemaduras químicas en el hogar?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(430, this, 'A')">A. Exposición prolongada al sol.</li>
+                        <li onclick="selectAnswer(430, this, 'B')">B. Contacto con productos de limpieza y sustancias químicas.</li>
+                        <li onclick="selectAnswer(430, this, 'C')">C. Consumo excesivo de alimentos ácidos.</li>
+                        <li onclick="selectAnswer(430, this, 'D')">D. Falta de higiene personal.</li>
+                    </ul>
+                    <div class="justification" id="justification-430">Las quemaduras químicas en el hogar son comúnmente causadas por el contacto con productos de limpieza y sustancias químicas corrosivas.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="431">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Qué medida inmediata se debe tomar en caso de una quemadura química para minimizar el daño?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(431, this, 'A')">A. Aplicar hielo directamente sobre la quemadura.</li>
+                        <li onclick="selectAnswer(431, this, 'B')">B. Enjuagar la zona afectada con abundante agua.</li>
+                        <li onclick="selectAnswer(431, this, 'C')">C. Aplicar ungüentos antibióticos.</li>
+                        <li onclick="selectAnswer(431, this, 'D')">D. Cubrir la quemadura con una venda apretada.</li>
+                    </ul>
+                    <div class="justification" id="justification-431">Enjuagar la zona afectada con abundante agua ayuda a diluir y eliminar la sustancia química, minimizando el daño.</div>
+                </div>
+                
+                <div class="card question-card" data-index="432">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la importancia de conocer el tipo de sustancia química involucrada en una quemadura química?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(432, this, 'A')">A. Para decidir si es necesario realizar una cirugía inmediata.</li>
+                        <li onclick="selectAnswer(432, this, 'B')">B. Para determinar la gravedad de la quemadura.</li>
+                        <li onclick="selectAnswer(432, this, 'C')">C. Para seleccionar el tratamiento adecuado y prever posibles complicaciones.</li>
+                        <li onclick="selectAnswer(432, this, 'D')">D. Para evaluar la necesidad de restricción de movimientos.</li>
+                    </ul>
+                    <div class="justification" id="justification-432">Conocer el tipo de sustancia química es crucial para seleccionar el tratamiento adecuado y anticipar posibles complicaciones.</div>
+                </div>
+                
+                <div class="card question-card" data-index="433">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué es desaconsejable aplicar hielo directamente sobre una quemadura química?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(433, this, 'A')">A. Puede aumentar la inflamación.</li>
+                        <li onclick="selectAnswer(433, this, 'B')">B. Puede causar congelación de los tejidos.</li>
+                        <li onclick="selectAnswer(433, this, 'C')">C. Puede acelerar la absorción de la sustancia química.</li>
+                        <li onclick="selectAnswer(433, this, 'D')">D. Puede generar alivio inmediato del dolor.</li>
+                    </ul>
+                    <div class="justification" id="justification-433">Aplicar hielo directamente sobre una quemadura química puede causar congelación de los tejidos y empeorar la lesión.</div>
+                </div>
+                
+                <div class="card question-card" data-index="434">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuáles son las medidas de precaución recomendadas para prevenir quemaduras químicas en el hogar?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(434, this, 'A')">A. Almacenar productos químicos en lugares accesibles.</li>
+                        <li onclick="selectAnswer(434, this, 'B')">B. Mezclar varios productos químicos para una limpieza más efectiva.</li>
+                        <li onclick="selectAnswer(434, this, 'C')">C. Leer las etiquetas de los productos y seguir las instrucciones.</li>
+                        <li onclick="selectAnswer(434, this, 'D')">D. Manipular productos químicos con las manos desnudas.</li>
+                    </ul>
+                    <div class="justification" id="justification-434">Leer las etiquetas y seguir las instrucciones de los productos químicos es esencial para prevenir quemaduras y lesiones.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            430: "B", 
+            431: "B", 
+            432: "C", 
+            433: "B", 
+            434: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

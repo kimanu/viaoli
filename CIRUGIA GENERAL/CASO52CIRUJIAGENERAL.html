@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cirugía General</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e74c3c;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Cirugía General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>"María, una joven de 22 años, acude a la sala de emergencias con quemaduras químicas en las manos. Intentó destapar una tubería utilizando un producto químico sin utilizar equipo de protección.<br><br>
+                Exámenes Complementarios:<br>
+                Evaluación visual de las quemaduras químicas en las manos de María.<br>
+                Investigación sobre el tipo de sustancia química utilizada y la duración del contacto."</p>
+
+                <div class="card question-card" data-index="460">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la causa principal de las quemaduras químicas en este caso?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(460, this, 'A')">A. Exposición prolongada al sol.</li>
+                        <li onclick="selectAnswer(460, this, 'B')">B. Uso de productos químicos corrosivos sin protección.</li>
+                        <li onclick="selectAnswer(460, this, 'C')">C. Infecciones bacterianas en la piel.</li>
+                        <li onclick="selectAnswer(460, this, 'D')">D. Falta de hidratación.</li>
+                    </ul>
+                    <div class="justification" id="justification-460">Las quemaduras químicas en este caso fueron causadas por el manejo incorrecto de productos químicos corrosivos sin utilizar protección.</div>
+                </div>
+
+                <div class="card question-card" data-index="461">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué es esencial utilizar equipo de protección al manipular sustancias químicas?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(461, this, 'A')">A. Para mantener las manos calientes.</li>
+                        <li onclick="selectAnswer(461, this, 'B')">B. Para prevenir la exposición directa a sustancias corrosivas.</li>
+                        <li onclick="selectAnswer(461, this, 'C')">C. Para mejorar la destreza manual.</li>
+                        <li onclick="selectAnswer(461, this, 'D')">D. Para evitar la pérdida de sensibilidad en las manos.</li>
+                    </ul>
+                    <div class="justification" id="justification-461">El equipo de protección es esencial para prevenir la exposición directa a sustancias corrosivas y evitar quemaduras químicas.</div>
+                </div>
+
+                <div class="card question-card" data-index="462">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la medida inicial recomendada para tratar quemaduras químicas en la piel?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(462, this, 'A')">A. Aplicar hielo inmediatamente.</li>
+                        <li onclick="selectAnswer(462, this, 'B')">B. Enjuagar con abundante agua.</li>
+                        <li onclick="selectAnswer(462, this, 'C')">C. Frotar la zona afectada con un paño seco.</li>
+                        <li onclick="selectAnswer(462, this, 'D')">D. Aplicar ungüentos tópicos.</li>
+                    </ul>
+                    <div class="justification" id="justification-462">La medida inicial recomendada para tratar quemaduras químicas es enjuagar con abundante agua para eliminar la sustancia química.</div>
+                </div>
+
+                <div class="card question-card" data-index="463">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál podría ser el impacto a largo plazo de quemaduras químicas severas en las manos?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(463, this, 'A')">A. Mejora de la función manual.</li>
+                        <li onclick="selectAnswer(463, this, 'B')">B. Desarrollo de resistencia a sustancias químicas.</li>
+                        <li onclick="selectAnswer(463, this, 'C')">C. Pérdida de sensibilidad y función en las manos.</li>
+                        <li onclick="selectAnswer(463, this, 'D')">D. Mayor resistencia a infecciones.</li>
+                    </ul>
+                    <div class="justification" id="justification-463">Quemaduras químicas severas pueden resultar en la pérdida de sensibilidad y función en las manos a largo plazo.</div>
+                </div>
+
+                <div class="card question-card" data-index="464">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuáles son las precauciones clave que se deben tomar al manipular sustancias químicas corrosivas?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(464, this, 'A')">A. Utilizar guantes y gafas protectoras, y trabajar en un área bien ventilada.</li>
+                        <li onclick="selectAnswer(464, this, 'B')">B. Manipular sustancias químicas sin equipo de protección.</li>
+                        <li onclick="selectAnswer(464, this, 'C')">C. Realizar el trabajo en un espacio cerrado sin ventilación.</li>
+                        <li onclick="selectAnswer(464, this, 'D')">D. Utilizar únicamente gafas protectoras sin guantes.</li>
+                    </ul>
+                    <div class="justification" id="justification-464">Las precauciones clave incluyen el uso de guantes y gafas protectoras, y trabajar en un área bien ventilada al manipular sustancias químicas corrosivas.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            460: "B",
+            461: "B",
+            462: "B",
+            463: "C",
+            464: "A"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

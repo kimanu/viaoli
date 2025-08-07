@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cirugía General</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+ 
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+     <div class="container">
+        <div class="card case-container">
+            <h1>Cirugía General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>"Elena, una joven de 25 años, busca atención médica después de pasar varias horas al sol durante un día de playa sin la debida protección solar.<br><br>
+                Exámenes Complementarios:<br>
+                Evaluación visual de las áreas afectadas por la radiación solar en la piel de Elena.<br>
+                Historial detallado sobre la duración de la exposición al sol y la protección utilizada."</p>
+
+                <div class="card question-card" data-index="425">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la principal causa de las quemaduras por radiación solar?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(425, this, 'A')">A. Exposición prolongada al agua.</li>
+                        <li onclick="selectAnswer(425, this, 'B')">B. Falta de humedad en el aire.</li>
+                        <li onclick="selectAnswer(425, this, 'C')">C. Exposición directa a la luz solar ultravioleta (UV).</li>
+                        <li onclick="selectAnswer(425, this, 'D')">D. Consumo excesivo de alimentos cítricos.</li>
+                    </ul>
+                    <div class="justification" id="justification-425">Las quemaduras solares ocurren principalmente por la exposición directa a la radiación ultravioleta (UV) del sol.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="426">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la clasificación de las quemaduras solares según la gravedad, basándonos en la profundidad del daño en la piel?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(426, this, 'A')">A. Superficiales.</li>
+                        <li onclick="selectAnswer(426, this, 'B')">B. Medias.</li>
+                        <li onclick="selectAnswer(426, this, 'C')">C. Profundas.</li>
+                        <li onclick="selectAnswer(426, this, 'D')">D. Todas las anteriores.</li>
+                    </ul>
+                    <div class="justification" id="justification-426">Las quemaduras solares suelen clasificarse como superficiales, ya que afectan la capa externa de la piel.</div>
+                </div>
+                
+                <div class="card question-card" data-index="427">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál de las siguientes medidas es más efectiva para prevenir las quemaduras por radiación solar?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(427, this, 'A')">A. Aplicar aceite de coco antes de la exposición al sol.</li>
+                        <li onclick="selectAnswer(427, this, 'B')">B. Usar protector solar con un factor de protección solar (FPS) adecuado.</li>
+                        <li onclick="selectAnswer(427, this, 'C')">C. Permanecer en la sombra durante todo el día.</li>
+                        <li onclick="selectAnswer(427, this, 'D')">D. Tomar un baño prolongado después de la exposición solar.</li>
+                    </ul>
+                    <div class="justification" id="justification-427">La medida más efectiva es usar protector solar con un FPS adecuado para proteger la piel contra la radiación UV.</div>
+                </div>
+                
+                <div class="card question-card" data-index="428">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué las quemaduras solares pueden tener un impacto a largo plazo en la salud de la piel?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(428, this, 'A')">A. Pueden aumentar el riesgo de cáncer de piel.</li>
+                        <li onclick="selectAnswer(428, this, 'B')">B. Causan deshidratación crónica.</li>
+                        <li onclick="selectAnswer(428, this, 'C')">C. Provocan alergias alimentarias.</li>
+                        <li onclick="selectAnswer(428, this, 'D')">D. Mejoran la elasticidad de la piel.</li>
+                    </ul>
+                    <div class="justification" id="justification-428">La radiación solar puede causar daño celular acumulativo, aumentando el riesgo de cáncer de piel.</div>
+                </div>
+                
+                <div class="card question-card" data-index="429">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la recomendación general para el tratamiento de quemaduras solares leves?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(429, this, 'A')">A. Aplicar compresas frías.</li>
+                        <li onclick="selectAnswer(429, this, 'B')">B. Exponer la piel afectada al sol para broncearse.</li>
+                        <li onclick="selectAnswer(429, this, 'C')">C. Usar ungüentos a base de aceite.</li>
+                        <li onclick="selectAnswer(429, this, 'D')">D. Hidratar la piel y tomar analgésicos según sea necesario.</li>
+                    </ul>
+                    <div class="justification" id="justification-429">El tratamiento recomendado incluye hidratar la piel y administrar analgésicos para aliviar el dolor y la inflamación.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            425: "C", 
+            426: "A", 
+            427: "B", 
+            428: "A", 
+            429: "D" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

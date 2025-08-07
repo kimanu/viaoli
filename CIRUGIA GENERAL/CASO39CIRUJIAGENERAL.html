@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+     <div class="container">
+  
+  
+        <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 39</h2>
+                <p>"Juan, un trabajador de 30 años, llega al hospital después de sufrir una quemadura química en su mano derecha mientras manipulaba productos químicos en su lugar de trabajo.
+Exámenes Complementarios:
+Evaluación visual de la quemadura química en la mano derecha.
+Historial laboral para determinar la naturaleza de los productos químicos involucrados."</p>
+
+                <div class="card question-card" data-index="390">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el primer paso crucial que se debe realizar en el manejo de la quemadura química de Juan?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(390, this, 'A')">A. Aplicar compresas húmedas.</li>
+                        <li onclick="selectAnswer(390, this, 'B')">B. Retirar inmediatamente la ropa afectada.</li>
+                        <li onclick="selectAnswer(390, this, 'C')">C. Neutralizar los productos químicos con agua caliente.</li>
+                        <li onclick="selectAnswer(390, this, 'D')">D. Esperar a que el área afectada se seque por sí sola.</li>
+                    </ul>
+                    <div class="justification" id="justification-390">Es crucial retirar la ropa afectada para detener la exposición continua a los productos químicos.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="391">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la razón principal para retirar la ropa afectada en caso de una quemadura química?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(391, this, 'A')">A. Evitar la contaminación del área circundante.</li>
+                        <li onclick="selectAnswer(391, this, 'B')">B. Reducir el riesgo de infección.</li>
+                        <li onclick="selectAnswer(391, this, 'C')">C. Detener la exposición continua a los productos químicos.</li>
+                        <li onclick="selectAnswer(391, this, 'D')">D. Facilitar la evaluación visual de la quemadura.</li>
+                    </ul>u
+                    <div class="justification" id="justification-391">Retirar la ropa afectada es fundamental para detener la exposición y minimizar el daño.</div>
+                </div>
+                
+                <div class="card question-card" data-index="392">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el siguiente paso después de retirar la ropa en el manejo inicial de la quemadura química de Juan?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(392, this, 'A')">A. Aplicar compresas húmedas.</li>
+                        <li onclick="selectAnswer(392, this, 'B')">B. Neutralizar los productos químicos con un agente neutralizante.</li>
+                        <li onclick="selectAnswer(392, this, 'C')">C. Lavar abundantemente con agua corriente.</li>
+                        <li onclick="selectAnswer(392, this, 'D')">D. Dejar el área al aire para que se seque.</li>
+                    </ul>
+                    <div class="justification" id="justification-392">El lavado con agua corriente ayuda a eliminar los productos químicos de la piel.</div>
+                </div>
+                
+                <div class="card question-card" data-index="393">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué se desaconseja el uso de agentes neutralizantes como vinagre o bicarbonato de sodio en el manejo de quemaduras químicas?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(393, this, 'A')">A. Pueden reaccionar con algunos productos químicos y empeorar la quemadura.</li>
+                        <li onclick="selectAnswer(393, this, 'B')">B. No tienen efectividad en el tratamiento de quemaduras químicas.</li>
+                        <li onclick="selectAnswer(393, this, 'C')">C. Son irritantes para la piel y aumentan el dolor.</li>
+                        <li onclick="selectAnswer(393, this, 'D')">D. Solo son efectivos en quemaduras químicas superficiales.</li>
+                    </ul>
+                    <div class="justification" id="justification-393">Algunos agentes neutralizantes pueden reaccionar con ciertos productos químicos, empeorando la situación.</div>
+                </div>
+                
+                <div class="card question-card" data-index="394">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el objetivo principal del manejo inicial de la quemadura química de Juan?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(394, this, 'A')">A. Prevenir la infección.</li>
+                        <li onclick="selectAnswer(394, this, 'B')">B. Neutralizar los productos químicos.</li>
+                        <li onclick="selectAnswer(394, this, 'C')">C. Detener la exposición continua y minimizar el daño.</li>
+                        <li onclick="selectAnswer(394, this, 'D')">D. Acelerar la cicatrización.</li>
+                    </ul>
+                    <div class="justification" id="justification-394">El manejo inicial busca detener la exposición continua a los productos químicos y minimizar el daño tisular.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            390: "D", 
+            391: "B", 
+            392: "D", 
+            393: "A", 
+            394: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dermatología - Caso Clínico</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e67e22;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Dermatología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>"Isabel, una mujer de 28 años, consulta al dermatólogo debido a una erupción cutánea en sus manos. Refiere que la erupción comenzó después de utilizar un nuevo detergente para lavar platos.<br><br>
+                Exámenes Complementarios:<br>
+                Inspección visual de las lesiones en las manos de Isabel.<br>
+                Entrevista sobre el historial de productos utilizados y exposición a posibles alérgenos."</p>
+
+                <div class="card question-card" data-index="470">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la lesión primaria predominante en las manos de Isabel?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(470, this, 'A')">A. Pústulas.</li>
+                        <li onclick="selectAnswer(470, this, 'B')">B. Vesículas.</li>
+                        <li onclick="selectAnswer(470, this, 'C')">C. Pápulas.</li>
+                        <li onclick="selectAnswer(470, this, 'D')">D. Ronchas (habones).</li>
+                    </ul>
+                    <div class="justification" id="justification-470">Las vesículas son pequeñas ampollas llenas de líquido que pueden ser indicativas de dermatitis por contacto.</div>
+                </div>
+
+                <div class="card question-card" data-index="471">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la causa más probable de la dermatitis por contacto en las manos de Isabel?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(471, this, 'A')">A. Exposición al sol.</li>
+                        <li onclick="selectAnswer(471, this, 'B')">B. Contacto con plantas venenosas.</li>
+                        <li onclick="selectAnswer(471, this, 'C')">C. Uso de un nuevo detergente para lavar platos.</li>
+                        <li onclick="selectAnswer(471, this, 'D')">D. Picadura de insecto.</li>
+                    </ul>
+                    <div class="justification" id="justification-471">La historia de exposición a un nuevo detergente sugiere que la dermatitis por contacto podría ser causada por este producto.</div>
+                </div>
+
+                <div class="card question-card" data-index="472">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería la recomendación inicial para el tratamiento de la dermatitis por contacto en las manos de Isabel?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(472, this, 'A')">A. Aplicar una crema hidratante.</li>
+                        <li onclick="selectAnswer(472, this, 'B')">B. Evitar el contacto con el detergente.</li>
+                        <li onclick="selectAnswer(472, this, 'C')">C. Utilizar un exfoliante en las manos.</li>
+                        <li onclick="selectAnswer(472, this, 'D')">D. Tomar un antihistamínico oral.</li>
+                    </ul>
+                    <div class="justification" id="justification-472">La medida inicial para tratar la dermatitis por contacto es eliminar la exposición al agente irritante o alérgeno.</div>
+                </div>
+
+                <div class="card question-card" data-index="473">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué las vesículas son una característica común en la dermatitis por contacto?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(473, this, 'A')">A. Indican infección bacteriana.</li>
+                        <li onclick="selectAnswer(473, this, 'B')">B. Resultan de la exposición al sol.</li>
+                        <li onclick="selectAnswer(473, this, 'C')">C. Reflejan una respuesta alérgica.</li>
+                        <li onclick="selectAnswer(473, this, 'D')">D. No están relacionadas con la dermatitis.</li>
+                    </ul>
+                    <div class="justification" id="justification-473">Las vesículas en la dermatitis por contacto suelen ser una respuesta alérgica o irritante de la piel.</div>
+                </div>
+
+                <div class="card question-card" data-index="474">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería la estrategia preventiva a largo plazo para evitar recurrencias de dermatitis por contacto en Isabel?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(474, this, 'A')">A. No aplicar ningún producto en las manos.</li>
+                        <li onclick="selectAnswer(474, this, 'B')">B. Usar guantes protectores al lavar platos.</li>
+                        <li onclick="selectAnswer(474, this, 'C')">C. Exponer las manos al sol durante períodos prolongados.</li>
+                        <li onclick="selectAnswer(474, this, 'D')">D. Utilizar diferentes detergentes de manera aleatoria.</li>
+                    </ul>
+                    <div class="justification" id="justification-474">El uso de guantes protectores puede prevenir la exposición directa a sustancias irritantes o alérgenos, reduciendo las recurrencias.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            470: "B",
+            471: "C",
+            472: "B",
+            473: "C",
+            474: "B"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

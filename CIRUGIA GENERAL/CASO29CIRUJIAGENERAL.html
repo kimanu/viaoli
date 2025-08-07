@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 29</h2>
+                <p>"Juan, un hombre de 50 años, ingresa al hospital con dolor abdominal intenso en la parte superior y vómitos persistentes. Refiere antecedentes de consumo ocasional de alcohol y ha experimentado pérdida de peso inexplicada.
+Exámenes Complementarios:
+Análisis de sangre: Elevación de enzimas pancreáticas.
+Ecografía abdominal: Cálculos en la vesícula y signos de inflamación pancreática."</p>
+
+                <div class="card question-card" data-index="335">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la causa más probable de la pancreatitis aguda en Juan?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(335, this, 'A')">A. Consumo excesivo de alcohol.</li>
+                        <li onclick="selectAnswer(335, this, 'B')">B. Infección viral.</li>
+                        <li onclick="selectAnswer(335, this, 'C')">C. Traumatismo abdominal reciente.</li>
+                        <li onclick="selectAnswer(335, this, 'D')">D. Colelitiasis.</li>
+                    </ul>
+                    <div class="justification" id="justification-335">La colelitiasis, o cálculos en la vesícula, puede provocar la migración de cálculos a la vía biliar común, causando pancreatitis aguda.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="336">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cómo los cálculos en la vesícula pueden causar pancreatitis en el caso de Juan?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(336, this, 'A')">A. Al liberar toxinas en el páncreas.</li>
+                        <li onclick="selectAnswer(336, this, 'B')">B. Al bloquear el conducto pancreático.</li>
+                        <li onclick="selectAnswer(336, this, 'C')">C. Al estimular la secreción pancreática.</li>
+                        <li onclick="selectAnswer(336, this, 'D')">D. Al afectar la flora intestinal.</li>
+                    </ul>u
+                    <div class="justification" id="justification-336">Los cálculos en la vesícula pueden migrar al conducto pancreático, bloqueándolo y causando la liberación inapropiada de enzimas pancreáticas.</div>
+                </div>
+                
+                <div class="card question-card" data-index="337">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería el hallazgo característico en la ecografía abdominal de Juan?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(337, this, 'A')">A. Cálculos en la vesícula.</li>
+                        <li onclick="selectAnswer(337, this, 'B')">B. Engrosamiento de la pared intestinal.</li>
+                        <li onclick="selectAnswer(337, this, 'C')">C. Dilatación de la vía biliar.</li>
+                        <li onclick="selectAnswer(337, this, 'D')">D. Presencia de líquido en la cavidad abdominal.</li>
+                    </ul>
+                    <div class="justification" id="justification-337">La migración de cálculos puede causar dilatación de la vía biliar y ser evidente en la ecografía.</div>
+                </div>
+                
+                <div class="card question-card" data-index="338">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cómo puede la pancreatitis afectar la absorción de nutrientes en Juan?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(338, this, 'A')">A. Aumentando la absorción de grasas.</li>
+                        <li onclick="selectAnswer(338, this, 'B')">B. Disminuyendo la absorción de carbohidratos.</li>
+                        <li onclick="selectAnswer(338, this, 'C')">C. Interferiendo con la absorción de proteínas.</li>
+                        <li onclick="selectAnswer(338, this, 'D')">D. No afecta la absorción de nutrientes.</li>
+                    </ul>
+                    <div class="justification" id="justification-338">La pancreatitis puede afectar la producción de enzimas necesarias para la digestión de proteínas, interferiendo con su absorción.</div>
+                </div>
+                
+                <div class="card question-card" data-index="339">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería una intervención clave en el manejo inicial de Juan con pancreatitis aguda?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(339, this, 'A')">A. Administrar analgésicos.</li>
+                        <li onclick="selectAnswer(339, this, 'B')">B. Iniciar una dieta alta en grasas.</li>
+                        <li onclick="selectAnswer(339, this, 'C')">C. Realizar una colangiopancreatografía retrógrada endoscópica (CPRE).</li>
+                        <li onclick="selectAnswer(339, this, 'D')">D. Administrar antibióticos de amplio espectro.</li>
+                    </ul>
+                    <div class="justification" id="justification-339">La CPRE permite evaluar y tratar la obstrucción biliar y facilita la eliminación de cálculos.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            335: "D", 
+            336: "B", 
+            337: "C", 
+            338: "C", 
+            339: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

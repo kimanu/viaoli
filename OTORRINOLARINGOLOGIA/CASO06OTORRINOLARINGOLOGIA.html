@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otorrinolaringología - Rinitis no alérgica</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f4f9ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1b4f72;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .card {
+            background: #fff;
+            border-left: 6px solid;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .case-container {
+            border-color: #af7ac5;
+        }
+
+        .question-card {
+            border-color: #2471a3;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            background: #f7f9fc;
+            padding: 12px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2471a3;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: #fff;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: #fff;
+        }
+
+        #submit-button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2em;
+            background: #2471a3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #154360;
+        }
+
+        #submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            background: #d4efdf;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2471a3;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Otorrinolaringología - Rinitis no alérgica vasomotora</h1>
+        </div>
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>
+                Una mujer de 35 años se presenta en la consulta con quejas de congestión nasal bilateral, rinorrea acuosa y estornudos frecuentes durante las últimas dos semanas. La paciente refiere antecedentes de rinitis alérgica estacional en primavera, pero los síntomas actuales son más persistentes y no parecen relacionarse con ninguna exposición alérgica conocida. Al examen físico, se observa congestión nasal bilateral con mucosa nasal pálida y edematosa. No hay signos de sinusitis en la palpación de los senos paranasales.
+            </p>
+        </div>
+
+        <div class="card question-card" data-index="701">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el diagnóstico más probable en este paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(701, this, 'A')">A. Rinitis alérgica estacional</li>
+                <li onclick="selectAnswer(701, this, 'B')">B. Rinitis no alérgica vasomotora</li>
+                <li onclick="selectAnswer(701, this, 'C')">C. Rinitis medicamentosa</li>
+                <li onclick="selectAnswer(701, this, 'D')">D. Rinitis infecciosa aguda</li>
+            </ul>
+            <div class="justification" id="justification-701">
+                Los síntomas persistentes sin exposición alérgica clara sugieren rinitis no alérgica vasomotora.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="702">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de los siguientes factores desencadenantes es comúnmente asociado con la rinitis no alérgica vasomotora?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(702, this, 'A')">A. Polen</li>
+                <li onclick="selectAnswer(702, this, 'B')">B. Ácaros del polvo</li>
+                <li onclick="selectAnswer(702, this, 'C')">C. Cambios de temperatura</li>
+                <li onclick="selectAnswer(702, this, 'D')">D. Pelos de animales</li>
+            </ul>
+            <div class="justification" id="justification-702">
+                Los cambios de temperatura son un desencadenante frecuente en la rinitis no alérgica vasomotora.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="703">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál característica clínica ayuda a diferenciar entre rinitis alérgica y no alérgica vasomotora?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(703, this, 'A')">A. Estornudos frecuentes</li>
+                <li onclick="selectAnswer(703, this, 'B')">B. Rinorrea mucopurulenta</li>
+                <li onclick="selectAnswer(703, this, 'C')">C. Prurito nasal y ocular</li>
+                <li onclick="selectAnswer(703, this, 'D')">D. Congestión nasal persistente</li>
+            </ul>
+            <div class="justification" id="justification-703">
+                El prurito nasal y ocular es más característico de la rinitis alérgica.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="704">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el tratamiento inicial más apropiado para este paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(704, this, 'A')">A. Antihistamínicos orales</li>
+                <li onclick="selectAnswer(704, this, 'B')">B. Corticosteroides intranasales</li>
+                <li onclick="selectAnswer(704, this, 'C')">C. Descongestionantes tópicos</li>
+                <li onclick="selectAnswer(704, this, 'D')">D. Lavados nasales con solución salina</li>
+            </ul>
+            <div class="justification" id="justification-704">
+                Los lavados nasales con solución salina son el tratamiento inicial más adecuado.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="705">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es una perla clave en el manejo de la rinitis no alérgica vasomotora?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(705, this, 'A')">A. Los corticosteroides intranasales son el tratamiento de elección.</li>
+                <li onclick="selectAnswer(705, this, 'B')">B. Evitar los irritantes ambientales puede ayudar a controlar los síntomas.</li>
+                <li onclick="selectAnswer(705, this, 'C')">C. Los antihistamínicos son efectivos para reducir la congestión nasal.</li>
+                <li onclick="selectAnswer(705, this, 'D')">D. Los descongestionantes tópicos deben usarse a largo plazo.</li>
+            </ul>
+            <div class="justification" id="justification-705">
+                Evitar irritantes ambientales como humo y olores fuertes ayuda a controlar la rinitis vasomotora.
+            </div>
+        </div>
+
+        <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            701: "B",
+            702: "C",
+            703: "C",
+            704: "D",
+            705: "B"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Acné Vulgar - Caso Clínico</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e67e22;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Dermatología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>"Laura, una adolescente de 16 años, consulta al dermatólogo debido a la presencia de lesiones en su rostro que le causan incomodidad estética. Ha notado la aparición de espinillas y pápulas en su frente, nariz y mentón.<br><br>
+                Exámenes Complementarios:<br>
+                Observación visual de las lesiones en el rostro de Laura.<br>
+                Entrevista para obtener información sobre sus hábitos de cuidado de la piel y factores desencadenantes."</p>
+
+                <div class="card question-card" data-index="495">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la característica primaria del acné vulgar de Laura?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(495, this, 'A')">A. Placas.</li>
+                        <li onclick="selectAnswer(495, this, 'B')">B. Pústulas.</li>
+                        <li onclick="selectAnswer(495, this, 'C')">C. Vesículas.</li>
+                        <li onclick="selectAnswer(495, this, 'D')">D. Quistes.</li>
+                    </ul>
+                    <div class="justification" id="justification-495">Las pústulas son lesiones típicas del acné vulgar, caracterizadas por inflamación y contenido de pus.</div>
+                </div>
+
+                <div class="card question-card" data-index="496">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál de los siguientes factores contribuye al desarrollo del acné en adolescentes como Laura?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(496, this, 'A')">A. Exposición excesiva al sol.</li>
+                        <li onclick="selectAnswer(496, this, 'B')">B. Aumento de la actividad hormonal.</li>
+                        <li onclick="selectAnswer(496, this, 'C')">C. Consumo elevado de vitamina C.</li>
+                        <li onclick="selectAnswer(496, this, 'D')">D. Uso constante de maquillaje.</li>
+                    </ul>
+                    <div class="justification" id="justification-496">El acné en la adolescencia está relacionado con cambios hormonales, especialmente durante la pubertad.</div>
+                </div>
+
+                <div class="card question-card" data-index="497">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería una opción de tratamiento tópico recomendada para las lesiones de acné de Laura?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(497, this, 'A')">A. Antibióticos orales.</li>
+                        <li onclick="selectAnswer(497, this, 'B')">B. Crema de esteroides tópicos.</li>
+                        <li onclick="selectAnswer(497, this, 'C')">C. Ácido salicílico o peróxido de benzoilo.</li>
+                        <li onclick="selectAnswer(497, this, 'D')">D. Exfoliantes químicos.</li>
+                    </ul>
+                    <div class="justification" id="justification-497">Estos compuestos son eficaces para tratar el acné y reducir la inflamación.</div>
+                </div>
+
+                <div class="card question-card" data-index="498">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cómo afecta la autoexpresión de comedones cerrados al desarrollo del acné en Laura?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(498, this, 'A')">A. Aumenta la inflamación.</li>
+                        <li onclick="selectAnswer(498, this, 'B')">B. Favorece la formación de pústulas.</li>
+                        <li onclick="selectAnswer(498, this, 'C')">C. Causa obstrucción de los poros.</li>
+                        <li onclick="selectAnswer(498, this, 'D')">D. Estimula la producción de colágeno.</li>
+                    </ul>
+                    <div class="justification" id="justification-498">Los comedones cerrados contribuyen a la obstrucción de los poros, un paso clave en el desarrollo del acné.</div>
+                </div>
+
+                <div class="card question-card" data-index="499">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería un consejo de cuidado de la piel que el dermatólogo podría darle a Laura para prevenir la exacerbación del acné?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(499, this, 'A')">A. No lavar el rostro con frecuencia.</li>
+                        <li onclick="selectAnswer(499, this, 'B')">B. Utilizar productos comedogénicos.</li>
+                        <li onclick="selectAnswer(499, this, 'C')">C. Exprimir las espinillas regularmente.</li>
+                        <li onclick="selectAnswer(499, this, 'D')">D. Evitar tocar constantemente el rostro.</li>
+                    </ul>
+                    <div class="justification" id="justification-499">Tocar el rostro constantemente puede transferir bacterias y empeorar el acné.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            495: "B",
+            496: "B",
+            497: "C",
+            498: "C",
+            499: "D"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

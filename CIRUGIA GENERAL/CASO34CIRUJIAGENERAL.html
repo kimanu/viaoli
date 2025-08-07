@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 33</h2>
+                <p>"Martín, un hombre de 40 años, se presenta en la consulta médica con dolor anal agudo, sangrado durante la defecación y una masa sensible en el área perianal.
+Exámenes Complementarios:
+Examen físico: Masa externa perianal, dolor a la palpación.
+Rectoscopia: Descarta otras lesiones colónicas."</p>
+
+                <div class="card question-card" data-index="360">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la causa más probable del dolor y la masa en Martín?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(360, this, 'A')">A. Fisura anal.</li>
+                        <li onclick="selectAnswer(360, this, 'B')">B. Absceso perianal.</li>
+                        <li onclick="selectAnswer(360, this, 'C')">C. Hemorroides externas.</li>
+                        <li onclick="selectAnswer(360, this, 'D')">D. Pólipo colorrectal.</li>
+                    </ul>
+                    <div class="justification" id="justification-360">Los síntomas de dolor y la masa externa perianal sugieren hemorroides externas.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="361">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el factor de riesgo más asociado al desarrollo de hemorroides externas en Martín?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(361, this, 'A')">A. Consumo de alimentos picantes.</li>
+                        <li onclick="selectAnswer(361, this, 'B')">B. Historial de estreñimiento crónico.</li>
+                        <li onclick="selectAnswer(361, this, 'C')">C. Tabaquismo.</li>
+                        <li onclick="selectAnswer(361, this, 'D')">D. Actividad física regular.</li>
+                    </ul>u
+                    <div class="justification" id="justification-361">El estreñimiento crónico es un factor de riesgo conocido para el desarrollo de hemorroides.</div>
+                </div>
+                
+                <div class="card question-card" data-index="362">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Qué grado de hemorroides externas se podría asignar a Martín, considerando sus síntomas?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(362, this, 'A')">A. Grado I.</li>
+                        <li onclick="selectAnswer(362, this, 'B')">B. Grado II.</li>
+                        <li onclick="selectAnswer(362, this, 'C')">C. Grado III.</li>
+                        <li onclick="selectAnswer(362, this, 'D')">D. Grado IV.</li>
+                    </ul>
+                    <div class="justification" id="justification-362">El dolor, el sangrado y la masa externa en el examen físico sugieren hemorroides externas de grado II.</div>
+                </div>
+                
+                <div class="card question-card" data-index="363">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería una opción de tratamiento inicial para las hemorroides externas de Martín?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(363, this, 'A')">A. Antibióticos.</li>
+                        <li onclick="selectAnswer(363, this, 'B')">B. Cirugía de hemorroides.</li>
+                        <li onclick="selectAnswer(363, this, 'C')">C. Baños de asiento y cambios en la dieta.</li>
+                        <li onclick="selectAnswer(363, this, 'D')">D. Radioterapia.</li>
+                    </ul>
+                    <div class="justification" id="justification-363">Las opciones iniciales de tratamiento para hemorroides externas incluyen medidas conservadoras como baños de asiento y cambios en la dieta.</div>
+                </div>
+                
+                <div class="card question-card" data-index="364">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Si las medidas conservadoras no alivian los síntomas de Martín, ¿cuál podría ser una opción de tratamiento adicional?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(364, this, 'A')">A. Procedimiento con ligadura elástica.</li>
+                        <li onclick="selectAnswer(364, this, 'B')">B. Colectomía.</li>
+                        <li onclick="selectAnswer(364, this, 'C')">C. Quimioterapia.</li>
+                        <li onclick="selectAnswer(364, this, 'D')">D. Colostomía.</li>
+                    </ul>
+                    <div class="justification" id="justification-364">La ligadura elástica es un procedimiento comúnmente utilizado para el tratamiento de hemorroides cuando las medidas conservadoras no son suficientes.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            360: "C", 
+            361: "B", 
+            362: "B", 
+            363: "C", 
+            364: "A" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

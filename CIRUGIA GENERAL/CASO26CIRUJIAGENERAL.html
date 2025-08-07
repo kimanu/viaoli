@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 26</h2>
+                <p>"Historia del Paciente:
+Isabel, una mujer de 50 años, consulta por una masa en la región inguinal izquierda. A diferencia de casos anteriores, Isabel presenta cambios en el color de la piel sobre la hernia y fiebre moderada.
+Exámenes Complementarios:
+Examen físico: Masa inguinal izquierda con cambios en el color de la piel.
+Ecografía Doppler: Muestra signos de isquemia en la hernia."</p>
+
+                <div class="card question-card" data-index="320">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dada la presencia de cambios en el color de la piel sobre la hernia de Isabel, ¿cuál podría ser la complicación potencial?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(320, this, 'A')">A. Estrangulación herniaria.</li>
+                        <li onclick="selectAnswer(320, this, 'B')">B. Hernia inguinal irreducible.</li>
+                        <li onclick="selectAnswer(320, this, 'C')">C. Infección localizada.</li>
+                        <li onclick="selectAnswer(320, this, 'D')">D. Hernia femoral.</li>
+                    </ul>
+                    <div class="justification" id="justification-320">Los cambios en el color de la piel pueden indicar isquemia, sugiriendo estrangulación herniaria.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="321">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Qué hallazgo en la ecografía Doppler respalda la sospecha de isquemia en la hernia de Isabel?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(321, this, 'A')">A. Flujo sanguíneo normal.</li>
+                        <li onclick="selectAnswer(321, this, 'B')">B. Dilatación de la vena safena.</li>
+                        <li onclick="selectAnswer(321, this, 'C')">C. Signos de obstrucción intestinal.</li>
+                        <li onclick="selectAnswer(321, this, 'D')">D. Ausencia de flujo o flujo disminuido.</li>
+                    </ul>
+                    <div class="justification" id="justification-321">La ausencia de flujo o flujo disminuido en la ecografía Doppler indica isquemia en la hernia.</div>
+                </div>
+                
+                <div class="card question-card" data-index="322">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Ante la sospecha de estrangulación en Isabel, ¿cuál sería la conducta inicial?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(322, this, 'A')">A. Programar una cirugía electiva.</li>
+                        <li onclick="selectAnswer(322, this, 'B')">B. Observación y manejo conservador.</li>
+                        <li onclick="selectAnswer(322, this, 'C')">C. Reducción manual en el consultorio.</li>
+                        <li onclick="selectAnswer(322, this, 'D')">D. Cirugía de emergencia.</li>
+                    </ul>
+                    <div class="justification" id="justification-322">La estrangulación herniaria es una emergencia quirúrgica que requiere intervención inmediata.</div>
+                </div>
+                
+                <div class="card question-card" data-index="323">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué la fiebre moderada de Isabel podría estar relacionada con la complicación de su hernia?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(323, this, 'A')">A. Respuesta inflamatoria localizada.</li>
+                        <li onclick="selectAnswer(323, this, 'B')">B. Infección de la herida quirúrgica.</li>
+                        <li onclick="selectAnswer(323, this, 'C')">C. Peritonitis secundaria.</li>
+                        <li onclick="selectAnswer(323, this, 'D')">D. Efecto secundario común de las hernias inguinales.</li>
+                    </ul>
+                    <div class="justification" id="justification-323">La fiebre podría indicar peritonitis secundaria debido a la perforación intestinal asociada con la estrangulación.</div>
+                </div>
+                
+                <div class="card question-card" data-index="324">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Después de la cirugía para corregir la estrangulación en Isabel, ¿cuál sería un aspecto clave en su cuidado postoperatorio?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(324, this, 'A')">A. Administrar analgésicos para el dolor.</li>
+                        <li onclick="selectAnswer(324, this, 'B')">B. Realizar una colonoscopia de seguimiento.</li>
+                        <li onclick="selectAnswer(324, this, 'C')">C. Monitorear la función renal.</li>
+                        <li onclick="selectAnswer(324, this, 'D')">D. Controlar de cerca la evolución del color de la piel.</li>
+                    </ul>
+                    <div class="justification" id="justification-324">Monitorear el color de la piel es esencial para evaluar la perfusión postoperatoria y prevenir complicaciones.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            320: "A", 
+            321: "D", 
+            322: "D", 
+            323: "C", 
+            324: "D" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

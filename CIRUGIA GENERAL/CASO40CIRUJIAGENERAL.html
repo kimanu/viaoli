@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+     <div class="container">
+  
+  
+        <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 40</h2>
+                <p>"Carlos, un hombre de 45 años, es ingresado a la sala de emergencias después de sufrir una quemadura eléctrica en su mano derecha mientras intentaba reparar un cable eléctrico en su hogar.
+Exámenes Complementarios:
+Evaluación visual de la quemadura eléctrica en la mano derecha.
+Entrevista detallada sobre las circunstancias del accidente eléctrico."</p>
+
+                <div class="card question-card" data-index="395">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la característica principal de las quemaduras eléctricas en comparación con otras quemaduras?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(395, this, 'A')">A. Siempre son superficiales.</li>
+                        <li onclick="selectAnswer(395, this, 'B')">B. Pueden causar daño interno además de la lesión externa.</li>
+                        <li onclick="selectAnswer(395, this, 'C')">C. No requieren tratamiento médico.</li>
+                        <li onclick="selectAnswer(395, this, 'D')">D. Son menos dolorosas que otras quemaduras.</li>
+                    </ul>
+                    <div class="justification" id="justification-395">Las quemaduras eléctricas pueden causar daño interno, no solo en la superficie de la piel.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="396">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué es importante que Carlos busque atención médica incluso si la quemadura eléctrica parece superficial?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(396, this, 'A')">A. Las quemaduras eléctricas nunca son superficiales.</li>
+                        <li onclick="selectAnswer(396, this, 'B')">B. Puede haber daño interno no visible.</li>
+                        <li onclick="selectAnswer(396, this, 'C')">C. Las quemaduras eléctricas no requieren atención médica.</li>
+                        <li onclick="selectAnswer(396, this, 'D')">D. La atención médica solo es necesaria para quemaduras graves.</li>
+                    </ul>u
+                    <div class="justification" id="justification-396">Las quemaduras eléctricas pueden causar daño interno no visible en la superficie.</div>
+                </div>
+                
+                <div class="card question-card" data-index="397">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la primera medida que debe tomar Carlos antes de buscar atención médica para su quemadura eléctrica?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(397, this, 'A')">A. Aplicar hielo en la zona afectada.</li>
+                        <li onclick="selectAnswer(397, this, 'B')">B. Intentar remover cualquier objeto adherido a la piel.</li>
+                        <li onclick="selectAnswer(397, this, 'C')">C. Sumergir la mano en agua caliente.</li>
+                        <li onclick="selectAnswer(397, this, 'D')">D. Desconectar la fuente de electricidad y alejarse de cualquier peligro.</li>
+                    </ul>
+                    <div class="justification" id="justification-397">La seguridad de Carlos es primordial; desconectar la fuente eléctrica es esencial.</div>
+                </div>
+                
+                <div class="card question-card" data-index="398">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué las quemaduras eléctricas pueden causar daño interno adicional incluso si la lesión externa parece mínima?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(398, this, 'A')">A. El calor generado internamente es absorbido por la piel.</li>
+                        <li onclick="selectAnswer(398, this, 'B')">B. La electricidad puede afectar los tejidos profundos sin dejar marcas externas.</li>
+                        <li onclick="selectAnswer(398, this, 'C')">C. Las quemaduras eléctricas solo afectan la piel.</li>
+                        <li onclick="selectAnswer(398, this, 'D')">D. La electricidad no puede penetrar más allá de la capa externa de la piel.</li>
+                    </ul>
+                    <div class="justification" id="justification-398">La electricidad puede dañar tejidos internos sin causar necesariamente lesiones externas evidentes.</div>
+                </div>
+                
+                <div class="card question-card" data-index="399">
+                    <h3>❓ Pregunta:</h3>
+                    <p>En el caso de Carlos, ¿por qué es crucial que los profesionales médicos evalúen su quemadura eléctrica?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(399, this, 'A')">A. Para determinar si necesita cirugía plástica.</li>
+                        <li onclick="selectAnswer(399, this, 'B')">B. Evaluar el riesgo de infección en la quemadura.</li>
+                        <li onclick="selectAnswer(399, this, 'C')">C. Identificar posibles daños internos no visibles.</li>
+                        <li onclick="selectAnswer(399, this, 'D')">D. Determinar la clasificación de la quemadura según la profundidad.</li>
+                    </ul>
+                    <div class="justification" id="justification-399">La evaluación médica es esencial para detectar daños internos no evidentes en quemaduras eléctricas.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            395: "B", 
+            396: "B", 
+            397: "D", 
+            398: "B", 
+            399: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

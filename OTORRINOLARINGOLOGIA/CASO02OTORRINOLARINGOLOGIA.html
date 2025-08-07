@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Otorrinolaringología - Otitis Media Crónica Supurativa</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #154360;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e67e22;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Otorrinolaringología - Otitis Media Crónica Supurativa</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>
+                    Un niño de 8 años es llevado a la consulta por sus padres debido a episodios recurrentes de dolor de oído derecho y secreción purulenta durante los últimos 6 meses. El niño ha tenido múltiples tratamientos con antibióticos sistémicos, pero los síntomas persisten. Al examen físico, se observa un tímpano abombado con perforación central en el oído derecho, con secreción purulenta visible en el conducto auditivo externo. La audiometría revela una pérdida auditiva conductiva moderada en el oído derecho.
+                </p>
+
+                <div class="card question-card" data-index="605">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el diagnóstico más probable en este paciente?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(605, this, 'A')">A. Otitis media aguda</li>
+                        <li onclick="selectAnswer(605, this, 'B')">B. Otitis media serosa</li>
+                        <li onclick="selectAnswer(605, this, 'C')">C. Mastoiditis aguda</li>
+                        <li onclick="selectAnswer(605, this, 'D')">D. Otitis media crónica supurativa</li>
+                    </ul>
+                    <div class="justification" id="justification-605">
+                        Los síntomas recurrentes, la perforación timpánica y la secreción purulenta indican una otitis media crónica supurativa, que es una inflamación crónica del oído medio con perforación timpánica persistente.
+                    </div>
+                </div>
+
+                <div class="card question-card" data-index="606">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la complicación más común asociada con la otitis media crónica supurativa?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(606, this, 'A')">A. Pérdida auditiva sensorioneural</li>
+                        <li onclick="selectAnswer(606, this, 'B')">B. Mastoiditis</li>
+                        <li onclick="selectAnswer(606, this, 'C')">C. Laberintitis</li>
+                        <li onclick="selectAnswer(606, this, 'D')">D. Colesteatoma</li>
+                    </ul>
+                    <div class="justification" id="justification-606">
+                        El colesteatoma es una complicación común de la otitis media crónica supurativa, donde el tímpano perforado permite la entrada de células epiteliales a la cavidad del oído medio, formando una masa queratinizada.
+                    </div>
+                </div>
+
+                <div class="card question-card" data-index="607">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el tratamiento inicial más apropiado para este paciente?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(607, this, 'A')">A. Antibióticos orales</li>
+                        <li onclick="selectAnswer(607, this, 'B')">B. Gotas óticas antibióticas</li>
+                        <li onclick="selectAnswer(607, this, 'C')">C. Limpieza del conducto auditivo externo</li>
+                        <li onclick="selectAnswer(607, this, 'D')">D. Tímpanoplastia</li>
+                    </ul>
+                    <div class="justification" id="justification-607">
+                        Las gotas óticas antibióticas son el tratamiento inicial para controlar la infección en el oído medio y externo. Los antibióticos orales pueden ser necesarios en casos de infección extensa o complicada.
+                    </div>
+                </div>
+
+                <div class="card question-card" data-index="608">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el tratamiento definitivo para este paciente?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(608, this, 'A')">A. Tímpanoplastia</li>
+                        <li onclick="selectAnswer(608, this, 'B')">B. Mastoidectomía</li>
+                        <li onclick="selectAnswer(608, this, 'C')">C. Antibióticos sistémicos prolongados</li>
+                        <li onclick="selectAnswer(608, this, 'D')">D. Timpanocentesis</li>
+                    </ul>
+                    <div class="justification" id="justification-608">
+                        La tímpanoplastia es el tratamiento definitivo para la otitis media crónica supurativa con perforación timpánica persistente, ya que permite la reconstrucción del tímpano y mejora la audición.
+                    </div>
+                </div>
+
+                <div class="card question-card" data-index="609">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es una complicación potencial de la tímpanoplastia en este paciente?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(609, this, 'A')">A. Hipoacusia conductiva</li>
+                        <li onclick="selectAnswer(609, this, 'B')">B. Parálisis facial</li>
+                        <li onclick="selectAnswer(609, this, 'C')">C. Recurrencia de la otitis media crónica supurativa</li>
+                        <li onclick="selectAnswer(609, this, 'D')">D. Perforación timpánica contralateral</li>
+                    </ul>
+                    <div class="justification" id="justification-609">
+                        Aunque la tímpanoplastia es efectiva en cerrar la perforación timpánica y mejorar la audición, existe el riesgo de recurrencia de la otitis media crónica supurativa si no se aborda adecuadamente la causa subyacente.
+                    </div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            605: "D",
+            606: "D",
+            607: "B",
+            608: "A",
+            609: "C"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

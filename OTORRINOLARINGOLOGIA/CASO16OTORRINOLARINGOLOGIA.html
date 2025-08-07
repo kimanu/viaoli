@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Otorrinolaringología - Pólipo Subglótico</title>
+    <style>
+        /* (CSS original sin cambios) */
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f4f9ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1b4f72;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .card {
+            background: #fff;
+            border-left: 6px solid;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .case-container {
+            border-color: #af7ac5;
+        }
+
+        .question-card {
+            border-color: #2471a3;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            background: #f7f9fc;
+            padding: 12px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2471a3;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: #fff;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: #fff;
+        }
+
+        #submit-button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2em;
+            background: #2471a3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #154360;
+        }
+
+        #submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            background: #d4efdf;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2471a3;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Otorrinolaringología - Pólipo Subglótico</h1>
+        </div>
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>
+                Un hombre de 50 años acude a la consulta con quejas de disnea progresiva y estridor inspiratorio durante las últimas 8 semanas. El paciente refiere que la dificultad para respirar ha ido empeorando gradualmente y se ha vuelto más pronunciada durante la noche. Niega antecedentes de tabaquismo y exposición a factores irritantes ambientales. No hay historia reciente de infecciones respiratorias. Al examen físico, se observa estridor inspiratorio en la auscultación pulmonar y la laringoscopia directa revela una masa polipoide en la región subglótica.
+            </p>
+        </div>
+
+        <div class="card question-card" data-index="702">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el diagnóstico más probable en este paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(702, this, 'A')">A. Pólipo subglótico</li>
+                <li onclick="selectAnswer(702, this, 'B')">B. Cuerpo extraño laríngeo</li>
+                <li onclick="selectAnswer(702, this, 'C')">C. Carcinoma laríngeo</li>
+                <li onclick="selectAnswer(702, this, 'D')">D. Laringomalacia</li>
+            </ul>
+            <div class="justification" id="justification-702">
+                La presencia de disnea progresiva y estridor inspiratorio con una masa polipoide en la región subglótica es sugestiva de pólipo subglótico, una lesión benigna que puede causar obstrucción de las vías respiratorias.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="703">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de los siguientes factores de riesgo se asocia más estrechamente con el desarrollo de pólipos subglóticos?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(703, this, 'A')">A. Tabaquismo</li>
+                <li onclick="selectAnswer(703, this, 'B')">B. Reflujo gastroesofágico</li>
+                <li onclick="selectAnswer(703, this, 'C')">C. Traumatismo laríngeo</li>
+                <li onclick="selectAnswer(703, this, 'D')">D. Exposición a humo de cigarrillo pasivo</li>
+            </ul>
+            <div class="justification" id="justification-703">
+                El traumatismo laríngeo es un factor de riesgo conocido para el desarrollo de pólipos subglóticos, especialmente en pacientes con actividades vocales intensas o intubación traqueal previa.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="704">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de los siguientes síntomas es más característico de los pólipos subglóticos?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(704, this, 'A')">A. Disfonía</li>
+                <li onclick="selectAnswer(704, this, 'B')">B. Disfagia</li>
+                <li onclick="selectAnswer(704, this, 'C')">C. Estridor inspiratorio</li>
+                <li onclick="selectAnswer(704, this, 'D')">D. Tos crónica</li>
+            </ul>
+            <div class="justification" id="justification-704">
+                El estridor inspiratorio es un síntoma más característico de los pólipos subglóticos debido a la obstrucción parcial de las vías respiratorias que causan.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="705">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de las siguientes pruebas de imagen es más útil para evaluar los pólipos subglóticos?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(705, this, 'A')">A. Radiografía de cuello en perfil</li>
+                <li onclick="selectAnswer(705, this, 'B')">B. Tomografía computarizada de cuello</li>
+                <li onclick="selectAnswer(705, this, 'C')">C. Ecografía laríngea</li>
+                <li onclick="selectAnswer(705, this, 'D')">D. Laringoscopia directa</li>
+            </ul>
+            <div class="justification" id="justification-705">
+                La tomografía computarizada de cuello es la prueba de elección para evaluar los pólipos subglóticos, permitiendo una visualización detallada de la lesión y su relación con las estructuras circundantes.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="706">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el tratamiento principal para los pólipos subglóticos sintomáticos?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(706, this, 'A')">A. Antibióticos</li>
+                <li onclick="selectAnswer(706, this, 'B')">B. Corticosteroides orales</li>
+                <li onclick="selectAnswer(706, this, 'C')">C. Cirugía de resección endoscópica</li>
+                <li onclick="selectAnswer(706, this, 'D')">D. Evitar los factores desencadenantes identificados</li>
+            </ul>
+            <div class="justification" id="justification-706">
+                La cirugía de resección endoscópica es el tratamiento principal para los pólipos subglóticos sintomáticos, ya que permite la eliminación de la masa obstructiva y mejora los síntomas respiratorios.
+            </div>
+        </div>
+
+        <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            702: "A",
+            703: "C",
+            704: "C",
+            705: "B",
+            706: "C"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>
