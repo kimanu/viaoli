@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 25</h2>
+                <p>"Carlos, un hombre de 55 años, acude a urgencias con dolor intenso en la región inguinal derecha. Refiere que la masa ha aumentado de tamaño y no puede reducirla. Además, presenta fiebre y vómitos.
+Exámenes Complementarios:
+Examen físico: Masa dolorosa y no reducible en la región inguinal derecha, signos de peritonitis.
+Hemograma: Leucocitosis y desviación a la izquierda.
+Radiografía de abdomen: Niveles hidroaéreos."</p>
+
+                <div class="card question-card" data-index="315">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Según la presentación de Carlos, ¿cuál es la complicación más probable de su hernia inguinal?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(315, this, 'A')">A. Hernia inguinal reducible.</li>
+                        <li onclick="selectAnswer(315, this, 'B')">B. Hernia inguinal incarcerada.</li>
+                        <li onclick="selectAnswer(315, this, 'C')">C. Hernia inguinal estrangulada.</li>
+                        <li onclick="selectAnswer(315, this, 'D')">D. Hernia inguinal no complicada.</li>
+                    </ul>
+                    <div class="justification" id="justification-315">La presencia de fiebre, vómitos y signos de peritonitis sugiere estrangulación, una complicación grave de la hernia inguinal.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="316">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál de los siguientes hallazgos en la radiografía de abdomen de Carlos indica la presencia de una obstrucción intestinal?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(316, this, 'A')">A. Imágenes de aire en el colon.</li>
+                        <li onclick="selectAnswer(316, this, 'B')">B. Engrosamiento de la pared intestinal.</li>
+                        <li onclick="selectAnswer(316, this, 'C')">C. Niveles hidroaéreos.</li>
+                        <li onclick="selectAnswer(316, this, 'D')">D. Dilatación de la vesícula biliar.</li>
+                    </ul>
+                    <div class="justification" id="justification-316">Los niveles hidroaéreos en la radiografía sugieren obstrucción intestinal.</div>
+                </div>
+                
+                <div class="card question-card" data-index="317">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería la conducta inicial adecuada en el manejo de Carlos en urgencias?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(317, this, 'A')">A. Administrar analgésicos y observación.</li>
+                        <li onclick="selectAnswer(317, this, 'B')">B. Realizar una colonoscopia.</li>
+                        <li onclick="selectAnswer(317, this, 'C')">C. Reducción manual en el consultorio.</li>
+                        <li onclick="selectAnswer(317, this, 'D')">D. Cirugía de emergencia.</li>
+                    </ul>
+                    <div class="justification" id="justification-317">Ante la sospecha de una hernia inguinal estrangulada con signos de peritonitis, la cirugía de emergencia es esencial.</div>
+                </div>
+                
+                <div class="card question-card" data-index="318">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué la presencia de fiebre en Carlos es indicativa de una complicación grave?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(318, this, 'A')">A. Indica una infección local en la región inguinal.</li>
+                        <li onclick="selectAnswer(318, this, 'B')">B. Sugiere la presencia de apendicitis.</li>
+                        <li onclick="selectAnswer(318, this, 'C')">C. Refleja una peritonitis secundaria a la estrangulación.</li>
+                        <li onclick="selectAnswer(318 , this, 'D')">D. Es un efecto secundario común de las hernias inguinales.</li>
+                    </ul>
+                    <div class="justification" id="justification-318">La cirugía puede predisponer a la formación de adherencias, aumentando el riesgo de obstrucción intestinal recurrente.</div>
+                </div>
+                
+                <div class="card question-card" data-index="319">
+                    <h3>❓ Pregunta:</h3>
+                    <p>En pacientes con hernias inguinales incarceradas, ¿cuál es el principal objetivo de la intervención quirúrgica?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(319, this, 'A')">A. Prevenir la recurrencia herniaria.</li>
+                        <li onclick="selectAnswer(319, this, 'B')">B. Aliviar el dolor crónico.</li>
+                        <li onclick="selectAnswer(319, this, 'C')">C. Restaurar el flujo sanguíneo y reducir la hernia.</li>
+                        <li onclick="selectAnswer(319, this, 'D')">D. Eliminar la necesidad de manejo conservador.</li>
+                    </ul>
+                    <div class="justification" id="justification-319">La intervención quirúrgica tiene como objetivo principal liberar el segmento intestinal y restablecer el flujo sanguíneo, evitando la estrangulación.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            310: "B", 
+            311: "D", 
+            312: "D", 
+            313: "C", 
+            314: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

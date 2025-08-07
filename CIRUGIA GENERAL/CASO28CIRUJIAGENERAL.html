@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 28</h2>
+                <p>"Sara, una mujer de 45 años, presenta dolor abdominal en el cuadrante superior derecho, acompañado de ictericia y heces acólicas. Ha experimentado pérdida de peso no intencional en las últimas semanas.
+Exámenes Complementarios:
+Análisis de sangre: Elevación de bilirrubina y enzimas hepáticas.
+Ecografía abdominal: Cálculos biliares en la vesícula y dilatación de la vía biliar."</p>
+
+                <div class="card question-card" data-index="330">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la causa más probable de la ictericia en Sara?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(330, this, 'A')">A. Hepatitis aguda.</li>
+                        <li onclick="selectAnswer(330, this, 'B')">B. Insuficiencia cardíaca congestiva.</li>
+                        <li onclick="selectAnswer(330, this, 'C')">C. Obstrucción biliar.</li>
+                        <li onclick="selectAnswer(330, this, 'D')">D. Cirrosis hepática.</li>
+                    </ul>
+                    <div class="justification" id="justification-330">La ictericia asociada con dolor abdominal sugiere obstrucción biliar, que podría deberse a cálculos en la vía biliar.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="331">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería la consecuencia de la obstrucción biliar en la elevación de la bilirrubina?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(331, this, 'A')">A. Aumento de la producción de bilirrubina.</li>
+                        <li onclick="selectAnswer(331, this, 'B')">B. Disminución de la excreción de bilirrubina.</li>
+                        <li onclick="selectAnswer(331, this, 'C')">C. Reducción de la síntesis de bilirrubina.</li>
+                        <li onclick="selectAnswer(331, this, 'D')">D. Aumento de la absorción de bilirrubina.</li>
+                    </ul>u
+                    <div class="justification" id="justification-331">La obstrucción biliar impide la excreción normal de la bilirrubina, llevando a su acumulación en sangre y, por ende, a la ictericia.</div>
+                </div>
+                
+                <div class="card question-card" data-index="332">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Ante la sospecha de obstrucción biliar, ¿cuál sería el siguiente paso diagnóstico?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(332, this, 'A')">A. Tomografía computarizada (TC) abdominal.</li>
+                        <li onclick="selectAnswer(332, this, 'B')">B. Endoscopia retrograda de colangiopancreatografía (ERCP).</li>
+                        <li onclick="selectAnswer(332, this, 'C')">C. Radiografía de tórax.</li>
+                        <li onclick="selectAnswer(332, this, 'D')">D. Análisis de orina.</li>
+                    </ul>
+                    <div class="justification" id="justification-332">La ERCP es útil para visualizar y tratar la obstrucción biliar al identificar y extraer cálculos.</div>
+                </div>
+                
+                <div class="card question-card" data-index="328">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué Sara presenta heces acólicas?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(333, this, 'A')">A. Aumento de la absorción de bilirrubina.</li>
+                        <li onclick="selectAnswer(333, this, 'B')">B. Falta de pigmentación en las heces.</li>
+                        <li onclick="selectAnswer(333, this, 'C')">C. Deficiencia enzimática pancreática.</li>
+                        <li onclick="selectAnswer(333, this, 'D')">D. Ausencia de flora bacteriana en el intestino.</li>
+                    </ul>
+                    <div class="justification" id="justification-333">La falta de excreción de bilirrubina en el intestino debido a la obstrucción biliar resulta en heces acólicas.</div>
+                </div>
+                
+                <div class="card question-card" data-index="334">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Después de realizar la ERCP y confirmar la obstrucción biliar por cálculos, ¿cuál sería el siguiente paso en el manejo de Sara?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(334, this, 'A')">A. Iniciar tratamiento con antibióticos.</li>
+                        <li onclick="selectAnswer(334, this, 'B')">B. Programar cirugía para la extracción de cálculos.</li>
+                        <li onclick="selectAnswer(334, this, 'C')">C. Administrar enzimas pancreáticas.</li>
+                        <li onclick="selectAnswer(334, this, 'D')">D. Indicar una dieta baja en grasas.</li>
+                    </ul>
+                    <div class="justification" id="justification-334">La cirugía para la extracción de cálculos es crucial para aliviar la obstrucción biliar y prevenir complicaciones.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            330: "C", 
+            331: "B", 
+            332: "B", 
+            333: "B", 
+            334: "B" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

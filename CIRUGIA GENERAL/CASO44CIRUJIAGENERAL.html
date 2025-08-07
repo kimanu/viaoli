@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+ 
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+     <div class="container">
+        <div class="card case-container">
+            <h1>Cirugía General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>"Carlos, un trabajador de la construcción de 35 años, es llevado al servicio de emergencias después de sufrir una quemadura por electricidad mientras realizaba trabajos de mantenimiento en un cableado eléctrico.<br><br>
+                Exámenes Complementarios:<br>
+                Evaluación visual de la quemadura por electricidad en las manos y brazos de Carlos.<br>
+                Historial detallado sobre la naturaleza de la exposición eléctrica."</p>
+
+                <div class="card question-card" data-index="420">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cómo se produce principalmente una quemadura por electricidad?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(420, this, 'A')">A. Por exposición prolongada al sol.</li>
+                        <li onclick="selectAnswer(420, this, 'B')">B. Por contacto directo con sustancias corrosivas.</li>
+                        <li onclick="selectAnswer(420, this, 'C')">C. Por la fricción de objetos calientes.</li>
+                        <li onclick="selectAnswer(420, this, 'D')">D. Por el paso de corriente eléctrica a través del cuerpo.</li>
+                    </ul>
+                    <div class="justification" id="justification-420">Una quemadura por electricidad se produce principalmente cuando la corriente eléctrica fluye a través del cuerpo.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="421">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la complicación más común asociada con quemaduras por electricidad?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(421, this, 'A')">A. Infección bacteriana.</li>
+                        <li onclick="selectAnswer(421, this, 'B')">B. Daño a los tejidos profundos.</li>
+                        <li onclick="selectAnswer(421, this, 'C')">C. Alteraciones en el ritmo cardíaco.</li>
+                        <li onclick="selectAnswer(421, this, 'D')">D. Problemas respiratorios.</li>
+                    </ul>
+                    <div class="justification" id="justification-421">Las quemaduras por electricidad pueden afectar el sistema cardiovascular, causando alteraciones en el ritmo cardíaco.</div>
+                </div>
+                
+                <div class="card question-card" data-index="422">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la primera medida que se debe tomar en el sitio del incidente antes de que llegue la ayuda médica para una quemadura por electricidad?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(422, this, 'A')">A. Aplicar ungüentos antibióticos.</li>
+                        <li onclick="selectAnswer(422, this, 'B')">B. Retirar la ropa adherida a la quemadura.</li>
+                        <li onclick="selectAnswer(422, this, 'C')">C. Administrar analgésicos orales.</li>
+                        <li onclick="selectAnswer(422, this, 'D')">D. Desconectar la fuente de electricidad.</li>
+                    </ul>
+                    <div class="justification" id="justification-422">La seguridad es la prioridad; desconectar la fuente de electricidad es crucial para prevenir daños adicionales.</div>
+                </div>
+                
+                <div class="card question-card" data-index="423">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué es importante no tocar a una persona que ha sufrido una quemadura por electricidad antes de asegurar que la fuente de electricidad esté desconectada?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(423, this, 'A')">A. Para evitar la propagación de infecciones.</li>
+                        <li onclick="selectAnswer(423, this, 'B')">B. Para prevenir el dolor adicional.</li>
+                        <li onclick="selectAnswer(423, this, 'C')">C. Para evitar lesiones personales.</li>
+                        <li onclick="selectAnswer(423, this, 'D')">D. Para minimizar el riesgo de shock eléctrico.</li>
+                    </ul>
+                    <div class="justification" id="justification-423">Tocar a la persona antes de desconectar la fuente de electricidad puede aumentar el riesgo de shock eléctrico tanto para la víctima como para el rescatista.</div>
+                </div>
+                
+                <div class="card question-card" data-index="424">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuáles son las áreas del cuerpo más comúnmente afectadas por quemaduras por electricidad en situaciones laborales?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(424, this, 'A')">A. Extremidades superiores.</li>
+                        <li onclick="selectAnswer(424, this, 'B')">B. Zonas faciales.</li>
+                        <li onclick="selectAnswer(424, this, 'C')">C. Parte posterior del cuerpo.</li>
+                        <li onclick="selectAnswer(424, this, 'D')">D. Extremidades inferiores.</li>
+                    </ul>
+                    <div class="justification" id="justification-424">En situaciones laborales, las extremidades superiores son comúnmente afectadas debido a la manipulación de herramientas y equipos.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            420: "D", 
+            421: "C", 
+            422: "D", 
+            423: "D", 
+            424: "A" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

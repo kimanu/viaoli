@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 27</h2>
+                <p>"Manuel, un hombre de 45 años, llega a la consulta con dolor súbito en la región inguinal derecha. Ha notado que la masa, que solía ser reducible, ahora es irreductible y dolorosa.
+Exámenes Complementarios:
+Examen físico: Masa inguinal derecha irreductible con eritema y calor local.
+Ecografía: Muestra líquido en la hernia y signos de inflamación."</p>
+
+                <div class="card question-card" data-index="325">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Dado el eritema y calor local en la hernia de Manuel, ¿cuál es la complicación más probable?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(325, this, 'A')">A. Estrangulación herniaria.</li>
+                        <li onclick="selectAnswer(325, this, 'B')">B. Hernia inguinal irreducible.</li>
+                        <li onclick="selectAnswer(325, this, 'C')">C. Infección localizada.</li>
+                        <li onclick="selectAnswer(325, this, 'D')">D. Hernia femoral.</li>
+                    </ul>
+                    <div class="justification" id="justification-325">El eritema y calor local sugieren la presencia de una infección localizada en la hernia.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="326">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Qué hallazgo en la ecografía respalda la sospecha de una infección en la hernia de Manuel?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(326, this, 'A')">A. Ausencia de flujo sanguíneo.</li>
+                        <li onclick="selectAnswer(326, this, 'B')">B. Presencia de líquido en la hernia.</li>
+                        <li onclick="selectAnswer(326, this, 'C')">C. Engrosamiento de la pared intestinal.</li>
+                        <li onclick="selectAnswer(326, this, 'D')">D. Signos de obstrucción intestinal.</li>
+                    </ul>u
+                    <div class="justification" id="justification-326">La presencia de líquido en la hernia en la ecografía indica la posibilidad de una infección localizada.</div>
+                </div>
+                
+                <div class="card question-card" data-index="327">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Ante la sospecha de una infección en la hernia de Manuel, ¿cuál sería la conducta inicial?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(327, this, 'A')">A. Reducción manual en el consultorio.	</li>
+                        <li onclick="selectAnswer(327, this, 'B')">B. Administrar antibióticos y programar cirugía electiva.</li>
+                        <li onclick="selectAnswer(327, this, 'C')">C. Cirugía de emergencia.</li>
+                        <li onclick="selectAnswer(327, this, 'D')">D. Observación y manejo conservador.</li>
+                    </ul>
+                    <div class="justification" id="justification-327">Iniciar antibióticos y planificar la cirugía electiva permite controlar la infección antes de intervenir quirúrgicamente.</div>
+                </div>
+                
+                <div class="card question-card" data-index="328">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué la hernia de Manuel podría haberse vuelto irreductible?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(328, this, 'A')">A. Hernia inguinal femoral.</li>
+                        <li onclick="selectAnswer(328, this, 'B')">B. Obstrucción intestinal.</li>
+                        <li onclick="selectAnswer(328, this, 'C')">C. Prolapso de órganos intraabdominales.</li>
+                        <li onclick="selectAnswer(328, this, 'D')">D. Inflamación y edema en la hernia.</li>
+                    </ul>
+                    <div class="justification" id="justification-328">La inflamación y el edema pueden hacer que la hernia sea irreductible.</div>
+                </div>
+                
+                <div class="card question-card" data-index="329">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Después de la administración de antibióticos y la cirugía electiva en Manuel, ¿cuál sería una medida importante en el postoperatorio?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(329, this, 'A')">A. Realizar una colonoscopia de seguimiento.</li>
+                        <li onclick="selectAnswer(329, this, 'B')">B. Monitorear la función renal.</li>
+                        <li onclick="selectAnswer(329, this, 'C')">C. Controlar la evolución del eritema y calor local.</li>
+                        <li onclick="selectAnswer(329, this, 'D')">D. Administrar analgésicos para el dolor.</li>
+                    </ul>
+                    <div class="justification" id="justification-329">Monitorear la evolución del eritema y calor es crucial para evaluar la respuesta al tratamiento y prevenir complicaciones.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            325: "C", 
+            326: "B", 
+            327: "B", 
+            328: "D", 
+            329: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

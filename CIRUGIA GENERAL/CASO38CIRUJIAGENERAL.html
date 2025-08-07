@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+     <div class="container">
+  
+  
+        <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 38</h2>
+                <p>"Luisa, una niña de 5 años, es llevada a la sala de emergencias después de sufrir una quemadura en casa. Según la madre, Luisa accidentalmente volcó una taza de té caliente sobre su brazo izquierdo.
+Exámenes Complementarios:
+Evaluación visual de la quemadura en el brazo izquierdo.
+Historial médico para determinar la salud general de Luisa."</p>
+
+                <div class="card question-card" data-index="385">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la clasificación más común para describir la quemadura de Luisa?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(385, this, 'A')">A. Clasificación de Rutherford.</li>
+                        <li onclick="selectAnswer(385, this, 'B')">B. Clasificación de Rockwood.</li>
+                        <li onclick="selectAnswer(385, this, 'C')">C. Clasificación de Quigley.</li>
+                        <li onclick="selectAnswer(385, this, 'D')">D. Clasificación de profundidad de Brand.</li>
+                    </ul>
+                    <div class="justification" id="justification-385">La clasificación de profundidad de Brand se utiliza comúnmente para describir la gravedad de las quemaduras.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="386">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el rango de profundidad de la quemadura de Luisa según la clasificación de Brand?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(386, this, 'A')">A. Superficial.</li>
+                        <li onclick="selectAnswer(386, this, 'B')">B. Parcial.</li>
+                        <li onclick="selectAnswer(386, this, 'C')">C. Completa.</li>
+                        <li onclick="selectAnswer(386, this, 'D')">D. DInmersión.</li>
+                    </ul>u
+                    <div class="justification" id="justification-386">La clasificación de Brand divide las quemaduras en superficiales, parciales y completas.</div>
+                </div>
+                
+                <div class="card question-card" data-index="387">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería la recomendación inicial para el manejo de la quemadura de Luisa?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(387, this, 'A')">A. Aplicar hielo directamente.</li>
+                        <li onclick="selectAnswer(387, this, 'B')">B. Retirar inmediatamente la ropa adherida.</li>
+                        <li onclick="selectAnswer(387, this, 'C')">C. Sumergir el brazo en agua caliente.</li>
+                        <li onclick="selectAnswer(387, this, 'D')">D. Aplicar compresas húmedas.</li>
+                    </ul>
+                    <div class="justification" id="justification-387">Las compresas húmedas ayudan a enfriar la quemadura y reducir el dolor.</div>
+                </div>
+                
+                <div class="card question-card" data-index="388">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué es importante no aplicar hielo directamente sobre la quemadura de Luisa?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(388, this, 'A')">A. Puede causar congelación.</li>
+                        <li onclick="selectAnswer(388, this, 'B')">B. Incrementa el riesgo de infección.</li>
+                        <li onclick="selectAnswer(388, this, 'C')">C. Provoca daño irreversible a los tejidos.</li>
+                        <li onclick="selectAnswer(388, this, 'D')">D. No hay peligros asociados con la aplicación de hielo.</li>
+                    </ul>
+                    <div class="justification" id="justification-388">Aplicar hielo directamente puede empeorar el daño tisular al causar congelación.</div>
+                </div>
+                
+                <div class="card question-card" data-index="389">
+                    <h3>❓ Pregunta:</h3>
+                    <p>En el caso de Luisa, ¿por qué se prefiere la aplicación de compresas húmedas en lugar de agua fría directa?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(389, this, 'A')">A. Las compresas húmedas reducen el riesgo de infección.</li>
+                        <li onclick="selectAnswer(389, this, 'B')">B. El agua fría directa puede causar congelación.</li>
+                        <li onclick="selectAnswer(389, this, 'C')">C. Las compresas húmedas proporcionan un enfriamiento más controlado.</li>
+                        <li onclick="selectAnswer(389, this, 'D')">D. El agua fría directa puede aumentar la sensación de dolor. </li>
+                    </ul>
+                    <div class="justification" id="justification-389">Las compresas húmedas permiten un enfriamiento controlado y reducen el riesgo de congelación.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            385: "D", 
+            386: "B", 
+            387: "D", 
+            388: "A", 
+            389: "C" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

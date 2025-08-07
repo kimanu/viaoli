@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otorrinolaringología - Carcinoma Nasosinusal</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f4f9ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1b4f72;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .card {
+            background: #fff;
+            border-left: 6px solid;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .case-container {
+            border-color: #af7ac5;
+        }
+
+        .question-card {
+            border-color: #2471a3;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            background: #f7f9fc;
+            padding: 12px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2471a3;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: #fff;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: #fff;
+        }
+
+        #submit-button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2em;
+            background: #2471a3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #154360;
+        }
+
+        #submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            background: #d4efdf;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2471a3;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Otorrinolaringología - Carcinoma Nasosinusal</h1>
+        </div>
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>
+                Un hombre de 50 años acude a la consulta con quejas de obstrucción nasal unilateral derecha y secreción sanguinolenta persistente en el mismo lado durante los últimos 3 meses. El paciente refiere haber experimentado pérdida de peso involuntaria en las últimas semanas. Niega antecedentes de tabaquismo. Al examen físico, se observa una lesión ulcerada en la fosa nasal derecha con epistaxis leve a la palpación. No se evidencian otras anormalidades en la cavidad nasal contralateral.
+            </p>
+        </div>
+
+        <div class="card question-card" data-index="706">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el diagnóstico más probable en este paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(706, this, 'A')">A. Rinitis alérgica</li>
+                <li onclick="selectAnswer(706, this, 'B')">B. Sinusitis crónica</li>
+                <li onclick="selectAnswer(706, this, 'C')">C. Pólipos nasales</li>
+                <li onclick="selectAnswer(706, this, 'D')">D. Carcinoma nasosinusal</li>
+            </ul>
+            <div class="justification" id="justification-706">
+                La obstrucción nasal unilateral persistente, secreción sanguinolenta y la presencia de una lesión ulcerada en la fosa nasal sugieren el diagnóstico de carcinoma nasosinusal, especialmente en un paciente de mediana edad sin antecedentes de tabaquismo.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="707">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de los siguientes factores de riesgo es más relevante en el desarrollo de carcinoma nasosinusal?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(707, this, 'A')">A. Tabaquismo</li>
+                <li onclick="selectAnswer(707, this, 'B')">B. Exposición a asbestos</li>
+                <li onclick="selectAnswer(707, this, 'C')">C. Antecedentes de rinitis alérgica</li>
+                <li onclick="selectAnswer(707, this, 'D')">D. Radioterapia previa en la región de la cabeza y cuello</li>
+            </ul>
+            <div class="justification" id="justification-707">
+                La radioterapia previa en la región de la cabeza y cuello es un factor de riesgo bien establecido para el desarrollo de carcinoma nasosinusal.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="708">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de los siguientes hallazgos en la exploración endoscópica nasal es más característico del carcinoma nasosinusal?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(708, this, 'A')">A. Pólipos nasales bilaterales</li>
+                <li onclick="selectAnswer(708, this, 'B')">B. Lesión ulcerada en la mucosa nasal</li>
+                <li onclick="selectAnswer(708, this, 'C')">C. Engrosamiento difuso de la mucosa nasal</li>
+                <li onclick="selectAnswer(708, this, 'D')">D. Hipertrofia de los cornetes inferiores</li>
+            </ul>
+            <div class="justification" id="justification-708">
+                Una lesión ulcerada en la mucosa nasal es un hallazgo más característico del carcinoma nasosinusal en la exploración endoscópica nasal.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="709">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de las siguientes pruebas de imagen es más útil para confirmar el diagnóstico en este paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(709, this, 'A')">A. Radiografía de senos paranasales</li>
+                <li onclick="selectAnswer(709, this, 'B')">B. Tomografía computarizada de senos paranasales</li>
+                <li onclick="selectAnswer(709, this, 'C')">C. Resonancia magnética de cabeza y cuello</li>
+                <li onclick="selectAnswer(709, this, 'D')">D. Ecografía nasal</li>
+            </ul>
+            <div class="justification" id="justification-709">
+                La tomografía computarizada es la prueba de imagen de elección para evaluar la extensión y localización del carcinoma nasosinusal, así como para planificar la cirugía y la radioterapia.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="710">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el tratamiento principal para el carcinoma nasosinusal?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(710, this, 'A')">A. Cirugía endoscópica nasal</li>
+                <li onclick="selectAnswer(710, this, 'B')">B. Radioterapia</li>
+                <li onclick="selectAnswer(710, this, 'C')">C. Quimioterapia sistémica</li>
+                <li onclick="selectAnswer(710, this, 'D')">D. Antibióticos</li>
+            </ul>
+            <div class="justification" id="justification-710">
+                La radioterapia es el tratamiento principal para el carcinoma nasosinusal, a menudo combinada con cirugía endoscópica nasal en casos seleccionados, y en algunos casos se puede utilizar quimioterapia sistémica en combinación con radioterapia.
+            </div>
+        </div>
+
+        <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            706: "D",
+            707: "D",
+            708: "B",
+            709: "B",
+            710: "B"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

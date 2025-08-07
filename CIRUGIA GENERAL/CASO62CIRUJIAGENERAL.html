@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dermatología - Caso Clínico</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e67e22;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Dermatología - Caso Clínico</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>"Carlos, un hombre de 40 años, consulta al dermatólogo debido a la presencia de placas rojas y escamosas en codos, rodillas y cuero cabelludo. Ha experimentado síntomas recurrentes durante varios años, pero en las últimas semanas, la condición ha empeorado.<br><br>
+                Exámenes Complementarios:<br>
+                Observación visual de las lesiones en la piel.<br>
+                Historial médico completo, incluyendo antecedentes familiares de enfermedades autoinmunes."</p>
+
+                <div class="card question-card" data-index="700">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el término médico correcto para describir las lesiones cutáneas rojas y escamosas que presenta Carlos?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(700, this, 'A')">A. Dermatitis atópica.</li>
+                        <li onclick="selectAnswer(700, this, 'B')">B. Psoriasis.</li>
+                        <li onclick="selectAnswer(700, this, 'C')">C. Urticaria.</li>
+                        <li onclick="selectAnswer(700, this, 'D')">D. Acné vulgar.</li>
+                    </ul>
+                    <div class="justification" id="justification-700">La psoriasis se caracteriza por placas rojas y escamosas en la piel.</div>
+                </div>
+
+                <div class="card question-card" data-index="701">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál de las siguientes afirmaciones es cierta sobre la psoriasis?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(701, this, 'A')">A. Es causada únicamente por factores genéticos.</li>
+                        <li onclick="selectAnswer(701, this, 'B')">B. Puede afectar solo la piel y no otras partes del cuerpo.</li>
+                        <li onclick="selectAnswer(701, this, 'C')">C. No tiene relación con el sistema inmunológico.</li>
+                        <li onclick="selectAnswer(701, this, 'D')">D. Puede tener un impacto significativo en la calidad de vida.</li>
+                    </ul>
+                    <div class="justification" id="justification-701">La psoriasis puede afectar tanto la piel como las articulaciones, y su impacto en la calidad de vida puede ser considerable.</div>
+                </div>
+
+                <div class="card question-card" data-index="702">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál de las siguientes opciones sería una opción de tratamiento tópico para las lesiones de psoriasis en la piel de Carlos?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(702, this, 'A')">A. Antibióticos orales.</li>
+                        <li onclick="selectAnswer(702, this, 'B')">B. Antiinflamatorios no esteroides (AINEs).</li>
+                        <li onclick="selectAnswer(702, this, 'C')">C. Corticosteroides tópicos.</li>
+                        <li onclick="selectAnswer(702, this, 'D')">D. Antihistamínicos.</li>
+                    </ul>
+                    <div class="justification" id="justification-702">Los corticosteroides tópicos son comúnmente utilizados para reducir la inflamación en las lesiones de psoriasis.</div>
+                </div>
+
+                <div class="card question-card" data-index="703">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Qué área adicional del cuerpo podría verse afectada en algunos casos de psoriasis, además de la piel?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(703, this, 'A')">A. Riñones.</li>
+                        <li onclick="selectAnswer(703, this, 'B')">B. Hígado.</li>
+                        <li onclick="selectAnswer(703, this, 'C')">C. Articulaciones.</li>
+                        <li onclick="selectAnswer(703, this, 'D')">D. Pulmones.</li>
+                    </ul>
+                    <div class="justification" id="justification-703">La psoriasis puede afectar las articulaciones, dando lugar a la artritis psoriásica en algunos casos.</div>
+                </div>
+
+                <div class="card question-card" data-index="704">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué es importante que Carlos busque tratamiento y seguimiento continuo para su psoriasis?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(704, this, 'A')">A. La psoriasis no tiene impacto en la salud general.</li>
+                        <li onclick="selectAnswer(704, this, 'B')">B. Puede haber complicaciones como la artritis psoriásica.</li>
+                        <li onclick="selectAnswer(704, this, 'C')">C. La psoriasis siempre se resuelve por sí sola.</li>
+                        <li onclick="selectAnswer(704, this, 'D')">D. Los tratamientos no son efectivos para la psoriasis.</li>
+                    </ul>
+                    <div class="justification" id="justification-704">La psoriasis puede tener complicaciones, y el tratamiento adecuado puede prevenir o controlar estas complicaciones, como la artritis psoriásica.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            700: "B",
+            701: "D",
+            702: "C",
+            703: "C",
+            704: "B"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

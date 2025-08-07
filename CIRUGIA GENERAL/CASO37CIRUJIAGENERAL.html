@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiología</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+  
+  
+  X      <div class="card case-container">
+            <h1>Cirujia General</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico 37</h2>
+                <p>"Elena, una mujer de 35 años, busca atención médica debido a molestias anales crónicas. Refiere la presencia de protuberancias que salen durante la defecación y se reintegran espontáneamente.
+Exámenes Complementarios:
+Examen físico: Identificación de hemorroides internas prolapsadas durante la defecación.
+Anoscopia: Confirmación visual de las hemorroides internas prolapsadas."</p>
+
+                <div class="card question-card" data-index="375">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la característica principal de las hemorroides internas prolapsadas que Elena describe?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(375, this, 'A')">A. Dolor constante.</li>
+                        <li onclick="selectAnswer(375, this, 'B')">B. Protuberancias durante la defecación.</li>
+                        <li onclick="selectAnswer(375, this, 'C')">C. Sangrado rectal repentino.</li>
+                        <li onclick="selectAnswer(375, this, 'D')">D. Masa perianal palpable en reposo.</li>
+                    </ul>
+                    <div class="justification" id="justification-375">Las hemorroides internas prolapsadas se caracterizan por la protrusión de tejido durante la defecación.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="376">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la clasificación de las hemorroides internas prolapsadas según la escala de Grados de Goligher?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(376, this, 'A')">A. Grado I.</li>
+                        <li onclick="selectAnswer(376, this, 'B')">B. Grado II.</li>
+                        <li onclick="selectAnswer(376, this, 'C')">C. Grado III.</li>
+                        <li onclick="selectAnswer(376, this, 'D')">D. Grado IV.</li>
+                    </ul>u
+                    <div class="justification" id="justification-376">En el Grado III, las hemorroides internas prolapsadas protruyen durante la defecación y requieren intervención manual para su reducción.</div>
+                </div>
+                
+                <div class="card question-card" data-index="377">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál de las siguientes opciones podría ser parte del tratamiento inicial para las hemorroides internas prolapsadas de Elena?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(377, this, 'A')">A. Cirugía de resección.</li>
+                        <li onclick="selectAnswer(377, this, 'B')">B. Escleroterapia.</li>
+                        <li onclick="selectAnswer(377, this, 'C')">C. Radioterapia.</li>
+                        <li onclick="selectAnswer(377, this, 'D')">D. Antibióticos de amplio espectro.</li>
+                    </ul>
+                    <div class="justification" id="justification-377">La escleroterapia es una opción de tratamiento inicial que implica inyectar una solución esclerosante para reducir el tamaño de las hemorroides.</div>
+                </div>
+                
+                <div class="card question-card" data-index="378">
+                    <h3>❓ Pregunta:</h3>
+                    <p>Si las hemorroides internas prolapsadas de Elena no responden al tratamiento conservador, ¿cuál podría ser una opción de tratamiento más invasiva?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(378, this, 'A')">A. Antibióticos.</li>
+                        <li onclick="selectAnswer(378, this, 'B')">B. Dieta alta en fibra.</li>
+                        <li onclick="selectAnswer(378, this, 'C')">C. Ejercicios perineales.</li>
+                        <li onclick="selectAnswer(378, this, 'D')">D. Procedimiento con láser.</li>
+                    </ul>
+                    <div class="justification" id="justification-378">La ligadura elástica es un procedimiento más invasivo que puede ser considerado si las medidas conservadoras no son efectivas.</div>
+                </div>
+                
+                <div class="card question-card" data-index="379">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el objetivo principal del tratamiento de las hemorroides internas prolapsadas en Elena?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(379, this, 'A')">A. Eliminar las hemorroides quirúrgicamente.</li>
+                        <li onclick="selectAnswer(379, this, 'B')">B. Aliviar los síntomas y prevenir recurrencias.</li>
+                        <li onclick="selectAnswer(379, this, 'C')">C. Aliviar el dolor y prevenir complicaciones.</li>
+                        <li onclick="selectAnswer(379, this, 'D')">D. Controlar el sangrado rectal.</li>
+                    </ul>
+                    <div class="justification" id="justification-379">El tratamiento busca mejorar la calidad de vida al aliviar los síntomas y prevenir futuras prolapsos.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            375: "B", 
+            376: "C", 
+            377: "B", 
+            378: "A", 
+            379: "B" 
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

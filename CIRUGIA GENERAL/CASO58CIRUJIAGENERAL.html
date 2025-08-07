@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dermatitis Seborreica - Caso Clínico</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e67e22;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Dermatología</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>"Alejandro, un hombre de 25 años, consulta al dermatólogo debido a la presencia de áreas enrojecidas y descamación en su cuero cabelludo y cejas. Menciona que ha notado estos síntomas de forma intermitente durante varios meses.<br><br>
+                Exámenes Complementarios:<br>
+                Observación visual de las áreas afectadas en el cuero cabelludo y cejas.<br>
+                Entrevista para obtener información sobre el cuidado capilar y la presencia de síntomas asociados."</p>
+
+                <div class="card question-card" data-index="490">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la lesión primaria predominante en la dermatitis seborreica de Alejandro?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(490, this, 'A')">A. Pústulas.</li>
+                        <li onclick="selectAnswer(490, this, 'B')">B. Vesículas.</li>
+                        <li onclick="selectAnswer(490, this, 'C')">C. Placas.</li>
+                        <li onclick="selectAnswer(490, this, 'D')">D. Pápulas.</li>
+                    </ul>
+                    <div class="justification" id="justification-490">En la dermatitis seborreica, se observan placas enrojecidas y escamosas en áreas como el cuero cabelludo y las cejas.</div>
+                </div>
+
+                <div class="card question-card" data-index="491">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál de las siguientes afirmaciones es cierta acerca de la dermatitis seborreica?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(491, this, 'A')">A. Es causada por una infección bacteriana.</li>
+                        <li onclick="selectAnswer(491, this, 'B')">B. No está relacionada con la producción excesiva de sebo.</li>
+                        <li onclick="selectAnswer(491, this, 'C')">C. Puede afectar áreas como el cuero cabelludo, la cara y el pecho.</li>
+                        <li onclick="selectAnswer(491, this, 'D')">D. Se presenta comúnmente en la infancia, pero no en la edad adulta.</li>
+                    </ul>
+                    <div class="justification" id="justification-491">La dermatitis seborreica puede afectar diversas áreas, incluyendo el cuero cabelludo, la cara y el pecho.</div>
+                </div>
+
+                <div class="card question-card" data-index="492">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería una opción de tratamiento tópico recomendada para la dermatitis seborreica en el cuero cabelludo de Alejandro?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(492, this, 'A')">A. Antibióticos orales.</li>
+                        <li onclick="selectAnswer(492, this, 'B')">B. Crema de esteroides tópicos.</li>
+                        <li onclick="selectAnswer(492, this, 'C')">C. Champú con ketoconazol.</li>
+                        <li onclick="selectAnswer(492, this, 'D')">D. Protector solar.</li>
+                    </ul>
+                    <div class="justification" id="justification-492">El ketoconazol es un antifúngico que puede ser eficaz para tratar la dermatitis seborreica en el cuero cabelludo.</div>
+                </div>
+
+                <div class="card question-card" data-index="493">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es uno de los factores predisponentes para la dermatitis seborreica?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(493, this, 'A')">A. Exposición excesiva al sol.</li>
+                        <li onclick="selectAnswer(493, this, 'B')">B. Deficiencia de vitamina D.</li>
+                        <li onclick="selectAnswer(493, this, 'C')">C. Predisposición genética.</li>
+                        <li onclick="selectAnswer(493, this, 'D')">D. Consumo elevado de grasas saturadas.</li>
+                    </ul>
+                    <div class="justification" id="justification-493">La dermatitis seborreica puede tener una base genética, y las personas con antecedentes familiares pueden ser más propensas a desarrollarla.</div>
+                </div>
+
+                <div class="card question-card" data-index="494">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál sería un consejo de cuidado capilar que el dermatólogo podría darle a Alejandro para ayudar a manejar la dermatitis seborreica?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(494, this, 'A')">A. Evitar lavar el cabello con champú.</li>
+                        <li onclick="selectAnswer(494, this, 'B')">B. Utilizar acondicionador todos los días.</li>
+                        <li onclick="selectAnswer(494, this, 'C')">C. Secar el cabello con un secador de aire caliente.</li>
+                        <li onclick="selectAnswer(494, this, 'D')">D. Evitar productos capilares grasosos.</li>
+                    </ul>
+                    <div class="justification" id="justification-494">El uso de productos capilares grasosos puede agravar la dermatitis seborreica, por lo que se recomienda evitarlos.</div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            490: "C",
+            491: "C",
+            492: "C",
+            493: "C",
+            494: "D"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

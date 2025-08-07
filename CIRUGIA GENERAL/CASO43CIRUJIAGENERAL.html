@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cirugía General</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+ 
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+     <div class="container">
+        <div class="card case-container">
+            <h1>Cirugía General</h1>
+        </div>
+        <div class="container">
+            <!-- Caso clínico 1 -->
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>"Ana, una joven de 20 años, llega a la sala de urgencias con una quemadura química en su mano izquierda después de haber manipulado inadvertidamente un producto de limpieza corrosivo sin utilizar guantes de protección.
+Exámenes Complementarios:
+Evaluación visual de la quemadura química en la mano izquierda de Ana.
+Historial detallado sobre la exposición a la sustancia química."</p>
+
+                <div class="card question-card" data-index="410">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la característica distintiva de una quemadura química en comparación con otras quemaduras?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(410, this, 'A')">A. Siempre es superficial.</li>
+                        <li onclick="selectAnswer(410, this, 'B')">B. Causa daño solo en la capa externa de la piel.</li>
+                        <li onclick="selectAnswer(410, this, 'C')">C. Es causada por sustancias químicas corrosivas.</li>
+                        <li onclick="selectAnswer(410, this, 'D')">D. Se cura espontáneamente sin tratamiento.</li>
+                    </ul>
+                    <div class="justification" id="justification-410">Una quemadura química es causada por la exposición a sustancias químicas corrosivas, lo que la distingue de otras quemaduras.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="411">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué es crucial enjuagar abundantemente con agua una quemadura química tan pronto como sea posible?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(411, this, 'A')">A. Para enfriar la zona afectada y aliviar el dolor.</li>
+                        <li onclick="selectAnswer(411, this, 'B')">B. Evitar la formación de ampollas.</li>
+                        <li onclick="selectAnswer(411, this, 'C')">C. Prevenir infecciones secundarias.</li>
+                        <li onclick="selectAnswer(411, this, 'D')">D. Neutralizar la acción de la sustancia química.</li>
+                    </ul>
+                    <div class="justification" id="justification-411">Enjuagar con agua ayuda a neutralizar la acción de la sustancia química y reducir el daño.</div>
+                </div>
+                
+                <div class="card question-card" data-index="412">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la primera medida que debe tomar Ana antes de buscar atención médica para su quemadura química?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(412, this, 'A')">A. Aplicar una crema hidratante.</li>
+                        <li onclick="selectAnswer(412, this, 'B')">B. Cubrir la quemadura con un apósito.</li>
+                        <li onclick="selectAnswer(412, this, 'C')">C. Retirar cualquier objeto adherido a la piel.</li>
+                        <li onclick="selectAnswer(412, this, 'D')">D. Enjuagar la zona afectada con abundante agua.</li>
+                    </ul>
+                    <div class="justification" id="justification-412">La primera medida en el manejo de una quemadura química es enjuagar la zona afectada con abundante agua para eliminar la sustancia química.</div>
+                </div>
+                
+                <div class="card question-card" data-index="413">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué es importante que Ana evite frotar o restregar la zona afectada después de la quemadura química?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(413, this, 'A')">A. Para prevenir la formación de cicatrices.</li>
+                        <li onclick="selectAnswer(413, this, 'B')">B. Evitar la propagación de la sustancia química.</li>
+                        <li onclick="selectAnswer(413, this, 'C')">C. Minimizar el dolor.</li>
+                        <li onclick="selectAnswer(413, this, 'D')">D. Acelerar la curación.</li>
+                    </ul>
+                    <div class="justification" id="justification-413">Frotar o restregar puede propagar la sustancia química y empeorar la lesión.</div>
+                </div>
+                
+                <div class="card question-card" data-index="414">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Qué información es crucial proporcionar al personal médico al buscar atención para una quemadura química?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(414, this, 'A')">A. La marca de la sustancia química.</li>
+                        <li onclick="selectAnswer(414, this, 'B')">B. La temperatura del agua utilizada para el enjuague.</li>
+                        <li onclick="selectAnswer(414, this, 'C')">C. La duración de la exposición a la sustancia química.</li>
+                        <li onclick="selectAnswer(414, this, 'D')">D. El tipo de apósito utilizado después del enjuague.</li>
+                    </ul>
+                    <div class="justification" id="justification-414">La duración de la exposición a la sustancia química es crucial para evaluar la gravedad de la quemadura química.</div>
+                </div>
+            </div>
+
+            <!-- Caso clínico 2 -->
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>"Luis, un hombre de 35 años, llega al servicio de urgencias después de sufrir una caída desde una escalera mientras reparaba el techo de su casa. Presenta dolor intenso en la pierna derecha, incapacidad para caminar y deformidad evidente en el muslo.
+Exámenes complementarios:
+Radiografía de fémur derecho.
+Evaluación de pulsos periféricos y movilidad del pie."</p>
+
+                <div class="card question-card" data-index="415">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la lesión más probable que presenta Luis tras la caída?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(415, this, 'A')">A. Esguince de rodilla.</li>
+                        <li onclick="selectAnswer(415, this, 'B')">B. Fractura de fémur.</li>
+                        <li onclick="selectAnswer(415, this, 'C')">C. Luxación de cadera.</li>
+                        <li onclick="selectAnswer(415, this, 'D')">D. Fractura de tibia.</li>
+                    </ul>
+                    <div class="justification" id="justification-415">La deformidad evidente en el muslo y la imposibilidad de caminar sugieren fractura de fémur.</div>
+                </div>
+                 
+                <div class="card question-card" data-index="416">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Por qué es importante evaluar los pulsos periféricos en una fractura de fémur?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(416, this, 'A')">A. Para confirmar la fractura.</li>
+                        <li onclick="selectAnswer(416, this, 'B')">B. Para descartar luxación.</li>
+                        <li onclick="selectAnswer(416, this, 'C')">C. Para detectar compromiso vascular.</li>
+                        <li onclick="selectAnswer(416, this, 'D')">D. Para decidir el tipo de inmovilización.</li>
+                    </ul>
+                    <div class="justification" id="justification-416">La fractura de fémur puede lesionar vasos sanguíneos, por lo que evaluar pulsos detecta compromiso vascular.</div>
+                </div>
+                
+                <div class="card question-card" data-index="417">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la complicación más grave inmediata de una fractura de fémur?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(417, this, 'A')">A. Dolor intenso.</li>
+                        <li onclick="selectAnswer(417, this, 'B')">B. Choque hipovolémico por hemorragia interna.</li>
+                        <li onclick="selectAnswer(417, this, 'C')">C. Infección de la herida.</li>
+                        <li onclick="selectAnswer(417, this, 'D')">D. Consolidación retardada.</li>
+                    </ul>
+                    <div class="justification" id="justification-417">La hemorragia interna puede provocar choque hipovolémico, siendo una complicación grave inmediata.</div>
+                </div>
+                
+                <div class="card question-card" data-index="418">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Qué medida inicial es prioritaria antes del traslado para cirugía?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(418, this, 'A')">A. Iniciar antibióticos.</li>
+                        <li onclick="selectAnswer(418, this, 'B')">B. Aplicar yeso definitivo.</li>
+                        <li onclick="selectAnswer(418, this, 'C')">C. Inmovilización temporal y analgesia.</li>
+                        <li onclick="selectAnswer(418, this, 'D')">D. Iniciar fisioterapia temprana.</li>
+                    </ul>
+                    <div class="justification" id="justification-418">Antes del traslado, es fundamental inmovilizar la extremidad y controlar el dolor.</div>
+                </div>
+                
+                <div class="card question-card" data-index="419">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el estudio diagnóstico principal para confirmar una fractura de fémur?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(419, this, 'A')">A. Ecografía Doppler.</li>
+                        <li onclick="selectAnswer(419, this, 'B')">B. Resonancia magnética.</li>
+                        <li onclick="selectAnswer(419, this, 'C')">C. Radiografía simple.</li>
+                        <li onclick="selectAnswer(419, this, 'D')">D. Tomografía computarizada.</li>
+                    </ul>
+                    <div class="justification" id="justification-419">La radiografía simple es el estudio inicial y más utilizado para confirmar fracturas.</div>
+                </div>
+            </div>
+
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = { 
+            410: "C", 
+            411: "D", 
+            412: "D", 
+            413: "B", 
+            414: "C",
+            415: "B",
+            416: "C",
+            417: "B",
+            418: "C",
+            419: "C"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Otorrinolaringología - Tumor del Nervio Vestibulococlear</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #154360;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e67e22;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Otorrinolaringología - Tumor del Nervio Vestibulococlear</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>
+                    Una mujer de 30 años acude a la consulta con quejas de mareos recurrentes, pérdida auditiva progresiva en el oído izquierdo y zumbido en el mismo oído durante los últimos 6 meses. No presenta antecedentes de traumatismo en el oído ni de enfermedades del oído previas. Al examen físico, se observa una membrana timpánica abombada y retraída en el oído izquierdo, con disminución de la movilidad a la insuflación de aire. La audiometría muestra una pérdida auditiva sensorioneural profunda en el oído izquierdo.
+                </p>
+
+                <div class="card question-card" data-index="610">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el diagnóstico más probable en este paciente?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(610, this, 'A')">A. Otitis externa</li>
+                        <li onclick="selectAnswer(610, this, 'B')">B. Otitis media serosa</li>
+                        <li onclick="selectAnswer(610, this, 'C')">C. Tumor del nervio vestibulococlear</li>
+                        <li onclick="selectAnswer(610, this, 'D')">D. Enfermedad de Ménière</li>
+                    </ul>
+                    <div class="justification" id="justification-610">
+                        Los síntomas de mareos, pérdida auditiva progresiva y zumbido son sugestivos de una lesión en el nervio vestibulococlear. La membrana timpánica abombada y retraída puede ser un hallazgo asociado en algunos casos.
+                    </div>
+                </div>
+
+                <div class="card question-card" data-index="611">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál de las siguientes pruebas sería más útil para confirmar el diagnóstico en este paciente?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(611, this, 'A')">A. Audiometría tonal</li>
+                        <li onclick="selectAnswer(611, this, 'B')">B. Impedanciometría</li>
+                        <li onclick="selectAnswer(611, this, 'C')">C. Tomografía computarizada de oídos</li>
+                        <li onclick="selectAnswer(611, this, 'D')">D. Resonancia magnética de cerebro y oídos</li>
+                    </ul>
+                    <div class="justification" id="justification-611">
+                        La resonancia magnética es la prueba de elección para evaluar lesiones intracraneales, incluidos los tumores del nervio vestibulococlear, proporcionando una imagen detallada de la anatomía cerebral y del oído interno.
+                    </div>
+                </div>
+
+                <div class="card question-card" data-index="612">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál de los siguientes síntomas es característico de la enfermedad de Ménière?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(612, this, 'A')">A. Pérdida auditiva sensorioneural</li>
+                        <li onclick="selectAnswer(612, this, 'B')">B. Mareos rotatorios</li>
+                        <li onclick="selectAnswer(612, this, 'C')">C. Tinnitus pulsátil</li>
+                        <li onclick="selectAnswer(612, this, 'D')">D. Otalgia intensa</li>
+                    </ul>
+                    <div class="justification" id="justification-612">
+                        La enfermedad de Ménière se caracteriza por episodios recurrentes de mareos rotatorios (vértigo), acompañados de pérdida auditiva sensorioneural, zumbido y sensación de plenitud auricular.
+                    </div>
+                </div>
+
+                <div class="card question-card" data-index="613">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el tratamiento inicial más apropiado para este paciente mientras se espera la confirmación diagnóstica?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(613, this, 'A')">A. Terapia de reemplazo de líquidos</li>
+                        <li onclick="selectAnswer(613, this, 'B')">B. Corticosteroides sistémicos</li>
+                        <li onclick="selectAnswer(613, this, 'C')">C. Diuréticos</li>
+                        <li onclick="selectAnswer(613, this, 'D')">D. Rehabilitación vestibular</li>
+                    </ul>
+                    <div class="justification" id="justification-613">
+                        Los corticosteroides sistémicos pueden ayudar a reducir la inflamación en caso de un posible tumor del nervio vestibulococlear mientras se espera la confirmación diagnóstica.
+                    </div>
+                </div>
+
+                <div class="card question-card" data-index="614">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es una complicación potencial del tumor del nervio vestibulococlear en este paciente?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(614, this, 'A')">A. Parálisis facial</li>
+                        <li onclick="selectAnswer(614, this, 'B')">B. Pérdida auditiva conductiva</li>
+                        <li onclick="selectAnswer(614, this, 'C')">C. Pérdida auditiva unilateral</li>
+                        <li onclick="selectAnswer(614, this, 'D')">D. Pérdida del equilibrio estático</li>
+                    </ul>
+                    <div class="justification" id="justification-614">
+                        Los tumores del nervio vestibulococlear pueden comprimir el nervio facial, causando parálisis facial, además de afectar la audición y el equilibrio.
+                    </div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            610: "C",
+            611: "D",
+            612: "B",
+            613: "B",
+            614: "A"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Otorrinolaringología - Colesteatoma</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #154360;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e67e22;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Otorrinolaringología - Colesteatoma</h1>
+        </div>
+        <div class="container">
+            <div class="card case-container">
+                <h2>🩺 Caso clínico</h2>
+                <p>
+                    Un paciente de 45 años se presenta con dolor de oído izquierdo y pérdida de audición gradual en ese mismo oído durante los últimos 6 meses. Niega antecedentes de traumatismo en el oído, pero refiere haber tenido episodios recurrentes de otitis media durante su infancia. Al examen físico, se observa en el oído izquierdo un tímpano abombado con coloración amarillo-amarillenta, opacidad, e inmovilidad a la insuflación de aire. La audiometría muestra una pérdida auditiva conductiva en el oído izquierdo.
+                </p>
+
+                <div class="card question-card" data-index="600">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el diagnóstico más probable en este paciente?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(600, this, 'A')">A. Otitis externa</li>
+                        <li onclick="selectAnswer(600, this, 'B')">B. Otitis media crónica supurativa</li>
+                        <li onclick="selectAnswer(600, this, 'C')">C. Colesteatoma adquirido</li>
+                        <li onclick="selectAnswer(600, this, 'D')">D. Otitis media serosa</li>
+                    </ul>
+                    <div class="justification" id="justification-600">
+                        Los hallazgos clínicos y audiometría son consistentes con colesteatoma adquirido, que se caracteriza por la presencia de un tímpano abombado, opacidad, y pérdida auditiva conductiva. Además, la historia de episodios recurrentes de otitis media en la infancia es un factor de riesgo.
+                    </div>
+                </div>
+
+                <div class="card question-card" data-index="601">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es la complicación más temida del colesteatoma adquirido?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(601, this, 'A')">A. Pérdida auditiva sensorioneural</li>
+                        <li onclick="selectAnswer(601, this, 'B')">B. Laberintitis</li>
+                        <li onclick="selectAnswer(601, this, 'C')">C. Parálisis facial</li>
+                        <li onclick="selectAnswer(601, this, 'D')">D. Osteomielitis temporal</li>
+                    </ul>
+                    <div class="justification" id="justification-601">
+                        La laberintitis es una complicación grave del colesteatoma adquirido que puede causar vértigo, nistagmo, pérdida auditiva sensorioneural severa y otros síntomas vestibulares.
+                    </div>
+                </div>
+
+                <div class="card question-card" data-index="602">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el tratamiento inicial más apropiado para este paciente?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(602, this, 'A')">A. Antibióticos orales</li>
+                        <li onclick="selectAnswer(602, this, 'B')">B. Gotas óticas antibióticas</li>
+                        <li onclick="selectAnswer(602, this, 'C')">C. Lavado ótico con solución salina</li>
+                        <li onclick="selectAnswer(602, this, 'D')">D. Referencia a cirugía otológica</li>
+                    </ul>
+                    <div class="justification" id="justification-602">
+                        El tratamiento definitivo para el colesteatoma adquirido es la cirugía otológica para su extirpación y reconstrucción del oído medio.
+                    </div>
+                </div>
+
+                <div class="card question-card" data-index="603">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el principal objetivo del tratamiento quirúrgico en este paciente?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(603, this, 'A')">A. Restaurar la audición</li>
+                        <li onclick="selectAnswer(603, this, 'B')">B. Prevenir la recurrencia del colesteatoma</li>
+                        <li onclick="selectAnswer(603, this, 'C')">C. Aliviar el dolor de oído</li>
+                        <li onclick="selectAnswer(603, this, 'D')">D. Evitar la perforación timpánica</li>
+                    </ul>
+                    <div class="justification" id="justification-603">
+                        El objetivo principal del tratamiento quirúrgico es extirpar completamente el colesteatoma y prevenir su recurrencia, lo que puede conducir a complicaciones graves.
+                    </div>
+                </div>
+
+                <div class="card question-card" data-index="604">
+                    <h3>❓ Pregunta:</h3>
+                    <p>¿Cuál es el seguimiento más adecuado después de la cirugía en este paciente?</p>
+                    <ul class="options">
+                        <li onclick="selectAnswer(604, this, 'A')">A. Audiometría cada 3 meses</li>
+                        <li onclick="selectAnswer(604, this, 'B')">B. Evaluación otoscópica mensual</li>
+                        <li onclick="selectAnswer(604, this, 'C')">C. Tomografía computarizada anual</li>
+                        <li onclick="selectAnswer(604, this, 'D')">D. Consulta de seguimiento con el otorrinolaringólogo a los 6 meses</li>
+                    </ul>
+                    <div class="justification" id="justification-604">
+                        Después de la cirugía, el paciente debe ser seguido regularmente por un otorrinolaringólogo para evaluar la cicatrización, controlar posibles complicaciones y realizar audiometrías periódicas para monitorear la audición.
+                    </div>
+                </div>
+            </div>
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            600: "C",
+            601: "B",
+            602: "D",
+            603: "B",
+            604: "D"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>
