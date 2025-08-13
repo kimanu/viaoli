@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nefropatía Diabética - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #fafafa;
+        margin: 0; padding: 20px;
+        color: #222;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #d35400;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #e67e22;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #f9e5d3;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #f0b27a;
+    }
+    .selected {
+        border: 2px solid #d35400;
+        background: #f0b27a;
+        pointer-events: none;
+    }
+    .correct {
+        background: #d35400 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #ba4a00 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #d35400;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #ba4a00;
+    }
+    #submit-button:disabled {
+        background: #f5cba7;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #f9e5d3;
+        border: 1px solid #d35400;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #ba4a00;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #f9e5d3;
+        border-left: 4px solid #d35400;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #ba4a00;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Nefropatía Diabética</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Paciente de 60 años, masculino, con antecedentes de diabetes mellitus tipo 2 e hipertensión arterial controlada, quien ingresa al servicio de urgencias con edema facial, disnea progresiva y oliguria. En el examen físico, se observa hipertensión arterial (160/100 mmHg), edema en miembros inferiores y rales crepitantes en campos pulmonares. Los exámenes de laboratorio revelan elevación de la creatinina sérica (3.5 mg/dL), urea (80 mg/dL) y proteinuria 2+ en el análisis de orina.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2091">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el diagnóstico más probable en este paciente con antecedentes de diabetes mellitus tipo 2, hipertensión arterial e insuficiencia renal aguda?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2091, this, 'A')">A. Nefritis intersticial aguda.</li>
+            <li onclick="selectAnswer(2091, this, 'B')">B. Síndrome nefrótico.</li>
+            <li onclick="selectAnswer(2091, this, 'C')">C. Nefropatía diabética.</li>
+            <li onclick="selectAnswer(2091, this, 'D')">D. Nefropatía por IgA.</li>
+        </ul>
+        <div class="justification" id="justification-2091">
+            La combinación de antecedentes de diabetes mellitus tipo 2, hipertensión arterial e insuficiencia renal aguda sugiere el diagnóstico de nefropatía diabética, una complicación común y grave de la diabetes.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2092">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es el mecanismo patogénico principal involucrado en la nefropatía diabética?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2092, this, 'A')">A. Vasculitis renal.</li>
+            <li onclick="selectAnswer(2092, this, 'B')">B. Lesión glomerular por depósito de complejos inmunes.</li>
+            <li onclick="selectAnswer(2092, this, 'C')">C. Disfunción tubular renal.</li>
+            <li onclick="selectAnswer(2092, this, 'D')">D. Hipertensión glomerular.</li>
+        </ul>
+        <div class="justification" id="justification-2092">
+            En la nefropatía diabética, la hipertensión glomerular juega un papel importante en la patogénesis, contribuyendo a la lesión glomerular y al desarrollo de la enfermedad renal crónica.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2093">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál es la principal causa de mortalidad en pacientes con nefropatía diabética?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2093, this, 'A')">A. Insuficiencia cardiaca congestiva.</li>
+            <li onclick="selectAnswer(2093, this, 'B')">B. Hipoglucemia severa.</li>
+            <li onclick="selectAnswer(2093, this, 'C')">C. Eventos tromboembólicos.</li>
+            <li onclick="selectAnswer(2093, this, 'D')">D. Insuficiencia renal crónica.</li>
+        </ul>
+        <div class="justification" id="justification-2093">
+            La principal causa de mortalidad en pacientes con nefropatía diabética es la progresión a insuficiencia renal crónica, que puede requerir tratamiento de diálisis o trasplante renal.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2094">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál de las siguientes manifestaciones clínicas es característica de la nefropatía diabética?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2094, this, 'A')">A. Poliuria.</li>
+            <li onclick="selectAnswer(2094, this, 'B')">B. Hematuria macroscópica.</li>
+            <li onclick="selectAnswer(2094, this, 'C')">C. Hiponatremia.</li>
+            <li onclick="selectAnswer(2094, this, 'D')">D. Proteinuria.</li>
+        </ul>
+        <div class="justification" id="justification-2094">
+            La proteinuria es una manifestación clínica característica de la nefropatía diabética y es un marcador importante de daño renal en esta enfermedad.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2095">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál es la estrategia de tratamiento inicial recomendada para la nefropatía diabética?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2095, this, 'A')">A. Dieta baja en sodio.</li>
+            <li onclick="selectAnswer(2095, this, 'B')">B. Terapia con esteroides.</li>
+            <li onclick="selectAnswer(2095, this, 'C')">C. Control estricto de la glucemia y la presión arterial.</li>
+            <li onclick="selectAnswer(2095, this, 'D')">D. Terapia con diuréticos ahorradores de potasio.</li>
+        </ul>
+        <div class="justification" id="justification-2095">
+            El control estricto de la glucemia y la presión arterial son componentes clave en el manejo de la nefropatía diabética para prevenir o retrasar la progresión de la enfermedad renal.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2091: "C",
+        2092: "D",
+        2093: "D",
+        2094: "D",
+        2095: "C"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

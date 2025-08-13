@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Acidosis Metabólica con Hipopotasemia - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9fbfc;
+        margin: 0; padding: 20px;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #34495e;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #e67e22;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #d35400;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #fbe5d6;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #f0b27a;
+    }
+    .selected {
+        border: 2px solid #d35400;
+        background: #f0b27a;
+        pointer-events: none;
+    }
+    .correct {
+        background: #ba4a00 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #873600 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #e67e22;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #873600;
+    }
+    #submit-button:disabled {
+        background: #f0b27a;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #fbe5d6;
+        border: 1px solid #d35400;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #873600;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #fbe5d6;
+        border-left: 4px solid #d35400;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #873600;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Acidosis Metabólica con Hipopotasemia</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Un hombre de 55 años con antecedentes de hipertensión arterial y diabetes tipo 2 presenta náuseas, vómitos y confusión. 
+            En el examen físico, se observa que está deshidratado, con signos de sequedad mucosa y disminución de la presión arterial. 
+            Los análisis de laboratorio muestran niveles séricos bajos de potasio y pH arterial bajo.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2216">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el trastorno del equilibrio de los electrólitos más probable en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2216, this, 'A')">A) Hiponatremia.</li>
+            <li onclick="selectAnswer(2216, this, 'B')">B) Hipopotasemia.</li>
+            <li onclick="selectAnswer(2216, this, 'C')">C) Hipercloremia.</li>
+            <li onclick="selectAnswer(2216, this, 'D')">D) Acidosis metabólica.</li>
+        </ul>
+        <div class="justification" id="justification-2216">
+            Los síntomas de náuseas, vómitos, confusión y los hallazgos de laboratorio consistentes con pH arterial bajo sugieren acidosis metabólica, que puede estar relacionada con la hipopotasemia.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2217">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es la causa más probable de la acidosis metabólica en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2217, this, 'A')">A) Pérdida renal de potasio.</li>
+            <li onclick="selectAnswer(2217, this, 'B')">B) Insuficiencia suprarrenal.</li>
+            <li onclick="selectAnswer(2217, this, 'C')">C) Pérdida de bicarbonato intestinal.</li>
+            <li onclick="selectAnswer(2217, this, 'D')">D) Sobrecarga de líquidos.</li>
+        </ul>
+        <div class="justification" id="justification-2217">
+            La presencia de hipopotasemia y acidosis metabólica sugiere una pérdida renal de potasio, que puede ocurrir en condiciones como la hiperaldosteronismo secundario o el uso de diuréticos.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2218">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál es el tratamiento inicial recomendado para esta acidosis metabólica aguda?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2218, this, 'A')">A) Administración de bicarbonato de sodio.</li>
+            <li onclick="selectAnswer(2218, this, 'B')">B) Corrección lenta con solución salina isotónica.</li>
+            <li onclick="selectAnswer(2218, this, 'C')">C) Suplementación con potasio intravenoso.</li>
+            <li onclick="selectAnswer(2218, this, 'D')">D) Corrección de la causa subyacente.</li>
+        </ul>
+        <div class="justification" id="justification-2218">
+            La acidosis metabólica aguda con hipopotasemia puede requerir la suplementación con potasio intravenoso para corregir los niveles séricos de potasio y mejorar la acidosis.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2219">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Qué hallazgo adicional en los análisis de laboratorio respaldaría la sospecha de hiperaldosteronismo secundario como causa de la acidosis metabólica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2219, this, 'A')">A) Hiponatremia.</li>
+            <li onclick="selectAnswer(2219, this, 'B')">B) Hipocloremia.</li>
+            <li onclick="selectAnswer(2219, this, 'C')">C) Hipercalcemia.</li>
+            <li onclick="selectAnswer(2219, this, 'D')">D) Hipomagnesemia.</li>
+        </ul>
+        <div class="justification" id="justification-2219">
+            El hiperaldosteronismo secundario puede presentarse con hipocloremia debido a la excreción renal de cloruro inducida por aldosterona, lo que contribuye a la acidosis metabólica.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2220">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál es el objetivo principal del tratamiento a largo plazo de la acidosis metabólica crónica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2220, this, 'A')">A) Corregir rápidamente el pH arterial.</li>
+            <li onclick="selectAnswer(2220, this, 'B')">B) Administrar bicarbonato de sodio oral.</li>
+            <li onclick="selectAnswer(2220, this, 'C')">C) Corregir la causa subyacente.</li>
+            <li onclick="selectAnswer(2220, this, 'D')">D) Suplementar con potasio oral.</li>
+        </ul>
+        <div class="justification" id="justification-2220">
+            El tratamiento a largo plazo de la acidosis metabólica crónica se centra en identificar y corregir la causa subyacente, que puede incluir el tratamiento de trastornos metabólicos subyacentes, como el hiperaldosteronismo secundario.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2216: "D",
+        2217: "A",
+        2218: "C",
+        2219: "B",
+        2220: "C"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

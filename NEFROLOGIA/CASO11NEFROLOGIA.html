@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Glomerulopatía secundaria al LES - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f8f9f9;
+        margin: 0; padding: 20px;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #34495e;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #2980b9;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #3498db;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d6eaf8;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #85c1e9;
+    }
+    .selected {
+        border: 2px solid #2980b9;
+        background: #85c1e9;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2980b9 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1b4f72 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #a9cce3;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2980b9;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1b4f72;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d6eaf8;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1b4f72;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Glomerulopatía secundaria al LES</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Paciente de 42 años, femenino, con antecedentes de lupus eritematoso sistémico (LES) diagnosticado hace 8 años, en tratamiento con hidroxicloroquina y prednisona. Acude a consulta por edema en miembros inferiores de 3 meses de evolución, asociado con orinas espumosas y disminución en el volumen urinario. No refiere fiebre, dolor al orinar ni hematuria. En el examen físico, se observa edema en miembros inferiores hasta la región pretibial. Los estudios de laboratorio muestran una proteinuria de 3.5 g/24 horas, creatinina sérica de 1.1 mg/dL y una tasa de filtración glomerular estimada (TFGe) de 50 ml/min/1.73 m². La hematuria no es evidente en el análisis de orina.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2131">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es la causa más probable de la proteinuria en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2131, this, 'A')">A) Nefropatía diabética.</li>
+            <li onclick="selectAnswer(2131, this, 'B')">B) Glomerulonefritis aguda.</li>
+            <li onclick="selectAnswer(2131, this, 'C')">C) Glomerulopatía secundaria al LES.</li>
+            <li onclick="selectAnswer(2131, this, 'D')">D) Nefropatía por IgA.</li>
+        </ul>
+        <div class="justification" id="justification-2131">
+            El paciente presenta un historial de LES, lo que sugiere una glomerulopatía secundaria. El LES es una enfermedad autoinmune que puede causar inflamación y daño en los glomérulos.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2132">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál de los siguientes hallazgos del examen físico respalda el diagnóstico de glomerulopatía en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2132, this, 'A')">A) Fiebre.</li>
+            <li onclick="selectAnswer(2132, this, 'B')">B) Edema en miembros inferiores.</li>
+            <li onclick="selectAnswer(2132, this, 'C')">C) Dolor abdominal.</li>
+            <li onclick="selectAnswer(2132, this, 'D')">D) Dolor torácico.</li>
+        </ul>
+        <div class="justification" id="justification-2132">
+            El edema en miembros inferiores es un hallazgo común en pacientes con glomerulopatías debido a la retención de líquidos asociada con la disfunción renal.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2133">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál de los siguientes marcadores serológicos sería más relevante para confirmar el diagnóstico de glomerulopatía secundaria al LES?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2133, this, 'A')">A) Anticuerpos anti-DNA de doble cadena.</li>
+            <li onclick="selectAnswer(2133, this, 'B')">B) Anticuerpos antinucleares (ANA).</li>
+            <li onclick="selectAnswer(2133, this, 'C')">C) Factor reumatoide.</li>
+            <li onclick="selectAnswer(2133, this, 'D')">D) Anticuerpos anti-citoplasma de neutrófilos (ANCA).</li>
+        </ul>
+        <div class="justification" id="justification-2133">
+            Los anticuerpos anti-DNA de doble cadena son específicos para el LES y pueden estar presentes en pacientes con glomerulopatía secundaria a esta enfermedad autoinmune.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2134">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál es la complicación más temida en pacientes con glomerulopatía secundaria al LES?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2134, this, 'A')">A) Trombosis venosa profunda.</li>
+            <li onclick="selectAnswer(2134, this, 'B')">B) Hipertensión arterial.</li>
+            <li onclick="selectAnswer(2134, this, 'C')">C) Insuficiencia renal crónica.</li>
+            <li onclick="selectAnswer(2134, this, 'D')">D) Trombosis del seno venoso.</li>
+        </ul>
+        <div class="justification" id="justification-2134">
+            La insuficiencia renal crónica es una complicación común y grave en pacientes con glomerulopatía secundaria al LES, que puede progresar hasta requerir diálisis o trasplante renal.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2135">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál de los siguientes tratamientos es el pilar fundamental en el manejo de la glomerulopatía secundaria al LES?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2135, this, 'A')">A) Corticosteroides.</li>
+            <li onclick="selectAnswer(2135, this, 'B')">B) Inhibidores de la enzima convertidora de angiotensina (IECA).</li>
+            <li onclick="selectAnswer(2135, this, 'C')">C) Antibióticos.</li>
+            <li onclick="selectAnswer(2135, this, 'D')">D) Diuréticos.</li>
+        </ul>
+        <div class="justification" id="justification-2135">
+            Los corticosteroides, junto con otros inmunosupresores como la ciclofosfamida o el micofenolato mofetilo, son el pilar fundamental en el manejo de la glomerulopatía secundaria al LES para controlar la inflamación y la respuesta autoinmune.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2131: "C",
+        2132: "B",
+        2133: "A",
+        2134: "C",
+        2135: "A"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

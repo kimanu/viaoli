@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pediatría - Criptorquidia en Niño</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            color: #0a4275;
+        }
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+        .card {
+            background: #fff;
+            border-left: 6px solid;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .case-container {
+            border-color: #5dade2;
+        }
+        .question-card {
+            border-color: #2874a6;
+        }
+        h2, h3 {
+            color: #1b2631;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            background: #f7f9fc;
+            padding: 12px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .options li:hover {
+            background: #d6eaf8;
+        }
+        .selected {
+            border: 2px solid #2874a6;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+        .correct {
+            background: #28a745 !important;
+            color: #fff;
+        }
+        .incorrect {
+            background: #d9534f !important;
+            color: #fff;
+        }
+        #submit-button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2em;
+            background: #2874a6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #submit-button:hover {
+            background: #154360;
+        }
+        #submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        #results {
+            display: none;
+            background: #d4efdf;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f0fe;
+            border: 1px solid #2874a6;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>🩺 Pediatría - Criptorquidia en Niño</h1>
+        </div>
+        <div class="card case-container">
+            <h2>Caso clínico</h2>
+            <p>
+                Pedro, un niño de 18 meses, es llevado por sus padres al consultorio pediátrico para una evaluación de rutina. Durante el examen físico, el pediatra nota que Pedro tiene un testículo ausente en el escroto. Los padres mencionan que habían notado esto desde el nacimiento de Pedro y que el testículo nunca descendió completamente. El pediatra también observa que el testículo ausente no se puede palpar en el canal inguinal.
+            </p>
+        </div>
+
+        <div class="card question-card" data-index="6301">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el diagnóstico más probable para Pedro basado en los hallazgos del examen físico y la historia clínica?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(6301, this, 'A')">A. Criptorquidia</li>
+                <li onclick="selectAnswer(6301, this, 'B')">B. Hidrocele</li>
+                <li onclick="selectAnswer(6301, this, 'C')">C. Varicocele</li>
+                <li onclick="selectAnswer(6301, this, 'D')">D. Torsión testicular</li>
+            </ul>
+            <div class="justification" id="justification-6301">
+                La ausencia de un testículo en el escroto con la imposibilidad de palparlo en el canal inguinal sugiere el diagnóstico de criptorquidia, que es la falta de descenso completo de uno o ambos testículos.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="6302">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el manejo inicial recomendado para un niño con criptorquidia?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(6302, this, 'A')">A. Observación y seguimiento regular</li>
+                <li onclick="selectAnswer(6302, this, 'B')">B. Cirugía de corrección inmediata</li>
+                <li onclick="selectAnswer(6302, this, 'C')">C. Tratamiento con hormonas</li>
+                <li onclick="selectAnswer(6302, this, 'D')">D. Terapia con antibióticos</li>
+            </ul>
+            <div class="justification" id="justification-6302">
+                El manejo inicial recomendado para la criptorquidia es la observación y el seguimiento regular para determinar si el testículo desciende espontáneamente antes de considerar opciones de tratamiento.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="6303">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el tratamiento definitivo para la criptorquidia si el testículo no desciende espontáneamente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(6303, this, 'A')">A. Cirugía de corrección</li>
+                <li onclick="selectAnswer(6303, this, 'B')">B. Terapia hormonal</li>
+                <li onclick="selectAnswer(6303, this, 'C')">C. Terapia con antibióticos</li>
+                <li onclick="selectAnswer(6303, this, 'D')">D. Inmovilización testicular</li>
+            </ul>
+            <div class="justification" id="justification-6303">
+                La cirugía de corrección, conocida como orquidopexia, es el tratamiento definitivo para la criptorquidia si el testículo no desciende espontáneamente. Este procedimiento fija quirúrgicamente el testículo en su posición adecuada en el escroto.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="6304">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el riesgo asociado con la criptorquidia no tratada en niños?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(6304, this, 'A')">A. Infertilidad</li>
+                <li onclick="selectAnswer(6304, this, 'B')">B. Infección testicular</li>
+                <li onclick="selectAnswer(6304, this, 'C')">C. Cáncer testicular</li>
+                <li onclick="selectAnswer(6304, this, 'D')">D. Torsión testicular recurrente</li>
+            </ul>
+            <div class="justification" id="justification-6304">
+                Uno de los riesgos asociados con la criptorquidia no tratada en niños es un mayor riesgo de cáncer testicular en la vida adulta.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="6305">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el momento óptimo para la cirugía de corrección en un niño con criptorquidia unilateral?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(6305, this, 'A')">A. Antes de los 6 meses de edad</li>
+                <li onclick="selectAnswer(6305, this, 'B')">B. Después de los 2 años de edad</li>
+                <li onclick="selectAnswer(6305, this, 'C')">C. A los 10 años de edad</li>
+                <li onclick="selectAnswer(6305, this, 'D')">D. Durante la adolescencia</li>
+            </ul>
+            <div class="justification" id="justification-6305">
+                Se recomienda realizar la cirugía de corrección después de los 2 años de edad, cuando es poco probable que el testículo descienda espontáneamente y cuando el riesgo de anormalidades testiculares y carcinogénesis es mayor.
+            </div>
+        </div>
+
+        <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+        <div id="results"></div>
+    </div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        6301: "A",
+        6302: "A",
+        6303: "A",
+        6304: "C",
+        6305: "B"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

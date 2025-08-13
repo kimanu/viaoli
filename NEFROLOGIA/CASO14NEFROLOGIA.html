@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anemia ferropénica - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9fbfc;
+        margin: 0; padding: 20px;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #34495e;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #e67e22;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #f39c12;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #fdebd0;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #f5cba7;
+    }
+    .selected {
+        border: 2px solid #f39c12;
+        background: #f5cba7;
+        pointer-events: none;
+    }
+    .correct {
+        background: #d35400 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #ba4a00 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #e67e22;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #ba4a00;
+    }
+    #submit-button:disabled {
+        background: #f0b27a;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #fdebd0;
+        border: 1px solid #f39c12;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #ba4a00;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #fdebd0;
+        border-left: 4px solid #f39c12;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #ba4a00;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Anemia ferropénica</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Mujer de 28 años con astenia, palidez y dificultad para respirar. En el examen físico se observa palidez cutánea y mucosas pálidas. No signos de sangrado activo. Laboratorio: hemoglobina 7.5 g/dL, hematocrito 22%, VCM bajo, plaquetas normales.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2151">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el diagnóstico más probable basado en los hallazgos clínicos y de laboratorio en este caso?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2151, this, 'A')">A) Anemia por deficiencia de vitamina B12.</li>
+            <li onclick="selectAnswer(2151, this, 'B')">B) Anemia hemolítica autoinmune.</li>
+            <li onclick="selectAnswer(2151, this, 'C')">C) Anemia ferropénica.</li>
+            <li onclick="selectAnswer(2151, this, 'D')">D) Anemia megaloblástica.</li>
+        </ul>
+        <div class="justification" id="justification-2151">
+            La presencia de palidez cutánea y mucosas pálidas, junto con un bajo hematocrito y VCM bajo, son consistentes con anemia ferropénica, la cual es causada por deficiencia de hierro.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2152">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es la causa más común de anemia ferropénica en mujeres en edad fértil?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2152, this, 'A')">A) Pérdida menstrual excesiva.</li>
+            <li onclick="selectAnswer(2152, this, 'B')">B) Deficiencia dietética de hierro.</li>
+            <li onclick="selectAnswer(2152, this, 'C')">C) Embarazo.</li>
+            <li onclick="selectAnswer(2152, this, 'D')">D) Enfermedades gastrointestinales.</li>
+        </ul>
+        <div class="justification" id="justification-2152">
+            La pérdida menstrual excesiva es la causa más común de anemia ferropénica en mujeres en edad fértil debido a la pérdida regular de hierro a través del sangrado menstrual.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2153">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál es el tratamiento inicial recomendado para la anemia ferropénica leve a moderada?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2153, this, 'A')">A) Suplementos de vitamina B12.</li>
+            <li onclick="selectAnswer(2153, this, 'B')">B) Transfusiones de glóbulos rojos.</li>
+            <li onclick="selectAnswer(2153, this, 'C')">C) Suplementos de hierro oral.</li>
+            <li onclick="selectAnswer(2153, this, 'D')">D) Eritropoyetina recombinante.</li>
+        </ul>
+        <div class="justification" id="justification-2153">
+            El tratamiento inicial para la anemia ferropénica leve a moderada consiste en la administración de suplementos de hierro oral para corregir la deficiencia de hierro.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2154">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál es el parámetro de laboratorio que generalmente se encuentra disminuido en la anemia ferropénica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2154, this, 'A')">A) Ferritina sérica.</li>
+            <li onclick="selectAnswer(2154, this, 'B')">B) Hemoglobina corpuscular media (HCM).</li>
+            <li onclick="selectAnswer(2154, this, 'C')">C) Concentración de hemoglobina corpuscular media (CHCM).</li>
+            <li onclick="selectAnswer(2154, this, 'D')">D) Volumen corpuscular medio (VCM).</li>
+        </ul>
+        <div class="justification" id="justification-2154">
+            La ferritina sérica es un marcador de reserva de hierro en el organismo y generalmente está disminuida en la anemia ferropénica debido a la depleción de las reservas de hierro.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2155">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál de las siguientes condiciones es un factor de riesgo para el desarrollo de anemia ferropénica en mujeres en edad fértil?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2155, this, 'A')">A) Uso regular de suplementos de hierro.</li>
+            <li onclick="selectAnswer(2155, this, 'B')">B) Consumo regular de alimentos ricos en hierro.</li>
+            <li onclick="selectAnswer(2155, this, 'C')">C) Uso prolongado de anticonceptivos orales.</li>
+            <li onclick="selectAnswer(2155, this, 'D')">D) Historia de hemorragia gastrointestinal.</li>
+        </ul>
+        <div class="justification" id="justification-2155">
+            Una historia de hemorragia gastrointestinal es un factor de riesgo para el desarrollo de anemia ferropénica debido a la pérdida crónica de hierro a través del tracto gastrointestinal.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2151: "C",
+        2152: "A",
+        2153: "C",
+        2154: "A",
+        2155: "D"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Acidosis Metabólica - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9fbfc;
+        margin: 0; padding: 20px;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #34495e;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #3498db;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #2980b9;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d6eaf8;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #85c1e9;
+    }
+    .selected {
+        border: 2px solid #2980b9;
+        background: #85c1e9;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2874a6 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1b4f72 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #85c1e9;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2980b9;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1b4f72;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d6eaf8;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1b4f72;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Acidosis Metabólica</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Un hombre de 50 años, con antecedentes de diabetes tipo 2 y consumo crónico de alcohol, acude a urgencias por confusión y respiración rápida. 
+            En el examen físico, se observa respiración de Kussmaul y aliento con olor a acetona. 
+            Los análisis de laboratorio muestran glucosa sérica elevada, cetonemia y pH sanguíneo arterial bajo.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2206">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el trastorno ácido-base primario en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2206, this, 'A')">A) Acidosis metabólica.</li>
+            <li onclick="selectAnswer(2206, this, 'B')">B) Alcalosis metabólica.</li>
+            <li onclick="selectAnswer(2206, this, 'C')">C) Acidosis respiratoria.</li>
+            <li onclick="selectAnswer(2206, this, 'D')">D) Alcalosis respiratoria.</li>
+        </ul>
+        <div class="justification" id="justification-2206">
+            La presencia de acidosis respiratoria en un paciente con diabetes tipo 2 y respiración de Kussmaul sugiere acidosis metabólica como el trastorno ácido-base primario.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2207">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es la causa más probable de la acidosis metabólica en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2207, this, 'A')">A) Deshidratación.</li>
+            <li onclick="selectAnswer(2207, this, 'B')">B) Uremia.</li>
+            <li onclick="selectAnswer(2207, this, 'C')">C) Cetoacidosis diabética.</li>
+            <li onclick="selectAnswer(2207, this, 'D')">D) Hipovolemia.</li>
+        </ul>
+        <div class="justification" id="justification-2207">
+            En pacientes con diabetes tipo 2 y cetoacidosis, la acidosis metabólica suele ser causada por la acumulación de cuerpos cetónicos debido a la deficiencia de insulina y la lipólisis aumentada.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2208">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál es el objetivo principal del tratamiento inicial para esta acidosis metabólica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2208, this, 'A')">A) Corregir la hiperglucemia.</li>
+            <li onclick="selectAnswer(2208, this, 'B')">B) Administrar bicarbonato de sodio intravenoso.</li>
+            <li onclick="selectAnswer(2208, this, 'C')">C) Reponer líquidos intravenosos.</li>
+            <li onclick="selectAnswer(2208, this, 'D')">D) Administrar insulina intravenosa.</li>
+        </ul>
+        <div class="justification" id="justification-2208">
+            El tratamiento inicial de la cetoacidosis diabética implica la rehidratación con líquidos intravenosos para corregir la deshidratación y mejorar la perfusión tisular.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2209">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál es el tipo de respiración característico observado en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2209, this, 'A')">A) Respiración de Cheyne-Stokes.</li>
+            <li onclick="selectAnswer(2209, this, 'B')">B) Respiración de Biot.</li>
+            <li onclick="selectAnswer(2209, this, 'C')">C) Respiración de Kussmaul.</li>
+            <li onclick="selectAnswer(2209, this, 'D')">D) Respiración agónica.</li>
+        </ul>
+        <div class="justification" id="justification-2209">
+            La respiración de Kussmaul es profunda y rápida, y se observa en pacientes con acidosis metabólica, como en este caso de cetoacidosis diabética.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2210">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál es el mecanismo principal de la acidosis metabólica en la cetoacidosis diabética?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2210, this, 'A')">A) Acumulación de ácido láctico.</li>
+            <li onclick="selectAnswer(2210, this, 'B')">B) Aumento de la excreción renal de bicarbonato.</li>
+            <li onclick="selectAnswer(2210, this, 'C')">C) Acumulación de cuerpos cetónicos.</li>
+            <li onclick="selectAnswer(2210, this, 'D')">D) Disminución de la excreción renal de amonio.</li>
+        </ul>
+        <div class="justification" id="justification-2210">
+            En la cetoacidosis diabética, la acidosis metabólica se debe principalmente a la acumulación de cuerpos cetónicos, como la acetona, el acetoacetato y el beta-hidroxibutirato.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2206: "A",
+        2207: "C",
+        2208: "C",
+        2209: "C",
+        2210: "C"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

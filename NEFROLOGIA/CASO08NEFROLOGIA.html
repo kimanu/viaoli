@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Insuficiencia Renal Aguda - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #fafafa;
+        margin: 0; padding: 20px;
+        color: #222;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #2980b9;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #3498db;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d6eaf8;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #85c1e9;
+    }
+    .selected {
+        border: 2px solid #2980b9;
+        background: #85c1e9;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2980b9 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1b4f72 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #aed6f1;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2980b9;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1b4f72;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d6eaf8;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1b4f72;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Insuficiencia Renal Aguda</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Paciente de 35 años, masculino, sin antecedentes médicos significativos, quien acude a consulta por presentar edema en miembros inferiores y disminución del volumen urinario desde hace una semana. En el examen físico, se observa edema bilateral en miembros inferiores hasta la región pretibial y ascitis moderada. Los estudios de laboratorio muestran una creatinina sérica de 4.8 mg/dL y una tasa de filtración glomerular estimada (TFGe) de 20 ml/min/1.73 m². No hay proteinuria significativa.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2116">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el diagnóstico más probable en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2116, this, 'A')">A) Síndrome nefrótico.</li>
+            <li onclick="selectAnswer(2116, this, 'B')">B) Nefropatía diabética.</li>
+            <li onclick="selectAnswer(2116, this, 'C')">C) Glomerulonefritis aguda.</li>
+            <li onclick="selectAnswer(2116, this, 'D')">D) Insuficiencia renal aguda.</li>
+        </ul>
+        <div class="justification" id="justification-2116">
+            El paciente presenta edema, disminución del volumen urinario, creatinina sérica elevada y una tasa de filtración glomerular (TFG) disminuida, sugiriendo un cuadro de insuficiencia renal aguda.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2117">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es la principal causa de insuficiencia renal aguda en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2117, this, 'A')">A) Glomerulonefritis aguda.</li>
+            <li onclick="selectAnswer(2117, this, 'B')">B) Nefropatía diabética.</li>
+            <li onclick="selectAnswer(2117, this, 'C')">C) Obstrucción de las vías urinarias.</li>
+            <li onclick="selectAnswer(2117, this, 'D')">D) Nefrotoxicidad por medicamentos.</li>
+        </ul>
+        <div class="justification" id="justification-2117">
+            La presencia de edema en miembros inferiores, ascitis y una disminución del volumen urinario sugieren una posible obstrucción de las vías urinarias como la principal causa de insuficiencia renal aguda en este paciente.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2118">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál de los siguientes estudios sería más útil para confirmar el diagnóstico en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2118, this, 'A')">A) Ecografía renal y vesical.</li>
+            <li onclick="selectAnswer(2118, this, 'B')">B) Biopsia renal.</li>
+            <li onclick="selectAnswer(2118, this, 'C')">C) Estudio de inmunofluorescencia.</li>
+            <li onclick="selectAnswer(2118, this, 'D')">D) Cultivo de orina.</li>
+        </ul>
+        <div class="justification" id="justification-2118">
+            La ecografía renal y vesical es un estudio inicial útil para evaluar la presencia de obstrucción de las vías urinarias y puede ayudar a confirmar el diagnóstico en este paciente.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2119">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál es el tratamiento inicial más adecuado para este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2119, this, 'A')">A) Diálisis.</li>
+            <li onclick="selectAnswer(2119, this, 'B')">B) Antibióticos de amplio espectro.</li>
+            <li onclick="selectAnswer(2119, this, 'C')">C) Diuréticos de asa.</li>
+            <li onclick="selectAnswer(2119, this, 'D')">D) Corrección de la hipertensión arterial.</li>
+        </ul>
+        <div class="justification" id="justification-2119">
+            El tratamiento inicial en pacientes con insuficiencia renal aguda debido a obstrucción de las vías urinarias incluye diuréticos de asa para mejorar el flujo urinario y reducir el edema.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2120">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál es el pronóstico de la insuficiencia renal aguda en este paciente si se resuelve la obstrucción de las vías urinarias de manera temprana?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2120, this, 'A')">A) Recuperación completa de la función renal.</li>
+            <li onclick="selectAnswer(2120, this, 'B')">B) Necesidad de trasplante renal.</li>
+            <li onclick="selectAnswer(2120, this, 'C')">C) Muerte por complicaciones relacionadas con la insuficiencia renal.</li>
+            <li onclick="selectAnswer(2120, this, 'D')">D) Muerte por complicaciones relacionadas con la insuficiencia renal.</li>
+        </ul>
+        <div class="justification" id="justification-2120">
+            Si se resuelve la obstrucción de las vías urinarias de manera temprana, el pronóstico de la insuficiencia renal aguda en este paciente es favorable con una alta probabilidad de recuperación completa de la función renal.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2116: "D",
+        2117: "C",
+        2118: "A",
+        2119: "C",
+        2120: "A"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

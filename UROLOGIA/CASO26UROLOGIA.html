@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Urología - Urolitiasis</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f4f9ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            color: #1b4f72;
+        }
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+        .card {
+            background: #fff;
+            border-left: 6px solid;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .case-container {
+            border-color: #5dade2;
+        }
+        .question-card {
+            border-color: #2874a6;
+        }
+        h2, h3 {
+            color: #2c3e50;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            background: #f7f9fc;
+            padding: 12px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .options li:hover {
+            background: #d6eaf8;
+        }
+        .selected {
+            border: 2px solid #2874a6;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+        .correct {
+            background: #28a745 !important;
+            color: #fff;
+        }
+        .incorrect {
+            background: #d9534f !important;
+            color: #fff;
+        }
+        #submit-button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2em;
+            background: #2874a6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #submit-button:hover {
+            background: #154360;
+        }
+        #submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        #results {
+            display: none;
+            background: #d4efdf;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2874a6;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Urología - Urolitiasis</h1>
+        </div>
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>
+                Elena, una mujer de 50 años, acude al servicio de urgencias con dolor abdominal intenso y cólico en el costado derecho que se irradia hacia la región inguinal derecha desde hace aproximadamente 8 horas. Elena describe el dolor como intermitente y de intensidad severa. Durante la historia clínica, revela antecedentes de cálculos renales en el pasado. En el examen físico, Elena está visiblemente incómoda y se retuerce de dolor. Se observa dolor a la palpación en la fosa lumbar derecha y en el flanco. No hay signos de fiebre ni otros hallazgos anormales.
+            </p>
+        </div>
+
+        <div class="card question-card" data-index="3001">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el diagnóstico más probable para Elena basado en sus síntomas y antecedentes médicos?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(3001, this, 'A')">A. Apendicitis aguda</li>
+                <li onclick="selectAnswer(3001, this, 'B')">B. Colecistitis aguda</li>
+                <li onclick="selectAnswer(3001, this, 'C')">C. Urolitiasis</li>
+                <li onclick="selectAnswer(3001, this, 'D')">D. Diverticulitis aguda</li>
+            </ul>
+            <div class="justification" id="justification-3001">
+                Los síntomas de dolor abdominal intenso y cólico en el costado derecho, con irradiación hacia la región inguinal derecha, son consistentes con el diagnóstico de urolitiasis, especialmente considerando los antecedentes de cálculos renales en el pasado.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="3002">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de los siguientes exámenes de diagnóstico por imagen es el más adecuado para confirmar el diagnóstico de urolitiasis en este caso?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(3002, this, 'A')">A. Radiografía simple de abdomen</li>
+                <li onclick="selectAnswer(3002, this, 'B')">B. Ecografía abdominal</li>
+                <li onclick="selectAnswer(3002, this, 'C')">C. Tomografía computarizada (TC) abdominal</li>
+                <li onclick="selectAnswer(3002, this, 'D')">D. Resonancia magnética (RM) abdominal</li>
+            </ul>
+            <div class="justification" id="justification-3002">
+                La tomografía computarizada (TC) abdominal es el estándar de oro para el diagnóstico de urolitiasis debido a su alta sensibilidad y especificidad para detectar cálculos renales.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="3003">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el tratamiento inicial recomendado para el manejo del dolor en un paciente con urolitiasis aguda?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(3003, this, 'A')">A. Hidratación oral</li>
+                <li onclick="selectAnswer(3003, this, 'B')">B. Analgésicos opioides</li>
+                <li onclick="selectAnswer(3003, this, 'C')">C. Antibióticos de amplio espectro</li>
+                <li onclick="selectAnswer(3003, this, 'D')">D. Antiinflamatorios no esteroides (AINEs)</li>
+            </ul>
+            <div class="justification" id="justification-3003">
+                Los antiinflamatorios no esteroides (AINEs) son el tratamiento inicial recomendado para el manejo del dolor en pacientes con urolitiasis aguda debido a su eficacia en el alivio del dolor y la reducción de la inflamación.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="3004">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de las siguientes opciones es un factor de riesgo comúnmente asociado con la formación de cálculos renales?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(3004, this, 'A')">A. Consumo excesivo de fibra dietética</li>
+                <li onclick="selectAnswer(3004, this, 'B')">B. Consumo elevado de agua</li>
+                <li onclick="selectAnswer(3004, this, 'C')">C. Historia familiar de cálculos renales</li>
+                <li onclick="selectAnswer(3004, this, 'D')">D. Niveles bajos de calcio en la orina</li>
+            </ul>
+            <div class="justification" id="justification-3004">
+                La historia familiar de cálculos renales es un factor de riesgo comúnmente asociado con la formación de cálculos renales debido a la predisposición genética.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="3005">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es la complicación más grave asociada con la urolitiasis si no se trata adecuadamente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(3005, this, 'A')">A. Infección del tracto urinario</li>
+                <li onclick="selectAnswer(3005, this, 'B')">B. Insuficiencia renal crónica</li>
+                <li onclick="selectAnswer(3005, this, 'C')">C. Perforación intestinal</li>
+                <li onclick="selectAnswer(3005, this, 'D')">D. Obstrucción ureteral completa</li>
+            </ul>
+            <div class="justification" id="justification-3005">
+                La complicación más grave asociada con la urolitiasis si no se trata adecuadamente es la insuficiencia renal crónica, que puede desarrollarse como resultado de la obstrucción crónica del tracto urinario y el daño renal consecuente.
+            </div>
+        </div>
+
+        <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            3001: "C",
+            3002: "C",
+            3003: "D",
+            3004: "C",
+            3005: "B"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

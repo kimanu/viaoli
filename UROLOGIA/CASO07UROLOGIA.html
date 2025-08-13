@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Urología - Cáncer de Próstata</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f4f9ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1b4f72;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .card {
+            background: #fff;
+            border-left: 6px solid;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .case-container {
+            border-color: #af7ac5;
+        }
+
+        .question-card {
+            border-color: #2471a3;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            background: #f7f9fc;
+            padding: 12px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2471a3;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: #fff;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: #fff;
+        }
+
+        #submit-button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2em;
+            background: #2471a3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #154360;
+        }
+
+        #submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            background: #d4efdf;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2471a3;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Urología - Cáncer de Próstata</h1>
+        </div>
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>
+                María, una mujer de 45 años, visita a su médico quejándose de episodios recurrentes de infecciones del tracto urinario (ITU) y síntomas de incontinencia urinaria de esfuerzo. María ha experimentado varios episodios de fiebre y dolor al orinar en los últimos meses. Además, durante los últimos años ha notado pérdidas involuntarias de orina al realizar actividades como reír, toser o levantar objetos pesados. En el examen físico, se observa que el tono muscular del suelo pélvico está disminuido y que presenta un cistocele de grado II. Los análisis de laboratorio muestran leucocitosis y presencia de bacterias en el cultivo de orina.
+            </p>
+        </div>
+
+        <div class="card question-card" data-index="781">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el diagnóstico más probable para María basado en sus síntomas y hallazgos en el examen físico?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(781, this, 'A')">A. Cistitis aguda</li>
+                <li onclick="selectAnswer(781, this, 'B')">B. Incontinencia urinaria de urgencia</li>
+                <li onclick="selectAnswer(781, this, 'C')">C. Incontinencia urinaria de esfuerzo</li>
+                <li onclick="selectAnswer(781, this, 'D')">D. Urolitiasis</li>
+            </ul>
+            <div class="justification" id="justification-781">
+                Los síntomas de María, incluyendo las infecciones del tracto urinario recurrentes y la incontinencia urinaria al realizar esfuerzos físicos, son consistentes con una incontinencia urinaria de esfuerzo. Además, el tono muscular disminuido del suelo pélvico y el cistocele de grado II son hallazgos comunes en este tipo de incontinencia.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="782">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el tratamiento inicial recomendado para la incontinencia urinaria de esfuerzo en María?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(782, this, 'A')">A. Antibióticos</li>
+                <li onclick="selectAnswer(782, this, 'B')">B. Terapia hormonal</li>
+                <li onclick="selectAnswer(782, this, 'C')">C. Terapia de compresión del suelo pélvico</li>
+                <li onclick="selectAnswer(782, this, 'D')">D. Cirugía de sling uretral</li>
+            </ul>
+            <div class="justification" id="justification-782">
+                El tratamiento inicial para la incontinencia urinaria de esfuerzo incluye medidas conservadoras, como la terapia de compresión del suelo pélvico, que pueden incluir ejercicios de fortalecimiento del suelo pélvico (ejercicios de Kegel) y el uso de dispositivos de compresión.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="783">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es un factor de riesgo conocido para el desarrollo de la incontinencia urinaria de esfuerzo?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(783, this, 'A')">A. Edad avanzada</li>
+                <li onclick="selectAnswer(783, this, 'B')">B. Historia de cálculos renales</li>
+                <li onclick="selectAnswer(783, this, 'C')">C. Consumo excesivo de alcohol</li>
+                <li onclick="selectAnswer(783, this, 'D')">D. Historia de infecciones de transmisión sexual</li>
+            </ul>
+            <div class="justification" id="justification-783">
+                La edad avanzada es un factor de riesgo bien establecido para el desarrollo de la incontinencia urinaria de esfuerzo, debido a cambios en la musculatura del suelo pélvico y a la disminución en la elasticidad de los tejidos.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="784">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es una complicación potencial de la incontinencia urinaria de esfuerzo si no se trata adecuadamente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(784, this, 'A')">A. Insuficiencia renal</li>
+                <li onclick="selectAnswer(784, this, 'B')">B. Infecciones del tracto urinario recurrentes</li>
+                <li onclick="selectAnswer(784, this, 'C')">C. Aumento del riesgo de cáncer de vejiga</li>
+                <li onclick="selectAnswer(784, this, 'D')">D. Disminución de la calidad de vida</li>
+            </ul>
+            <div class="justification" id="justification-784">
+                La incontinencia urinaria de esfuerzo puede tener un impacto significativo en la calidad de vida de los pacientes si no se trata adecuadamente, afectando sus actividades diarias, relaciones interpersonales y bienestar emocional.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="785">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de las siguientes opciones es un tratamiento definitivo para la incontinencia urinaria de esfuerzo en casos refractarios al tratamiento conservador?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(785, this, 'A')">A. Cirugía de sling uretral</li>
+                <li onclick="selectAnswer(785, this, 'B')">B. Terapia hormonal</li>
+                <li onclick="selectAnswer(785, this, 'C')">C. Inyecciones de toxina botulínica en la vejiga</li>
+                <li onclick="selectAnswer(785, this, 'D')">D. Terapia psicológica</li>
+            </ul>
+            <div class="justification" id="justification-785">
+                La cirugía de sling uretral es un tratamiento definitivo para la incontinencia urinaria de esfuerzo en casos refractarios al tratamiento conservador. Esta intervención quirúrgica proporciona soporte a la uretra para prevenir las pérdidas involuntarias de orina durante actividades físicas.
+            </div>
+        </div>
+
+        <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            781: "C",
+            782: "C",
+            783: "A",
+            784: "D",
+            785: "A"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

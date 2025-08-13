@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Faringitis Estreptocócica - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #fafafa;
+        margin: 0; padding: 20px;
+        color: #222;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #27ae60;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #2ecc71;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d4efdf;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #82e0aa;
+    }
+    .selected {
+        border: 2px solid #27ae60;
+        background: #82e0aa;
+        pointer-events: none;
+    }
+    .correct {
+        background: #27ae60 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #145a32 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #27ae60;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #145a32;
+    }
+    #submit-button:disabled {
+        background: #a9dfbf;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d4efdf;
+        border: 1px solid #27ae60;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #145a32;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d4efdf;
+        border-left: 4px solid #27ae60;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #145a32;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Faringitis Estreptocócica</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Paciente de 45 años, femenina, sin antecedentes médicos relevantes, quien acude al servicio de urgencias con fiebre de 39°C, dolor de garganta intenso y dificultad para tragar de 3 días de evolución. Además, refiere haber tenido contacto con un familiar diagnosticado con faringitis estreptocócica hace una semana. En el examen físico, se observa eritema faríngeo, exudados purulentos en amígdalas y adenopatías cervicales dolorosas.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2101">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el diagnóstico más probable en esta paciente con fiebre, dolor de garganta intenso y contacto con un familiar con faringitis estreptocócica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2101, this, 'A')">A. Faringitis viral.</li>
+            <li onclick="selectAnswer(2101, this, 'B')">B. Faringitis estreptocócica.</li>
+            <li onclick="selectAnswer(2101, this, 'C')">C. Faringitis estreptocócica.</li>
+            <li onclick="selectAnswer(2101, this, 'D')">D. Amigdalitis aguda.</li>
+        </ul>
+        <div class="justification" id="justification-2101">
+            La combinación de fiebre, dolor de garganta intenso y contacto con un familiar con faringitis estreptocócica sugiere el diagnóstico de faringitis estreptocócica, una infección bacteriana común causada por Streptococcus pyogenes.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2102">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es la prueba de laboratorio de elección para el diagnóstico de faringitis estreptocócica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2102, this, 'A')">A. Hemocultivos.</li>
+            <li onclick="selectAnswer(2102, this, 'B')">B. Cultivo de exudado faríngeo.</li>
+            <li onclick="selectAnswer(2102, this, 'C')">C. Prueba rápida de detección de antígenos estreptocócicos.</li>
+            <li onclick="selectAnswer(2102, this, 'D')">D. Serología para anticuerpos antistreptolisina O.</li>
+        </ul>
+        <div class="justification" id="justification-2102">
+            La prueba rápida de detección de antígenos estreptocócicos en exudado faríngeo es la prueba de laboratorio de elección para el diagnóstico rápido de faringitis estreptocócica en el punto de atención.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2103">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál es el tratamiento de elección para la faringitis estreptocócica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2103, this, 'A')">A. Amoxicilina.</li>
+            <li onclick="selectAnswer(2103, this, 'B')">B. Azitromicina.</li>
+            <li onclick="selectAnswer(2103, this, 'C')">C. Penicilina benzatina.</li>
+            <li onclick="selectAnswer(2103, this, 'D')">D. Ceftriaxona.</li>
+        </ul>
+        <div class="justification" id="justification-2103">
+            La amoxicilina es el tratamiento de elección para la faringitis estreptocócica debido a su efectividad contra Streptococcus pyogenes y su bajo costo.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2104">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál es una complicación potencial de la faringitis estreptocócica si no se trata adecuadamente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2104, this, 'A')">A. Artritis séptica.</li>
+            <li onclick="selectAnswer(2104, this, 'B')">B. Sepsis.</li>
+            <li onclick="selectAnswer(2104, this, 'C')">C. Fiebre reumática.</li>
+            <li onclick="selectAnswer(2104, this, 'D')">D. Meningitis bacteriana.</li>
+        </ul>
+        <div class="justification" id="justification-2104">
+            La fiebre reumática es una complicación potencial de la faringitis estreptocócica si no se trata adecuadamente con antibióticos, especialmente en niños y adolescentes.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2105">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál es la medida de prevención primaria más importante para la faringitis estreptocócica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2105, this, 'A')">A. Vacunación contra Streptococcus pyogenes.</li>
+            <li onclick="selectAnswer(2105, this, 'B')">B. Higiene de manos.</li>
+            <li onclick="selectAnswer(2105, this, 'C')">C. Uso de mascarillas.</li>
+            <li onclick="selectAnswer(2105, this, 'D')">D. Aislamiento de pacientes infectados.</li>
+        </ul>
+        <div class="justification" id="justification-2105">
+            La higiene de manos es la medida de prevención primaria más importante para reducir la transmisión de Streptococcus pyogenes y prevenir la faringitis estreptocócica.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2101: "B",
+        2102: "C",
+        2103: "A",
+        2104: "C",
+        2105: "B"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

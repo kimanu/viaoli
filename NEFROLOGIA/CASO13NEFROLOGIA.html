@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anemia hemolítica autoinmune - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f0f4f8;
+        margin: 0; padding: 20px;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #34495e;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #2980b9;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #3498db;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d6eaf8;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #85c1e9;
+    }
+    .selected {
+        border: 2px solid #2980b9;
+        background: #85c1e9;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2980b9 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1b4f72 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #a9cce3;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2980b9;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1b4f72;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d6eaf8;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1b4f72;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Anemia hemolítica autoinmune</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Mujer de 45 años con fatiga progresiva, pérdida de apetito y pérdida de peso no intencional de 8 kg en los últimos 6 meses. Sin antecedentes médicos significativos. Al examen físico, palidez cutánea y conjuntival, esplenomegalia palpable 5 cm debajo del reborde costal izquierdo. Laboratorio: hemoglobina 7.5 g/dL, leucocitos 12,000/mm³ con predominio de granulocitos, plaquetas 150,000/mm³. Prueba de Coombs directa negativa.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2141">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el diagnóstico más probable para explicar la anemia en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2141, this, 'A')">A) Anemia ferropénica.</li>
+            <li onclick="selectAnswer(2141, this, 'B')">B) Anemia hemolítica autoinmune.</li>
+            <li onclick="selectAnswer(2141, this, 'C')">C) Anemia megaloblástica.</li>
+            <li onclick="selectAnswer(2141, this, 'D')">D) Anemia de enfermedad crónica.</li>
+        </ul>
+        <div class="justification" id="justification-2141">
+            La presencia de palidez cutánea y conjuntival junto con esplenomegalia sugiere un proceso hemolítico. La anemia hemolítica autoinmune es una causa posible en este contexto, especialmente con un resultado negativo en la prueba de Coombs directa.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2142">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es el hallazgo característico en el hemograma de un paciente con anemia hemolítica autoinmune?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2142, this, 'A')">A) Recuento elevado de reticulocitos.</li>
+            <li onclick="selectAnswer(2142, this, 'B')">B) Recuento bajo de reticulocitos.</li>
+            <li onclick="selectAnswer(2142, this, 'C')">C) Aumento de los niveles de ferritina.</li>
+            <li onclick="selectAnswer(2142, this, 'D')">D) Aumento de los niveles de vitamina B12.</li>
+        </ul>
+        <div class="justification" id="justification-2142">
+            El recuento elevado de reticulocitos es un hallazgo característico en la anemia hemolítica, ya que refleja la médula ósea aumentando la producción de eritrocitos para compensar la pérdida de los mismos.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2143">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál es el tratamiento inicial recomendado para la anemia hemolítica autoinmune?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2143, this, 'A')">A) Transfusión de sangre total.</li>
+            <li onclick="selectAnswer(2143, this, 'B')">B) Corticosteroides.</li>
+            <li onclick="selectAnswer(2143, this, 'C')">C) Quimioterapia.</li>
+            <li onclick="selectAnswer(2143, this, 'D')">D) Suplementos de hierro.</li>
+        </ul>
+        <div class="justification" id="justification-2143">
+            Los corticosteroides son el tratamiento inicial de elección para la anemia hemolítica autoinmune para suprimir la respuesta inmunitaria anormal que destruye los glóbulos rojos.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2144">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál es el objetivo principal del tratamiento con corticosteroides en la anemia hemolítica autoinmune?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2144, this, 'A')">A) Aumentar la producción de glóbulos rojos.</li>
+            <li onclick="selectAnswer(2144, this, 'B')">B) Prevenir la formación de coágulos sanguíneos.</li>
+            <li onclick="selectAnswer(2144, this, 'C')">C) Suprimir la respuesta inmune anormal.</li>
+            <li onclick="selectAnswer(2144, this, 'D')">D) Reponer los niveles de hierro en el organismo.</li>
+        </ul>
+        <div class="justification" id="justification-2144">
+            El objetivo principal del tratamiento con corticosteroides en la anemia hemolítica autoinmune es suprimir la respuesta inmune anormal que destruye los glóbulos rojos del paciente.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2145">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Qué otra prueba complementaria se puede realizar para confirmar el diagnóstico de anemia hemolítica autoinmune?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2145, this, 'A')">A) Electroforesis de hemoglobina.</li>
+            <li onclick="selectAnswer(2145, this, 'B')">B) Prueba de antiglobulina directa (Coombs directa).</li>
+            <li onclick="selectAnswer(2145, this, 'C')">C) Hemocultivo.</li>
+            <li onclick="selectAnswer(2145, this, 'D')">D) Biopsia de médula ósea.</li>
+        </ul>
+        <div class="justification" id="justification-2145">
+            La prueba de antiglobulina directa (Coombs directa) es una prueba complementaria utilizada para confirmar el diagnóstico de anemia hemolítica autoinmune al detectar la presencia de anticuerpos y/o complemento unidos a la superficie de los glóbulos rojos.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2141: "B",
+        2142: "A",
+        2143: "B",
+        2144: "C",
+        2145: "B"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

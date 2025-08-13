@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anemia en Enfermedad Renal Crónica - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9fbfc;
+        margin: 0; padding: 20px;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #34495e;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #2980b9;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #2471a3;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d6eaf8;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #85c1e9;
+    }
+    .selected {
+        border: 2px solid #2471a3;
+        background: #85c1e9;
+        pointer-events: none;
+    }
+    .correct {
+        background: #1b4f72 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #154360 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #154360;
+    }
+    #submit-button:disabled {
+        background: #85c1e9;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2471a3;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #154360;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d6eaf8;
+        border-left: 4px solid #2471a3;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #154360;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Anemia en Enfermedad Renal Crónica</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Paciente con enfermedad renal crónica presenta anemia. Se caracteriza por disminución del pH arterial y bajo bicarbonato plasmático. 
+            La acidosis metabólica puede asociarse con hipopotasemia y requiere manejo adecuado. La anemia se relaciona con disminución de la producción de eritropoyetina.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2221">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el trastorno más probable que explica la anemia en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2221, this, 'A')">A) Anemia hemolítica autoinmune.</li>
+            <li onclick="selectAnswer(2221, this, 'B')">B) Anemia de enfermedad crónica.</li>
+            <li onclick="selectAnswer(2221, this, 'C')">C) Anemia aplásica.</li>
+        </ul>
+        <div class="justification" id="justification-2221">
+            La anemia en pacientes con enfermedad renal crónica suele ser normocítica y normocrómica, y está asociada comúnmente con la anemia de enfermedad crónica debido a la disminución de la producción de eritropoyetina y la inflamación crónica.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2222">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es el mecanismo fisiopatológico principal que contribuye a la anemia en la enfermedad renal crónica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2222, this, 'A')">A) Aumento de la degradación del hierro.</li>
+            <li onclick="selectAnswer(2222, this, 'B')">B) Disminución de la producción de eritropoyetina.</li>
+            <li onclick="selectAnswer(2222, this, 'C')">C) Pérdida de sangre por la disfunción renal.</li>
+            <li onclick="selectAnswer(2222, this, 'D')">D) Destrucción eritrocitaria mediada por el sistema inmunológico.</li>
+        </ul>
+        <div class="justification" id="justification-2222">
+            La principal causa de la anemia en la enfermedad renal crónica es la disminución de la producción de eritropoyetina por los riñones disfuncionales, lo que lleva a una reducción en la producción de glóbulos rojos en la médula ósea.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2223">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál es el hallazgo característico de los glóbulos rojos en la anemia de enfermedad crónica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2223, this, 'A')">A) Microcitosis.</li>
+            <li onclick="selectAnswer(2223, this, 'B')">B) Macrocitosis.</li>
+            <li onclick="selectAnswer(2223, this, 'C')">C) Anisocitosis.</li>
+            <li onclick="selectAnswer(2223, this, 'D')">D) Poiquilocitosis.</li>
+        </ul>
+        <div class="justification" id="justification-2223">
+            En la anemia de enfermedad crónica, los glóbulos rojos tienden a ser más variables en tamaño, lo que se conoce como anisocitosis, debido a la alteración en la producción de glóbulos rojos en la médula ósea.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2224">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál es el objetivo principal del tratamiento de la anemia en la enfermedad renal crónica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2224, this, 'A')">A) Corregir la deficiencia de hierro.</li>
+            <li onclick="selectAnswer(2224, this, 'B')">B) Suplementar con eritropoyetina recombinante.</li>
+            <li onclick="selectAnswer(2224, this, 'C')">C) Transfusión de concentrados de glóbulos rojos.</li>
+            <li onclick="selectAnswer(2224, this, 'D')">D) Transfusión de concentrados de glóbulos rojos.</li>
+        </ul>
+        <div class="justification" id="justification-2224">
+            El tratamiento principal de la anemia en la enfermedad renal crónica consiste en suplementar con eritropoyetina recombinante para aumentar los niveles de hemoglobina y mejorar los síntomas asociados.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2225">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál es el papel de la corrección de la anemia en la enfermedad renal crónica en la reducción de la morbimortalidad?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2225, this, 'A')">A) Reducción del riesgo de insuficiencia cardíaca.</li>
+            <li onclick="selectAnswer(2225, this, 'B')">B) Disminución del riesgo de eventos tromboembólicos.</li>
+            <li onclick="selectAnswer(2225, this, 'C')">C) Mejora de la calidad de vida y la capacidad funcional.</li>
+            <li onclick="selectAnswer(2225, this, 'D')">D) Prevención de complicaciones metabólicas.</li>
+        </ul>
+        <div class="justification" id="justification-2225">
+            La corrección de la anemia en la enfermedad renal crónica con eritropoyetina recombinante ha demostrado mejorar la calidad de vida, la capacidad funcional y reducir la necesidad de transfusiones sanguíneas, aunque no está claramente asociada con una reducción en la mortalidad.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2221: "B",
+        2222: "B",
+        2223: "C",
+        2224: "B",
+        2225: "C"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>
