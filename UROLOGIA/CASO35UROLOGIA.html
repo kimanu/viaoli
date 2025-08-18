@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hematuria en Hombre - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9f9f9;
+        margin: 0; padding: 20px;
+        color: #222;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 850px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #2980b9;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #2471a3;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #ecf0f1;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #d6eaf8;
+    }
+    .selected {
+        border: 2px solid #2471a3;
+        background: #d6eaf8;
+        pointer-events: none;
+    }
+    .correct {
+        background: #27ae60 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #c0392b !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #95a5a6;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d1f2eb;
+        border: 1px solid #1abc9c;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #ebf5fb;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Hematuria en Hombre</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Juan, un hombre de 45 años, acude al médico preocupado porque notó sangre en su orina durante los últimos dos días. Juan no presenta dolor al orinar ni fiebre. Ha tenido antecedentes de hipertensión arterial controlada con medicamentos durante los últimos cinco años, pero no tiene otros problemas de salud significativos. No fuma ni consume alcohol regularmente. Durante el examen físico, no se encuentran anomalías notables en el abdomen o el área genital de Juan.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="6506">
+        <h3>❓ Pregunta 1:</h3>
+        <p>¿Cuál es el siguiente paso más apropiado en la evaluación de Juan?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(6506, this, 'A')">A. Realizar una ecografía renal y vesical</li>
+            <li onclick="selectAnswer(6506, this, 'B')">B. Ordenar un urocultivo</li>
+            <li onclick="selectAnswer(6506, this, 'C')">C. Remitir a Juan a un urólogo para una cistoscopia</li>
+            <li onclick="selectAnswer(6506, this, 'D')">D. Iniciar tratamiento con antibióticos</li>
+        </ul>
+        <div class="justification" id="justification-6506">
+            Ante la presencia de hematuria urológica en un adulto, el siguiente paso en la evaluación es realizar una ecografía renal y vesical para evaluar posibles anomalías en los riñones y la vejiga.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="6507">
+        <h3>❓ Pregunta 2:</h3>
+        <p>¿Cuál de los siguientes factores de riesgo es más relevante para evaluar en el contexto de la hematuria urológica en Juan?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(6507, this, 'A')">A. Historial de alergias alimentarias</li>
+            <li onclick="selectAnswer(6507, this, 'B')">B. Antecedentes de hipertensión arterial</li>
+            <li onclick="selectAnswer(6507, this, 'C')">C. Consumo de alcohol</li>
+            <li onclick="selectAnswer(6507, this, 'D')">D. Uso de suplementos vitamínicos</li>
+        </ul>
+        <div class="justification" id="justification-6507">
+            Los antecedentes médicos, como la hipertensión arterial, pueden ser relevantes en la evaluación de la hematuria urológica, ya que ciertas enfermedades pueden predisponer a trastornos urológicos que pueden causar sangrado en la orina.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="6508">
+        <h3>❓ Pregunta 3:</h3>
+        <p>¿Cuál de las siguientes afirmaciones sobre la hematuria macroscópica es correcta?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(6508, this, 'A')">A. Siempre indica una enfermedad grave</li>
+            <li onclick="selectAnswer(6508, this, 'B')">B. Es más común en mujeres que en hombres</li>
+            <li onclick="selectAnswer(6508, this, 'C')">C. Debe ser evaluada únicamente por un urólogo</li>
+            <li onclick="selectAnswer(6508, this, 'D')">D. Puede ser causada por múltiples condiciones, algunas de las cuales son benignas</li>
+        </ul>
+        <div class="justification" id="justification-6508">
+            La hematuria macroscópica puede ser causada por diversas condiciones, algunas de las cuales no son graves, como infecciones del tracto urinario o cálculos renales.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="6509">
+        <h3>❓ Pregunta 4:</h3>
+        <p>¿Cuál de los siguientes hallazgos en una ecografía renal y vesical podría indicar una causa benigna de la hematuria en Juan?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(6509, this, 'A')">A. Masa sólida en la vejiga</li>
+            <li onclick="selectAnswer(6509, this, 'B')">B. Cálculos renales bilaterales</li>
+            <li onclick="selectAnswer(6509, this, 'C')">C. Quistes simples en los riñones</li>
+            <li onclick="selectAnswer(6509, this, 'D')">D. Engrosamiento de la pared de la vejiga</li>
+        </ul>
+        <div class="justification" id="justification-6509">
+            Los quistes simples en los riñones son hallazgos benignos que pueden causar hematuria y no necesariamente indican una enfermedad grave.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="6510">
+        <h3>❓ Pregunta 5:</h3>
+        <p>¿Cuál de las siguientes opciones de manejo sería más adecuada si se sospecha cáncer de vejiga como causa de la hematuria en Juan?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(6510, this, 'A')">A. Realizar una cistoscopia</li>
+            <li onclick="selectAnswer(6510, this, 'B')">B. Iniciar tratamiento empírico con antibióticos</li>
+            <li onclick="selectAnswer(6510, this, 'C')">C. Realizar una tomografía computarizada de abdomen y pelvis</li>
+            <li onclick="selectAnswer(6510, this, 'D')">D. Remitir a Juan a un especialista en medicina interna</li>
+        </ul>
+        <div class="justification" id="justification-6510">
+            La cistoscopia es un procedimiento importante para evaluar posibles causas de hematuria urológica, especialmente si se sospecha cáncer de vejiga.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        6506: "A",
+        6507: "B",
+        6508: "D",
+        6509: "C",
+        6510: "A"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

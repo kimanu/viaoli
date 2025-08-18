@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Enfermedad Renal Crónica - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #fafafa;
+        margin: 0; padding: 20px;
+        color: #222;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #2980b9;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #3498db;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d6eaf8;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #85c1e9;
+    }
+    .selected {
+        border: 2px solid #2980b9;
+        background: #85c1e9;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2980b9 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1b4f72 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #aed6f1;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2980b9;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1b4f72;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d6eaf8;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1b4f72;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Enfermedad Renal Crónica (ERC)</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Paciente de 65 años, masculino, con antecedentes de hipertensión arterial y diabetes mellitus tipo 2, quien acude a consulta por presentar fatiga, debilidad y disminución del apetito durante las últimas semanas. En el examen físico, se observa palidez cutáneo-mucosa, edema en miembros inferiores y aumento de la presión arterial (160/100 mmHg). En los antecedentes, el paciente refiere haber sido diagnosticado previamente con enfermedad renal crónica (ERC) en estadio 3 hace 5 años.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2106">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el principal factor de riesgo para el desarrollo de enfermedad renal crónica en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2106, this, 'A')">A. Edad avanzada.</li>
+            <li onclick="selectAnswer(2106, this, 'B')">B. Diabetes mellitus tipo 2.</li>
+            <li onclick="selectAnswer(2106, this, 'C')">C. Hipertensión arterial.</li>
+            <li onclick="selectAnswer(2106, this, 'D')">D. Historia familiar de enfermedad renal.</li>
+        </ul>
+        <div class="justification" id="justification-2106">
+            La diabetes mellitus tipo 2 es uno de los principales factores de riesgo para el desarrollo de enfermedad renal crónica debido a su efecto nefrotóxico crónico.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2107">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es el principal objetivo del tratamiento de la enfermedad renal crónica en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2107, this, 'A')">A. Reducir la proteinuria.</li>
+            <li onclick="selectAnswer(2107, this, 'B')">B. Controlar la hipertensión arterial.</li>
+            <li onclick="selectAnswer(2107, this, 'C')">C. Prevenir la progresión de la enfermedad renal.</li>
+            <li onclick="selectAnswer(2107, this, 'D')">D. Corregir la acidosis metabólica.</li>
+        </ul>
+        <div class="justification" id="justification-2107">
+            El principal objetivo del tratamiento de la enfermedad renal crónica es prevenir la progresión de la enfermedad renal y sus complicaciones, como la insuficiencia renal terminal.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2108">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál es la complicación más común asociada con la enfermedad renal crónica en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2108, this, 'A')">A. Anemia.</li>
+            <li onclick="selectAnswer(2108, this, 'B')">B. Osteoporosis.</li>
+            <li onclick="selectAnswer(2108, this, 'C')">C. Neuropatía periférica.</li>
+            <li onclick="selectAnswer(2108, this, 'D')">D. Hipercalcemia.</li>
+        </ul>
+        <div class="justification" id="justification-2108">
+            La anemia es una complicación común asociada con la enfermedad renal crónica debido a la disminución de la producción de eritropoyetina por los riñones afectados.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2109">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál es el nivel de filtración glomerular que define el estadio 3 de la enfermedad renal crónica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2109, this, 'A')">A. &lt; 15 ml/min/1.73 m².</li>
+            <li onclick="selectAnswer(2109, this, 'B')">B. 15-29 ml/min/1.73 m².</li>
+            <li onclick="selectAnswer(2109, this, 'C')">C. 30-59 ml/min/1.73 m².</li>
+            <li onclick="selectAnswer(2109, this, 'D')">D. &gt; 60 ml/min/1.73 m².</li>
+        </ul>
+        <div class="justification" id="justification-2109">
+            El estadio 3 de la enfermedad renal crónica se define por una tasa de filtración glomerular (TFG) de 30-59 ml/min/1.73 m², lo que indica una disminución moderada de la función renal.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2110">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál de los siguientes medicamentos se utiliza comúnmente para reducir la proteinuria y retrasar la progresión de la enfermedad renal crónica en pacientes con diabetes mellitus tipo 2?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2110, this, 'A')">A. Inhibidores de la enzima convertidora de angiotensina (IECA).</li>
+            <li onclick="selectAnswer(2110, this, 'B')">B. Bloqueadores de los receptores de angiotensina II (BRA).</li>
+            <li onclick="selectAnswer(2110, this, 'C')">C. Diuréticos tiazídicos.</li>
+            <li onclick="selectAnswer(2110, this, 'D')">D. Bloqueadores de los canales de calcio.</li>
+        </ul>
+        <div class="justification" id="justification-2110">
+            Los IECA se utilizan comúnmente en pacientes con diabetes mellitus tipo 2 y enfermedad renal crónica para reducir la proteinuria y retrasar la progresión de la enfermedad renal.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2106: "B",
+        2107: "C",
+        2108: "A",
+        2109: "C",
+        2110: "A"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

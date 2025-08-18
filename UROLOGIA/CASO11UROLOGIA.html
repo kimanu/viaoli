@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Urología - Orquitis</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f4f9ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1b4f72;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .card {
+            background: #fff;
+            border-left: 6px solid;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .case-container {
+            border-color: #e67e22;
+        }
+
+        .question-card {
+            border-color: #2471a3;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            background: #f7f9fc;
+            padding: 12px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2471a3;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: #fff;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: #fff;
+        }
+
+        #submit-button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2em;
+            background: #2471a3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #154360;
+        }
+
+        #submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            background: #d4efdf;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2471a3;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Urología - Orquitis</h1>
+        </div>
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>
+                Luis, un hombre de 30 años, acude a la consulta de urología quejándose de dolor e inflamación en el escroto. Luis refiere que el dolor comenzó repentinamente y se ha vuelto progresivamente más intenso en el transcurso de los últimos días. Durante el examen físico, se observa inflamación y sensibilidad en el escroto, así como un aumento en el volumen testicular izquierdo. No se palpan masas adicionales en el escroto. Los análisis de laboratorio muestran leucocitosis y elevación de los niveles de proteína C reactiva (PCR).
+            </p>
+        </div>
+
+        <div class="card question-card" data-index="786">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el diagnóstico más probable para Luis basado en sus síntomas y hallazgos en el examen físico?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(786, this, 'A')">A. Orquitis</li>
+                <li onclick="selectAnswer(786, this, 'B')">B. Epididimitis</li>
+                <li onclick="selectAnswer(786, this, 'C')">C. Hidrocele</li>
+                <li onclick="selectAnswer(786, this, 'D')">D. Varicocele</li>
+            </ul>
+            <div class="justification" id="justification-786">
+                Los síntomas de Luis, incluyendo dolor e inflamación en el escroto, sugieren una inflamación del testículo, lo que es consistente con el diagnóstico de orquitis.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="787">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de los siguientes hallazgos en el examen físico es característico de la orquitis?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(787, this, 'A')">A. Aumento del volumen testicular</li>
+                <li onclick="selectAnswer(787, this, 'B')">B. Sensibilidad en el cordón espermático</li>
+                <li onclick="selectAnswer(787, this, 'C')">C. Presencia de una masa palpable en el escroto</li>
+                <li onclick="selectAnswer(787, this, 'D')">D. Ausencia de cambios en el escroto</li>
+            </ul>
+            <div class="justification" id="justification-787">
+                En la orquitis, se observa un aumento del volumen testicular debido a la inflamación del tejido testicular.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="788">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el tratamiento inicial recomendado para la orquitis de origen infeccioso?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(788, this, 'A')">A. Antibióticos</li>
+                <li onclick="selectAnswer(788, this, 'B')">B. Analgésicos y antiinflamatorios</li>
+                <li onclick="selectAnswer(788, this, 'C')">C. Cirugía de corrección</li>
+                <li onclick="selectAnswer(788, this, 'D')">D. Radioterapia</li>
+            </ul>
+            <div class="justification" id="justification-788">
+                El tratamiento inicial para la orquitis de origen infeccioso implica el uso de antibióticos para tratar la infección bacteriana responsable.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="789">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de los siguientes factores de riesgo se asocia comúnmente con la orquitis?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(789, this, 'A')">A. Historia de cálculos renales</li>
+                <li onclick="selectAnswer(789, this, 'B')">B. Consumo excesivo de alcohol</li>
+                <li onclick="selectAnswer(789, this, 'C')">C. Historia de infecciones de transmisión sexual</li>
+                <li onclick="selectAnswer(789, this, 'D')">D. Edad avanzada</li>
+            </ul>
+            <div class="justification" id="justification-789">
+                La orquitis se asocia comúnmente con infecciones de transmisión sexual, especialmente la infección por clamidia o gonorrea en hombres jóvenes sexualmente activos.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="790">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es una complicación potencial de la orquitis si no se trata adecuadamente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(790, this, 'A')">A. Infertilidad</li>
+                <li onclick="selectAnswer(790, this, 'B')">B. Cáncer testicular</li>
+                <li onclick="selectAnswer(790, this, 'C')">C. Incontinencia urinaria</li>
+                <li onclick="selectAnswer(790, this, 'D')">D. Varicocele</li>
+            </ul>
+            <div class="justification" id="justification-790">
+                Una complicación potencial de la orquitis si no se trata adecuadamente es la infertilidad, que puede ocurrir debido a la afectación de la función testicular y la producción de espermatozoides.
+            </div>
+        </div>
+
+        <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            786: "A",
+            787: "A",
+            788: "A",
+            789: "C",
+            790: "A"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

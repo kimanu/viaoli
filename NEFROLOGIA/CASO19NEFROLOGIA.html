@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anemia Hemolítica Autoinmune en Lupus - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9fbfc;
+        margin: 0; padding: 20px;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #34495e;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #3498db;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #2980b9;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d6eaf8;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #85c1e9;
+    }
+    .selected {
+        border: 2px solid #2980b9;
+        background: #85c1e9;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2874a6 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1b4f72 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #85c1e9;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2980b9;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1b4f72;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d6eaf8;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1b4f72;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Anemia Hemolítica Autoinmune en Lupus Eritematoso Sistémico</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Una mujer de 35 años, con antecedentes de lupus eritematoso sistémico (LES) diagnosticado hace 10 años, presenta fatiga, palidez cutáneo-mucosa y petequias en miembros inferiores. En el examen físico, se observa esplenomegalia y adenopatías cervicales bilaterales. Los estudios de laboratorio revelan hemoglobina de 8 g/dL, leucocitos de 12,000/μL con predominio de linfocitos, plaquetas de 90,000/μL, y Coombs directo negativo.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2171">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el diagnóstico más probable basado en los hallazgos clínicos y de laboratorio en este caso?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2171, this, 'A')">A) Anemia hemolítica autoinmune.</li>
+            <li onclick="selectAnswer(2171, this, 'B')">B) Anemia ferropénica.</li>
+            <li onclick="selectAnswer(2171, this, 'C')">C) Anemia de enfermedad crónica.</li>
+            <li onclick="selectAnswer(2171, this, 'D')">D) Anemia megaloblástica.</li>
+        </ul>
+        <div class="justification" id="justification-2171">
+            Los hallazgos clínicos de fatiga, palidez cutáneo-mucosa, esplenomegalia y adenopatías, junto con los resultados de laboratorio que incluyen anemia, leucocitosis con predominio de linfocitos y trombocitopenia sugieren un cuadro de anemia hemolítica autoinmune, especialmente considerando el antecedente de lupus eritematoso sistémico.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2172">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es el siguiente paso en el manejo de esta paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2172, this, 'A')">A) Transfusión de glóbulos rojos.</li>
+            <li onclick="selectAnswer(2172, this, 'B')">B) Tratamiento con esteroides.</li>
+            <li onclick="selectAnswer(2172, this, 'C')">C) Administración de suplementos de hierro.</li>
+            <li onclick="selectAnswer(2172, this, 'D')">D) Realización de esplenectomía.</li>
+        </ul>
+        <div class="justification" id="justification-2172">
+            El tratamiento inicial de la anemia hemolítica autoinmune involucra el uso de esteroides para suprimir la respuesta inmunológica y reducir la destrucción de glóbulos rojos.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2173">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál de los siguientes estudios es confirmatorio para el diagnóstico de anemia hemolítica autoinmune?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2173, this, 'A')">A) Test de antiglobulina directa (Coombs directo) positivo.</li>
+            <li onclick="selectAnswer(2173, this, 'B')">B) Prueba de fragilidad osmótica negativa.</li>
+            <li onclick="selectAnswer(2173, this, 'C')">C) Prueba de fragilidad globular positiva.</li>
+            <li onclick="selectAnswer(2173, this, 'D')">D) Test de antiglobulina indirecta positivo.</li>
+        </ul>
+        <div class="justification" id="justification-2173">
+            El test de antiglobulina directa positivo (Coombs directo) confirma la presencia de anticuerpos o complemento en la superficie de los glóbulos rojos, lo que apoya el diagnóstico de anemia hemolítica autoinmune.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2174">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Qué hallazgo adicional en el examen físico es característico de la anemia hemolítica autoinmune?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2174, this, 'A')">A) Esplenomegalia.</li>
+            <li onclick="selectAnswer(2174, this, 'B')">B) Hepatomegalia.</li>
+            <li onclick="selectAnswer(2174, this, 'C')">C) Palidez cutáneo-mucosa.</li>
+            <li onclick="selectAnswer(2174, this, 'D')">D) Petequias en miembros inferiores.</li>
+        </ul>
+        <div class="justification" id="justification-2174">
+            Las petequias en miembros inferiores son un hallazgo característico de la anemia hemolítica autoinmune debido a la trombocitopenia secundaria al proceso autoinmune.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2175">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál de las siguientes complicaciones está asociada comúnmente con la anemia hemolítica autoinmune?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2175, this, 'A')">A) Insuficiencia renal aguda.</li>
+            <li onclick="selectAnswer(2175, this, 'B')">B) Eventos trombóticos arteriales.</li>
+            <li onclick="selectAnswer(2175, this, 'C')">C) Infecciones recurrentes.</li>
+        </ul>
+        <div class="justification" id="justification-2175">
+            Los pacientes con anemia hemolítica autoinmune tienen un mayor riesgo de desarrollar eventos trombóticos arteriales debido a la activación plaquetaria secundaria a la hemólisis y la disfunción endotelial.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2171: "A",
+        2172: "B",
+        2173: "A",
+        2174: "D",
+        2175: "B"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

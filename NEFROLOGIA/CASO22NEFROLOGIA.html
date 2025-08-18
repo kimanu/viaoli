@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hipopotasemia - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9fbfc;
+        margin: 0; padding: 20px;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #34495e;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #3498db;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #2980b9;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d6eaf8;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #85c1e9;
+    }
+    .selected {
+        border: 2px solid #2980b9;
+        background: #85c1e9;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2874a6 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1b4f72 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #85c1e9;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2980b9;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1b4f72;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d6eaf8;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1b4f72;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Hipopotasemia</h1>
+    </div>
+    <div class="card">
+        <h2>Información clínica relevante</h2>
+        <p>
+            La hiperpotasemia es una complicación común en pacientes con enfermedad renal crónica debido a la disminución de la excreción renal de potasio.
+            La administración de gluconato de calcio intravenoso es crucial en pacientes con hiperpotasemia grave y síntomas cardiovasculares, ya que estabiliza la membrana celular cardiaca.
+            La suspensión de medicamentos que pueden aumentar los niveles de potasio, como la espironolactona o los IECA, es importante en el manejo a largo plazo de la hiperpotasemia en pacientes con enfermedad renal crónica.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2186">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el diagnóstico más probable en este caso basado en los hallazgos clínicos y de antecedentes?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2186, this, 'A')">A) Hipopotasemia.</li>
+            <li onclick="selectAnswer(2186, this, 'B')">B) Hiperpotasemia.</li>
+            <li onclick="selectAnswer(2186, this, 'C')">C) Hipernatremia.</li>
+            <li onclick="selectAnswer(2186, this, 'D')">D) Hiponatremia.</li>
+        </ul>
+        <div class="justification" id="justification-2186">
+            Los síntomas de debilidad muscular y fatiga generalizada, junto con la historia de calambres musculares, sugieren hipopotasemia, que es la disminución del nivel de potasio en sangre por debajo de 3.5 mEq/L. Los antecedentes de hipertensión arterial y diabetes tipo 2 pueden contribuir a la hipopotasemia.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2187">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es el siguiente paso en el manejo de esta paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2187, this, 'A')">A) Administrar bicarbonato de sodio.</li>
+            <li onclick="selectAnswer(2187, this, 'B')">B) Administrar furosemida intravenosa.</li>
+            <li onclick="selectAnswer(2187, this, 'C')">C) Administrar gluconato de calcio intravenoso.</li>
+            <li onclick="selectAnswer(2187, this, 'D')">D) Administrar cloruro de potasio oral.</li>
+        </ul>
+        <div class="justification" id="justification-2187">
+            La hipopotasemia se trata con suplementos de potasio, y el cloruro de potasio oral es una opción común para corregir los niveles bajos de potasio en sangre.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2188">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál es el mecanismo de acción del cloruro de potasio oral en el manejo de la hipopotasemia?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2188, this, 'A')">A) Aumenta la eliminación renal de potasio.</li>
+            <li onclick="selectAnswer(2188, this, 'B')">B) Actúa como un diurético.</li>
+            <li onclick="selectAnswer(2188, this, 'C')">C) Estabiliza la membrana celular.</li>
+            <li onclick="selectAnswer(2188, this, 'D')">D) Estimula la secreción de insulina.</li>
+        </ul>
+        <div class="justification" id="justification-2188">
+            El cloruro de potasio oral ayuda a corregir la hipopotasemia al reponer los niveles bajos de potasio, lo que ayuda a estabilizar la membrana celular y restaurar la función muscular normal.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2189">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Qué factor de riesgo contribuye más a la hipopotasemia en este caso?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2189, this, 'A')">A) Diabetes tipo 2.</li>
+            <li onclick="selectAnswer(2189, this, 'B')">B) Hipertensión arterial.</li>
+            <li onclick="selectAnswer(2189, this, 'C')">C) Deshidratación.</li>
+            <li onclick="selectAnswer(2189, this, 'D')">D) Historia de calambres musculares.</li>
+        </ul>
+        <div class="justification" id="justification-2189">
+            La deshidratación puede provocar pérdida de potasio a través de la orina, lo que contribuye a la hipopotasemia en este paciente.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2190">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Qué otra condición médica debería evaluarse en este paciente debido a su historial médico y los síntomas presentados?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2190, this, 'A')">A) Insuficiencia cardíaca.</li>
+            <li onclick="selectAnswer(2190, this, 'B')">B) Hipertiroidismo.</li>
+            <li onclick="selectAnswer(2190, this, 'C')">C) Enfermedad pulmonar obstructiva crónica (EPOC).</li>
+            <li onclick="selectAnswer(2190, this, 'D')">D) Anemia ferropénica.</li>
+        </ul>
+        <div class="justification" id="justification-2190">
+            La insuficiencia cardíaca puede asociarse con hipopotasemia debido al uso de diuréticos, que pueden causar pérdida de potasio. Además, los síntomas de debilidad muscular pueden ser indicativos de insuficiencia cardíaca.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2186: "A",
+        2187: "D",
+        2188: "C",
+        2189: "C",
+        2190: "A"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

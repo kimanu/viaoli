@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tumor Testicular - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9f9f9;
+        margin: 0; padding: 20px;
+        color: #222;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 850px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #27ae60;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #229954;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #ecf0f1;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #a9dfbf;
+    }
+    .selected {
+        border: 2px solid #229954;
+        background: #a9dfbf;
+        pointer-events: none;
+    }
+    .correct {
+        background: #27ae60 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #c0392b !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #27ae60;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1e8449;
+    }
+    #submit-button:disabled {
+        background: #95a5a6;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d4efdf;
+        border: 1px solid #229954;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d4efdf;
+        border-left: 4px solid #27ae60;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Tumor Testicular</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Juan, un hombre de 30 años, acude al servicio de urología con la queja de un bulto en el testículo izquierdo que ha estado presente durante los últimos tres meses. Durante el examen físico, se identifica un nódulo firme y no doloroso en el testículo izquierdo, sin otros hallazgos significativos en el escroto. No hay antecedentes de traumatismo testicular. Se solicita una ecografía testicular que confirma la presencia de una masa sólida en el testículo izquierdo.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="7316">
+        <h3>❓ Pregunta 1:</h3>
+        <p>¿Cuál es el diagnóstico más probable en este caso?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7316, this, 'A')">A. Varicocele</li>
+            <li onclick="selectAnswer(7316, this, 'B')">B. Hidrocele</li>
+            <li onclick="selectAnswer(7316, this, 'C')">C. Tumor testicular</li>
+            <li onclick="selectAnswer(7316, this, 'D')">D. Orquitis</li>
+        </ul>
+        <div class="justification" id="justification-7316">
+            El hallazgo de un nódulo firme y no doloroso en el testículo, que persiste durante varios meses y se confirma mediante ecografía testicular, es altamente sugestivo de un tumor testicular.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7317">
+        <h3>❓ Pregunta 2:</h3>
+        <p>¿Cuál es la forma más común de tumor testicular en hombres de este grupo de edad?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7317, this, 'A')">A. Seminoma</li>
+            <li onclick="selectAnswer(7317, this, 'B')">B. Teratoma</li>
+            <li onclick="selectAnswer(7317, this, 'C')">C. Carcinoma de células germinales no seminomatoso</li>
+            <li onclick="selectAnswer(7317, this, 'D')">D. Linfoma testicular</li>
+        </ul>
+        <div class="justification" id="justification-7317">
+            El seminoma es el tipo más común de tumor testicular en hombres jóvenes, representando aproximadamente el 50-55% de los casos de tumores testiculares en este grupo de edad.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7318">
+        <h3>❓ Pregunta 3:</h3>
+        <p>¿Cuál de los siguientes marcadores tumorales es más específico para el seminoma testicular?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7318, this, 'A')">A. Alfa-fetoproteína (AFP)</li>
+            <li onclick="selectAnswer(7318, this, 'B')">B. Beta-hCG (gonadotropina coriónica humana)</li>
+            <li onclick="selectAnswer(7318, this, 'C')">C. Lactato deshidrogenasa (LDH)</li>
+            <li onclick="selectAnswer(7318, this, 'D')">D. Inhibina B</li>
+        </ul>
+        <div class="justification" id="justification-7318">
+            La inhibina B es un marcador tumoral específico para el seminoma testicular. Los niveles elevados de inhibina B en suero son indicativos de la presencia de un seminoma testicular.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7319">
+        <h3>❓ Pregunta 4:</h3>
+        <p>¿Cuál es el tratamiento de elección para el seminoma testicular en estadio I?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7319, this, 'A')">A. Orquiectomía radical</li>
+            <li onclick="selectAnswer(7319, this, 'B')">B. Quimioterapia con bleomicina, etopósido y cisplatino (BEP)</li>
+            <li onclick="selectAnswer(7319, this, 'C')">C. Radioterapia</li>
+            <li onclick="selectAnswer(7319, this, 'D')">D. Vigilancia activa</li>
+        </ul>
+        <div class="justification" id="justification-7319">
+            La vigilancia activa es el tratamiento de elección para los pacientes con seminoma testicular en estadio I de bajo riesgo. Esto implica realizar seguimiento con exámenes clínicos, marcadores tumorales y, en algunos casos, imágenes, sin intervención inmediata.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7320">
+        <h3>❓ Pregunta 5:</h3>
+        <p>¿Cuál de las siguientes características histológicas se asocia con un mejor pronóstico en el seminoma testicular?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7320, this, 'A')">A. Presencia de coriocarcinoma</li>
+            <li onclick="selectAnswer(7320, this, 'B')">B. Presencia de elementos teratomatosos</li>
+            <li onclick="selectAnswer(7320, this, 'C')">C. Ausencia de invasión linfática o vascular</li>
+            <li onclick="selectAnswer(7320, this, 'D')">D. Presencia de necrosis tumoral extensa</li>
+        </ul>
+        <div class="justification" id="justification-7320">
+            La ausencia de invasión linfática o vascular se asocia con un mejor pronóstico en el seminoma testicular, ya que indica un menor riesgo de diseminación metastásica y una respuesta más favorable al tratamiento.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        7316: "C",
+        7317: "A",
+        7318: "D",
+        7319: "D",
+        7320: "C"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

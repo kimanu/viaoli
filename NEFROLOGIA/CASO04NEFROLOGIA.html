@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Neumonía por Legionella - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #fafafa;
+        margin: 0; padding: 20px;
+        color: #222;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #2980b9;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #3498db;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d6eaf8;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #85c1e9;
+    }
+    .selected {
+        border: 2px solid #2980b9;
+        background: #85c1e9;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2980b9 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1b4f72 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #aed6f1;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2980b9;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1b4f72;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d6eaf8;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1b4f72;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Neumonía por Legionella</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Paciente de 35 años, masculino, sin antecedentes médicos relevantes, quien consulta por fiebre de 38.5°C, tos productiva con expectoración purulenta y disnea progresiva de una semana de evolución. Refiere haber tenido contacto con aves de corral en su trabajo como granjero. En el examen físico, se evidencia taquipnea (22 respiraciones por minuto), crepitantes en campos pulmonares y cianosis peribucal. La radiografía de tórax muestra infiltrados bilaterales difusos.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2096">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el diagnóstico más probable en este paciente con fiebre, tos productiva, disnea progresiva y antecedente de contacto con aves de corral?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2096, this, 'A')">A. Tuberculosis pulmonar.</li>
+            <li onclick="selectAnswer(2096, this, 'B')">B. Neumonía por Pneumocystis jirovecii.</li>
+            <li onclick="selectAnswer(2096, this, 'C')">C. Neumonía por Legionella.</li>
+            <li onclick="selectAnswer(2096, this, 'D')">D. Neumonía por Mycoplasma pneumoniae.</li>
+        </ul>
+        <div class="justification" id="justification-2096">
+            La combinación de fiebre, tos productiva, disnea progresiva y antecedente de contacto con aves de corral sugiere neumonía por Legionella, una infección común asociada a la exposición a agua contaminada, aerosoles o sistemas de aire acondicionado.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2097">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es la característica clínica típica de la neumonía por Legionella?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2097, this, 'A')">A. Inicio gradual de los síntomas.</li>
+            <li onclick="selectAnswer(2097, this, 'B')">B. Exposición a aves de corral.</li>
+            <li onclick="selectAnswer(2097, this, 'C')">C. Rash cutáneo maculopapular.</li>
+            <li onclick="selectAnswer(2097, this, 'D')">D. Diarrea acuosa.</li>
+        </ul>
+        <div class="justification" id="justification-2097">
+            La diarrea acuosa es una característica clínica típica de la neumonía por Legionella, además de la fiebre alta, tos no productiva y signos de neumonía grave.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2098">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál es la prueba de laboratorio más útil para el diagnóstico de neumonía por Legionella?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2098, this, 'A')">A. Hemocultivos.</li>
+            <li onclick="selectAnswer(2098, this, 'B')">B. Cultivo de esputo.</li>
+            <li onclick="selectAnswer(2098, this, 'C')">C. Serología para Legionella.</li>
+            <li onclick="selectAnswer(2098, this, 'D')">D. Reacción en cadena de la polimerasa (PCR) en tiempo real.</li>
+        </ul>
+        <div class="justification" id="justification-2098">
+            La serología para Legionella, específicamente la detección de anticuerpos IgM e IgG, es la prueba de laboratorio más útil para el diagnóstico de neumonía por Legionella.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2099">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál es el tratamiento de elección para la neumonía por Legionella?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2099, this, 'A')">A. Azitromicina.</li>
+            <li onclick="selectAnswer(2099, this, 'B')">B. Levofloxacino.</li>
+            <li onclick="selectAnswer(2099, this, 'C')">C. Amoxicilina-clavulánico.</li>
+            <li onclick="selectAnswer(2099, this, 'D')">D. Ceftriaxona.</li>
+        </ul>
+        <div class="justification" id="justification-2099">
+            El tratamiento de elección para la neumonía por Legionella es un fluoroquinolona respiratoria, como levofloxacino o moxifloxacino, debido a la alta actividad antimicrobiana contra Legionella spp.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2100">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál es una complicación potencialmente grave de la neumonía por Legionella?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2100, this, 'A')">A. Hepatitis.</li>
+            <li onclick="selectAnswer(2100, this, 'B')">B. Tromboembolismo pulmonar.</li>
+            <li onclick="selectAnswer(2100, this, 'C')">C. Rabdomiólisis.</li>
+            <li onclick="selectAnswer(2100, this, 'D')">D. Glomerulonefritis aguda.</li>
+        </ul>
+        <div class="justification" id="justification-2100">
+            La rabdomiólisis es una complicación potencialmente grave de la neumonía por Legionella, que puede resultar en insuficiencia renal aguda debido a la liberación de mioglobina en la circulación.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2096: "C",
+        2097: "D",
+        2098: "C",
+        2099: "B",
+        2100: "C"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cetoacidosis Diabética - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9fbfc;
+        margin: 0; padding: 20px;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #34495e;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #3498db;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #2980b9;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d6eaf8;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #85c1e9;
+    }
+    .selected {
+        border: 2px solid #2980b9;
+        background: #85c1e9;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2874a6 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1b4f72 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #85c1e9;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2980b9;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1b4f72;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d6eaf8;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1b4f72;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Cetoacidosis Diabética</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Una mujer de 32 años con antecedentes de diabetes tipo 1 acude a la sala de emergencias con confusión y debilidad muscular. 
+            La paciente refiere haber tenido poliuria y polidipsia en los últimos días. En el examen físico, se observa taquicardia y presión arterial baja. 
+            Además, presenta signos de deshidratación, como piel seca y mucosas secas. Los análisis de laboratorio muestran hiperglucemia y cetonuria.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2191">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el diagnóstico más probable en este caso basado en los hallazgos clínicos y de antecedentes?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2191, this, 'A')">A) Hipopotasemia.</li>
+            <li onclick="selectAnswer(2191, this, 'B')">B) Hiperpotasemia.</li>
+            <li onclick="selectAnswer(2191, this, 'C')">C) Hiperglucemia hiperosmolar no cetósica.</li>
+            <li onclick="selectAnswer(2191, this, 'D')">D) Cetoacidosis diabética.</li>
+        </ul>
+        <div class="justification" id="justification-2191">
+            Los síntomas de confusión, debilidad muscular, poliuria y polidipsia junto con la hiperglucemia y cetonuria sugieren cetoacidosis diabética, una complicación aguda de la diabetes tipo 1.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2192">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es el tratamiento inicial apropiado para esta paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2192, this, 'A')">A) Administrar insulina intravenosa y solución salina.</li>
+            <li onclick="selectAnswer(2192, this, 'B')">B) Administrar bicarbonato de sodio intravenoso.</li>
+            <li onclick="selectAnswer(2192, this, 'C')">C) Administrar furosemida intravenosa.</li>
+            <li onclick="selectAnswer(2192, this, 'D')">D) Administrar cloruro de potasio oral.</li>
+        </ul>
+        <div class="justification" id="justification-2192">
+            El tratamiento inicial de la cetoacidosis diabética implica la administración de insulina intravenosa para corregir la hiperglucemia y solución salina para corregir la deshidratación y restablecer el equilibrio electrolítico.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2193">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál es el mecanismo de acción de la insulina en el tratamiento de la cetoacidosis diabética?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2193, this, 'A')">A) Aumenta la eliminación renal de glucosa.</li>
+            <li onclick="selectAnswer(2193, this, 'B')">B) Promueve la utilización de glucosa por las células.</li>
+            <li onclick="selectAnswer(2193, this, 'C')">C) Estimula la producción de cuerpos cetónicos.</li>
+            <li onclick="selectAnswer(2193, this, 'D')">D) Inhibe la liberación de glucagón.</li>
+        </ul>
+        <div class="justification" id="justification-2193">
+            La insulina promueve la captación de glucosa por las células, lo que ayuda a reducir la hiperglucemia y detiene la lipólisis, evitando así la formación adicional de cuerpos cetónicos.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2194">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál es el objetivo del tratamiento de la cetoacidosis diabética?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2194, this, 'A')">A) Restaurar la función renal.</li>
+            <li onclick="selectAnswer(2194, this, 'B')">B) Corregir la hiponatremia.</li>
+            <li onclick="selectAnswer(2194, this, 'C')">C) Corregir la hipoglucemia.</li>
+            <li onclick="selectAnswer(2194, this, 'D')">D) Corregir la acidosis y la deshidratación.</li>
+        </ul>
+        <div class="justification" id="justification-2194">
+            El tratamiento de la cetoacidosis diabética tiene como objetivo principal corregir la acidosis metabólica y la deshidratación asociada.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2195">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál es la complicación potencialmente mortal más asociada con la cetoacidosis diabética?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2195, this, 'A')">A) Trombosis venosa profunda.</li>
+            <li onclick="selectAnswer(2195, this, 'B')">B) Hipoglucemia.</li>
+            <li onclick="selectAnswer(2195, this, 'C')">C) Edema pulmonar.</li>
+            <li onclick="selectAnswer(2195, this, 'D')">D) Edema cerebral.</li>
+        </ul>
+        <div class="justification" id="justification-2195">
+            El edema cerebral es una complicación grave y potencialmente mortal de la cetoacidosis diabética, que puede ocurrir como resultado de cambios en la osmolalidad y el equilibrio de los electrólitos en el cerebro.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2191: "D",
+        2192: "A",
+        2193: "B",
+        2194: "D",
+        2195: "D"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

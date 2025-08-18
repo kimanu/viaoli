@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pediatría - Hidrocele en Niño</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            color: #0a4275;
+        }
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+        .card {
+            background: #fff;
+            border-left: 6px solid;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .case-container {
+            border-color: #5dade2;
+        }
+        .question-card {
+            border-color: #2874a6;
+        }
+        h2, h3 {
+            color: #1b2631;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            background: #f7f9fc;
+            padding: 12px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .options li:hover {
+            background: #d6eaf8;
+        }
+        .selected {
+            border: 2px solid #2874a6;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+        .correct {
+            background: #28a745 !important;
+            color: #fff;
+        }
+        .incorrect {
+            background: #d9534f !important;
+            color: #fff;
+        }
+        #submit-button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2em;
+            background: #2874a6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #submit-button:hover {
+            background: #154360;
+        }
+        #submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        #results {
+            display: none;
+            background: #d4efdf;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f0fe;
+            border: 1px solid #2874a6;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>🩺 Pediatría - Hidrocele en Niño</h1>
+        </div>
+        <div class="card case-container">
+            <h2>Caso clínico</h2>
+            <p>
+                Javier, un niño de 4 años, es llevado por sus padres al consultorio pediátrico debido a que notaron que su escroto estaba inflamado y aumentado de tamaño. Durante el examen físico, el pediatra observa que Javier tiene un escroto aumentado de tamaño y con una sensación de fluctuación al tacto. No hay signos de dolor o enrojecimiento en la región escrotal. Javier no presenta fiebre ni otros síntomas sistémicos.
+            </p>
+        </div>
+
+        <div class="card question-card" data-index="6401">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el diagnóstico más probable para Javier basado en los hallazgos del examen físico?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(6401, this, 'A')">A. Varicocele</li>
+                <li onclick="selectAnswer(6401, this, 'B')">B. Hidrocele</li>
+                <li onclick="selectAnswer(6401, this, 'C')">C. Orquiepididimitis</li>
+                <li onclick="selectAnswer(6401, this, 'D')">D. Fimosis</li>
+            </ul>
+            <div class="justification" id="justification-6401">
+                Los hallazgos de un escroto aumentado de tamaño con una sensación de fluctuación al tacto son consistentes con el diagnóstico de hidrocele, que es la acumulación de líquido seroso en la túnica vaginal del testículo.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="6402">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el tratamiento inicial recomendado para el hidrocele en un niño asintomático?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(6402, this, 'A')">A. Cirugía de corrección</li>
+                <li onclick="selectAnswer(6402, this, 'B')">B. Observación y seguimiento regular</li>
+                <li onclick="selectAnswer(6402, this, 'C')">C. Terapia con antibióticos</li>
+                <li onclick="selectAnswer(6402, this, 'D')">D. Drenaje del líquido acumulado</li>
+            </ul>
+            <div class="justification" id="justification-6402">
+                En niños asintomáticos con hidrocele, el tratamiento inicial recomendado es la observación y el seguimiento regular, ya que el hidrocele puede resolver espontáneamente en algunos casos.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="6403">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de los siguientes factores no está asociado con un mayor riesgo de desarrollar hidrocele?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(6403, this, 'A')">A. Infección testicular</li>
+                <li onclick="selectAnswer(6403, this, 'B')">B. Trauma testicular</li>
+                <li onclick="selectAnswer(6403, this, 'C')">C. Torsión testicular</li>
+                <li onclick="selectAnswer(6403, this, 'D')">D. Infección urinaria</li>
+            </ul>
+            <div class="justification" id="justification-6403">
+                La infección urinaria no está directamente asociada con un mayor riesgo de desarrollar hidrocele. Los factores como la infección testicular, el trauma testicular y la torsión testicular pueden contribuir al desarrollo de un hidrocele.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="6404">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es la complicación más común asociada con el hidrocele en niños?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(6404, this, 'A')">A. Infertilidad</li>
+                <li onclick="selectAnswer(6404, this, 'B')">B. Infección testicular</li>
+                <li onclick="selectAnswer(6404, this, 'C')">C. Torsión testicular</li>
+                <li onclick="selectAnswer(6404, this, 'D')">D. Ruptura espontánea del hidrocele</li>
+            </ul>
+            <div class="justification" id="justification-6404">
+                La torsión testicular es una complicación común asociada con el hidrocele en niños, ya que el aumento de tamaño del escroto puede predisponer a la torsión testicular.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="6405">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de las siguientes características es típica del hidrocele comunicante?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(6405, this, 'A')">A. Se presenta en la edad adulta</li>
+                <li onclick="selectAnswer(6405, this, 'B')">B. Es más común en el lado izquierdo</li>
+                <li onclick="selectAnswer(6405, this, 'C')">C. Se asocia con dolor testicular agudo</li>
+                <li onclick="selectAnswer(6405, this, 'D')">D. Se resuelve espontáneamente durante el primer año de vida</li>
+            </ul>
+            <div class="justification" id="justification-6405">
+                El hidrocele comunicante es más común en el lado izquierdo debido a la anatomía del cordón espermático y la vena espermática izquierda.
+            </div>
+        </div>
+
+        <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+        <div id="results"></div>
+    </div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        6401: "B",
+        6402: "B",
+        6403: "D",
+        6404: "C",
+        6405: "B"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anemia Ferropénica en Enfermedad Renal Crónica - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9fbfc;
+        margin: 0; padding: 20px;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #34495e;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #3498db;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #2980b9;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d6eaf8;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #85c1e9;
+    }
+    .selected {
+        border: 2px solid #2980b9;
+        background: #85c1e9;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2874a6 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1b4f72 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #85c1e9;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2980b9;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1b4f72;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d6eaf8;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1b4f72;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Anemia Ferropénica en Enfermedad Renal Crónica</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Un hombre de 45 años, con antecedentes de diabetes tipo 2 y enfermedad renal crónica en estadio 3, presenta fatiga, debilidad muscular y disminución del apetito desde hace dos semanas. En el examen físico, se observa palidez cutáneo-mucosa y taquicardia. Los estudios de laboratorio revelan hemoglobina de 9 g/dL, hematocrito del 28%, VCM elevado y ferritina sérica baja.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2166">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el diagnóstico más probable basado en los hallazgos clínicos y de laboratorio en este caso?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2166, this, 'A')">A) Anemia ferropénica.</li>
+            <li onclick="selectAnswer(2166, this, 'B')">B) Anemia por deficiencia de vitamina B12.</li>
+            <li onclick="selectAnswer(2166, this, 'C')">C) Anemia hemolítica autoinmune.</li>
+            <li onclick="selectAnswer(2166, this, 'D')">D) Anemia aplásica.</li>
+        </ul>
+        <div class="justification" id="justification-2166">
+            Los síntomas de fatiga, debilidad muscular y disminución del apetito junto con los hallazgos de laboratorio de hemoglobina baja, hematocrito bajo y ferritina sérica baja sugieren una anemia ferropénica, que puede ser común en pacientes con enfermedad renal crónica.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2167">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es el tratamiento inicial recomendado para la anemia ferropénica en este paciente con enfermedad renal crónica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2167, this, 'A')">A) Transfusión de glóbulos rojos.</li>
+            <li onclick="selectAnswer(2167, this, 'B')">B) Suplementos de hierro oral.</li>
+            <li onclick="selectAnswer(2167, this, 'C')">C) Suplementos de ácido fólico.</li>
+            <li onclick="selectAnswer(2167, this, 'D')">D) Transfusión de concentrado de hematíes.</li>
+        </ul>
+        <div class="justification" id="justification-2167">
+            El tratamiento inicial para la anemia ferropénica en pacientes con enfermedad renal crónica implica la administración de suplementos de hierro oral para corregir la deficiencia de hierro y aumentar los niveles de hemoglobina.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2168">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál de las siguientes condiciones médicas es un factor de riesgo común para desarrollar anemia ferropénica en pacientes con enfermedad renal crónica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2168, this, 'A')">A) Hipotiroidismo.</li>
+            <li onclick="selectAnswer(2168, this, 'B')">B) Hipertensión arterial.</li>
+            <li onclick="selectAnswer(2168, this, 'C')">C) Diabetes mellitus tipo 2.</li>
+            <li onclick="selectAnswer(2168, this, 'D')">D) Enfermedad pulmonar obstructiva crónica (EPOC).</li>
+        </ul>
+        <div class="justification" id="justification-2168">
+            El hipotiroidismo es un factor de riesgo común para desarrollar anemia ferropénica en pacientes con enfermedad renal crónica debido a la reducción en la absorción de hierro y la producción inadecuada de eritropoyetina.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2169">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál de las siguientes pruebas de laboratorio es más específica para el diagnóstico de anemia ferropénica en pacientes con enfermedad renal crónica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2169, this, 'A')">A) Ferritina sérica.</li>
+            <li onclick="selectAnswer(2169, this, 'B')">B) Hemoglobina.</li>
+            <li onclick="selectAnswer(2169, this, 'C')">C) Hematocrito.</li>
+            <li onclick="selectAnswer(2169, this, 'D')">D) Volumen corpuscular medio (VCM).</li>
+        </ul>
+        <div class="justification" id="justification-2169">
+            La ferritina sérica es más específica para el diagnóstico de anemia ferropénica, ya que refleja los depósitos de hierro en el cuerpo y disminuye antes que otros parámetros cuando hay deficiencia de hierro.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2170">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál de los siguientes factores contribuye a la anemia en pacientes con enfermedad renal crónica?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2170, this, 'A')">A) Aumento de la eritropoyetina.</li>
+            <li onclick="selectAnswer(2170, this, 'B')">B) Incremento de la producción de eritrocitos.</li>
+            <li onclick="selectAnswer(2170, this, 'C')">C) Disminución de la vida media de los eritrocitos.</li>
+            <li onclick="selectAnswer(2170, this, 'D')">D) Reducción de la pérdida de hierro por la orina.</li>
+        </ul>
+        <div class="justification" id="justification-2170">
+            La disminución de la vida media de los eritrocitos es un factor que contribuye a la anemia en pacientes con enfermedad renal crónica, junto con la disminución de la producción de eritropoyetina y la disminución de la respuesta de la médula ósea a la eritropoyetina.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2166: "A",
+        2167: "B",
+        2168: "A",
+        2169: "A",
+        2170: "C"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Glomerulopatía secundaria a enfermedad cardiovascular - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f0f4f8;
+        margin: 0; padding: 20px;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #34495e;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #2980b9;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #3498db;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d6eaf8;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #85c1e9;
+    }
+    .selected {
+        border: 2px solid #2980b9;
+        background: #85c1e9;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2980b9 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1b4f72 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #a9cce3;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2980b9;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1b4f72;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d6eaf8;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1b4f72;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Glomerulopatía secundaria a enfermedad cardiovascular</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Paciente masculino de 65 años, con antecedentes de hipertensión arterial y diabetes mellitus tipo 2, quien consulta por edemas en miembros inferiores y disnea de moderados esfuerzos de un mes de evolución. Además, refiere pérdida de peso no intencionada de 4 kg en el último mes. En el examen físico, se observa edema en miembros inferiores hasta la región pretibial, ingurgitación yugular hasta 5 cm sobre el margen esternal y estertores bibasales. Los estudios de laboratorio muestran creatinina sérica de 1.8 mg/dL (previamente estable en 0.9 mg/dL), proteinuria de 1.5 g/24 horas y albúmina sérica de 2.5 g/dL. La ecocardiografía revela fracción de eyección del ventrículo izquierdo del 35%.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2136">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es la causa más probable de la proteinuria en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2136, this, 'A')">A) Glomerulonefritis aguda.</li>
+            <li onclick="selectAnswer(2136, this, 'B')">B) Nefropatía diabética.</li>
+            <li onclick="selectAnswer(2136, this, 'C')">C) Nefropatía por IgA.</li>
+            <li onclick="selectAnswer(2136, this, 'D')">D) Glomerulopatía secundaria a enfermedad cardiovascular.</li>
+        </ul>
+        <div class="justification" id="justification-2136">
+            La proteinuria en este caso se debe probablemente a una glomerulopatía secundaria a enfermedad cardiovascular, dada la insuficiencia cardíaca congestiva (ICC) evidenciada por la ingurgitación yugular, estertores bibasales y fracción de eyección disminuida.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2137">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es el diagnóstico más probable para explicar la insuficiencia cardíaca congestiva de este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2137, this, 'A')">A) Infarto agudo de miocardio.</li>
+            <li onclick="selectAnswer(2137, this, 'B')">B) Hipertensión arterial no controlada.</li>
+            <li onclick="selectAnswer(2137, this, 'C')">C) Diabetes mellitus tipo 2.</li>
+            <li onclick="selectAnswer(2137, this, 'D')">D) Cardiomiopatía isquémica.</li>
+        </ul>
+        <div class="justification" id="justification-2137">
+            El infarto agudo de miocardio es una causa común de insuficiencia cardíaca congestiva, especialmente en pacientes con factores de riesgo como hipertensión arterial y diabetes mellitus tipo 2.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2138">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál es el hallazgo ecocardiográfico más sugestivo de la insuficiencia cardíaca congestiva en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2138, this, 'A')">A) Hipertrofia del ventrículo izquierdo.</li>
+            <li onclick="selectAnswer(2138, this, 'B')">B) Dilatación del ventrículo derecho.</li>
+            <li onclick="selectAnswer(2138, this, 'C')">C) Fracción de eyección del ventrículo izquierdo disminuida.</li>
+            <li onclick="selectAnswer(2138, this, 'D')">D) Engrosamiento del septum interventricular.</li>
+        </ul>
+        <div class="justification" id="justification-2138">
+            La fracción de eyección del ventrículo izquierdo disminuida es un hallazgo característico de la insuficiencia cardíaca congestiva y puede indicar disfunción sistólica del ventrículo izquierdo.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2139">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál es el valor normal de la fracción de eyección del ventrículo izquierdo en un adulto?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2139, this, 'A')">A) Menor al 30%.</li>
+            <li onclick="selectAnswer(2139, this, 'B')">B) Entre 30% y 50%.</li>
+            <li onclick="selectAnswer(2139, this, 'C')">C) Mayor al 50%.</li>
+            <li onclick="selectAnswer(2139, this, 'D')">D) Entre 55% y 75%.</li>
+        </ul>
+        <div class="justification" id="justification-2139">
+            La fracción de eyección del ventrículo izquierdo normalmente oscila entre el 50% y el 70%, y se considera disminuida cuando está por debajo del 50%.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2140">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál es el tratamiento inicial recomendado para este paciente con insuficiencia cardíaca congestiva?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2140, this, 'A')">A) Diuréticos.</li>
+            <li onclick="selectAnswer(2140, this, 'B')">B) Antihipertensivos.</li>
+            <li onclick="selectAnswer(2140, this, 'C')">C) Antibióticos.</li>
+            <li onclick="selectAnswer(2140, this, 'D')">D) Anticonvulsivantes.</li>
+        </ul>
+        <div class="justification" id="justification-2140">
+            Los diuréticos son el tratamiento inicial recomendado para pacientes con insuficiencia cardíaca congestiva para reducir la retención de líquidos y aliviar los síntomas de congestión.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2136: "D",
+        2137: "A",
+        2138: "C",
+        2139: "C",
+        2140: "A"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

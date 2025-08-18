@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anemia de Enfermedad Crónica - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #fafafa;
+        margin: 0; padding: 20px;
+        color: #222;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #27ae60;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #2ecc71;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d4efdf;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #7dcea0;
+    }
+    .selected {
+        border: 2px solid #27ae60;
+        background: #7dcea0;
+        pointer-events: none;
+    }
+    .correct {
+        background: #27ae60 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1e8449 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #27ae60;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1e8449;
+    }
+    #submit-button:disabled {
+        background: #abebc6;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d4efdf;
+        border: 1px solid #27ae60;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1e8449;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d4efdf;
+        border-left: 4px solid #27ae60;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1e8449;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Anemia de Enfermedad Crónica</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Paciente de 42 años, femenino, sin antecedentes médicos relevantes, quien acude a consulta por presentar fatiga, náuseas y edema en miembros inferiores desde hace un mes. En el examen físico, se observa palidez cutáneo-mucosa, edema en miembros inferiores hasta la región pretibial y hepatomegalia palpable. Los estudios de laboratorio muestran una hemoglobina de 8.5 g/dL, creatinina sérica de 2.1 mg/dL y una tasa de filtración glomerular estimada (TFGe) de 35 ml/min/1.73 m². La ferritina sérica está elevada.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2126">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el diagnóstico más probable en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2126, this, 'A')">A) Anemia ferropénica.</li>
+            <li onclick="selectAnswer(2126, this, 'B')">B) Anemia aplásica.</li>
+            <li onclick="selectAnswer(2126, this, 'C')">C) Anemia hemolítica.</li>
+            <li onclick="selectAnswer(2126, this, 'D')">D) Anemia de enfermedad crónica.</li>
+        </ul>
+        <div class="justification" id="justification-2126">
+            El paciente presenta fatiga, palidez cutáneo-mucosa, edema en miembros inferiores, hepatomegalia palpable y una ferritina sérica elevada, lo que sugiere un cuadro de anemia de enfermedad crónica.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2127">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es el hallazgo más característico en los estudios de laboratorio que respalda el diagnóstico en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2127, this, 'A')">A) Ferritina sérica elevada.</li>
+            <li onclick="selectAnswer(2127, this, 'B')">B) Leucocitosis.</li>
+            <li onclick="selectAnswer(2127, this, 'C')">C) Bilirrubina indirecta elevada.</li>
+            <li onclick="selectAnswer(2127, this, 'D')">D) Recuento plaquetario disminuido.</li>
+        </ul>
+        <div class="justification" id="justification-2127">
+            La ferritina sérica elevada es un hallazgo característico en la anemia de enfermedad crónica debido a la retención de hierro en el organismo.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2128">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál de los siguientes mecanismos contribuye principalmente a la anemia en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2128, this, 'A')">A) Pérdida aguda de sangre.</li>
+            <li onclick="selectAnswer(2128, this, 'B')">B) Destrucción aumentada de eritrocitos.</li>
+            <li onclick="selectAnswer(2128, this, 'C')">C) Producción reducida de eritropoyetina.</li>
+            <li onclick="selectAnswer(2128, this, 'D')">D) Déficit de vitamina B12.</li>
+        </ul>
+        <div class="justification" id="justification-2128">
+            La anemia de enfermedad crónica se caracteriza por una producción reducida de eritropoyetina, que resulta en una disminución de la producción de eritrocitos.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2129">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál es el tratamiento inicial más adecuado para la anemia en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2129, this, 'A')">A) Transfusión de sangre.</li>
+            <li onclick="selectAnswer(2129, this, 'B')">B) Suplementos de hierro oral.</li>
+            <li onclick="selectAnswer(2129, this, 'C')">C) Eritropoyetina recombinante humana.</li>
+            <li onclick="selectAnswer(2129, this, 'D')">D) Ácido fólico.</li>
+        </ul>
+        <div class="justification" id="justification-2129">
+            El tratamiento inicial para la anemia de enfermedad crónica incluye la administración de eritropoyetina recombinante humana para estimular la producción de glóbulos rojos.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2130">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál es el principal objetivo del tratamiento en este paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2130, this, 'A')">A) Corregir la deficiencia de hierro.</li>
+            <li onclick="selectAnswer(2130, this, 'B')">B) Prevenir la formación de trombos.</li>
+            <li onclick="selectAnswer(2130, this, 'C')">C) Mejorar la función renal.</li>
+            <li onclick="selectAnswer(2130, this, 'D')">D) Corregir la anemia y mejorar los síntomas.</li>
+        </ul>
+        <div class="justification" id="justification-2130">
+            El principal objetivo del tratamiento en pacientes con anemia de enfermedad crónica es corregir la anemia y mejorar los síntomas asociados, como la fatiga y el edema.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2126: "D",
+        2127: "A",
+        2128: "C",
+        2129: "C",
+        2130: "D"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

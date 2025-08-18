@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hipokalemia - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9fbfc;
+        margin: 0; padding: 20px;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #34495e;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #3498db;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #2980b9;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d6eaf8;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #85c1e9;
+    }
+    .selected {
+        border: 2px solid #2980b9;
+        background: #85c1e9;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2874a6 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1b4f72 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #85c1e9;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2980b9;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1b4f72;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d6eaf8;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1b4f72;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Hipokalemia</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Una mujer de 35 años, sin antecedentes médicos significativos, acude al servicio de urgencias con debilidad muscular progresiva y fatiga. 
+            La paciente refiere haber experimentado calambres musculares y sensación de hormigueo en las extremidades durante los últimos días. 
+            En el examen físico, se observa hiporreflexia y debilidad muscular simétrica en las extremidades inferiores. 
+            Los análisis de laboratorio revelan niveles séricos de potasio bajos.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2201">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el diagnóstico más probable basado en la historia clínica y los resultados de laboratorio?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2201, this, 'A')">A) Hiponatremia.</li>
+            <li onclick="selectAnswer(2201, this, 'B')">B) Hipercalcemia.</li>
+            <li onclick="selectAnswer(2201, this, 'C')">C) Hipokalemia.</li>
+            <li onclick="selectAnswer(2201, this, 'D')">D) Hipomagnesemia.</li>
+        </ul>
+        <div class="justification" id="justification-2201">
+            La presencia de debilidad muscular, hiporreflexia y niveles séricos bajos de potasio sugieren hipokalemia, una condición caracterizada por niveles bajos de potasio en sangre.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2202">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál es el tratamiento inicial apropiado para esta paciente?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2202, this, 'A')">A) Administrar suplementos de potasio oral.</li>
+            <li onclick="selectAnswer(2202, this, 'B')">B) Administrar bicarbonato de sodio intravenoso.</li>
+            <li onclick="selectAnswer(2202, this, 'C')">C) Administrar furosemida intravenosa.</li>
+            <li onclick="selectAnswer(2202, this, 'D')">D) Administrar digoxina intravenosa.</li>
+        </ul>
+        <div class="justification" id="justification-2202">
+            El tratamiento inicial de la hipokalemia implica la reposición de potasio, que puede administrarse por vía oral en pacientes sin complicaciones significativas.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2203">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál es la causa más común de hipokalemia en pacientes ambulatorios?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2203, this, 'A')">A) Uso de diuréticos.</li>
+            <li onclick="selectAnswer(2203, this, 'B')">B) Vómitos crónicos.</li>
+            <li onclick="selectAnswer(2203, this, 'C')">C) Enfermedad de Addison.</li>
+            <li onclick="selectAnswer(2203, this, 'D')">D) Uso de corticosteroides.</li>
+        </ul>
+        <div class="justification" id="justification-2203">
+            El uso de diuréticos, especialmente los diuréticos de asa y los tiazídicos, es una causa común de hipokalemia en pacientes ambulatorios debido a su efecto natriurético y kaliurético.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2204">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál es la complicación más grave asociada con la hipokalemia severa?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2204, this, 'A')">A) Arritmias cardiacas.</li>
+            <li onclick="selectAnswer(2204, this, 'B')">B) Insuficiencia renal aguda.</li>
+            <li onclick="selectAnswer(2204, this, 'C')">C) Hipertensión arterial.</li>
+            <li onclick="selectAnswer(2204, this, 'D')">D) Trombosis venosa profunda.</li>
+        </ul>
+        <div class="justification" id="justification-2204">
+            La hipokalemia severa puede provocar arritmias cardiacas potencialmente mortales, como la torsade de pointes y la fibrilación ventricular.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2205">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál es el mecanismo de acción principal de los diuréticos tiazídicos en la inducción de hipokalemia?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2205, this, 'A')">A) Inhibición de la reabsorción de sodio en el túbulo contorneado proximal.</li>
+            <li onclick="selectAnswer(2205, this, 'B')">B) Aumento de la reabsorción de sodio en el túbulo contorneado distal.</li>
+            <li onclick="selectAnswer(2205, this, 'C')">C) Inhibición de la reabsorción de sodio en el asa de Henle.</li>
+            <li onclick="selectAnswer(2205, this, 'D')">D) Aumento de la excreción de potasio en el túbulo contorneado distal.</li>
+        </ul>
+        <div class="justification" id="justification-2205">
+            Los diuréticos tiazídicos aumentan la excreción de potasio en el túbulo contorneado distal, lo que puede llevar a la hipokalemia como efecto secundario.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2201: "C",
+        2202: "A",
+        2203: "A",
+        2204: "A",
+        2205: "D"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

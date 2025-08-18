@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cistitis en Mujer - Caso Clínico 1</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9f9f9;
+        margin: 0; padding: 20px;
+        color: #222;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 850px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #2980b9;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #2471a3;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #ecf0f1;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #d6eaf8;
+    }
+    .selected {
+        border: 2px solid #2471a3;
+        background: #d6eaf8;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2980b9 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #c0392b !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #95a5a6;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2471a3;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #ebf5fb;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico 1: Cistitis en Mujer</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            María, una mujer de 30 años, acude al consultorio médico quejándose de dolor al orinar y necesidad frecuente de ir al baño para orinar en pequeñas cantidades. Además, refiere dolor en la parte baja del abdomen y sensación de ardor al orinar. Durante el examen físico, se observa sensibilidad en la región suprapúbica y el médico realiza una prueba de tiras reactivas en la muestra de orina, que indica la presencia de leucocitos y nitritos.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="7001">
+        <h3>❓ Pregunta 1:</h3>
+        <p>¿Cuál es el diagnóstico más probable en este caso?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7001, this, 'A')">A. Cistitis</li>
+            <li onclick="selectAnswer(7001, this, 'B')">B. Pielonefritis</li>
+            <li onclick="selectAnswer(7001, this, 'C')">C. Glomerulonefritis aguda</li>
+            <li onclick="selectAnswer(7001, this, 'D')">D. Uretritis</li>
+        </ul>
+        <div class="justification" id="justification-7001">
+            Los síntomas de dolor al orinar, urgencia miccional, dolor suprapúbico y los hallazgos de leucocitos y nitritos en la orina son consistentes con el diagnóstico de cistitis, que es una infección de la vejiga.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7002">
+        <h3>❓ Pregunta 2:</h3>
+        <p>¿Cuál es el agente patógeno más comúnmente asociado con la cistitis no complicada en mujeres jóvenes?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7002, this, 'A')">A. Escherichia coli</li>
+            <li onclick="selectAnswer(7002, this, 'B')">B. Streptococcus agalactiae</li>
+            <li onclick="selectAnswer(7002, this, 'C')">C. Staphylococcus aureus</li>
+            <li onclick="selectAnswer(7002, this, 'D')">D. Enterococcus faecalis</li>
+        </ul>
+        <div class="justification" id="justification-7002">
+            Escherichia coli es el agente patógeno más comúnmente asociado con la cistitis no complicada en mujeres jóvenes.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7003">
+        <h3>❓ Pregunta 3:</h3>
+        <p>¿Cuál de los siguientes hallazgos adicionales en el examen físico sería más sugestivo de pielonefritis en lugar de cistitis?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7003, this, 'A')">A. Sensibilidad en la región suprapúbica</li>
+            <li onclick="selectAnswer(7003, this, 'B')">B. Dolor a la palpación de la vejiga</li>
+            <li onclick="selectAnswer(7003, this, 'C')">C. Dolor a la percusión renal</li>
+            <li onclick="selectAnswer(7003, this, 'D')">D. Prurito vulvar</li>
+        </ul>
+        <div class="justification" id="justification-7003">
+            El dolor a la percusión renal puede indicar inflamación renal, como en el caso de la pielonefritis, mientras que la sensibilidad en la región suprapúbica es más característica de la cistitis.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7004">
+        <h3>❓ Pregunta 4:</h3>
+        <p>¿Cuál de las siguientes pruebas de laboratorio es más útil para confirmar el diagnóstico de infección urinaria en este caso?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7004, this, 'A')">A. Cultivo de orina</li>
+            <li onclick="selectAnswer(7004, this, 'B')">B. Urocultivo con antibiograma</li>
+            <li onclick="selectAnswer(7004, this, 'C')">C. Análisis de sedimento urinario</li>
+            <li onclick="selectAnswer(7004, this, 'D')">D. Prueba de tira reactiva para nitritos</li>
+        </ul>
+        <div class="justification" id="justification-7004">
+            El urocultivo con antibiograma es la prueba de elección para confirmar el diagnóstico de infección urinaria y determinar la sensibilidad del agente patógeno a los antibióticos.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7005">
+        <h3>❓ Pregunta 5:</h3>
+        <p>¿Cuál de los siguientes antibióticos es comúnmente utilizado como tratamiento empírico para la cistitis no complicada en mujeres jóvenes?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7005, this, 'A')">A. Ciprofloxacino</li>
+            <li onclick="selectAnswer(7005, this, 'B')">B. Trimetoprima/sulfametoxazol</li>
+            <li onclick="selectAnswer(7005, this, 'C')">C. Amoxicilina</li>
+            <li onclick="selectAnswer(7005, this, 'D')">D. Metronidazol</li>
+        </ul>
+        <div class="justification" id="justification-7005">
+            Trimetoprima/sulfametoxazol es un antibiótico comúnmente utilizado como tratamiento empírico para la cistitis no complicada en mujeres jóvenes debido a su eficacia contra Escherichia coli, el agente patógeno más comúnmente asociado con esta condición.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        7001: "A",
+        7002: "A",
+        7003: "C",
+        7004: "B",
+        7005: "B"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

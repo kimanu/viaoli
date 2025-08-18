@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Glomerulonefritis Aguda - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #fafafa;
+        margin: 0; padding: 20px;
+        color: #222;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #27ae60;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #2ecc71;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #d5f5e3;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #82e0aa;
+    }
+    .selected {
+        border: 2px solid #27ae60;
+        background: #82e0aa;
+        pointer-events: none;
+    }
+    .correct {
+        background: #27ae60 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #1e8449 !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #27ae60;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1e8449;
+    }
+    #submit-button:disabled {
+        background: #a9dfbf;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d5f5e3;
+        border: 1px solid #27ae60;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #1e8449;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #d5f5e3;
+        border-left: 4px solid #27ae60;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+        color: #1e8449;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico: Glomerulonefritis Aguda</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Paciente de 45 años, sexo femenino, sin antecedentes médicos conocidos, presenta dolor lumbar bilateral, malestar general y disminución del volumen urinario en las últimas 24 horas. En el examen físico, se observa palidez cutáneo-mucosa y edemas en miembros inferiores. Los exámenes complementarios muestran creatinina sérica elevada (2.8 mg/dL), urea elevada (70 mg/dL), anemia normocítica normocrómica (hemoglobina 9 g/dL) y proteinuria 3+ en el análisis de orina.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="2086">
+        <h3>❓ Pregunta 1 (Conocimiento):</h3>
+        <p>¿Cuál es el diagnóstico más probable en este paciente con dolor lumbar bilateral, disminución del volumen urinario y proteinuria 3+?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2086, this, 'A')">A. Nefropatía por IgA.</li>
+            <li onclick="selectAnswer(2086, this, 'B')">B. Nefropatía diabética.</li>
+            <li onclick="selectAnswer(2086, this, 'C')">C. Glomerulonefritis aguda.</li>
+            <li onclick="selectAnswer(2086, this, 'D')">D. Lesión renal aguda tubular.</li>
+        </ul>
+        <div class="justification" id="justification-2086">
+            La presentación clínica con dolor lumbar bilateral, disminución del volumen urinario y proteinuria 3+ sugiere una afectación glomerular aguda, siendo la glomerulonefritis aguda la opción más probable.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2087">
+        <h3>❓ Pregunta 2 (Comprensión):</h3>
+        <p>¿Cuál de las siguientes características es típica de la glomerulonefritis aguda?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2087, this, 'A')">A. Proteinuria selectiva.</li>
+            <li onclick="selectAnswer(2087, this, 'B')">B. Hematuria macroscópica.</li>
+            <li onclick="selectAnswer(2087, this, 'C')">C. Poliuria.</li>
+            <li onclick="selectAnswer(2087, this, 'D')">D. Niveles de creatinina sérica dentro de límites normales.</li>
+        </ul>
+        <div class="justification" id="justification-2087">
+            La hematuria macroscópica es una característica típica de la glomerulonefritis aguda, junto con la proteinuria y la hipertensión arterial.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2088">
+        <h3>❓ Pregunta 3 (Aplicación):</h3>
+        <p>¿Cuál de los siguientes es un hallazgo típico en el análisis de orina de un paciente con glomerulonefritis aguda?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2088, this, 'A')">A. Leucocituria.</li>
+            <li onclick="selectAnswer(2088, this, 'B')">B. Proteinuria no selectiva.</li>
+            <li onclick="selectAnswer(2088, this, 'C')">C. Piuria.</li>
+            <li onclick="selectAnswer(2088, this, 'D')">D. Cilindros granulosos.</li>
+        </ul>
+        <div class="justification" id="justification-2088">
+            Los cilindros granulosos son un hallazgo típico en el análisis de orina de un paciente con glomerulonefritis aguda, indicando la presencia de daño renal agudo.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2089">
+        <h3>❓ Pregunta 4 (Análisis):</h3>
+        <p>¿Cuál de las siguientes complicaciones es más común en la glomerulonefritis aguda?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2089, this, 'A')">A. Insuficiencia respiratoria aguda.</li>
+            <li onclick="selectAnswer(2089, this, 'B')">B. Trombosis venosa profunda.</li>
+            <li onclick="selectAnswer(2089, this, 'C')">C. Insuficiencia renal aguda.</li>
+            <li onclick="selectAnswer(2089, this, 'D')">D. Hipertensión arterial crónica.</li>
+        </ul>
+        <div class="justification" id="justification-2089">
+            La insuficiencia renal aguda es una complicación común en la glomerulonefritis aguda debido al daño renal agudo que ocurre durante el curso de la enfermedad.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="2090">
+        <h3>❓ Pregunta 5 (Síntesis):</h3>
+        <p>¿Cuál de las siguientes pruebas complementarias es útil para confirmar el diagnóstico de glomerulonefritis aguda?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(2090, this, 'A')">A. Niveles séricos de creatinina.</li>
+            <li onclick="selectAnswer(2090, this, 'B')">B. Dosaje de urea en orina de 24 horas.</li>
+            <li onclick="selectAnswer(2090, this, 'C')">C. Biopsia renal.</li>
+            <li onclick="selectAnswer(2090, this, 'D')">D. Ecografía renal.</li>
+        </ul>
+        <div class="justification" id="justification-2090">
+            La biopsia renal es útil para confirmar el diagnóstico de glomerulonefritis aguda al proporcionar información histológica sobre la afectación glomerular y orientar el manejo terapéutico.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        2086: "C",
+        2087: "B",
+        2088: "D",
+        2089: "C",
+        2090: "C"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

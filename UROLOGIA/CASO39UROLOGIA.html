@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Uropatía Obstructiva en Niño - Caso Clínico</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9f9f9;
+        margin: 0; padding: 20px;
+        color: #222;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 850px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #27ae60;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #229954;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #ecf0f1;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #d1f2eb;
+    }
+    .selected {
+        border: 2px solid #229954;
+        background: #d1f2eb;
+        pointer-events: none;
+    }
+    .correct {
+        background: #27ae60 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #c0392b !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #27ae60;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1e8449;
+    }
+    #submit-button:disabled {
+        background: #95a5a6;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d1f2eb;
+        border: 1px solid #229954;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #ebf5fb;
+        border-left: 4px solid #27ae60;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico 1: Uropatía Obstructiva en Niño</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Juan, un niño de 7 años, es llevado al departamento de urgencias por sus padres debido a un dolor abdominal intenso y cólico, acompañado de náuseas y vómitos. Sus padres notaron que Juan ha tenido dificultad para orinar en los últimos días y ha estado yendo al baño con más frecuencia de lo habitual. Durante el examen físico, se observa que Juan está inquieto y presenta distensión abdominal. La palpación abdominal revela una masa palpable en el flanco derecho.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="7001">
+        <h3>❓ Pregunta 1:</h3>
+        <p>¿Cuál es el siguiente paso más apropiado en la evaluación de Juan?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7001, this, 'A')">A. Realizar una ecografía renal y vesical</li>
+            <li onclick="selectAnswer(7001, this, 'B')">B. Realizar una cistografía retrógrada</li>
+            <li onclick="selectAnswer(7001, this, 'C')">C. Solicitar una tomografía computarizada de abdomen y pelvis</li>
+            <li onclick="selectAnswer(7001, this, 'D')">D. Iniciar tratamiento empírico con antibióticos</li>
+        </ul>
+        <div class="justification" id="justification-7001">
+            Ante la sospecha de uropatía obstructiva en un niño con dolor abdominal intenso, el primer paso en la evaluación es realizar una ecografía renal y vesical para evaluar la anatomía de los riñones y la vejiga.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7002">
+        <h3>❓ Pregunta 2:</h3>
+        <p>¿Cuál de los siguientes factores de riesgo es más relevante para evaluar en el contexto de la uropatía obstructiva en Juan?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7002, this, 'A')">A. Historial de tabaquismo</li>
+            <li onclick="selectAnswer(7002, this, 'B')">B. Historial de alergias alimentarias</li>
+            <li onclick="selectAnswer(7002, this, 'C')">C. Antecedentes familiares de enfermedades renales</li>
+            <li onclick="selectAnswer(7002, this, 'D')">D. Exposición reciente a productos químicos tóxicos</li>
+        </ul>
+        <div class="justification" id="justification-7002">
+            Los antecedentes familiares de enfermedades renales pueden ser relevantes en la evaluación de la uropatía obstructiva, ya que algunas condiciones pueden tener un componente genético.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7003">
+        <h3>❓ Pregunta 3:</h3>
+        <p>¿Cuál de las siguientes afirmaciones sobre la uropatía obstructiva es correcta?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7003, this, 'A')">A. Es más común en mujeres que en hombres</li>
+            <li onclick="selectAnswer(7003, this, 'B')">B. Puede ser causada por un estrechamiento de la uretra</li>
+            <li onclick="selectAnswer(7003, this, 'C')">C. Se asocia principalmente con infecciones urinarias</li>
+            <li onclick="selectAnswer(7003, this, 'D')">D. Suele mejorar espontáneamente sin tratamiento</li>
+        </ul>
+        <div class="justification" id="justification-7003">
+            La uropatía obstructiva puede ser causada por diversas condiciones, incluyendo estrechamiento de la uretra, cálculos en el tracto urinario, anomalías congénitas u otras obstrucciones mecánicas.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7004">
+        <h3>❓ Pregunta 4:</h3>
+        <p>¿Cuál de los siguientes hallazgos en una ecografía renal y vesical podría indicar uropatía obstructiva en Juan?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7004, this, 'A')">A. Ausencia de quistes renales</li>
+            <li onclick="selectAnswer(7004, this, 'B')">B. Dilatación del sistema colector renal</li>
+            <li onclick="selectAnswer(7004, this, 'C')">C. Reducción del tamaño renal</li>
+            <li onclick="selectAnswer(7004, this, 'D')">D. Presencia de calcificaciones en la vejiga</li>
+        </ul>
+        <div class="justification" id="justification-7004">
+            La dilatación del sistema colector renal en una ecografía puede indicar obstrucción del flujo urinario y es un hallazgo común en la uropatía obstructiva.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7005">
+        <h3>❓ Pregunta 5:</h3>
+        <p>¿Cuál de las siguientes opciones de manejo sería más adecuada para el tratamiento de la uropatía obstructiva en Juan?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7005, this, 'A')">A. Administración de analgésicos y reposo en cama</li>
+            <li onclick="selectAnswer(7005, this, 'B')">B. Colocación de un catéter urinario para drenaje</li>
+            <li onclick="selectAnswer(7005, this, 'C')">C. Iniciar tratamiento con antibióticos</li>
+            <li onclick="selectAnswer(7005, this, 'D')">D. Realizar una cirugía para corregir la obstrucción</li>
+        </ul>
+        <div class="justification" id="justification-7005">
+            El tratamiento definitivo de la uropatía obstructiva suele requerir la corrección quirúrgica de la obstrucción, dependiendo de la causa subyacente.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        7001: "A",
+        7002: "C",
+        7003: "B",
+        7004: "B",
+        7005: "D"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

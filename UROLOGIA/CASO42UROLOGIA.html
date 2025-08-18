@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Uropatía Obstructiva en Mujer - Caso Clínico 2</title>
+<style>
+    body {
+        font-family: 'Times New Roman', serif;
+        background-color: #f9f9f9;
+        margin: 0; padding: 20px;
+        color: #222;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        color: #2c3e50;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 850px;
+        margin: auto;
+    }
+    .card {
+        background: white;
+        border-left: 6px solid #2980b9;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .question-card {
+        border-color: #2471a3;
+    }
+    .options {
+        list-style: none;
+        padding: 0;
+    }
+    .options li {
+        background: #ecf0f1;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .options li:hover {
+        background: #d6eaf8;
+    }
+    .selected {
+        border: 2px solid #2471a3;
+        background: #d6eaf8;
+        pointer-events: none;
+    }
+    .correct {
+        background: #2980b9 !important;
+        color: white;
+    }
+    .incorrect {
+        background: #c0392b !important;
+        color: white;
+    }
+    #submit-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        background: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+    }
+    #submit-button:hover:not(:disabled) {
+        background: #1b4f72;
+    }
+    #submit-button:disabled {
+        background: #95a5a6;
+        cursor: not-allowed;
+    }
+    #results {
+        display: none;
+        background: #d6eaf8;
+        border: 1px solid #2471a3;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    .justification {
+        display: none;
+        margin-top: 8px;
+        background: #ebf5fb;
+        border-left: 4px solid #2980b9;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: normal;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🩺 Caso Clínico 2: Uropatía Obstructiva en Mujer</h1>
+    </div>
+    <div class="card">
+        <h2>Historia Clínica</h2>
+        <p>
+            Laura, una mujer de 28 años, consulta al médico por presentar dolor abdominal intenso en el lado derecho, el cual se ha vuelto progresivamente más intenso en las últimas 24 horas. Laura informa que también ha experimentado náuseas y vómitos desde el inicio del dolor. Durante el examen físico, se observa que Laura está agitada y tiene tendencia a moverse en la cama debido al dolor. La palpación abdominal revela sensibilidad en el flanco derecho.
+        </p>
+    </div>
+
+    <div class="card question-card" data-index="7101">
+        <h3>❓ Pregunta 1:</h3>
+        <p>¿Cuál es el siguiente paso más apropiado en la evaluación de Laura?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7101, this, 'A')">A. Realizar una ecografía renal y vesical</li>
+            <li onclick="selectAnswer(7101, this, 'B')">B. Ordenar una cistografía retrógrada</li>
+            <li onclick="selectAnswer(7101, this, 'C')">C. Solicitar una tomografía computarizada de abdomen y pelvis</li>
+            <li onclick="selectAnswer(7101, this, 'D')">D. Iniciar tratamiento empírico con antibióticos</li>
+        </ul>
+        <div class="justification" id="justification-7101">
+            Ante la sospecha de uropatía obstructiva en una mujer joven con dolor abdominal intenso y síntomas urinarios, el siguiente paso en la evaluación es solicitar una tomografía computarizada para evaluar posibles obstrucciones del tracto urinario.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7102">
+        <h3>❓ Pregunta 2:</h3>
+        <p>¿Cuál de los siguientes factores de riesgo es más relevante para evaluar en el contexto de la uropatía obstructiva en Laura?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7102, this, 'A')">A. Historial de tabaquismo</li>
+            <li onclick="selectAnswer(7102, this, 'B')">B. Consumo excesivo de alcohol</li>
+            <li onclick="selectAnswer(7102, this, 'C')">C. Antecedentes de infecciones urinarias recurrentes</li>
+            <li onclick="selectAnswer(7102, this, 'D')">D. Uso prolongado de anticonceptivos orales</li>
+        </ul>
+        <div class="justification" id="justification-7102">
+            Los antecedentes de infecciones urinarias recurrentes pueden ser relevantes en la evaluación de la uropatía obstructiva, ya que las cicatrices o estenosis resultantes de infecciones previas pueden predisponer a la obstrucción del tracto urinario.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7103">
+        <h3>❓ Pregunta 3:</h3>
+        <p>¿Cuál de las siguientes afirmaciones sobre la uropatía obstructiva es correcta?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7103, this, 'A')">A. Es más común en mujeres que en hombres</li>
+            <li onclick="selectAnswer(7103, this, 'B')">B. Suele ser causada por una hiperactividad del músculo detrusor</li>
+            <li onclick="selectAnswer(7103, this, 'C')">C. Puede presentarse con oliguria y anuria</li>
+            <li onclick="selectAnswer(7103, this, 'D')">D. Es un trastorno benigno que no requiere tratamiento</li>
+        </ul>
+        <div class="justification" id="justification-7103">
+            La uropatía obstructiva puede causar una disminución del flujo urinario, lo que puede manifestarse como oliguria (producción reducida de orina) o anuria (ausencia de producción de orina).
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7104">
+        <h3>❓ Pregunta 4:</h3>
+        <p>¿Cuál de los siguientes hallazgos en una tomografía computarizada de abdomen y pelvis podría indicar uropatía obstructiva en Laura?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7104, this, 'A')">A. Dilatación del tracto urinario superior</li>
+            <li onclick="selectAnswer(7104, this, 'B')">B. Reducción del tamaño renal</li>
+            <li onclick="selectAnswer(7104, this, 'C')">C. Ausencia de calcificaciones en el tracto urinario</li>
+            <li onclick="selectAnswer(7104, this, 'D')">D. Engrosamiento de la pared de la vejiga</li>
+        </ul>
+        <div class="justification" id="justification-7104">
+            La dilatación del tracto urinario superior en una tomografía computarizada puede indicar obstrucción del flujo urinario y es un hallazgo común en la uropatía obstructiva.
+        </div>
+    </div>
+
+    <div class="card question-card" data-index="7105">
+        <h3>❓ Pregunta 5:</h3>
+        <p>¿Cuál de las siguientes opciones de manejo sería más adecuada para el tratamiento de la uropatía obstructiva en Laura?</p>
+        <ul class="options">
+            <li onclick="selectAnswer(7105, this, 'A')">A. Administración de analgésicos y reposo en cama</li>
+            <li onclick="selectAnswer(7105, this, 'B')">B. Colocación de un stent ureteral</li>
+            <li onclick="selectAnswer(7105, this, 'C')">C. Iniciar tratamiento con antibióticos</li>
+            <li onclick="selectAnswer(7105, this, 'D')">D. Realizar una cistoscopia para despejar la obstrucción</li>
+        </ul>
+        <div class="justification" id="justification-7105">
+            La colocación de un stent ureteral es una opción de manejo para aliviar la obstrucción del tracto urinario y restaurar el flujo de orina en casos de uropatía obstructiva.
+        </div>
+    </div>
+
+    <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let locked = false;
+    let selectedAnswers = {};
+    const correctAnswers = {
+        7101: "C",
+        7102: "C",
+        7103: "C",
+        7104: "A",
+        7105: "B"
+    };
+
+    function selectAnswer(questionIndex, element, option) {
+        if (locked || selectedAnswers[questionIndex]) return;
+
+        document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+        element.classList.add('selected');
+        selectedAnswers[questionIndex] = option;
+
+        if (option === correctAnswers[questionIndex]) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function lockAnswers() {
+        let correct = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let index in correctAnswers) {
+            if (selectedAnswers[index] === correctAnswers[index]) {
+                correct++;
+            }
+            document.getElementById(`justification-${index}`).style.display = 'block';
+        }
+
+        let score = (correct / total) * 100;
+        document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+        document.getElementById('results').style.display = 'block';
+
+        locked = true;
+        document.getElementById('submit-button').disabled = true;
+    }
+</script>
+</body>
+</html>

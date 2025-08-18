@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Urología - Torsión Testicular Adolescente</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f4f9ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1b4f72;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .card {
+            background: #fff;
+            border-left: 6px solid;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .case-container {
+            border-color: #5dade2;
+        }
+
+        .question-card {
+            border-color: #2874a6;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            background: #f7f9fc;
+            padding: 12px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2874a6;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: #fff;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: #fff;
+        }
+
+        #submit-button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2em;
+            background: #2874a6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #154360;
+        }
+
+        #submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            background: #d4efdf;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2874a6;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Urología - Torsión Testicular Adolescente</h1>
+        </div>
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>
+                Juan, un adolescente de 16 años, acude a urgencias con dolor agudo en el escroto. El dolor comenzó repentinamente hace aproximadamente 3 horas y ha empeorado progresivamente. Juan describe el dolor como intenso y constante, sin alivio con el reposo. Durante el examen físico, se observa un aumento notable en el tamaño del testículo izquierdo en comparación con el derecho. Además, el testículo izquierdo es firme, sensible al tacto y se encuentra elevado en el escroto en comparación con el derecho. No se observan signos de trauma externo en el área genital. El resto del examen físico es normal.
+            </p>
+        </div>
+
+        <div class="card question-card" data-index="801">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el diagnóstico más probable para Juan basado en sus síntomas y hallazgos en el examen físico?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(801, this, 'A')">A. Epididimitis</li>
+                <li onclick="selectAnswer(801, this, 'B')">B. Orquiepididimitis</li>
+                <li onclick="selectAnswer(801, this, 'C')">C. Varicocele</li>
+                <li onclick="selectAnswer(801, this, 'D')">D. Torsión testicular</li>
+            </ul>
+            <div class="justification" id="justification-801">
+                Los síntomas de dolor agudo en el escroto, aumento en el tamaño del testículo afectado, firmeza y sensibilidad al tacto, junto con la elevación del testículo, son altamente sugestivos de torsión testicular, una emergencia urológica.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="802">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de los siguientes hallazgos en el examen físico es característico de la torsión testicular?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(802, this, 'A')">A. Descenso del testículo afectado</li>
+                <li onclick="selectAnswer(802, this, 'B')">B. Escroto relajado y sin aumento en el tamaño del testículo</li>
+                <li onclick="selectAnswer(802, this, 'C')">C. Testículo firme, sensible al tacto y elevado en el escroto</li>
+                <li onclick="selectAnswer(802, this, 'D')">D. Presencia de una masa palpable que desaparece al recostarse</li>
+            </ul>
+            <div class="justification" id="justification-802">
+                En la torsión testicular, el testículo afectado es firme, sensible al tacto y puede estar elevado en el escroto debido a la torsión del cordón espermático.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="803">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es el tratamiento de elección para la torsión testicular confirmada?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(803, this, 'A')">A. Analgesia y observación</li>
+                <li onclick="selectAnswer(803, this, 'B')">B. Terapia antibiótica</li>
+                <li onclick="selectAnswer(803, this, 'C')">C. Descompresión manual del escroto</li>
+                <li onclick="selectAnswer(803, this, 'D')">D. Cirugía urgente</li>
+            </ul>
+            <div class="justification" id="justification-803">
+                La torsión testicular es una emergencia quirúrgica que requiere de una exploración quirúrgica inmediata para desenrollar el cordón espermático y restablecer el flujo sanguíneo al testículo afectado.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="804">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál de los siguientes factores de riesgo se asocia comúnmente con la torsión testicular?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(804, this, 'A')">A. Criptorquidia</li>
+                <li onclick="selectAnswer(804, this, 'B')">B. Edad avanzada</li>
+                <li onclick="selectAnswer(804, this, 'C')">C. Historia de cálculos renales</li>
+                <li onclick="selectAnswer(804, this, 'D')">D. Consumo excesivo de alcohol</li>
+            </ul>
+            <div class="justification" id="justification-804">
+                La criptorquidia, o testículo no descendido, es un importante factor de riesgo para la torsión testicular debido a la anatomía anormal del cordón espermático.
+            </div>
+        </div>
+
+        <div class="card question-card" data-index="805">
+            <h3>❓ Pregunta:</h3>
+            <p>¿Cuál es una complicación potencial de la torsión testicular si no se trata adecuadamente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(805, this, 'A')">A. Epididimitis</li>
+                <li onclick="selectAnswer(805, this, 'B')">B. Infertilidad</li>
+                <li onclick="selectAnswer(805, this, 'C')">C. Varicocele</li>
+                <li onclick="selectAnswer(805, this, 'D')">D. Hidrocele</li>
+            </ul>
+            <div class="justification" id="justification-805">
+                Una complicación grave de la torsión testicular si no se trata adecuadamente es la infertilidad, debido a la posible pérdida del testículo afectado y la disminución en la producción de espermatozoides.
+            </div>
+        </div>
+
+        <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            801: "D",
+            802: "C",
+            803: "D",
+            804: "A",
+            805: "B"
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll(`.question-card[data-index='${questionIndex}'] .options li`).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(`justification-${index}`).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            document.getElementById('results').innerHTML = `✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br>📊 Promedio: ${score.toFixed(2)}%`;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>
