@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traumatologia y Ortopedia</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container { border-color: #e74c3c; }
+        .question-card { border-color: #2980b9; }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover { background: #d6eaf8; }
+        .selected { border: 2px solid #2980b9; background: #d6eaf8; pointer-events: none; }
+        .correct { background: #28a745 !important; color: white; }
+        .incorrect { background: #d9534f !important; color: white; }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover { background: #1a5276; }
+        #submit-button:disabled { background: #bdc3c7; cursor: not-allowed; }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+<div class="card case-container">
+    <h2>🩺 Caso clínico 11</h2>
+    <p>Una mujer de 30 años acude a urgencias después de sufrir un accidente en el trabajo. Mientras levantaba una caja pesada, sintió un dolor agudo en la parte baja de la espalda y ahora tiene dificultad para moverse. Al examen físico, se observa que está inclinada hacia un lado debido al dolor y tiene dificultad para enderezarse. Hay sensibilidad a la palpación en la región lumbar baja y la paciente informa irradiación del dolor hacia la pierna derecha.</p>
+</div>
+
+<div class="card question-card" data-index="4231">
+    <h3>❓ Pregunta:</h3>
+    <p>¿Cuál es el diagnóstico más probable en este paciente?</p>
+    <ul class="options">
+        <li onclick="selectAnswer(4231, this, 'A')">A. Hernia de disco lumbar.</li>
+        <li onclick="selectAnswer(4231, this, 'B')">B. Fractura vertebral por compresión.</li>
+        <li onclick="selectAnswer(4231, this, 'C')">C. Espondilolistesis lumbar.</li>
+        <li onclick="selectAnswer(4231, this, 'D')">D. Estenosis espinal lumbar.</li>
+    </ul>
+    <div class="justification" id="justification-4231">La rotura del ligamento cruzado anterior es una lesión común en deportes que involucran cambios rápidos de dirección y movimientos bruscos de la rodilla, caracterizada por dolor, hinchazón y dificultad para la extensión completa de la pierna.</div>
+</div>
+
+<div class="card question-card" data-index="4232">
+    <h3>❓ Pregunta:</h3>
+    <p>¿Cuál es la prueba diagnóstica de elección para confirmar esta lesión?</p>
+    <ul class="options">
+        <li onclick="selectAnswer(4232, this, 'A')">A. Radiografía de rodilla.</li>
+        <li onclick="selectAnswer(4232, this, 'B')">B. Resonancia magnética de rodilla.</li>
+        <li onclick="selectAnswer(4232, this, 'C')">C. Artroscopia de rodilla.</li>
+        <li onclick="selectAnswer(4232, this, 'D')">D. Ecografía de rodilla.</li>
+    </ul>
+    <div class="justification" id="justification-4232">La resonancia magnética de rodilla es la prueba diagnóstica de elección para confirmar la rotura del ligamento cruzado anterior, ya que proporciona imágenes detalladas de las estructuras ligamentosas y de las posibles lesiones asociadas.</div>
+</div>
+
+<div class="card question-card" data-index="4233">
+    <h3>❓ Pregunta:</h3>
+    <p>¿Cuál de las siguientes maniobras clínicas es más específica para detectar esta lesión?</p>
+    <ul class="options">
+        <li onclick="selectAnswer(4233, this, 'A')">A. Maniobra de Lachman.</li>
+        <li onclick="selectAnswer(4233, this, 'B')">B. Prueba de Pivot-Shift.</li>
+        <li onclick="selectAnswer(4233, this, 'C')">C. Prueba de Apley.</li>
+        <li onclick="selectAnswer(4233, this, 'D')">D. Prueba de McMurray.</li>
+    </ul>
+    <div class="justification" id="justification-4233">La maniobra de Lachman es más específica para detectar la rotura del ligamento cruzado anterior, ya que evalúa la laxitud anterior de la rodilla y la integridad del ligamento cruzado anterior.</div>
+</div>
+
+<div class="card question-card" data-index="4234">
+    <h3>❓ Pregunta:</h3>
+    <p>¿Cuál es el abordaje inicial de manejo recomendado para esta lesión?</p>
+    <ul class="options">
+        <li onclick="selectAnswer(4234, this, 'A')">A. Reposo y aplicación de hielo.</li>
+        <li onclick="selectAnswer(4234, this, 'B')">B. Inmovilización con férula de yeso.</li>
+        <li onclick="selectAnswer(4234, this, 'C')">C. Rehabilitación temprana con fisioterapia.</li>
+        <li onclick="selectAnswer(4234, this, 'D')">D. Cirugía de reconstrucción del ligamento cruzado anterior.</li>
+    </ul>
+    <div class="justification" id="justification-4234">El abordaje inicial de manejo recomendado para la rotura del ligamento cruzado anterior es la rehabilitación temprana con fisioterapia para fortalecer los músculos periarticulares y mejorar la estabilidad de la rodilla.</div>
+</div>
+
+<div class="card question-card" data-index="4235">
+    <h3>❓ Pregunta:</h3>
+    <p>¿Cuál de las siguientes complicaciones a largo plazo es más comúnmente asociada con esta lesión?</p>
+    <ul class="options">
+        <li onclick="selectAnswer(4235, this, 'A')">A. Artrosis de rodilla.</li>
+        <li onclick="selectAnswer(4235, this, 'B')">B. Ruptura del menisco medial.</li>
+        <li onclick="selectAnswer(4235, this, 'C')">C. Síndrome de atrapamiento rotuliano.</li>
+        <li onclick="selectAnswer(4235, this, 'D')">D. Lesión del nervio peroneo común.</li>
+    </ul>
+    <div class="justification" id="justification-4235">La artrosis de rodilla es una complicación a largo plazo más comúnmente asociada con la rotura del ligamento cruzado anterior debido a la inestabilidad crónica de la rodilla y el aumento del riesgo de desgaste articular.</div>
+</div> 
+            <button id="submit-button" onclick="lockAnswers()">Enviar Respuestas</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        let locked = false;
+        let selectedAnswers = {};
+        const correctAnswers = {
+            4231: "B",
+            4232: "B",
+            4233: "A",
+            4234: "C",
+            4235: "A"
+
+        };
+
+        function selectAnswer(questionIndex, element, option) {
+            if (locked || selectedAnswers[questionIndex]) return;
+
+            document.querySelectorAll([data-index='${questionIndex}'] .options li).forEach(li => li.classList.remove('selected', 'correct', 'incorrect'));
+            element.classList.add('selected');
+            selectedAnswers[questionIndex] = option;
+
+            if (option === correctAnswers[questionIndex]) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function lockAnswers() {
+            let correct = 0;
+            let total = Object.keys(correctAnswers).length;
+
+            for (let index in correctAnswers) {
+                if (selectedAnswers[index] === correctAnswers[index]) {
+                    correct++;
+                }
+                document.getElementById(justification-${index}).style.display = 'block';
+            }
+
+            let score = (correct / total) * 100;
+            let resultText = ✅ Correctas: ${correct} | ❌ Incorrectas: ${total - correct} <br><br>📊 Promedio: ${score.toFixed(2)}%;
+            document.getElementById('results').innerHTML = resultText;
+            document.getElementById('results').style.display = 'block';
+
+            locked = true;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>
