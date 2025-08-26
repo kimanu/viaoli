@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Psiquiatría - Depresión Atípica Caso 5</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e74c3c;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Psiquiatría - Depresión Atípica (Caso Clínico 5)</h1>
+        </div>
+
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>Paciente masculino de 30 años, sin antecedentes médicos relevantes, presenta una historia de síntomas depresivos durante los últimos 12 meses. El paciente describe una tristeza persistente, falta de interés en actividades previamente placenteras y dificultades para concentrarse en el trabajo. Además, ha experimentado cambios en el apetito, con episodios de hiperfagia y atracones de comida seguidos de sentimientos de culpa y autorreproche. Niega antecedentes de abuso de sustancias o síntomas psicóticos. La evaluación física no revela hallazgos relevantes.</p>
+        </div>
+
+        <!-- Preguntas -->
+        <div class="card question-card" data-index="1">
+            <h3>❓ Pregunta 1:</h3>
+            <p>¿Cuál de los siguientes síntomas diferencia este caso de depresión de un episodio depresivo mayor típico?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(1, this, 'A')">A. Dificultades para concentrarse</li>
+                <li onclick="selectAnswer(1, this, 'B')">B. Sentimientos de culpa y autorreproche</li>
+                <li onclick="selectAnswer(1, this, 'C')">C. Cambios en el apetito, con episodios de hiperfagia</li>
+                <li onclick="selectAnswer(1, this, 'D')">D. Falta de interés en actividades previamente placenteras</li>
+            </ul>
+            <div class="justification" id="justification-1">Los episodios de hiperfagia, seguidos de sentimientos de culpa y autorreproche, son característicos de la depresión atípica y pueden diferenciar este caso de un episodio depresivo mayor típico.</div>
+        </div>
+
+        <div class="card question-card" data-index="2">
+            <h3>❓ Pregunta 2:</h3>
+            <p>¿Cuál de los siguientes exámenes sería más útil para evaluar posibles comorbilidades médicas en esta paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(2, this, 'A')">A. Prueba de función hepática</li>
+                <li onclick="selectAnswer(2, this, 'B')">B. Evaluación de la función tiroidea</li>
+                <li onclick="selectAnswer(2, this, 'C')">C. Electrocardiograma (ECG)</li>
+                <li onclick="selectAnswer(2, this, 'D')">D. Radiografía de tórax</li>
+            </ul>
+            <div class="justification" id="justification-2">Dado el cuadro clínico y los cambios en el apetito, sería importante evaluar la función tiroidea para descartar hipotiroidismo, que puede presentarse con síntomas depresivos similares.</div>
+        </div>
+
+        <div class="card question-card" data-index="3">
+            <h3>❓ Pregunta 3:</h3>
+            <p>¿Cuál de las siguientes opciones de tratamiento farmacológico se podría considerar como una opción inicial para este paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(3, this, 'A')">A. Sertralina</li>
+                <li onclick="selectAnswer(3, this, 'B')">B. Bupropión</li>
+                <li onclick="selectAnswer(3, this, 'C')">C. Amitriptilina</li>
+                <li onclick="selectAnswer(3, this, 'D')">D. Mirtazapina</li>
+            </ul>
+            <div class="justification" id="justification-3">La mirtazapina, un antidepresivo noradrenérgico y serotoninérgico específico (NaSSA), puede ser una opción de tratamiento inicial adecuada en pacientes con depresión atípica debido a su efecto sedante y capacidad para mejorar el sueño.</div>
+        </div>
+
+        <div class="card question-card" data-index="4">
+            <h3>❓ Pregunta 4:</h3>
+            <p>¿Cuál de las siguientes opciones es una característica comúnmente asociada con la depresión atípica?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(4, this, 'A')">A. Insomnio crónico</li>
+                <li onclick="selectAnswer(4, this, 'B')">B. Hiposensibilidad a la crítica</li>
+                <li onclick="selectAnswer(4, this, 'C')">C. Hiperactividad psicomotora</li>
+                <li onclick="selectAnswer(4, this, 'D')">D. Cambios estacionales en el estado de ánimo</li>
+            </ul>
+            <div class="justification" id="justification-4">El insomnio crónico es una característica comúnmente asociada con la depresión atípica, que puede manifestarse como dificultades para conciliar el sueño y mantenerlo.</div>
+        </div>
+
+        <div class="card question-card" data-index="5">
+            <h3>❓ Pregunta 5:</h3>
+            <p>¿Cuál de las siguientes opciones es una perla importante sobre el tratamiento de la depresión atípica?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(5, this, 'A')">A. La sertralina es preferible debido a su capacidad para mejorar el apetito y el sueño.</li>
+                <li onclick="selectAnswer(5, this, 'B')">B. La terapia cognitivo-conductual es menos efectiva en pacientes con depresión atípica.</li>
+                <li onclick="selectAnswer(5, this, 'C')">C. La mirtazapina puede ser una opción de tratamiento efectiva, especialmente en pacientes con dificultades para conciliar el sueño y mantenerlo, debido a su efecto sedante y capacidad para mejorar el sueño.</li>
+                <li onclick="selectAnswer(5, this, 'D')">D. La bupropión es preferible debido a su efecto estimulante y capacidad para mejorar la concentración y la energía.</li>
+            </ul>
+            <div class="justification" id="justification-5">La mirtazapina, por su efecto sedante, puede ser especialmente útil en pacientes con depresión atípica que presentan dificultades para conciliar y mantener el sueño, contribuyendo así a mejorar los síntomas depresivos asociados.</div>
+        </div>
+
+        <button id="submit-button" onclick="submitQuiz()">Enviar respuestas</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            1: 'C',
+            2: 'B',
+            3: 'D',
+            4: 'A',
+            5: 'C'
+        };
+
+        const userAnswers = {};
+
+        function selectAnswer(question, element, answer) {
+            const options = element.parentElement.querySelectorAll('li');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            userAnswers[question] = answer;
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            for (let i = 1; i <= 5; i++) {
+                const selected = userAnswers[i];
+                const questionCard = document.querySelector(`.question-card[data-index="${i}"]`);
+                const options = questionCard.querySelectorAll('li');
+
+                options.forEach(opt => {
+                    const answerLetter = opt.textContent.trim().charAt(0);
+                    if (selected === answerLetter && correctAnswers[i] === answerLetter) {
+                        opt.classList.add('correct');
+                        score++;
+                    } else if (selected === answerLetter && correctAnswers[i] !== answerLetter) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+
+                const justification = document.getElementById(`justification-${i}`);
+                justification.style.display = 'block';
+            }
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.style.display = 'block';
+            resultsDiv.innerHTML = `<h3>Resultados: ${score} / 5 correctas</h3>`;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

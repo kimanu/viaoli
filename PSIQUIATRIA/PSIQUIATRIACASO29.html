@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Psiquiatría - Trastorno Esquizoafectivo Caso 1</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e74c3c;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Psiquiatría - Trastorno Esquizoafectivo (Caso Clínico 1)</h1>
+        </div>
+
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>Paciente masculino de 28 años, sin antecedentes médicos relevantes conocidos, es referido a la consulta de psiquiatría por su médico de atención primaria debido a síntomas psicóticos y afectivos que interfieren significativamente con su funcionamiento diario. El paciente informa episodios recurrentes de depresión profunda, durante los cuales experimenta sentimientos de desesperanza, falta de interés en actividades previamente disfrutadas y pensamientos suicidas. Estos episodios depresivos son seguidos por períodos de euforia, aumento de la energía y pensamiento acelerado, durante los cuales el paciente experimenta ideas delirantes de grandeza y una disminución en la necesidad de sueño. Además, el paciente informa la presencia de episodios en los que escucha voces que comentan sobre él y que creen que están conspirando en su contra. Durante estos episodios psicóticos, el paciente también puede experimentar cambios en su comportamiento, como hablar en forma incoherente o tener dificultades para mantener la atención. La evaluación física inicial no revela hallazgos relevantes.</p>
+        </div>
+
+        <!-- Preguntas -->
+        <div class="card question-card" data-index="1">
+            <h3>❓ Pregunta 1:</h3>
+            <p>¿Cuál de los siguientes síntomas es característico del trastorno esquizoafectivo y distingue este caso de otros trastornos psiquiátricos?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(1, this, 'A')">A. Cambios de humor fluctuantes y extremos</li>
+                <li onclick="selectAnswer(1, this, 'B')">B. Alucinaciones auditivas con contenido ordenante</li>
+                <li onclick="selectAnswer(1, this, 'C')">C. Ideas delirantes de grandeza</li>
+                <li onclick="selectAnswer(1, this, 'D')">D. Preocupación excesiva y pensamientos repetitivos</li>
+            </ul>
+            <div class="justification" id="justification-1">Las alucinaciones auditivas con contenido ordenante son características del trastorno esquizoafectivo y pueden distinguirlo de otros trastornos psiquiátricos.</div>
+        </div>
+
+        <div class="card question-card" data-index="2">
+            <h3>❓ Pregunta 2:</h3>
+            <p>¿Cuál de las siguientes evaluaciones sería más útil para descartar posibles causas médicas de los síntomas del paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(2, this, 'A')">A. Pruebas de laboratorio para descartar infecciones virales</li>
+                <li onclick="selectAnswer(2, this, 'B')">B. Electroencefalograma (EEG)</li>
+                <li onclick="selectAnswer(2, this, 'C')">C. Tomografía computarizada (TC) de cerebro</li>
+                <li onclick="selectAnswer(2, this, 'D')">D. Evaluación oftalmológica</li>
+            </ul>
+            <div class="justification" id="justification-2">Una tomografía computarizada (TC) de cerebro puede ser útil para descartar causas médicas subyacentes de los síntomas, como tumores cerebrales u otras anomalías estructurales.</div>
+        </div>
+
+        <div class="card question-card" data-index="3">
+            <h3>❓ Pregunta 3:</h3>
+            <p>¿Cuál de las siguientes opciones de tratamiento es la primera línea para el trastorno esquizoafectivo durante un episodio maníaco?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(3, this, 'A')">A. Antidepresivos</li>
+                <li onclick="selectAnswer(3, this, 'B')">B. Antipsicóticos de primera generación (también conocidos como típicos)</li>
+                <li onclick="selectAnswer(3, this, 'C')">C. Estabilizadores del estado de ánimo</li>
+                <li onclick="selectAnswer(3, this, 'D')">D. Benzodiazepinas</li>
+            </ul>
+            <div class="justification" id="justification-3">Los estabilizadores del estado de ánimo, como el litio o el ácido valproico, son la primera línea de tratamiento para el trastorno esquizoafectivo durante un episodio maníaco debido a su capacidad para estabilizar el estado de ánimo y prevenir recaídas.</div>
+        </div>
+
+        <div class="card question-card" data-index="4">
+            <h3>❓ Pregunta 4:</h3>
+            <p>¿Cuál de los siguientes síntomas afectivos es característico del trastorno esquizoafectivo?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(4, this, 'A')">A. Sentimientos de desesperanza y falta de interés</li>
+                <li onclick="selectAnswer(4, this, 'B')">B. Cambios de humor extremos</li>
+                <li onclick="selectAnswer(4, this, 'C')">C. Aplanamiento afectivo</li>
+                <li onclick="selectAnswer(4, this, 'D')">D. Ideas delirantes de persecución</li>
+            </ul>
+            <div class="justification" id="justification-4">Los cambios de humor extremos, que incluyen episodios de depresión profunda seguidos de períodos de euforia, son característicos del trastorno esquizoafectivo.</div>
+        </div>
+
+        <div class="card question-card" data-index="5">
+            <h3>❓ Pregunta 5:</h3>
+            <p>¿Cuál de las siguientes opciones es una perla importante sobre el tratamiento a largo plazo del trastorno esquizoafectivo?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(5, this, 'A')">A. La terapia electroconvulsiva (TEC) es la primera línea de tratamiento para prevenir recaídas en pacientes con trastorno esquizoafectivo.</li>
+                <li onclick="selectAnswer(5, this, 'B')">B. La combinación de antipsicóticos y antidepresivos es esencial para el tratamiento a largo plazo del trastorno esquizoafectivo.</li>
+                <li onclick="selectAnswer(5, this, 'C')">C. Los antipsicóticos de segunda generación deben evitarse en el tratamiento a largo plazo del trastorno esquizoafectivo debido a su alto riesgo de efectos secundarios.</li>
+                <li onclick="selectAnswer(5, this, 'D')">D. La psicoterapia individual es la principal intervención para el tratamiento a largo plazo del trastorno esquizoafectivo.</li>
+            </ul>
+            <div class="justification" id="justification-5">La combinación de antipsicóticos y antidepresivos es esencial en el tratamiento a largo plazo del trastorno esquizoafectivo para abordar tanto los síntomas psicóticos como los afectivos y prevenir recaídas.</div>
+        </div>
+
+        <button id="submit-button" onclick="submitAnswers()">Enviar respuestas</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const correctAnswers = ['B','C','C','B','B'];
+        let selectedAnswers = {};
+
+        function selectAnswer(questionNumber, element, answer) {
+            selectedAnswers[questionNumber] = answer;
+            const options = element.parentElement.querySelectorAll('li');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function submitAnswers() {
+            let score = 0;
+            for (let i = 1; i <= 5; i++) {
+                const selected = selectedAnswers[i];
+                const questionCard = document.querySelector(`.question-card[data-index='${i}']`);
+                const options = questionCard.querySelectorAll('li');
+
+                options.forEach(opt => {
+                    const answerLetter = opt.textContent.trim().charAt(0);
+                    if (selected === answerLetter && correctAnswers[i-1] === answerLetter) {
+                        opt.classList.add('correct');
+                        score++;
+                    } else if (selected === answerLetter && correctAnswers[i-1] !== answerLetter) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+
+                const justification = document.getElementById(`justification-${i}`);
+                justification.style.display = 'block';
+            }
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.style.display = 'block';
+            resultsDiv.innerHTML = `<h3>Tu puntaje: ${score} / 5</h3>`;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

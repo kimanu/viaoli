@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Psiquiatría - Depresión Atípica</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e74c3c;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Psiquiatría - Depresión Atípica</h1>
+        </div>
+
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>Paciente masculino de 50 años, con antecedentes de hipertensión arterial controlada con enalapril, acude a la consulta con su médico de cabecera debido a un estado de ánimo deprimido y desinterés por sus actividades habituales desde hace aproximadamente 6 meses. El paciente refiere haber experimentado una pérdida de interés en su trabajo y hobbies, así como dificultades para conciliar el sueño, despertares nocturnos frecuentes y fatiga diurna. Además, ha experimentado un aumento significativo en su apetito, especialmente por alimentos ricos en carbohidratos, lo que ha resultado en un aumento de peso de 8 kg en los últimos seis meses. Niega antecedentes de abuso de sustancias, cambios en la libido o síntomas psicóticos. La evaluación física revela obesidad leve y no se encuentran otras anormalidades significativas.</p>
+        </div>
+
+        <!-- Preguntas -->
+        <div class="card question-card" data-index="1">
+            <h3>❓ Pregunta 1:</h3>
+            <p>¿Cuál de los siguientes síntomas diferencia este caso de depresión de un episodio depresivo mayor típico?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(1, this, 'A')">A. Aumento del apetito y aumento de peso</li>
+                <li onclick="selectAnswer(1, this, 'B')">B. Insomnio inicial seguido de hipersomnia</li>
+                <li onclick="selectAnswer(1, this, 'C')">C. Fatiga diurna persistente</li>
+                <li onclick="selectAnswer(1, this, 'D')">D. Pérdida de interés en actividades habituales</li>
+            </ul>
+            <div class="justification" id="justification-1">La presencia de un aumento significativo del apetito y del peso corporal es un síntoma atípico de la depresión mayor, lo que diferencia este caso de un episodio depresivo mayor típico donde generalmente se presenta una disminución del apetito y pérdida de peso.</div>
+        </div>
+
+        <div class="card question-card" data-index="2">
+            <h3>❓ Pregunta 2:</h3>
+            <p>¿Cuál de las siguientes opciones de tratamiento farmacológico se podría considerar como una opción inicial para este paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(2, this, 'A')">A. Fluoxetina</li>
+                <li onclick="selectAnswer(2, this, 'B')">B. Sertralina</li>
+                <li onclick="selectAnswer(2, this, 'C')">C. Bupropión</li>
+                <li onclick="selectAnswer(2, this, 'D')">D. Amitriptilina</li>
+            </ul>
+            <div class="justification" id="justification-2">El bupropión es un antidepresivo que puede ser una opción inicial adecuada en pacientes con depresión mayor atípica, ya que tiende a estar asociado con una menor probabilidad de causar aumento de peso y puede incluso llevar a la pérdida de peso en algunos casos.</div>
+        </div>
+
+        <div class="card question-card" data-index="3">
+            <h3>❓ Pregunta 3:</h3>
+            <p>¿Cuál de los siguientes exámenes sería más útil para evaluar posibles comorbilidades médicas en este paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(3, this, 'A')">A. Hemograma completo</li>
+                <li onclick="selectAnswer(3, this, 'B')">B. Perfil de lípidos</li>
+                <li onclick="selectAnswer(3, this, 'C')">C. Glucosa en ayunas</li>
+                <li onclick="selectAnswer(3, this, 'D')">D. Perfil tiroideo</li>
+            </ul>
+            <div class="justification" id="justification-3">Dado el aumento significativo del apetito y el peso corporal en este paciente, sería importante evaluar su estado glucémico para descartar la posibilidad de comorbilidades como diabetes mellitus, que pueden contribuir a los síntomas depresivos.</div>
+        </div>
+
+        <div class="card question-card" data-index="4">
+            <h3>❓ Pregunta 4:</h3>
+            <p>¿Cuál de las siguientes opciones es una característica comúnmente asociada con la depresión atípica?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(4, this, 'A')">A. Insomnio crónico</li>
+                <li onclick="selectAnswer(4, this, 'B')">B. Pérdida de apetito y pérdida de peso</li>
+                <li onclick="selectAnswer(4, this, 'C')">C. Falta de respuesta al tratamiento con antidepresivos</li>
+                <li onclick="selectAnswer(4, this, 'D')">D. Hipersomnia y aumento del apetito</li>
+            </ul>
+            <div class="justification" id="justification-4">La depresión atípica se caracteriza por la presencia de síntomas atípicos como hipersomnia, aumento del apetito y aumento de peso, lo que coincide con los síntomas presentados por este paciente.</div>
+        </div>
+
+        <div class="card question-card" data-index="5">
+            <h3>❓ Pregunta 5:</h3>
+            <p>¿Cuál de las siguientes opciones es una perla importante sobre el tratamiento de la depresión atípica?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(5, this, 'A')">A. Los antidepresivos tricíclicos son la primera línea de tratamiento debido a su eficacia comprobada.</li>
+                <li onclick="selectAnswer(5, this, 'B')">B. La terapia cognitivo-conductual es menos efectiva en pacientes con depresión atípica.</li>
+                <li onclick="selectAnswer(5, this, 'C')">C. La fluoxetina es preferible debido a su capacidad para reducir el apetito y el peso corporal.</li>
+                <li onclick="selectAnswer(5, this, 'D')">D. El bupropión puede ser una opción de tratamiento preferida debido a su efecto neutro o incluso favorable sobre el peso corporal.</li>
+            </ul>
+            <div class="justification" id="justification-5">El bupropión, al ser un antidepresivo que no está asociado con aumento de peso y, en algunos casos, puede provocar pérdida de peso, puede ser una opción de tratamiento preferida en pacientes con depresión atípica que presentan aumento del apetito y peso corporal.</div>
+        </div>
+
+        <button id="submit-button" onclick="submitQuiz()">Enviar respuestas</button>
+
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            1: 'A',
+            2: 'C',
+            3: 'C',
+            4: 'D',
+            5: 'D'
+        };
+
+        const userAnswers = {};
+
+        function selectAnswer(question, element, answer) {
+            const options = element.parentElement.querySelectorAll('li');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            userAnswers[question] = answer;
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            for (let i = 1; i <= 5; i++) {
+                const selected = userAnswers[i];
+                const questionCard = document.querySelector(`.question-card[data-index="${i}"]`);
+                const options = questionCard.querySelectorAll('li');
+
+                options.forEach(opt => {
+                    const answerLetter = opt.textContent.trim().charAt(0);
+                    if (selected === answerLetter && correctAnswers[i] === answerLetter) {
+                        opt.classList.add('correct');
+                        score++;
+                    } else if (selected === answerLetter && correctAnswers[i] !== answerLetter) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+
+                // Mostrar justificación
+                const justification = document.getElementById(`justification-${i}`);
+                justification.style.display = 'block';
+            }
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.style.display = 'block';
+            resultsDiv.innerHTML = `<h3>Resultados: ${score} / 5 correctas</h3>`;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

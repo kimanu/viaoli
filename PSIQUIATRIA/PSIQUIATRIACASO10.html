@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Psiquiatría - Trastorno Bipolar Caso 4</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e74c3c;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Psiquiatría - Trastorno Bipolar (Caso Clínico 4)</h1>
+        </div>
+
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>Paciente femenina de 25 años, sin antecedentes médicos relevantes, es llevada a la consulta por sus padres debido a cambios en el estado de ánimo y el comportamiento durante los últimos 4 años. La paciente ha experimentado episodios de euforia extrema y alta energía, durante los cuales ha estado involucrada en múltiples proyectos simultáneamente, ha tenido dificultades para concentrarse en una sola tarea y ha gastado grandes sumas de dinero en compras impulsivas. Estos episodios son seguidos por períodos depresivos prolongados con llanto frecuente, aislamiento social y pérdida de interés en actividades previamente placenteras. Durante los episodios de euforia, la paciente ha tenido cambios en el discurso, hablando rápidamente y saltando de un tema a otro. Niega antecedentes de abuso de sustancias. La evaluación física no revela hallazgos relevantes.</p>
+        </div>
+
+        <!-- Preguntas -->
+        <div class="card question-card" data-index="1">
+            <h3>❓ Pregunta 1:</h3>
+            <p>¿Cuál de los siguientes síntomas diferencia este caso de trastorno bipolar de un episodio depresivo mayor típico?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(1, this, 'A')">A. Cambios en el discurso y habla rápida durante los episodios de euforia</li>
+                <li onclick="selectAnswer(1, this, 'B')">B. Pérdida de interés en actividades previamente placenteras</li>
+                <li onclick="selectAnswer(1, this, 'C')">C. Llanto frecuente y aislamiento social durante los episodios depresivos</li>
+                <li onclick="selectAnswer(1, this, 'D')">D. Insomnio y dificultad para concentrarse</li>
+            </ul>
+            <div class="justification" id="justification-1">Los cambios en el discurso y la habla rápida durante los episodios de euforia son característicos del trastorno bipolar y pueden diferenciar este caso de un episodio depresivo mayor típico.</div>
+        </div>
+
+        <div class="card question-card" data-index="2">
+            <h3>❓ Pregunta 2:</h3>
+            <p>¿Cuál de los siguientes exámenes sería más útil para evaluar posibles comorbilidades médicas en esta paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(2, this, 'A')">A. Prueba de función tiroidea</li>
+                <li onclick="selectAnswer(2, this, 'B')">B. Evaluación de la función renal</li>
+                <li onclick="selectAnswer(2, this, 'C')">C. Ecocardiograma</li>
+                <li onclick="selectAnswer(2, this, 'D')">D. Análisis de gases en sangre arterial</li>
+            </ul>
+            <div class="justification" id="justification-2">Dado el cuadro clínico y los cambios en el estado de ánimo, sería importante evaluar la función tiroidea para descartar hipertiroidismo, que puede manifestarse con síntomas similares a los del trastorno bipolar.</div>
+        </div>
+
+        <div class="card question-card" data-index="3">
+            <h3>❓ Pregunta 3:</h3>
+            <p>¿Cuál de las siguientes opciones de tratamiento farmacológico se podría considerar como una opción inicial para esta paciente durante el episodio maníaco?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(3, this, 'A')">A. Valproato</li>
+                <li onclick="selectAnswer(3, this, 'B')">B. Carbamazepina</li>
+                <li onclick="selectAnswer(3, this, 'C')">C. Aripiprazol</li>
+                <li onclick="selectAnswer(3, this, 'D')">D. Lamotrigina</li>
+            </ul>
+            <div class="justification" id="justification-3">El aripiprazol, un antipsicótico atípico, puede ser una opción de tratamiento inicial adecuada para controlar los síntomas maníacos agudos del trastorno bipolar debido a su efectividad en estabilizar el estado de ánimo y reducir la excitabilidad.</div>
+        </div>
+
+        <div class="card question-card" data-index="4">
+            <h3>❓ Pregunta 4:</h3>
+            <p>¿Cuál de las siguientes opciones es una característica comúnmente asociada con el trastorno bipolar?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(4, this, 'A')">A. Aumento de la energía y la actividad durante los episodios depresivos</li>
+                <li onclick="selectAnswer(4, this, 'B')">B. Aislamiento social durante los episodios maníacos</li>
+                <li onclick="selectAnswer(4, this, 'C')">C. Cambios estacionales en el estado de ánimo</li>
+                <li onclick="selectAnswer(4, this, 'D')">D. Llanto frecuente y falta de interés en actividades durante los episodios maníacos</li>
+            </ul>
+            <div class="justification" id="justification-4">La falta de interés en actividades durante los episodios maníacos es una característica comúnmente asociada con el trastorno bipolar, donde los individuos pueden experimentar una disminución en la necesidad de sueño y una mayor participación en actividades impulsivas.</div>
+        </div>
+
+        <div class="card question-card" data-index="5">
+            <h3>❓ Pregunta 5:</h3>
+            <p>¿Cuál de las siguientes opciones es una perla importante sobre el tratamiento del trastorno bipolar?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(5, this, 'A')">A. La carbamazepina es la primera línea de tratamiento para todos los subtipos de trastorno bipolar.</li>
+                <li onclick="selectAnswer(5, this, 'B')">B. La terapia cognitivo-conductual es la intervención preferida para manejar los síntomas maníacos.</li>
+                <li onclick="selectAnswer(5, this, 'C')">C. El aripiprazol puede ser una opción de tratamiento efectiva para controlar los síntomas maníacos agudos debido a su efectividad en estabilizar el estado de ánimo y reducir la excitabilidad.</li>
+                <li onclick="selectAnswer(5, this, 'D')">D. La lamotrigina es preferible debido a su efecto sedante y capacidad para mejorar el sueño durante los episodios maníacos.</li>
+            </ul>
+            <div class="justification" id="justification-5">El aripiprazol, como antipsicótico atípico, puede ser efectivo en el tratamiento de los síntomas maníacos agudos del trastorno bipolar debido a su capacidad para estabilizar el estado de ánimo y reducir la excitabilidad.</div>
+        </div>
+
+        <button id="submit-button" onclick="submitAnswers()">Enviar respuestas</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const correctAnswers = ['A','A','C','D','C'];
+        let selectedAnswers = {};
+
+        function selectAnswer(questionNumber, element, answer) {
+            selectedAnswers[questionNumber] = answer;
+            const options = element.parentElement.querySelectorAll('li');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function submitAnswers() {
+            let score = 0;
+            for (let i = 1; i <= 5; i++) {
+                const selected = selectedAnswers[i];
+                const questionCard = document.querySelector(`.question-card[data-index='${i}']`);
+                const options = questionCard.querySelectorAll('li');
+
+                options.forEach(opt => {
+                    const answerLetter = opt.textContent.trim().charAt(0);
+                    if (selected === answerLetter && correctAnswers[i-1] === answerLetter) {
+                        opt.classList.add('correct');
+                        score++;
+                    } else if (selected === answerLetter && correctAnswers[i-1] !== answerLetter) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+
+                const justification = document.getElementById(`justification-${i}`);
+                justification.style.display = 'block';
+            }
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.style.display = 'block';
+            resultsDiv.innerHTML = `<h3>Resultados: ${score} / 5 correctas</h3>`;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

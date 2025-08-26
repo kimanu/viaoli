@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Psiquiatría - Depresión</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e74c3c;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Psiquiatría - Depresión</h1>
+        </div>
+
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>Paciente femenina de 35 años, sin antecedentes médicos relevantes, acude a consulta por sentirse "triste todo el tiempo" durante las últimas 3 semanas. La paciente refiere disminución del interés en sus actividades habituales, fatiga constante, dificultad para concentrarse y cambios en el apetito, manifestando una pérdida de aproximadamente 4 kg en el último mes. Asimismo, indica que duerme mucho más de lo habitual y se siente incapaz de disfrutar de las cosas que antes le gustaban. Niega antecedentes de abuso de sustancias o síntomas psicóticos. La evaluación física es normal.</p>
+        </div>
+
+        <!-- Preguntas -->
+        <div class="card question-card" data-index="1">
+            <h3>❓ Pregunta 1:</h3>
+            <p>¿Cuál de las siguientes opciones es el tratamiento de primera línea para esta paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(1, this, 'A')">A. Fluoxetina</li>
+                <li onclick="selectAnswer(1, this, 'B')">B. Sertralina</li>
+                <li onclick="selectAnswer(1, this, 'C')">C. Amitriptilina</li>
+                <li onclick="selectAnswer(1, this, 'D')">D. Bupropión</li>
+            </ul>
+            <div class="justification" id="justification-1">La sertralina es un antidepresivo de primera línea recomendado en el tratamiento de la depresión leve a moderada, especialmente en pacientes sin antecedentes de intento de suicidio o antecedentes familiares de trastorno bipolar. Además, es mejor tolerado en comparación con otros antidepresivos, con un perfil de efectos secundarios más favorable.</div>
+        </div>
+
+        <div class="card question-card" data-index="2">
+            <h3>❓ Pregunta 2:</h3>
+            <p>¿Cuál de los siguientes síntomas es más específico para el diagnóstico de depresión en esta paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(2, this, 'A')">A. Insomnio</li>
+                <li onclick="selectAnswer(2, this, 'B')">B. Disminución del apetito</li>
+                <li onclick="selectAnswer(2, this, 'C')">C. Anhedonia</li>
+                <li onclick="selectAnswer(2, this, 'D')">D. Fatiga</li>
+            </ul>
+            <div class="justification" id="justification-2">La anhedonia, o la disminución del interés o la capacidad para experimentar placer en actividades que antes se disfrutaban, es un síntoma cardinal de la depresión mayor según el DSM-5. Es más específico para el diagnóstico de depresión en comparación con los otros síntomas mencionados.</div>
+        </div>
+
+        <div class="card question-card" data-index="3">
+            <h3>❓ Pregunta 3:</h3>
+            <p>¿Cuál de los siguientes exámenes sería más útil para descartar una causa orgánica de los síntomas depresivos en esta paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(3, this, 'A')">A. Hemograma completo</li>
+                <li onclick="selectAnswer(3, this, 'B')">B. Perfil de lípidos</li>
+                <li onclick="selectAnswer(3, this, 'C')">C. Niveles de tiroides (TSH)</li>
+                <li onclick="selectAnswer(3, this, 'D')">D. Electrolitos séricos</li>
+            </ul>
+            <div class="justification" id="justification-3">La disfunción tiroidea, especialmente el hipotiroidismo, puede presentarse con síntomas similares a los de la depresión. Por lo tanto, es importante descartar esta causa mediante la evaluación de los niveles de la hormona estimulante de la tiroides (TSH).</div>
+        </div>
+
+        <div class="card question-card" data-index="4">
+            <h3>❓ Pregunta 4:</h3>
+            <p>¿Cuál de los siguientes síntomas es un criterio de alarma en esta paciente que justificaría una evaluación más urgente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(4, this, 'A')">A. Disminución del apetito</li>
+                <li onclick="selectAnswer(4, this, 'B')">B. Fatiga constante</li>
+                <li onclick="selectAnswer(4, this, 'C')">C. Pérdida de peso involuntaria</li>
+                <li onclick="selectAnswer(4, this, 'D')">D. Dificultad para concentrarse</li>
+            </ul>
+            <div class="justification" id="justification-4">La pérdida de peso involuntaria en un paciente con depresión puede ser un indicador de gravedad o de una comorbilidad subyacente, como trastornos alimentarios o enfermedades médicas graves, y justifica una evaluación más urgente para descartar estas condiciones.</div>
+        </div>
+
+        <div class="card question-card" data-index="5">
+            <h3>❓ Pregunta 5:</h3>
+            <p>¿Cuál de las siguientes opciones es una perla importante sobre el tratamiento farmacológico de la depresión?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(5, this, 'A')">A. Los antidepresivos tricíclicos son de primera elección debido a su eficacia comprobada.</li>
+                <li onclick="selectAnswer(5, this, 'B')">B. La fluoxetina es preferible en pacientes con antecedentes de intentos de suicidio.</li>
+                <li onclick="selectAnswer(5, this, 'C')">C. La sertralina se debe evitar en pacientes con antecedentes de trastorno bipolar.</li>
+                <li onclick="selectAnswer(5, this, 'D')">D. Los inhibidores selectivos de la recaptación de serotonina pueden causar aumento de peso.</li>
+            </ul>
+            <div class="justification" id="justification-5">La fluoxetina es un antidepresivo inhibidor selectivo de la recaptación de serotonina (ISRS) que tiene la ventaja de tener un perfil más favorable en términos de efectos secundarios en comparación con otros antidepresivos. Además, se ha demostrado que reduce el riesgo de suicidio y es adecuada para su uso en pacientes con antecedentes de intentos de suicidio.</div>
+        </div>
+
+        <button id="submit-button" onclick="submitQuiz()">Enviar respuestas</button>
+
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            1: 'B',
+            2: 'C',
+            3: 'C',
+            4: 'C',
+            5: 'B'
+        };
+
+        const userAnswers = {};
+
+        function selectAnswer(question, element, answer) {
+            // Deseleccionar cualquier respuesta previa
+            const options = element.parentElement.querySelectorAll('li');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+
+            // Guardar respuesta
+            userAnswers[question] = answer;
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            for (let i = 1; i <= 5; i++) {
+                const selected = userAnswers[i];
+                const questionCard = document.querySelector(`.question-card[data-index="${i}"]`);
+                const options = questionCard.querySelectorAll('li');
+
+                options.forEach(opt => {
+                    const text = opt.textContent.trim().charAt(0);
+                    if (text === correctAnswers[i]) {
+                        opt.classList.add('correct');
+                    }
+                    if (selected && selected !== correctAnswers[i] && text === selected) {
+                        opt.classList.add('incorrect');
+                    }
+                    opt.style.pointerEvents = 'none';
+                });
+
+                // Mostrar justificación
+                document.getElementById(`justification-${i}`).style.display = 'block';
+
+                if (selected === correctAnswers[i]) score++;
+            }
+
+            const results = document.getElementById('results');
+            results.style.display = 'block';
+            results.innerHTML = `<strong>Tu puntaje:</strong> ${score} de 5`;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Psiquiatría - Trastorno de Ansiedad Caso 4</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-left: 6px solid;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .case-container {
+            border-color: #e74c3c;
+        }
+
+        .question-card {
+            border-color: #2980b9;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            cursor: pointer;
+            padding: 12px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f7f9fc;
+            transition: 0.3s;
+        }
+
+        .options li:hover {
+            background: #d6eaf8;
+        }
+
+        .selected {
+            border: 2px solid #2980b9;
+            background: #d6eaf8;
+            pointer-events: none;
+        }
+
+        .correct {
+            background: #28a745 !important;
+            color: white;
+        }
+
+        .incorrect {
+            background: #d9534f !important;
+            color: white;
+        }
+
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2980b9;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit-button:hover {
+            background: #1a5276;
+        }
+
+        #submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            display: none;
+            padding: 15px;
+            background: #d1f0f7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.1em;
+        }
+
+        .justification {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f0f8ff;
+            border: 1px solid #2980b9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card case-container">
+            <h1>Psiquiatría - Trastorno de Ansiedad Específica (Caso Clínico 4)</h1>
+        </div>
+
+        <div class="card case-container">
+            <h2>🩺 Caso clínico</h2>
+            <p>Paciente masculino de 45 años, sin antecedentes médicos relevantes conocidos, acude a la consulta de psiquiatría por presentar síntomas de ansiedad específica. El paciente relata que desde hace más de diez años experimenta un miedo intenso y persistente a volar en avión. Esta fobia le ha causado problemas significativos en su vida personal y laboral, ya que evita cualquier situación que implique viajar en avión, incluso cuando es necesario por motivos laborales. El paciente describe que solo pensar en abordar un avión le provoca una intensa ansiedad, acompañada de síntomas físicos como sudoración profusa, palpitaciones, y dificultad para respirar. Niega antecedentes de abuso de sustancias. La evaluación física no revela hallazgos relevantes.</p>
+        </div>
+
+        <!-- Preguntas -->
+        <div class="card question-card" data-index="1">
+            <h3>❓ Pregunta 1:</h3>
+            <p>¿Cuál de los siguientes síntomas diferencia este caso de trastorno de ansiedad específica de un trastorno de ansiedad social?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(1, this, 'A')">A. Miedo intenso y persistente a volar en avión</li>
+                <li onclick="selectAnswer(1, this, 'B')">B. Evitación de situaciones que impliquen volar en avión</li>
+                <li onclick="selectAnswer(1, this, 'C')">C. Sudoración profusa, palpitaciones y dificultad para respirar al pensar en volar en avión</li>
+                <li onclick="selectAnswer(1, this, 'D')">D. Temor intenso al juicio de los demás y evitación de situaciones sociales</li>
+            </ul>
+            <div class="justification" id="justification-1">El miedo intenso y persistente a volar en avión es característico del trastorno de ansiedad específica, mientras que el trastorno de ansiedad social se caracteriza por un temor intenso al juicio de los demás y la evitación de situaciones sociales.</div>
+        </div>
+
+        <div class="card question-card" data-index="2">
+            <h3>❓ Pregunta 2:</h3>
+            <p>¿Cuál de los siguientes exámenes sería más útil para evaluar posibles comorbilidades médicas en este paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(2, this, 'A')">A. Prueba de función tiroidea</li>
+                <li onclick="selectAnswer(2, this, 'B')">B. Electrocardiograma (ECG)</li>
+                <li onclick="selectAnswer(2, this, 'C')">C. Resonancia magnética cerebral</li>
+                <li onclick="selectAnswer(2, this, 'D')">D. Radiografía de tórax</li>
+            </ul>
+            <div class="justification" id="justification-2">Dado el cuadro clínico y los síntomas físicos, sería importante realizar un electrocardiograma (ECG) para descartar cualquier condición cardíaca que pueda contribuir a los síntomas de ansiedad.</div>
+        </div>
+
+        <div class="card question-card" data-index="3">
+            <h3>❓ Pregunta 3:</h3>
+            <p>¿Cuál de las siguientes opciones de tratamiento se podría considerar como una opción inicial para este paciente?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(3, this, 'A')">A. Terapia de exposición</li>
+                <li onclick="selectAnswer(3, this, 'B')">B. Terapia cognitivo-conductual (TCC)</li>
+                <li onclick="selectAnswer(3, this, 'C')">C. Benzodiazepinas</li>
+                <li onclick="selectAnswer(3, this, 'D')">D. Antidepresivos tricíclicos</li>
+            </ul>
+            <div class="justification" id="justification-3">La terapia cognitivo-conductual (TCC) es una opción de tratamiento eficaz para el trastorno de ansiedad específica, especialmente en casos como el miedo a volar, donde se pueden abordar los pensamientos irracionales y cambiar los patrones de comportamiento.</div>
+        </div>
+
+        <div class="card question-card" data-index="4">
+            <h3>❓ Pregunta 4:</h3>
+            <p>¿Cuál de las siguientes opciones es una característica comúnmente asociada con el trastorno de ansiedad específica?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(4, this, 'A')">A. Miedo intenso a situaciones sociales y al juicio de los demás</li>
+                <li onclick="selectAnswer(4, this, 'B')">B. Evitación de situaciones que impliquen volar en avión</li>
+                <li onclick="selectAnswer(4, this, 'C')">C. Preocupación constante y excesiva por diversos aspectos de la vida</li>
+                <li onclick="selectAnswer(4, this, 'D')">D. Síntomas físicos agudos sin preocupación anticipatoria</li>
+            </ul>
+            <div class="justification" id="justification-4">La evitación de situaciones que impliquen volar en avión es una característica común del trastorno de ansiedad específica, donde los pacientes experimentan un miedo intenso y persistente a un objeto o situación específica.</div>
+        </div>
+
+        <div class="card question-card" data-index="5">
+            <h3>❓ Pregunta 5:</h3>
+            <p>¿Cuál de las siguientes opciones es una perla importante sobre el tratamiento del trastorno de ansiedad específica?</p>
+            <ul class="options">
+                <li onclick="selectAnswer(5, this, 'A')">A. La terapia de exposición es efectiva para el trastorno de ansiedad específica, pero no para otros subtipos de ansiedad.</li>
+                <li onclick="selectAnswer(5, this, 'B')">B. Las benzodiazepinas son la primera línea de tratamiento para todos los subtipos de ansiedad.</li>
+                <li onclick="selectAnswer(5, this, 'C')">C. La terapia cognitivo-conductual (TCC) es una opción de tratamiento eficaz para el trastorno de ansiedad específica, especialmente en casos como el miedo a volar.</li>
+                <li onclick="selectAnswer(5, this, 'D')">D. Los antidepresivos tricíclicos son preferibles como tratamiento inicial para el trastorno de ansiedad específica.</li>
+            </ul>
+            <div class="justification" id="justification-5">La terapia cognitivo-conductual (TCC) es una opción de tratamiento eficaz para el trastorno de ansiedad específica, especialmente en casos como el miedo a volar, donde se pueden abordar los pensamientos irracionales y cambiar los patrones de comportamiento.</div>
+        </div>
+
+        <button id="submit-button" onclick="submitAnswers()">Enviar respuestas</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const correctAnswers = ['A','B','B','B','C'];
+        let selectedAnswers = {};
+
+        function selectAnswer(questionNumber, element, answer) {
+            selectedAnswers[questionNumber] = answer;
+            const options = element.parentElement.querySelectorAll('li');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function submitAnswers() {
+            let score = 0;
+            for (let i = 1; i <= 5; i++) {
+                const selected = selectedAnswers[i];
+                const questionCard = document.querySelector(`.question-card[data-index='${i}']`);
+                const options = questionCard.querySelectorAll('li');
+
+                options.forEach(opt => {
+                    const answerLetter = opt.textContent.trim().charAt(0);
+                    if (selected === answerLetter && correctAnswers[i-1] === answerLetter) {
+                        opt.classList.add('correct');
+                        score++;
+                    } else if (selected === answerLetter && correctAnswers[i-1] !== answerLetter) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+
+                const justification = document.getElementById(`justification-${i}`);
+                justification.style.display = 'block';
+            }
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.style.display = 'block';
+            resultsDiv.innerHTML = `<h3>Resultados: ${score} / 5 correctas</h3>`;
+            document.getElementById('submit-button').disabled = true;
+        }
+    </script>
+</body>
+</html>
